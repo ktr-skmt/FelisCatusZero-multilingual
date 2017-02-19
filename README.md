@@ -1,4 +1,4 @@
-# FelisCatus Zero 
+# FelisCatus Zero-multilingual 
 ## Abstract
 This is Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
 
