@@ -1,44 +1,23 @@
-# FelisCatus Zero 
+# FelisCatus Zero-multilingual 
 ## Abstract
-FelisCatus Zero answers world history essay questions in Japanese and evaluate the answers.
- 
-## Platform
-* Unix Terminal
-* Oracle Java SE Development Kit 8
-* Scala 2.12.1
-* Simple Build Tool 0.13.13
-* MeCab 0.996
-* UniDic unidic-mecab 2.1.2
-* Indri 5.11
-
-## Quick Start Guide
-1. Get the QA corpus (set of question and gold standard) and the knowledge source
- - You can get both of the QA corpus and the knowledge source distributed by NTCIR [QA Lab task](http://research.nii.ac.jp/qalab/) Japanese subtask, if you participate in it and sbumit the agreement to NTCIR
- - Even if you do not have the QA corpus or the knowledge source, you can try to run the pipeline from Essay Generator as a trial. See below.
-1. Read [Install Guide](https://github.com/ynupc/FelisCatusZero/wiki/Install-Guide) and install the softwares.
-1. Git clone or download this repository.
-1. Read [Knowledge Source](https://github.com/ynupc/FelisCatusZero/wiki/Knowledge-Source) and install the knowledge source.
-1. Read [QA Corpus](https://github.com/ynupc/FelisCatusZero/wiki/QA-Corpus) and install the QA corpus.
-1. Read the "Run whole Pipeline" in [How to Run](https://github.com/ynupc/FelisCatusZero/wiki/How-to-Run), and run FelisCatus Zero.
+This is Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
 
 ## Trial
-Even if you did not have the QA corpus or the knowledge source, you can try to run the pipeline from Essay Generation with using the gzipped XMI files as a trial.
 
 1. Install Scala and sbt.
 1. Git clone or download this repository.
-1. Run [trial.sh](trial.sh)
-
+1. Run <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/trial.sh">trial.sh</a>
 ```bash
 $ bash trial.sh
 ```
+## Quick Start Guide
+To install datasets, do the following 1. and/or 2.
 
-## Quick System Guide (in the style of [PPAP](https://www.youtube.com/watch?v=0E00Zuayv9Q))
-I have datasets (of questions and gold standards): [src/main/resources/qaset](https://github.com/ynupc/FelisCatusZero/tree/master/src/main/resources/qaset)  
-I have a command: [tutorial/run.ipynb](https://github.com/ynupc/FelisCatusZero/blob/master/tutorial/run.ipynb)
+1. Put QA Lab-3 essay subtask datasets into <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/tree/master/src/main/resources/qalab_dataset">src/main/resources/qalab_dataset</a>
+1. Put QA Corpus into <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/tree/master/src/main/resources/qa_corpus">src/main/resources/qa_courpus</a>
 
-Ughhh
+Install Indri search engine and Indri indexes of Japanese and English textbooks and glossary. See <a href="https://github.com/ktr-skmt/FelisCatusZero/wiki/Install-Guide">here</a>  
 
-Essays and evaluation results!: [tutorial/out_example/result](https://github.com/ynupc/FelisCatusZero/tree/master/tutorial/out_example/result)
+Install MeCab with UTF-8 and UniDic system dictionary and user dictionary with UTF-8. See <a href="https://github.com/ktr-skmt/FelisCatusZero/wiki/Install-Guide">here</a>  
 
-## More ...
-Go to [Wiki](https://github.com/ynupc/FelisCatusZero/wiki/)!
+To run this system, see <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/Run.ipynb">Run.ipynb</a>
