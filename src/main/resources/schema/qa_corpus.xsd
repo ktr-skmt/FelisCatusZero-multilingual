@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0.2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="version">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="int_type_boolean">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="answer_set_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="singleton"/>
+      <xs:enumeration value="unordered_list"/>
+      <xs:enumeration value="ordered_list"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="answer_match_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="broad"/>
+      <xs:enumeration value="exact"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="reference_format_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="data"/>
+      <xs:enumeration value="uText"/>
+      <xs:enumeration value="lText"/>
+      <xs:enumeration value="blank"/>
+      <xs:enumeration value="note"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="length_limit_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(-1|\d+(-\d+)?(字|字以内|字程度)|(|no\s(more|less)\sthan\s|approximately\s)\d+(-\d+)?\s(English )?words)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="answer_set_attributes">
+    <xs:attribute name="type" type="answer_set_type" use="optional"/>
+    <xs:attribute name="number" type="xs:positiveInteger" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="blank_question_attributes">
+    <xs:attribute name="focus" type="int_type_boolean" use="optional"/>
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="label_set_attributes">
+    <xs:attribute name="id" type="xs:string" use="optional"/>
+    <xs:attribute name="focus" type="int_type_boolean" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="answer_section_attributes">
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string" use="required"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="answer_attributes">
+    <xs:attribute name="match_type" type="answer_match_type" use="optional"/>
+    <xs:attribute name="order" type="xs:integer" use="optional"/><!--未定義は-1, 定義は1以上の整数-->
+    <xs:attribute name="choices" type="xs:string" use="optional"/><!--カンマ区切り-->
+    <xs:attribute name="format_string" type="xs:string" use="optional"/>
+    <xs:attribute name="length_limit" type="length_limit_type" use="optional"/><!--未定義は-1-->
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="reference_attributes">
+    <xs:attribute name="id" type="xs:string" use="optional"/>
+    <xs:attribute name="format" type="reference_format_type" use="optional"/>
+    <xs:attribute name="is_directly_referred" type="int_type_boolean" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:element name="answer_sheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="answer_section" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="ver" type="version" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="answer_section">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="locale" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="answer_section_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="locale">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="grand_question_set" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="instruction" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="reference_set" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="blank_question" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="choices" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="keyword_set" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="viewpoint_set" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="answer_set" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="grand_question_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="grand_question" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="grand_question">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="instruction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="p" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="p">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="label_set" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reference_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="reference" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reference">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="img" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="reference_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="img">
+    <xs:complexType>
+      <xs:attribute name="src" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="blank_question">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="blank" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="blank">
+    <xs:complexType>
+      <xs:attributeGroup ref="blank_question_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="choices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="choice" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="choice">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="cNum" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="keyword_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="keyword" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="keyword" type="xs:string"/>
+
+  <xs:element name="viewpoint_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="viewpoint" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="viewpoint" type="xs:string"/>
+
+  <xs:element name="label_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="label_set_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="label">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id" type="xs:string"/>
+          <xs:attribute name="focus" type="int_type_boolean"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="answer_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="answer" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="answer_set_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="answer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="expression_set" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="answer_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="expression_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="expression" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="expression">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="is_gold_standard" type="xs:boolean"/>
+          <xs:attribute name="writer" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

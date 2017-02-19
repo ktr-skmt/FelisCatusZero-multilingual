@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer_sheet ver="0.1">
+  <answer_section id="D792W10-1" label="D792W10_[1]">
+    <question_id>q01</question_id>
+    <answer_style>description_unlimited</answer_style>
+    <answer_type>sentence</answer_type>
+    <knowledge_type>RT</knowledge_type>
+    <instruction>
+      <p>
+        Write an essay explaining, in 225 English words or less, how developments in the means of transportation and communication prompted the colonization of Asia and Africa and heightened local nationalism. Use all nine keywords shown below at least once.
+      </p>
+    </instruction>
+    <reference_set>
+      <reference format="data" id="d01" is_directly_referred="0">
+        We are currently living in an era of information revolution, and the pace of globalization is accelerating. Not only people and goods are flowing across oceans and borders with increasing frequency; information is being transmitted across the world almost in real time. Underlying these developments is the rapid progress that has been made in transportation and communication technologies. Looking back over human history, we can find numerous instances where new developments in the means of transportation and communication have played important roles. In particular, from the mid-19th century through the early 20th century, such technological advances as wired and wireless telegraphy, the telephone, the camera, and cinematography came into practical use, resulting in the revolution that was audio-visual media. Furthermore, these technological innovations are noteworthy for the parts they played in Western nations' invasions of Asia and Africa. For example, the Reuters news agency gathered information from around the world to help develop the international presence of the British Empire. But, on the other hand, global information sharing and accelerated migration facilitated by the development of transportation were also stimulating factors in the growth of local nationalism.
+      </reference>
+      <reference format="data" id="d02" is_directly_referred="1">
+        Suez Canal, steamship, Baghdad Railway, Morse code, Marconi, the Boxers, Russo-Japanese War, Persian Constitutional Revolution, Gandhi
+      </reference>
+    </reference_set>
+    <keyword_set>
+      <keyword>Suez Canal</keyword>
+      <keyword>steamship</keyword>
+      <keyword>Baghdad Railway</keyword>
+      <keyword>Morse code</keyword>
+      <keyword>Marconi</keyword>
+      <keyword>the Boxers</keyword>
+      <keyword>Russo-Japanese War</keyword>
+      <keyword>Persian Constitutional Revolution</keyword>
+      <keyword>Gandhi</keyword>
+    </keyword_set>
+    <answer_set type="singleton" number="1">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 255 English words">
+        <expression_set>
+          <expression>
+            In the 19th and 20th centuries a transportation and communication revolution occurred with the development of rail networks， the invention of the steamship， the use of Morse code telegraphs， and the invention of the Marconi wireless sets. These technologies were used in Western advances into Asia and Africa. For example， the opening of the Suez Canal greatly reduced travel time between Europe and Asia， but the British controlled the canal to maintain a route to India. With regard to African policy， Britain supported Cecil Rhodes， who advocated a plan for connecting Cape Town to Cairo via rail and telegraph. Germany implemented a 3B policy， which included the construction of the Baghdad Railway， to advance into the Middle East. The western powers were able to quickly suppress the Boxer Rebellion in the late Qing thanks to rapid information communication. Russia aimed to advance into the far East through， for example， the Siberian Railroad， but the Japanese victory in the Russo-Japanese War was quickly relayed to the world via information networks， creating a rise in ethnic consciousness around the world， influencing， for example， the Young Turks movement and the Iranian Constitutional Revolution. The development of transportation methods also led to an increase in the number of people coming from non-Western countries to study in the West. Gandhi， leader of the Indian independence movement， was one example of this， his career founded on his work as a lawyer in South Africa after studying in the U.K.
+          </expression>
+          <expression>
+            The opening of the Suez Canal dramatically reduced sea travel time to Asia， and the appearance of steam-powered steamships made advances from European countries to Asia even easier， greatly contributing to trade and colonialization. The invention of Morse code and the Marconi wireless set in the 19th century greatly improved the speed with which information could be communicated， making global-scale colony management possible. The construction of railroads was also important not only for its economy but also as a method of colony management. Germany， which sought to expand its power in the Middle East， acquired the rights to lay the Baghdad Railway from the Ottoman Empire. However， the improvement of communications technologies and increased mobility also had a major impact on nationalist movements in Asia and Africa. The Russo-Japanese War was triggered by problems regarding the withdrawal of troops after the Boxer Rebellion， and Japan’s victory was instantly communicated around the world， stimulating nationalist movements in Asia and Africa. Later， in Iran， people who gained information via media sources such as newspapers started the Iranian Constitutional Revolution， and in the Ottoman Empire the Young Turk Revolution occurred. The greater ease of mobility led to more people studying abroad in the West， many of which then participated in their own nationalist movements. Having studied in the U.K.， Gandhi developed his philosophy of passive resistance.
+          </expression>
+          <expression>
+            From the mid-19th century to the early 20th century communications and transportation methods advanced dramatically. Communications advances included the development of Morse code and wireless transmission by Marconi. Transportation advances included the opening of the Suez Canal in 1869， which dramatically reduced the time it took steamships to reach Asia， versus the Cape of Good Hope route， supporting Britain’s 3C policy. The Baghdad Railway， which Germany secured the rights to build in 1899， connected Berlin， Byzantium， and Baghdad， leading to the Persian Gulf and further supporting its 3B policy. These improvements in access between countries and their colonies led to stronger administration by European countries of their colonies in Asia and Africa， but at the same time to greater ethnic consciousness in Asia. For example， the Chinese Boxer Rebellion of 1900， the Iranian Constitutional Revolution of 1905 to 1911， and the passive resistance-based anti-British movement led by Gandhi from 1919 were all anti-imperialist movements. The Russo-Japanese War of 1904 was also welcomed as a victory of people of color over whites.
+          </expression>
+        </expression_set>
+      </answer>
+    </answer_set>
+  </answer_section>
+  <answer_section id="D792W10-10" label="D792W10_[2]_(A)_Question (5)">
+    <question_id>q08</question_id>
+    <answer_style>description_unlimited</answer_style>
+    <answer_type>sentence</answer_type>
+    <knowledge_type>KS</knowledge_type>
+    <grand_question_set>
+      <grand_question id="q02">
+        Throughout history, from ancient through modern times, humans have both introduced and co-opted a wide variety of precedent cultures in order to create new cultures, subsequently passing them on to following generations. In relation to this, answer questions (1) through (10) below. Write your responses in answer section (B). Begin a new line for every question you answer and state the corresponding number (1) to (10) at the beginning.
+      </grand_question>
+      <grand_question id="q03">
+        Europeans have always regarded ancient Greek and Roman civilizations as major sources of modern European culture, referring to them as Classical Antiquity. In relation to the acceptance of Greek and Roman ideas and cultures by Europe in later years, answer the following questions.
+      </grand_question>
+    </grand_question_set>
+    <instruction>
+      <p>
+        The Italian Wars were waged for over half a century during the Renaissance period. Describe, in no more than 30 English words, the political situation in Italy that gave rise to these conflicts.
+      </p>
+    </instruction>
+    <reference_set></reference_set>
+    <answer_set type="singleton" number="1">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 30 English words">
+        <expression_set>
+          <expression>
+            Italy at the time was divided into city-states， papal states， and feudal states， and France and the Holy Roman Empire became involved， vying for hegemony over Italy.
+          </expression>
+        </expression_set>
+      </answer>
+    </answer_set>
+  </answer_section>
+  <answer_section id="D792W10-14" label="D792W10_[2]_(B)_Question (7)_(b)">
+    <question_id>q11</question_id>
+    <answer_style>description_unlimited</answer_style>
+    <answer_type>sentence</answer_type>
+    <knowledge_type>KS</knowledge_type>
+    <grand_question_set>
+      <grand_question id="q02">
+        Throughout history, from ancient through modern times, humans have both introduced and co-opted a wide variety of precedent cultures in order to create new cultures, subsequently passing them on to following generations. In relation to this, answer questions (1) through (10) below. Write your responses in answer section (B). Begin a new line for every question you answer and state the corresponding number (1) to (10) at the beginning.
+      </grand_question>
+      <grand_question id="q10">
+        Since ancient times, India and China have nurtured their own unique cultures while interacting with each other, and both cultures have exerted major influence on those of the nations in adjacent regions, including the culture of Japan. In relation to this, answer the following questions.
+      </grand_question>
+    </grand_question_set>
+    <instruction>
+      <p>
+        Confucianism is an idea that emerged in ancient China and has been widely studied in East Asia. It was introduced as the official Chinese religion during the Han Dynasty, and newly systematized during the Song Dynasty.
+        <label_set>
+          <label id="a" focus="0">(a)</label>
+        </label_set>
+        Write in the name of a philosopher from Northern Song who pioneered this systematization and influenced other thinkers in Southern Song.
+        <label_set>
+          <label id="b" focus="1">(b)</label>
+        </label_set>
+        In addition, summarize, in no more than 15 English words, how this new Confucianism was subsequently handled in China.
+      </p>
+    </instruction>
+    <reference_set></reference_set>
+    <answer_set type="singleton" number="1">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 15 English words">
+        <expression_set>
+          <expression>
+            The Cheng-Zhu school made successful during the Song by Chu Hsi later became orthodox Confucianism.
+          </expression>
+        </expression_set>
+      </answer>
+    </answer_set>
+  </answer_section>
+</answer_sheet>

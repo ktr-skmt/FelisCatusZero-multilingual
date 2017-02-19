@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer_sheet ver="0.1">
+  <answer_section id="D792W10-1" label="D792W10_【１】">
+    <question_id>q01</question_id>
+    <answer_style>description_unlimited</answer_style>
+    <answer_type>sentence</answer_type>
+    <knowledge_type>RT</knowledge_type>
+    <instruction>
+      <p>
+        運輸・通信手段の発展が，アジア・アフリカの植民地化をうながし，各地の民族意識を高めたことについて，下記の９つの語句を必ず１回は用いながら，解答欄(イ)を用いて510字以内で論述しなさい。
+      </p>
+    </instruction>
+    <reference_set>
+      <reference format="data" id="d01" is_directly_referred="0">
+        私たちは，情報革命の時代に生きており，世界の一体化は，ますます急速に進行している。人や物がひんぱんに往きかうだけでなく，情報はほとんど瞬時に全世界へ伝えられる。この背後には，運輸・通信技術の飛躍的な進歩があると言えよう。　歴史を振り返ると，運輸・通信手段の新展開が，大きな役割を果たした例は少なくない。特に，19世紀半ばから20世紀初頭にかけて，有線・無線の電信，電話，写真機，映画などの実用化がもたらされ，視聴覚メディアの革命も起こった。またこれらの技術革新は，欧米諸国がアジア・アフリカに侵略の手を伸ばしていく背景としても注目される。例えば，ロイター通信社は，世界の情報をイギリスに集め，大英帝国の海外発展を支えることになった。一方で，世界中で共有される情報や，交通手段の発展によって加速された人の移動は，各地の民族意識を刺激する要因ともなった。
+      </reference>
+      <reference format="data" id="d02" is_directly_referred="1">
+        スエズ運河, 汽船, バグダード鉄道, モールス信号, マルコ一ニ, 義和団, 日露戦争, イラン立憲革命, ガンディー
+      </reference>
+    </reference_set>
+    <keyword_set>
+      <keyword>スエズ運河</keyword>
+      <keyword>汽船</keyword>
+      <keyword>バグダード鉄道</keyword>
+      <keyword>モールス信号</keyword>
+      <keyword>マルコ一ニ</keyword>
+      <keyword>義和団</keyword>
+      <keyword>日露戦争</keyword>
+      <keyword>イラン立憲革命</keyword>
+      <keyword>ガンディー</keyword>
+    </keyword_set>
+    <answer_set type="singleton" number="1">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="510字以内">
+        <expression_set>
+          <expression>
+            19・20世紀には、鉄道網の発達や汽船の発明、またモールス信号による電信や、マルコーニの無線機の発明など、運輸・通信技術の革新が起こった。これらの技術は、欧米諸国によるアジア・アフリカ進出にも利用された。例えば、スエズ運河の開通はヨーロッパ・アジア間の移動時間を大幅に短縮したが、イギリスは、運河を支配下に置き、インドへの道を確保した。また、アフリカ政策において、ケープタウンとカイロを鉄道と電信で結ぶ計画を推進するセシル・ローズを支援した。またドイツは、バグダード鉄道の建設を含む3B政策によって中東への進出を狙った。また、清末における義和団の乱を列強が迅速に鎮圧できたのは、素早い情報伝達によるものである。他方、シベリア鉄道などによって極東進出を狙うロシアに対して、日本が日露戦争で勝利したことは、通信網によって迅速に世界に伝達され、青年トルコ運動やイラン立憲革命に影響を及ぼすなど、各地の民族意識を高揚させた。また、輸送手段の発達は、各地から欧米に留学する人材の増加にもつながった。インド独立運動の指導者ガンディーの経歴の原点が、イギリス留学後に南アフリカで弁護士として活躍した事であったのはこの一例であろう。
+          </expression>
+          <expression>
+            スエズ運河開通はアジア航路の大幅な短縮をもたらし、さらには蒸気を利用した汽船が登場するとヨーロッパ諸国のアジア進出はいっそう容易になり、貿易や植民地化の進展に大きな影響をもたらした。19世紀にはモールス信号やマルコーニよる無線電信が発明され、情報伝達の速度が格段に向上し、世界規模での植民地経営を可能にした。また、鉄道建設は植民地経営を行う上で経済的側面だけでなく手段としても重要視され、中東への勢力拡大を目指したドイツはオスマン帝国からバグダード鉄道の敷設権を獲得している。しかし、通信技術の向上や移動の活性化はアジア・アフリカの民族主義運動の展開にも大きな影響を与えていた。義和団事件後の撤兵に関する問題を契機とした日露戦争での日本の勝利は瞬く間に世界へと発信され、アジア・アフリカの民族運動を刺激した。その後、イランでは新聞などのメディアを通じて知識を獲得した人々がイラン立憲革命を起こし、オスマン帝国では青年トルコ革命が勃発した。また、移動が容易になったことで欧米への海外留学を経験した人々の多くは、その後民族運動に参加していった。ガンディーもイギリス留学を経て、非暴力不服従運動の抵抗思想を形成している。
+          </expression>
+          <expression>
+            19世紀半ばから20世紀初頭にかけて、通信・運輸手段が飛躍的に進歩した。通信について言えば、モールス信号やマルコーニによる無線電信の発明が挙げられる。運輸について言えば、1869年のスエズ運河開通は従来の喜望峰回りに比べて汽船のアジア向け航路を大幅に短縮するもので、イギリスの3C政策を支えるものであった。また1899年にドイツが敷設権を取得したバグダード鉄道は、ベルリン・ビザンティウム・バグダードを結びペルシャ湾につながるもので、3B政策を後押しした。このように本国と植民地のアクセスが改善されたことは、ヨーロッパ諸国によるアジア・アフリカの植民地統治強化を招き、一方でアジアに於ける民族意識の高揚を招いた。例えば、1900年に中国で発生した義和団事件、1905～11年のイラン立憲革命、1919年以降のガンディーによる無抵抗主義に基づく反英運動は、何れも反帝国主義の立場から行われたものであった。また1904年の日露戦争も白人に対する有色人種の勝利としてもてはやされた側面もあった。
+          </expression>
+        </expression_set>
+      </answer>
+    </answer_set>
+  </answer_section>
+  <answer_section id="D792W10-10" label="D792W10_【２】_(A)_問(5)">
+    <question_id>q08</question_id>
+    <answer_style>description_unlimited</answer_style>
+    <answer_type>sentence</answer_type>
+    <knowledge_type>KS</knowledge_type>
+    <grand_question_set>
+      <grand_question id="q02">
+        人類は，その初期から現代にいたるまでの長い歴史において，先行して存在した多様な文化を摂取，継承したうえで，新たな文化を創造し，次の世代へと伝えてきた。このことに関連する以下の設問(1)～(10)に答えよ。回答は回答欄(ロ)を用い，設問ごとに行を改め，冒頭に(1)～(10)の番号を付して記せ。
+      </grand_question>
+      <grand_question id="q03">
+        ヨーロッパ人は，古代ギリシア・ローマの文化をヨーロッパ文化の源流のひとつとみなし，それを古典古代と呼んだ。ギリシアとローマの思想，文化を後のヨーロッパが受容していったことに関連する以下の問いに答えよ。
+      </grand_question>
+    </grand_question_set>
+    <instruction>
+      <p>
+        イタリア戦争はルネサンス期に半世紀以上にわたってくりひろげられた。この戦争の誘因となったイタリアの政治状況について60字以内で記せ。
+      </p>
+    </instruction>
+    <reference_set></reference_set>
+    <answer_set type="singleton" number="1">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="60字以内">
+        <expression_set>
+          <expression>
+            当時のイタリアは都市共和国・教皇領・諸侯国に分裂し、イタリアでの覇権を狙うフランスと神聖ローマ帝国の介入を受けた。
+          </expression>
+        </expression_set>
+      </answer>
+    </answer_set>
+  </answer_section>
+  <answer_section id="D792W10-14" label="D792W10_【２】_(B)_問(7)_(b)">
+    <question_id>q11</question_id>
+    <answer_style>description_unlimited</answer_style>
+    <answer_type>sentence</answer_type>
+    <knowledge_type>KS</knowledge_type>
+    <grand_question_set>
+      <grand_question id="q02">
+        人類は，その初期から現代にいたるまでの長い歴史において，先行して存在した多様な文化を摂取，継承したうえで，新たな文化を創造し，次の世代へと伝えてきた。このことに関連する以下の設問(1)～(10)に答えよ。回答は回答欄(ロ)を用い，設問ごとに行を改め，冒頭に(1)～(10)の番号を付して記せ。
+      </grand_question>
+      <grand_question id="q10">
+        インドと中国は，古代以来相互に影響をあたえつつ独自の文化をはぐくみ，日本を含む周囲の地域に大きな影響を残してきた。このことに関連する以下の問いに答えよ。
+      </grand_question>
+    </grand_question_set>
+    <instruction>
+      <p>
+        儒教は古代中国におこり，東アジアで広く研究されてきた思想である。漢王朝のときに国教としての地位を築き，宋王朝のときに新しい体系化がなされた。
+        <label_set>
+          <label id="a" focus="0">(a)</label>
+        </label_set>
+        この体系化のさきがけをなした北宋の思想家で，南宋の思想家に影響を与えた人物を一人あげよ。また，
+        <label_set>
+          <label id="b" focus="1">(b)</label>
+        </label_set>
+        この新しい儒教は，その後中国でどのように扱われたか，30字以内でまとめよ。
+      </p>
+    </instruction>
+    <reference_set></reference_set>
+    <answer_set type="singleton" number="1">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="30字以内">
+        <expression_set>
+          <expression>宋代に朱熹が大成した朱子学はその後儒教の正統な学派とされた。</expression>
+        </expression_set>
+      </answer>
+    </answer_set>
+  </answer_section>
+</answer_sheet>

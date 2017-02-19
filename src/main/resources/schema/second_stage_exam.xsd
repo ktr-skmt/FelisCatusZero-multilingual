@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0.2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="version">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="torobo_knowledge_type_world_history">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(KS|RT|IC_G|IC_P|IC_M|IC_T|IC_O|GK|Other)(,(KS|RT|IC_G|IC_P|IC_M|IC_T|IC_O|GK|Other))*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="torobo_answer_type_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="other|comb_other_1|(sentence|term_person|term_location|term_time|term_other|referenceSymbol|image_graph|image_photo|image_map|image_table|image_other|formula|orthography)|o\((sentence|term_(person|location|time|other)|referenceSymbol|image_(graph|photo|map|table|other)|formula|orthography)\)|\((sentence|term_(person|location|time|other)|referenceSymbol|image_(graph|photo|map|table|other)|formula|orthography)\)\*(2-9)\d*|(sentence|term_(person|location|time|other)|symbol|image_(graph|photo|map|table|other)|formula|orthography)(-(sentence|term_(person|location|time|other)|symbol|image_(graph|photo|map|table|other)|formula|orthography))+|o\((sentence|term_(person|location|time|other)|symbol|image_(graph|photo|map|table|other)|formula|orthography)(-(sentence|term_(person|location|time|other)|symbol|image_(graph|photo|map|table|other)|formula|orthography))+\)|\((sentence|term_(person|location|time|other)|symbol|image_(graph|photo|map|table|other)|formula|orthography)(-(sentence|term_(person|location|time|other)|symbol|image_(graph|photo|map|table|other)|formula|orthography))+\)\*[2-9]\d*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="torobo_answer_style_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="multipleChoice"/>
+      <xs:enumeration value="description_limited"/>
+      <xs:enumeration value="description_unlimited"/>
+      <xs:enumeration value="drawing"/>
+      <xs:enumeration value="other"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="torobo_question_id_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(q|Q)\d+"/>
+      <!--東大はq, 京大はQ-->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="torobo_ansColumn_id_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(a|A)\d+"/>
+      <!--東大はa, 京大はA-->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="int_type_boolean">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="answer_set_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="singleton"/>
+      <xs:enumeration value="unordered_list"/>
+      <xs:enumeration value="ordered_list"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="answer_match_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="broad"/>
+      <xs:enumeration value="exact"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="reference_format_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="data"/>
+      <xs:enumeration value="uText"/>
+      <xs:enumeration value="lText"/>
+      <xs:enumeration value="blank"/>
+      <xs:enumeration value="note"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="length_limit_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(-1|\d+(-\d+)?(字|字以内|字程度)|(|no\smore\sthan\s|approximately\s)\d+(-\d+)?\sEnglish words)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="answer_set_attributes">
+    <xs:attribute name="type" type="answer_set_type" use="optional"/>
+    <xs:attribute name="number" type="xs:positiveInteger" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="blank_question_attributes">
+    <xs:attribute name="ansColumn_id" type="torobo_ansColumn_id_type" use="optional"/>
+    <xs:attribute name="focus" type="int_type_boolean" use="optional"/>
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="label_set_attributes">
+    <xs:attribute name="id" type="xs:string" use="optional"/>
+    <xs:attribute name="focus" type="int_type_boolean" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="answer_section_attributes">
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string" use="required"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="answer_attributes">
+    <xs:attribute name="match_type" type="answer_match_type" use="optional"/>
+    <xs:attribute name="order" type="xs:integer" use="optional"/><!--未定義は-1, 定義は1以上の整数-->
+    <xs:attribute name="choices" type="xs:string" use="optional"/><!--カンマ区切り-->
+    <xs:attribute name="format_string" type="xs:string" use="optional"/>
+    <xs:attribute name="length_limit" type="length_limit_type" use="optional"/><!--未定義は-1-->
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="reference_attributes">
+    <xs:attribute name="id" type="xs:string" use="optional"/>
+    <xs:attribute name="format" type="reference_format_type" use="optional"/>
+    <xs:attribute name="is_directly_referred" type="int_type_boolean" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:element name="answer_sheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="answer_section" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="ver" type="version" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="answer_section">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="question_id" type="torobo_question_id_type" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="ansColumn_id" type="torobo_ansColumn_id_type" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="answer_style" type="torobo_answer_style_type" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="answer_type" type="torobo_answer_type_type" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="knowledge_type" type="torobo_knowledge_type_world_history" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="grand_question_set" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="grand_question" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="id" type="xs:string"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="torobo_question_id_type" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="instruction" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="p" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element ref="label_set" minOccurs="0" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="reference_set" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="reference" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="img" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="src" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attributeGroup ref="reference_attributes"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="blank_question" minOccurs="0" maxOccurs="1">
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element name="blank" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attributeGroup ref="blank_question_attributes"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="choices" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="cNum" type="xs:string"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="keyword_set" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="keyword" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="viewpoint_set" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="viewpoint" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="answer_set" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="answer" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="answer_set_attributes"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="answer_section_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="label_set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="label" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="id" type="xs:string"/>
+                <xs:attribute name="focus" type="int_type_boolean"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="label_set_attributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="answer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="expression_set" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="expression" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="answer_attributes"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

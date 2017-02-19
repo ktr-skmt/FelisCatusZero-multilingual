@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer_sheet ver="0.1">
+  <answer_section id="1" label="D792W10_【１】">
+    <locale id="ja">
+      <instruction>
+        <p>運輸・通信手段の発展が，アジア・アフリカの植民地化をうながし，各地の民族意識を高めたことについて，下記の９つの語句を必ず１回は用いながら，解答欄(イ)を用いて510字以内で論述しなさい。</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">私たちは，情報革命の時代に生きており，世界の一体化は，ますます急速に進行している。人や物がひんぱんに往きかうだけでなく，情報はほとんど瞬時に全世界へ伝えられる。この背後には，運輸・通信技術の飛躍的な進歩があると言えよう。　歴史を振り返ると，運輸・通信手段の新展開が，大きな役割を果たした例は少なくない。特に，19世紀半ばから20世紀初頭にかけて，有線・無線の電信，電話，写真機，映画などの実用化がもたらされ，視聴覚メディアの革命も起こった。またこれらの技術革新は，欧米諸国がアジア・アフリカに侵略の手を伸ばしていく背景としても注目される。例えば，ロイター通信社は，世界の情報をイギリスに集め，大英帝国の海外発展を支えることになった。一方で，世界中で共有される情報や，交通手段の発展によって加速された人の移動は，各地の民族意識を刺激する要因ともなった。</reference>
+        <reference is_directly_referred="1" id="d02" format="data">スエズ運河, 汽船, バグダード鉄道, モールス信号, マルコ一ニ, 義和団, 日露戦争, イラン立憲革命, ガンディー</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>スエズ運河</keyword>
+        <keyword>汽船</keyword>
+        <keyword>バグダード鉄道</keyword>
+        <keyword>モールス信号</keyword>
+        <keyword>マルコ一ニ</keyword>
+        <keyword>義和団</keyword>
+        <keyword>日露戦争</keyword>
+        <keyword>イラン立憲革命</keyword>
+        <keyword>ガンディー</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="510字以内" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1" is_gold_standard="true">バグダード鉄道 (独: Bagdadbahn)は、19世紀末から20世紀初めにかけてドイツ国の3B政策として国際的な注目をあびた鉄道。最も狭義の意味の「バグダード鉄道」はドイツ資本のバグダード鉄道会社に敷設権と沿線開発の権益が供与されたコンヤ・バスラ間の鉄道およびその計画線のことだが、広い意味ではイスタンブール（ハイダルパシャ駅）〜エスキシェヒル〜コンヤ〜バグダード〜バスラ〜クウェート間の鉄道とその計画を指すことも多い。既にアナトリア鉄道会社によって開通していたハイダルパシャ〜アンカラ線（1893年開通）もしくはエスキシェヒル〜コンヤ線（1896年開通）を延長し、小アジアとメソポタミア（イラク）を横断してペルシア湾の海港を終点とする鉄道計画であった。最終的にはエスキシェヒル〜コンヤ線を延長し、終点の海港はバスラとする計画線に基づいて建設が進められたが、バグダード鉄道会社による建設は第一次世界大戦のため未完に終わり、ドイツは敗戦によってその利権を失った。第一次世界大戦後はオスマン帝国から独立した国々で建設が進められ、1940年に全通した。</expression>
+            <expression writer="dummy2" is_gold_standard="true">アメリカ合衆国の発明家サミュエル・フィンレイ・ブリース・モールスは、1837年9月4日にニューヨーク大学で現在のものと全く異なった符号で電信実験を行い、ジョセフ・ヘンリー（プリンストン大学教授）の指導とアルフレッド・ヴェイルの協力の下、改良した符号と電信機との特許を1840年6月20日に取得した。さらに改良した符号により1844年5月24日に実際の送信実験に成功した。この名称は発明者にちなんだものである。1849年にフリードリヒ・クレメンズ・ゲールケが改良した符号をもとに、DÖTVの1851年10月ウィーン会議において標準規格として条約が結ばれた。その後、1868年7月にウィーンで開催されたUTI（Union Télégraphique Internationale、万国電信連合、ITUの前身の一つ）において現在のものの原型が国際規格として承認された。陸上同士の通信においては、電報などの文字通信で多く使われたが、1920年代からテレタイプ端末による電信・1930年代からテレックス・1980年代からファクシミリ・1990年代後半から電子メールなど他のデジタル通信方式の発達により、次第に使われなくなった。</expression>
+            <expression writer="dummy3" is_gold_standard="true">19世紀後半、イランを支配するガージャール朝は、数度の戦争の敗北、経済の不振によって急速に弱体化しつつあった。この中でヨーロッパ近代思想の自由主義や民族主義にふれた改革派と、弱体化する一方で非常に専制的態度を強化するガージャール朝政権に対して異議を唱える十二イマーム派シーア派のウラマー、さらに外国勢力の経済的支配の強まりに反感をいだくバーザール商人らが結合された。その第一の頂点が1891年12月のタバコ・ボイコット運動であったが、やがて政府に憲法の発布、議会の設置を求める一大運動をおこすことになるのである。これが立憲革命である。1905年末のテヘランでの物価騰貴を背景として、1905年12月に開始された運動は、1906年前半を通じて粘り強く繰り広げられ1906年8月5日には立憲勅書を獲得することになる。同10月第一議会が招集されてただちに憲法制定の作業に入り、12月に憲法が発布された。ここまでが狭義のイラン立憲革命である。この議会制（第一立憲制）は安定せず、ガージャール朝反立憲派による1908年7月から1909年7月までの揺り戻し（小専制）があった。</expression>
+            <expression writer="Baseline" is_gold_standard="false">バグダード鉄道は、トルコのコニアからバグダードをへて、ペルシア湾に通じる鉄道(計画)。日露戦争後、中国東北地方については、北はロシア、南は日本の勢力下とされ(1907年、第1回日露協約)、モンゴルをめぐっても両国の勢力範囲を確定した。義和団事件への出兵にあたって中国東北地方を占領したロシアは、その後も撤兵することなく、鴨緑江にまで進出した。ペルシアは、イラン立憲革命の旧称。北京議定書は、1901年9月7日に北京で清朝と11カ国(出兵8カ国とベルギー・オランダ・スペイン)との間で調印された義和団事件の講和に関する最終議定書。1869年のスエズ運河の開通は列強のアフリカへの進出を刺激し、アフリカは分割競争の対象となった。バグダード鉄道は、諸列強がねらったが、ドイツが1899年に敷設権を獲得し、1903年に会社を設立した。バグダード鉄道は、最終的には一部分だけの開通に留まった。仇教運動は、とくに97年の山東におけるドイツ人宣教師殺害事件を口実とするドイツの進出は、98年から義和団による山東教案となって爆発し、大規模な反帝国主義・排外運動に発展した。ゴールドラッシュは、鉄道や汽船による交通網の発展が背景にあり、以後、西部開拓が進展した。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <instruction>
+        <p>Write an essay explaining, in 225 English words or less, how developments in the means of transportation and communication prompted the colonization of Asia and Africa and heightened local nationalism. Use all nine keywords shown below at least once.</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">We are currently living in an era of information revolution, and the pace of globalization is accelerating. Not only people and goods are flowing across oceans and borders with increasing frequency; information is being transmitted across the world almost in real time. Underlying these developments is the rapid progress that has been made in transportation and communication technologies. Looking back over human history, we can find numerous instances where new developments in the means of transportation and communication have played important roles. In particular, from the mid-19th century through the early 20th century, such technological advances as wired and wireless telegraphy, the telephone, the camera, and cinematography came into practical use, resulting in the revolution that was audio-visual media. Furthermore, these technological innovations are noteworthy for the parts they played in Western nations' invasions of Asia and Africa. For example, the Reuters news agency gathered information from around the world to help develop the international presence of the British Empire. But, on the other hand, global information sharing and accelerated migration facilitated by the development of transportation were also stimulating factors in the growth of local nationalism.</reference>
+        <reference is_directly_referred="1" id="d02" format="data">Suez Canal, steamship, Baghdad Railway, Morse code, Marconi, the Boxers, Russo-Japanese War, Persian Constitutional Revolution, Gandhi</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>Suez Canal</keyword>
+        <keyword>steamship</keyword>
+        <keyword>Baghdad Railway</keyword>
+        <keyword>Morse code</keyword>
+        <keyword>Marconi</keyword>
+        <keyword>the Boxers</keyword>
+        <keyword>Russo-Japanese War</keyword>
+        <keyword>Persian Constitutional Revolution</keyword>
+        <keyword>Gandhi</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="no more than 255 English words" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1en" is_gold_standard="true">The Bagdadbahn is a railway that gained international attention as a German 3B policy from the end of the 19th century to the beginning of the 20th century. &quot;Baghdad Railroad&quot; in the narrowest meaning is the railroad between the Konya Basra and the planned line between which the right to lay and the development of the railroad development were given to the Baghdad Railway Company of the German capital but in a broad sense Istanbul (Hyderarpasha station) ~ Eskisehir ~ Konya ~ Baghdad ~ Bassra - Kuwait between railways and its plan often. We extended the Haedarpasa - Ankara line (opened in 1893) or the Eskisehir - Konya line (opened in 1896) which had already been opened by Anatolian Railway Company, crossed the Asia - Pacific Bay and Mesopotamia (Iraq) and ended the seaport in the Persian Gulf It was a railroad plan to do. Construction was finally advanced based on the plan line extending the Eskisehir-Konya line and the final seaport as Basra, construction by the Baghdad Railway Company ended in an incomplete situation due to the First World War, Germany I lost the interest by defeat. After the First World War, the construction was progressed in countries that were independent from the Ottoman Empire, and in 1940 the whole was done.</expression>
+            <expression writer="dummy2en" is_gold_standard="true">Samuel Finlay Breece Morse, the inventor of the United States conducted a telegraph experiment on New York University on September 4, 1837 with a code completely different from the present one, and guided by Joseph Henry (Professor of Princeton University) and Alfred Under the cooperation of Veil, we acquired a patent of improved code and telegraph on June 20, 1840. We succeeded in actual transmission experiment on May 24, 1844 by a further improved code. This name is named after the inventor. Based on the code improved by Friedrich Clements Gaelke in 1849, the treaty was signed as a standard in the DÖTV October 1851 Vienna conference. After that, the prototype of the current one was approved as an international standard in UTI (Union Télégraphique Internationale, Universal Telecommunications Union, one of the predecessors of ITU) held in Vienna in July 1868. In land-to-land communication, it was widely used in telecommunication such as telegram, but since the 1920's telegraph by teletype terminal · telex from 1930's · facsimile since 1980's · other digital communication methods such as e-mail from the latter half of 1990 It gradually ceased to be used due to its development.</expression>
+            <expression writer="dummy3en" is_gold_standard="true">In the late nineteenth century, the Gajir morning ruling Iran was rapidly weakened by several defeat of the war and economic slump. Among them, the reformists who touched upon European modern thought freedomism and nationalism, and the 12-Imam Shi'ite uramer who disagrees with the Gajar dynasty regime which strengthens a very tyranny while weakening, In addition, bazaar merchants joining in opposition to the strengthening of economic domination of foreign forces were combined. The first vertex was the cigarette · boycott movement in December 1891, but eventually it will bring out a constitution to the government and a major movement seeking the establishment of a parliament. This is the constitutional revolution. On the back of price hikes in Tehran at the end of 1905, the movement started in December 1905 will persist throughout the first half of 1906 and will acquire a constitutional imperial letter on August 5, 1906. The first parliament was convened in October and immediately entered the constitutional work and the Constitution was issued in December. This is the Iranian constitutional revolution in a narrow sense. This parliament system (the first constitutional system) was not stable, there was a shaking back (small tyranny) between July 1908 and July 1909 by the Gajir dynasty constitutional faction.</expression>
+            <expression writer="Baseline" is_gold_standard="false"/>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="2" label="F792W10_【１】">
+    <locale id="ja">
+      <instruction>
+        <p>第二次世界大戦中に生じた出来事が，いかなる形で1950年代までの世界のありかたに影響を与えたのかについて，解答欄に510字以内で説明しなさい。その際に，以下の８つの語句を必ず一度は用い，その語句の部分に下線を付しなさい。なお，EECに付した(　　　)内の語句は解答に記入しなくてもよい。</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">人類の歴史において，戦争は多くの苦悩と惨禍をもたらすと同時に，それを乗り越えて平和と解放を希求するさまざまな努力を生みだす契機となった。　第二次世界大戦は1945年に終結したが，それ以前から連合国側ではさまざまな戦後構想が練られており，これらは国際連合など新しい国際秩序の枠組みに帰結した。しかし，国際連合の成立がただちに世界平和をもたらしたわけではなく，米ソの対立と各地の民族運動などが結びついて新たな紛争が起こっていった。たとえば，中国では抗日戦争を戦っているなかでも国民党と共産党の勢力争いが激化するなど，戦後の冷戦につながる火種が存在していた。</reference>
+        <reference is_directly_referred="1" id="d02" format="data">大西洋憲章, 日本国憲法, 台湾, 金日成, 東ドイツ, EEC(ヨーロッパ経済共同体), アウシュヴィッツ, パレスチナ難民</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>大西洋憲章</keyword>
+        <keyword>日本国憲法</keyword>
+        <keyword>台湾</keyword>
+        <keyword>金日成</keyword>
+        <keyword>東ドイツ</keyword>
+        <keyword>EEC(ヨーロッパ経済共同体)</keyword>
+        <keyword>アウシュヴィッツ</keyword>
+        <keyword>パレスチナ難民</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="510字以内" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1" is_gold_standard="true">金 日成（キム・イルソン、きん にっせい、김일성、1912年4月15日 - 1994年7月8日）は、朝鮮の革命家・独立運動家で、北朝鮮の政治家、軍人。満州において抗日パルチザン活動に部隊指揮官として参加し、第二次世界大戦後はソビエト連邦の支持の下、北朝鮮に朝鮮民主主義人民共和国を建国した。以後、死去するまで同国の最高指導者の地位にあり、1948年から1972年までは首相を、1972年から死去するまで国家主席を務めた。また、同国の支配政党である朝鮮労働党の党首（1949年から1966年までは中央委員会委員長、1966年以降は中央委員会総書記）の地位に、結党以来一貫して就いていた。称号は朝鮮民主主義人民共和国大元帥・朝鮮民主主義人民共和国共和国英雄（三回受章しており「三重英雄」と称される）。北朝鮮においては「偉大なる首領様」などの尊称の下に神格化され、崇拝されている。彼の死後1998年に改定された憲法では「永遠の主席」とされ、主席制度は事実上廃止された。現在、遺体は平壌近郊の錦繍山太陽宮殿に安置・保存されている。</expression>
+            <expression writer="dummy2" is_gold_standard="true">1951年、欧州石炭鉄鋼共同体設立条約が調印され、欧州石炭鉄鋼共同体が設立された。欧州石炭鉄鋼共同体は超国家主義と国際法に基づく国家間共同体であり、ヨーロッパの経済に寄与し、また加盟国の間で統合することにより将来の戦争を回避するということが狙いとなっていた。その後ヨーロッパ合衆国を樹立しようとする目的から欧州防衛共同体と欧州政治共同体という2つの共同体を設置しようとする動きがあった。ところが欧州石炭鉄鋼共同体の議会組織である共同総会において後者の設立条約が起草されたものの、欧州防衛共同体設立構想はフランス国民議会により否決された。欧州石炭鉄鋼共同体最高機関の委員長であったジャン・モネはフランスでの拒否に反発して委員長を辞任し、政治分野での統合よりも経済分野での統合を進めるための新たな共同体を設置することで活動を開始した[2]。1955年のメッシーナ会議のあと、ポール＝アンリ・スパークは関税同盟についての報告案を準備する作業を任された。いわゆるスパーク報告書[3]は1956年のヴァル・ドゥシェス城での政府間協議の土台となり、オーリン報告書とともにスパーク報告書は欧州経済共同体設立条約の基礎となった。</expression>
+            <expression writer="dummy3" is_gold_standard="true">アウシュヴィッツ＝ビルケナウ強制収容所（アウシュヴィッツ ビルケナウ きょうせいしゅうようじょ、独: Das Konzentrationslager Auschwitz-Birkenau、波: Obóz Koncentracyjny Auschwitz-Birkenau）は、ドイツが第二次世界大戦中に国家をあげて推進した人種差別的な絶滅政策 (ホロコースト) および強制労働により、最大級の犠牲者を出した強制収容所である。収容された90%がユダヤ人であった。アウシュヴィッツ第一強制収容所はドイツ占領地のポーランド南部オシフィエンチム市（ドイツ語名アウシュヴィッツ[1]）に、アウシュヴィッツ第二強制収容所は隣接するブジェジンカ村（ドイツ語名ビルケナウ）につくられた。周辺には同様の施設が多数建設されている。ユネスコの世界遺産委員会は、二度と同じような過ちが起こらないようにとの願いを込めて、1979年に世界遺産リストに登録した。公式な分類ではないが、日本ではいわゆる「負の世界遺産」に分類されることがしばしばである[2]。一部現存する施設は「ポーランド国立オシフィエンチム博物館」が管理・公開している。</expression>
+            <expression writer="Baseline" is_gold_standard="false">なお、福建からは、対岸の台湾へも多くの人々が移住した。パレスチナ分割案は、アメリカの強い主張によって、人口で3分の1、所有地で6%を持つに過ぎなかったユダヤ人に、パレスチナ難民の56・5%の土地を与えるという不合理な内容であったためアラブ側は拒否したが、ユダヤ側はこれを受け入れ、イスラエル国を建国した。煬帝は、大運河を建設し、東突厥・吐谷渾・林邑・流求(台湾)をうち、赤土国(スマトラ)を入貢させた。ヨーロッパ石炭鉄鋼共同体は、のちEEC(ヨーロッパ経済共同体)(EEC(ヨーロッパ経済共同体))に発展する。ヨーロッパ自由貿易連合は、1960年7月、EEC(ヨーロッパ経済共同体)(EEC(ヨーロッパ経済共同体))に対抗するためイギリスが提案して発足した工業製品の共同市場。パレスチナ分割案は、1947年11月の国連総会で決議された、イギリスの委任統治終了後にパレスチナ難民をユダヤ・アラブ両国家に分割する案。1941年8月のローズヴェルト・チャーチル会談で発表された大西洋憲章は、その後ソ連など26カ国が加わり、42年1月の連合国共同宣言で戦後構想の原則として確認された。主体思想は、金日成によって1970年代からとなえられたスローガン。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <instruction>
+        <p>How did events that occurred during World War II affect the post-war world up to the 1950s? Explain your conclusions in no more than 255 English words in the answers section. Make sure that you use each of the eight keywords listed below at least once, and underline those keywords. You do not have to write in the term included inside the parentheses for EEC in your answer.</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">Throughout human history, while wars have brought about a great deal of anguish and tragedy, they have also given impetus to various kinds of initiatives in pursuit of peace and liberation beyond those calamities. Even before World War II ended in 1945, the nations that comprised the Allies in that conflict had envisaged a variety of post-war scenarios with a view to creation of a new framework for international order, including the concept of the United Nations. However, formation of the United Nations Organization (UN) was not enough to immediately bring about world peace. The confrontation between the United States and the Soviet Union was linked to local nationalist movements, giving rise to new conflicts. For instance, in China, a power struggle between the Nationalist Party and the Communist Party intensified during the course of the war against Japan, and became a factor in development of the so-called &quot;Cold War&quot; following the end of World War II.</reference>
+        <reference is_directly_referred="1" id="d02" format="data">Atlantic Charter, Constitution of Japan, Taiwan, Kim Il-Sung, East Germany, EEC (European Economic Community), Auschwitz, Palestinian refugees</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>Atlantic Charter</keyword>
+        <keyword>Constitution of Japan</keyword>
+        <keyword>Taiwan</keyword>
+        <keyword>Kim Il-Sung</keyword>
+        <keyword>East Germany</keyword>
+        <keyword>EEC (European Economic Community)</keyword>
+        <keyword>Auschwitz</keyword>
+        <keyword>Palestinian refugees</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="no more than 255 English words" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1en" is_gold_standard="true">Kim Il Sung (Kim Ho-seon, 김일성, April 15, 1912 - July 8, 1994) is a Korean revolutionary and independent activist, North Korean politician and soldier. Participated in the Manchuria anti-Japanese partisan activity as a unit commander, after World War II, he established the DPR Korea in North Korea with the support of the Soviet Union. Since then, he was in the position of the country's top leader until his death, served as prime minister from 1948 to 1972 and served as the national president until his death from 1972. In addition, he has consistently been in the position of the party head of the Korean Workers' Party, which is the ruling party of the country (chairman of the Central Committee from 1949 to 1966, General Secretary of the Central Committee since 1966) since the party. Representative Hero of the Republic of Korea Democratic People's Republic of Korea (title received as three times and called &quot;Mie Hero&quot;). In North Korea, it has been demonized and worshiped under the title of &quot;Great Prime Minister&quot;. The constitution which was revised in 1998 after his death was regarded as &quot;the eternal president&quot; and the chief system was virtually abolished. Currently, the remains are preserved and preserved in the Jinba Mountain Sun Palace near Pyongyang.</expression>
+            <expression writer="dummy2en" is_gold_standard="true">In 1951, the European Coal and Steel Community was established with the European Coal and Steel Community Treaty Convention signed. The European Coal and Steel Community was an inter-state community based on supra-nationalism and international law, aimed at contributing to the economy of Europe and by integrating among the Member States to avoid future war . Thereafter, there was a movement to set up two communities of the European Defense Community and the European Political Community for the purpose of establishing the European Union. However, although the latter establishment treaty was drafted at the Joint General Assembly which is a parliamentary organization of the European Coal and Steel Community, the French National Assembly rejected the idea of ​​establishing the European Defense Community. Jean Monnet, who was the chairman of the European Coal and Steel Community's highest institution, resigned from the chairman as opposed to the refusal in France and resigned as the chairman, and a new community to advance integration in the economic field rather than integration in the political field Activities started by installing [2]. After the Messina Conference in 1955, Paul-Henri Spark was given the task of preparing a report on the customs union. The so-called Spark report [3] served as the foundation for intergovernmental consultation at the Val d'esceres castle in 1956, and the Spark Report, together with the Olynn Report, was the basis of the European Economic Community Treaty.</expression>
+            <expression writer="dummy3en" is_gold_standard="true">Auschwitz-Birkenau concentration camp (Auschwitz-Birkenau, Germany: Das Konzentrationslager Auschwitz-Birkenau, wave: Obóz Koncentracyjny Auschwitz-Birkenau) is a racial discrimination promoted by Germany during the Second World War It is a concentration camp that issued the largest casualties due to extinction policies (Holocaust) and forced labor. 90% of the houses were Jewish. The Auschwitz first concentration camp was created in the Osciethiem city in the southern Poland of Germany (Auschwitz [1] in German occupied area) and the second Auschwitz concentration camp in the adjacent Buzinca village (German name Birkenau). Many similar facilities are built in the surrounding area. The UNESCO World Heritage Committee registered in the World Heritage List in 1979, with the wish to avoid the same mistake again. Although not an official classification, in Japan it is often classified as a so-called &quot;negative world heritage&quot; [2]. Some existing facilities are managed and released by &quot;Polish National Oscillipitation Museum&quot;.</expression>
+            <expression writer="Baseline" is_gold_standard="false"/>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+</answer_sheet>
