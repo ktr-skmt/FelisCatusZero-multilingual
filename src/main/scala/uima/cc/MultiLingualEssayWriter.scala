@@ -63,15 +63,19 @@ trait MultiLingualEssayWriter extends MultiLingual {
           if (answer.getIsGoldStandard) {
             val document: Document = answer.getDocument
             writerGoldStandardListBuffer += ((answer.getWriter, document.getText))
-//            println("Gold Standard")
-//            println(answer.getWriter)
-//            println(document.getText)
+            println("Gold Standard")
+            print("Writer: ")
+            println(answer.getWriter)
+            print("Essay: ")
+            println(document.getText)
           } else {
             val document: Document = answer.getDocument
             writerAnswerMap(answer.getWriter) = document.getText
-//            println("System Answer")
-//            println(answer.getWriter)
-//            println(document.getText)
+            println("System Answer")
+            print("Writer: ")
+            println(answer.getWriter)
+            print("Essay: ")
+            println(document.getText)
           }
       }
       val writerGoldStandardList: Seq[(String, String, Boolean)] =
@@ -90,7 +94,6 @@ trait MultiLingualEssayWriter extends MultiLingual {
             writerGoldStandardList :+ (writer, text, false),
             xml)
           writerQuestionAnswer(writer)(question.getLabel)(localeId) = localeElem
-          //println(localeElem)
         case _ =>
         // Do nothing
       }
