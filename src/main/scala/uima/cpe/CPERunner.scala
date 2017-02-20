@@ -14,7 +14,7 @@ import org.kohsuke.args4j.{CmdLineException, CmdLineParser}
 import text.vector.wordembedding.fastText.FastTextVectorGenerator
 import text.{StringNone, StringOption, StringSome}
 import uima.fc.{EssayGeneratorFlowController, FlowController, InformationRetrieverFlowController, QuestionAnalyzerFlowController}
-import util.{Config, JCasGen}
+import util.Config
 
 import scala.util.control.Breaks
 
@@ -60,10 +60,6 @@ object CPERunner extends Thread {
   }
 
   private def preProcess(option: CPERunnerOption): Unit = {
-    if (option.getDoJCasGen) {
-      Config.doJCasGenAsPreprocess = true
-    }
-
     if (option.getDoCharacterLevelIndriIndexInJapanese) {
       Config.doCharacterLevelIndriIndexAsPreprocessInJapanese = true
     }
@@ -94,10 +90,6 @@ object CPERunner extends Thread {
 
     if (option.wantToOutputForQALabEvaluationMethodSubtask) {
       Config.wantToOutputForQALabEvaluationMethodSubtask = true
-    }
-
-    if (Config.doJCasGenAsPreprocess) {
-      JCasGen.main(Array.empty[String])
     }
 
     if (Config.doCharacterLevelIndriIndexAsPreprocessInJapanese) {

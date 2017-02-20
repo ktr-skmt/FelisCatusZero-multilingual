@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Feb 20 05:29:01 JST 2017 */
+/* First created by JCasGen Mon Feb 20 22:33:36 JST 2017 */
 package jeqa.types;
 
 import org.apache.uima.jcas.JCas;
@@ -11,7 +11,7 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 
 /** 解候補文
- * Updated by JCasGen Mon Feb 20 05:29:01 JST 2017
+ * Updated by JCasGen Mon Feb 20 22:33:36 JST 2017
  * @generated */
 public class CandidateSentence_Type extends TextAnnotation_Type {
   /** @generated 

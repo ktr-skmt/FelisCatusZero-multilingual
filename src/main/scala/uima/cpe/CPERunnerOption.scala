@@ -12,10 +12,6 @@ import scala.beans.BeanProperty
   * @author K.Sakamoto
   */
 class CPERunnerOption() {
-  @Option(name = "-doJCasGen", aliases = Array[String]("--generateJCas"), usage = "do JCasGen as pre-processing", required = false)
-  @BeanProperty
-  var doJCasGen: Boolean = false
-
   @Option(name = "-doCharacterLevelIndriIndexInJapanese", aliases = Array[String]("--generateCharacterLevelIndriIndexInJapanese"), usage = "do IndriIndex with character as pre-processing", required = false)
   @BeanProperty
   var doCharacterLevelIndriIndexInJapanese: Boolean = false

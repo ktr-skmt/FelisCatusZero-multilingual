@@ -36,9 +36,12 @@ object JCasGen {
 
     val tsDirFile = new File(tsDir)
     if (tsDirFile == null) {
+      println("H1")
       return
     }
     if (!tsDirFile.isDirectory) {
+      println(tsDirFile.toPath.toAbsolutePath.toString)
+      println("H2")
       return
     }
 

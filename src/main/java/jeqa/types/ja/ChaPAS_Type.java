@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Feb 20 05:29:01 JST 2017 */
+/* First created by JCasGen Mon Feb 20 22:33:36 JST 2017 */
 package jeqa.types.ja;
 
 import org.apache.uima.jcas.JCas;
@@ -12,7 +12,7 @@ import org.apache.uima.cas.Type;
 import jeqa.types.Analysis_Type;
 
 /** ChaPASによる解析結果
- * Updated by JCasGen Mon Feb 20 05:29:01 JST 2017
+ * Updated by JCasGen Mon Feb 20 22:33:36 JST 2017
  * @generated */
 public class ChaPAS_Type extends Analysis_Type {
   /** @generated 

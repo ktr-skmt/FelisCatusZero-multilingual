@@ -44,8 +44,6 @@ object Config {
   var wantToOutputForQALabSummarizationSubtask:    Boolean = config.as[Option[Boolean]]("qalab.wantToOutputForSummarizationSubtask").getOrElse(false)
   var wantToOutputForQALabEvaluationMethodSubtask: Boolean = config.as[Option[Boolean]]("qalab.wantToOutputForEvaluationMethodSubtask").getOrElse(false)
 
-  var doJCasGenAsPreprocess: Boolean = config.as[Option[Boolean]]("preprocess.doJCasGen").getOrElse(false)
-
   var doCharacterLevelIndriIndexAsPreprocessInJapanese: Boolean = config.as[Option[Boolean]]("preprocess.ja.doCharacterLevelIndriIndex").getOrElse(false)
 
   var doContentWordLevelIndriIndexAsPreprocessInJapanese: Boolean = config.as[Option[Boolean]]("preprocess.ja.doContentWordLevelIndriIndex").getOrElse(false)
@@ -157,10 +155,6 @@ object Config {
   final lazy val needInitialSentenceTimeAnalysisByTextbook: Boolean = config.as[Option[Boolean]]("needInitialSentenceTimeAnalysisByTextbook").getOrElse(false)
 
   final lazy val essayExamDirOpt: Option[String] = config.as[Option[String]]("exam.essayExamDir")
-
-  final lazy val jCasGenTypeSystemDir: String = config.as[Option[String]]("jCasGen.typeSystemDir").getOrElse("../../src/main/resources/desc/ts")
-
-  final lazy val jCasGenOutputDir: String = config.as[Option[String]]("jCasGen.outputDir").getOrElse("../../src/main/java")
 
   final lazy val resourcesDir: String = config.as[Option[String]]("resourcesDir").getOrElse("../../src/main/resources/")
 

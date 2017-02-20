@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Feb 20 05:29:01 JST 2017 */
+/* First created by JCasGen Mon Feb 20 22:33:36 JST 2017 */
 package jeqa.types;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 解析結果
- * Updated by JCasGen Mon Feb 20 05:29:01 JST 2017
+ * Updated by JCasGen Mon Feb 20 22:33:36 JST 2017
  * @generated */
 public class Analysis_Type extends Annotation_Type {
   /** @generated 
