@@ -1,6 +1,7 @@
 # FelisCatus Zero-multilingual 
 ## Abstract
-This is Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
+This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
+Also, this is Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
 
 ## Trial
 
