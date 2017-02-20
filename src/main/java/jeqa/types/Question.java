@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Mon Feb 20 22:33:36 JST 2017 */
+/* First created by JCasGen Mon Feb 20 23:16:26 JST 2017 */
 package jeqa.types;
 
 import org.apache.uima.jcas.JCas; 
@@ -14,8 +14,8 @@ import org.apache.uima.jcas.cas.StringList;
 
 
 /** Examで出題されたQuestion
- * Updated by JCasGen Mon Feb 20 22:33:36 JST 2017
- * XML source: jcasgen/src/main/resources/desc/ts/typeSystem.xml
+ * Updated by JCasGen Mon Feb 20 23:16:26 JST 2017
+ * XML source: src/main/resources/desc/ts/typeSystem.xml
  * @generated */
 public class Question extends TOP {
   /** @generated

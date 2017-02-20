@@ -74,6 +74,8 @@ trait MultiLingualQALabSubmission extends MultiLingual {
     val builder = new StringBuilder()
     builder.
       append(examFileName.dropRight(4)).
+      append("-").
+      append(localeId).
       append('_').
       append(teamId).
       append('_').

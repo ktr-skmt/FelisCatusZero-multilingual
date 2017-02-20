@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Feb 20 22:33:36 JST 2017 */
+/* First created by JCasGen Mon Feb 20 23:16:26 JST 2017 */
 package jeqa.types;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.cas.TOP_Type;
 
 /** 時間
- * Updated by JCasGen Mon Feb 20 22:33:36 JST 2017
+ * Updated by JCasGen Mon Feb 20 23:16:26 JST 2017
  * @generated */
 public class Time_Type extends TOP_Type {
   /** @generated 
