@@ -1,4 +1,4 @@
-name := "FelisCatusZero"
+name := "FelisCatusZero-multilingual"
 
 version := "0.0.1"
 
