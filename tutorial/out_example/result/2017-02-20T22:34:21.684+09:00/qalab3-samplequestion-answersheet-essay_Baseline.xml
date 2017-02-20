@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer_sheet ver="0.1">
+  <answer_section id="1" label="D792W10_[1]">
+    <locale id="ja">
+      <instruction>
+        <p> 運輸・通信手段の発展が，アジア・アフリカの植民地化をうながし，各地の民族意識を高めたことについて，下記の９つの語句を必ず１回は用いながら，解答欄(イ)を用いて510字以内で論述しなさい。 </p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data"> 私たちは，情報革命の時代に生きており，世界の一体化は，ますます急速に進行している。人や物がひんぱんに往きかうだけでなく，情報はほとんど瞬時に全世界へ伝えられる。この背後には，運輸・通信技術の飛躍的な進歩があると言えよう。　歴史を振り返ると，運輸・通信手段の新展開が，大きな役割を果たした例は少なくない。特に，19世紀半ばから20世紀初頭にかけて，有線・無線の電信，電話，写真機，映画などの実用化がもたらされ，視聴覚メディアの革命も起こった。またこれらの技術革新は，欧米諸国がアジア・アフリカに侵略の手を伸ばしていく背景としても注目される。例えば，ロイター通信社は，世界の情報をイギリスに集め，大英帝国の海外発展を支えることになった。一方で，世界中で共有される情報や，交通手段の発展によって加速された人の移動は，各地の民族意識を刺激する要因ともなった。 </reference>
+        <reference is_directly_referred="1" id="d02" format="data"> スエズ運河, 汽船, バグダード鉄道, モールス信号, マルコ一ニ, 義和団, 日露戦争, イラン立憲革命, ガンディー </reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>スエズ運河</keyword>
+        <keyword>汽船</keyword>
+        <keyword>バグダード鉄道</keyword>
+        <keyword>モールス信号</keyword>
+        <keyword>マルコ一ニ</keyword>
+        <keyword>義和団</keyword>
+        <keyword>日露戦争</keyword>
+        <keyword>イラン立憲革命</keyword>
+        <keyword>ガンディー</keyword>
+      </keyword_set>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="-1" choices="" format_string="" length_limit="510字以内">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">19・20世紀には、鉄道網の発達や汽船の発明、またモールス信号による電信や、マルコーニの無線機の発明など、運輸・通信技術の革新が起こった。これらの技術は、欧米諸国によるアジア・アフリカ進出にも利用された。例えば、スエズ運河の開通はヨーロッパ・アジア間の移動時間を大幅に短縮したが、イギリスは、運河を支配下に置き、インドへの道を確保した。また、アフリカ政策において、ケープタウンとカイロを鉄道と電信で結ぶ計画を推進するセシル・ローズを支援した。またドイツは、バグダード鉄道の建設を含む3B政策によって中東への進出を狙った。また、清末における義和団の乱を列強が迅速に鎮圧できたのは、素早い情報伝達によるものである。他方、シベリア鉄道などによって極東進出を狙うロシアに対して、日本が日露戦争で勝利したことは、通信網によって迅速に世界に伝達され、青年トルコ運動やイラン立憲革命に影響を及ぼすなど、各地の民族意識を高揚させた。また、輸送手段の発達は、各地から欧米に留学する人材の増加にもつながった。インド独立運動の指導者ガンディーの経歴の原点が、イギリス留学後に南アフリカで弁護士として活躍した事であったのはこの一例であろう。</expression>
+            <expression writer="writer2" is_gold_standard="true">スエズ運河開通はアジア航路の大幅な短縮をもたらし、さらには蒸気を利用した汽船が登場するとヨーロッパ諸国のアジア進出はいっそう容易になり、貿易や植民地化の進展に大きな影響をもたらした。19世紀にはモールス信号やマルコーニよる無線電信が発明され、情報伝達の速度が格段に向上し、世界規模での植民地経営を可能にした。また、鉄道建設は植民地経営を行う上で経済的側面だけでなく手段としても重要視され、中東への勢力拡大を目指したドイツはオスマン帝国からバグダード鉄道の敷設権を獲得している。しかし、通信技術の向上や移動の活性化はアジア・アフリカの民族主義運動の展開にも大きな影響を与えていた。義和団事件後の撤兵に関する問題を契機とした日露戦争での日本の勝利は瞬く間に世界へと発信され、アジア・アフリカの民族運動を刺激した。その後、イランでは新聞などのメディアを通じて知識を獲得した人々がイラン立憲革命を起こし、オスマン帝国では青年トルコ革命が勃発した。また、移動が容易になったことで欧米への海外留学を経験した人々の多くは、その後民族運動に参加していった。ガンディーもイギリス留学を経て、非暴力不服従運動の抵抗思想を形成している。</expression>
+            <expression writer="writer3" is_gold_standard="true">19世紀半ばから20世紀初頭にかけて、通信・運輸手段が飛躍的に進歩した。通信について言えば、モールス信号やマルコーニによる無線電信の発明が挙げられる。運輸について言えば、1869年のスエズ運河開通は従来の喜望峰回りに比べて汽船のアジア向け航路を大幅に短縮するもので、イギリスの3C政策を支えるものであった。また1899年にドイツが敷設権を取得したバグダード鉄道は、ベルリン・ビザンティウム・バグダードを結びペルシャ湾につながるもので、3B政策を後押しした。このように本国と植民地のアクセスが改善されたことは、ヨーロッパ諸国によるアジア・アフリカの植民地統治強化を招き、一方でアジアに於ける民族意識の高揚を招いた。例えば、1900年に中国で発生した義和団事件、1905～11年のイラン立憲革命、1919年以降のガンディーによる無抵抗主義に基づく反英運動は、何れも反帝国主義の立場から行われたものであった。また1904年の日露戦争も白人に対する有色人種の勝利としてもてはやされた側面もあった。</expression>
+            <expression writer="Baseline" is_gold_standard="false">バグダード鉄道は、トルコのコニアからバグダードをへて、ペルシア湾に通じる鉄道(計画)。日露戦争後、中国東北地方については、北はロシア、南は日本の勢力下とされ(1907年、第1回日露協約)、モンゴルをめぐっても両国の勢力範囲を確定した。義和団事件への出兵にあたって中国東北地方を占領したロシアは、その後も撤兵することなく、鴨緑江にまで進出した。ペルシアは、イラン立憲革命の旧称。北京議定書は、1901年9月7日に北京で清朝と11カ国(出兵8カ国とベルギー・オランダ・スペイン)との間で調印された義和団事件の講和に関する最終議定書。1869年のスエズ運河の開通は列強のアフリカへの進出を刺激し、アフリカは分割競争の対象となった。バグダード鉄道は、諸列強がねらったが、ドイツが1899年に敷設権を獲得し、1903年に会社を設立した。バグダード鉄道は、最終的には一部分だけの開通に留まった。仇教運動は、とくに97年の山東におけるドイツ人宣教師殺害事件を口実とするドイツの進出は、98年から義和団による山東教案となって爆発し、大規模な反帝国主義・排外運動に発展した。ゴールドラッシュは、鉄道や汽船による交通網の発展が背景にあり、以後、西部開拓が進展した。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <instruction>
+        <p> Write an essay explaining, in 225 English words or less, how developments in the means of transportation and communication prompted the colonization of Asia and Africa and heightened local nationalism. Use all nine keywords shown below at least once. </p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data"> We are currently living in an era of information revolution, and the pace of globalization is accelerating. Not only people and goods are flowing across oceans and borders with increasing frequency; information is being transmitted across the world almost in real time. Underlying these developments is the rapid progress that has been made in transportation and communication technologies. Looking back over human history, we can find numerous instances where new developments in the means of transportation and communication have played important roles. In particular, from the mid-19th century through the early 20th century, such technological advances as wired and wireless telegraphy, the telephone, the camera, and cinematography came into practical use, resulting in the revolution that was audio-visual media. Furthermore, these technological innovations are noteworthy for the parts they played in Western nations' invasions of Asia and Africa. For example, the Reuters news agency gathered information from around the world to help develop the international presence of the British Empire. But, on the other hand, global information sharing and accelerated migration facilitated by the development of transportation were also stimulating factors in the growth of local nationalism. </reference>
+        <reference is_directly_referred="1" id="d02" format="data"> Suez Canal, steamship, Baghdad Railway, Morse code, Marconi, the Boxers, Russo-Japanese War, Persian Constitutional Revolution, Gandhi </reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>Suez Canal</keyword>
+        <keyword>steamship</keyword>
+        <keyword>Baghdad Railway</keyword>
+        <keyword>Morse code</keyword>
+        <keyword>Marconi</keyword>
+        <keyword>the Boxers</keyword>
+        <keyword>Russo-Japanese War</keyword>
+        <keyword>Persian Constitutional Revolution</keyword>
+        <keyword>Gandhi</keyword>
+      </keyword_set>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 255 English words">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">In the 19th and 20th centuries a transportation and communication revolution occurred with the development of rail networks， the invention of the steamship， the use of Morse code telegraphs， and the invention of the Marconi wireless sets. These technologies were used in Western advances into Asia and Africa. For example， the opening of the Suez Canal greatly reduced travel time between Europe and Asia， but the British controlled the canal to maintain a route to India. With regard to African policy， Britain supported Cecil Rhodes， who advocated a plan for connecting Cape Town to Cairo via rail and telegraph. Germany implemented a 3B policy， which included the construction of the Baghdad Railway， to advance into the Middle East. The western powers were able to quickly suppress the Boxer Rebellion in the late Qing thanks to rapid information communication. Russia aimed to advance into the far East through， for example， the Siberian Railroad， but the Japanese victory in the Russo-Japanese War was quickly relayed to the world via information networks， creating a rise in ethnic consciousness around the world， influencing， for example， the Young Turks movement and the Iranian Constitutional Revolution. The development of transportation methods also led to an increase in the number of people coming from non-Western countries to study in the West. Gandhi， leader of the Indian independence movement， was one example of this， his career founded on his work as a lawyer in South Africa after studying in the U.K.</expression>
+            <expression writer="writer2" is_gold_standard="true">The opening of the Suez Canal dramatically reduced sea travel time to Asia， and the appearance of steam-powered steamships made advances from European countries to Asia even easier， greatly contributing to trade and colonialization. The invention of Morse code and the Marconi wireless set in the 19th century greatly improved the speed with which information could be communicated， making global-scale colony management possible. The construction of railroads was also important not only for its economy but also as a method of colony management. Germany， which sought to expand its power in the Middle East， acquired the rights to lay the Baghdad Railway from the Ottoman Empire. However， the improvement of communications technologies and increased mobility also had a major impact on nationalist movements in Asia and Africa. The Russo-Japanese War was triggered by problems regarding the withdrawal of troops after the Boxer Rebellion， and Japan’s victory was instantly communicated around the world， stimulating nationalist movements in Asia and Africa. Later， in Iran， people who gained information via media sources such as newspapers started the Iranian Constitutional Revolution， and in the Ottoman Empire the Young Turk Revolution occurred. The greater ease of mobility led to more people studying abroad in the West， many of which then participated in their own nationalist movements. Having studied in the U.K.， Gandhi developed his philosophy of passive resistance.</expression>
+            <expression writer="writer3" is_gold_standard="true">From the mid-19th century to the early 20th century communications and transportation methods advanced dramatically. Communications advances included the development of Morse code and wireless transmission by Marconi. Transportation advances included the opening of the Suez Canal in 1869， which dramatically reduced the time it took steamships to reach Asia， versus the Cape of Good Hope route， supporting Britain’s 3C policy. The Baghdad Railway， which Germany secured the rights to build in 1899， connected Berlin， Byzantium， and Baghdad， leading to the Persian Gulf and further supporting its 3B policy. These improvements in access between countries and their colonies led to stronger administration by European countries of their colonies in Asia and Africa， but at the same time to greater ethnic consciousness in Asia. For example， the Chinese Boxer Rebellion of 1900， the Iranian Constitutional Revolution of 1905 to 1911， and the passive resistance-based anti-British movement led by Gandhi from 1919 were all anti-imperialist movements. The Russo-Japanese War of 1904 was also welcomed as a victory of people of color over whites.</expression>
+            <expression writer="Baseline" is_gold_standard="false"/>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="2" label="D792W10_[2]_(A)_Question (5)">
+    <locale id="ja">
+      <grand_question_set>
+        <grand_question id="q02"> 人類は，その初期から現代にいたるまでの長い歴史において，先行して存在した多様な文化を摂取，継承したうえで，新たな文化を創造し，次の世代へと伝えてきた。このことに関連する以下の設問(1)～(10)に答えよ。回答は回答欄(ロ)を用い，設問ごとに行を改め，冒頭に(1)～(10)の番号を付して記せ。 </grand_question>
+        <grand_question id="q03"> ヨーロッパ人は，古代ギリシア・ローマの文化をヨーロッパ文化の源流のひとつとみなし，それを古典古代と呼んだ。ギリシアとローマの思想，文化を後のヨーロッパが受容していったことに関連する以下の問いに答えよ。 </grand_question>
+      </grand_question_set>
+      <instruction>
+        <p> イタリア戦争はルネサンス期に半世紀以上にわたってくりひろげられた。この戦争の誘因となったイタリアの政治状況について60字以内で記せ。 </p>
+      </instruction>
+      <reference_set/>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="-1" choices="" format_string="" length_limit="60字以内">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">当時のイタリアは都市共和国・教皇領・諸侯国に分裂し、イタリアでの覇権を狙うフランスと神聖ローマ帝国の介入を受けた。</expression>
+            <expression writer="Baseline" is_gold_standard="false">清朝末期の中国で、3代の皇帝の治世にわたる半世紀以上の長いあいだ、この国の政治を動かした最高実力者であった。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <grand_question_set>
+        <grand_question id="q02"> Throughout history, from ancient through modern times, humans have both introduced and co-opted a wide variety of precedent cultures in order to create new cultures, subsequently passing them on to following generations. In relation to this, answer questions (1) through (10) below. Write your responses in answer section (B). Begin a new line for every question you answer and state the corresponding number (1) to (10) at the beginning. </grand_question>
+        <grand_question id="q03"> Europeans have always regarded ancient Greek and Roman civilizations as major sources of modern European culture, referring to them as Classical Antiquity. In relation to the acceptance of Greek and Roman ideas and cultures by Europe in later years, answer the following questions. </grand_question>
+      </grand_question_set>
+      <instruction>
+        <p> The Italian Wars were waged for over half a century during the Renaissance period. Describe, in no more than 30 English words, the political situation in Italy that gave rise to these conflicts. </p>
+      </instruction>
+      <reference_set/>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 30 English words">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">Italy at the time was divided into city-states， papal states， and feudal states， and France and the Holy Roman Empire became involved， vying for hegemony over Italy.</expression>
+            <expression writer="Baseline" is_gold_standard="false">Leadership of the are backward Kwantung Army.Nkrumah to request an immediate independent en car Ghana that speech is, the place where wields spiel before the people. '</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="3" label="D792W10_[2]_(B)_Question (7)_(b)">
+    <locale id="ja">
+      <grand_question_set>
+        <grand_question id="q02"> 人類は，その初期から現代にいたるまでの長い歴史において，先行して存在した多様な文化を摂取，継承したうえで，新たな文化を創造し，次の世代へと伝えてきた。このことに関連する以下の設問(1)～(10)に答えよ。回答は回答欄(ロ)を用い，設問ごとに行を改め，冒頭に(1)～(10)の番号を付して記せ。 </grand_question>
+        <grand_question id="q10"> インドと中国は，古代以来相互に影響をあたえつつ独自の文化をはぐくみ，日本を含む周囲の地域に大きな影響を残してきた。このことに関連する以下の問いに答えよ。 </grand_question>
+      </grand_question_set>
+      <instruction>
+        <p>
+          儒教は古代中国におこり，東アジアで広く研究されてきた思想である。漢王朝のときに国教としての地位を築き，宋王朝のときに新しい体系化がなされた。
+          <label_set>
+            <label focus="0" id="a">(a)</label>
+          </label_set>
+          この体系化のさきがけをなした北宋の思想家で，南宋の思想家に影響を与えた人物を一人あげよ。また，
+          <label_set>
+            <label focus="1" id="b">(b)</label>
+          </label_set>
+          この新しい儒教は，その後中国でどのように扱われたか，30字以内でまとめよ。
+        </p>
+      </instruction>
+      <reference_set/>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="-1" choices="" format_string="" length_limit="30字以内">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">宋代に朱熹が大成した朱子学はその後儒教の正統な学派とされた。</expression>
+            <expression writer="Baseline" is_gold_standard="false">ABCDラインは、日本国民の敵愾心をあおることに利用された。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <grand_question_set>
+        <grand_question id="q02"> Throughout history, from ancient through modern times, humans have both introduced and co-opted a wide variety of precedent cultures in order to create new cultures, subsequently passing them on to following generations. In relation to this, answer questions (1) through (10) below. Write your responses in answer section (B). Begin a new line for every question you answer and state the corresponding number (1) to (10) at the beginning. </grand_question>
+        <grand_question id="q10"> Since ancient times, India and China have nurtured their own unique cultures while interacting with each other, and both cultures have exerted major influence on those of the nations in adjacent regions, including the culture of Japan. In relation to this, answer the following questions. </grand_question>
+      </grand_question_set>
+      <instruction>
+        <p>
+          Confucianism is an idea that emerged in ancient China and has been widely studied in East Asia. It was introduced as the official Chinese religion during the Han Dynasty, and newly systematized during the Song Dynasty.
+          <label_set>
+            <label focus="0" id="a">(a)</label>
+          </label_set>
+          Write in the name of a philosopher from Northern Song who pioneered this systematization and influenced other thinkers in Southern Song.
+          <label_set>
+            <label focus="1" id="b">(b)</label>
+          </label_set>
+          In addition, summarize, in no more than 15 English words, how this new Confucianism was subsequently handled in China.
+        </p>
+      </instruction>
+      <reference_set/>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 15 English words">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">The Cheng-Zhu school made successful during the Song by Chu Hsi later became orthodox Confucianism.</expression>
+            <expression writer="Baseline" is_gold_standard="false">This called late Yamato 寇.This we call the previous year Yamato 寇.1602, Beijing.</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+</answer_sheet>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer_sheet ver="0.1">
+  <answer_section id="1" label="K792W10_【１】">
+    <locale id="ja">
+      <instruction>
+        <p>それ以前の時期，世界各地の政治権力は，その支配領域内の宗教・宗派とそれらに属する人々をどのように取り扱っていたか。18世紀前半までの西ヨーロッパ，西アジア，東アジアにおける具体的な実例を挙げ，この3つの地域の特徴を比較して，解答欄（イ）に600字以内で論じなさい。その際に，次の7つの語句を必ず一度は用い，その語句に下線を付しなさい。</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">次の文章は日本国憲法第二十条である。第二十条　信教の自由は，何人に対してもこれを保障する。いかなる宗教団体も，国から特権を受け，又は政治上の権力を行使してはならない。２．何人も，宗教上の行為，祝典，儀式又は行事に参加することを強制されない。３．国及びその機関は，宗教教育その他いかなる宗教的活動もしてはならない。この条文に見られるような政治と宗教の関係についての考えは，18世紀後半以降，アメリカやフランスにおける革命を経て，しだいに世界の多くの国々で力をもつようになった。</reference>
+        <reference is_directly_referred="1" id="d02" format="data">ジズヤ, 首長法, ダライ＝ラマ, ナントの王令廃止, ミッレト, 理藩院, 領邦教会制</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>ジズヤ</keyword>
+        <keyword>首長法</keyword>
+        <keyword>ダライ＝ラマ</keyword>
+        <keyword>ナントの王令廃止</keyword>
+        <keyword>ミッレト</keyword>
+        <keyword>理藩院</keyword>
+        <keyword>領邦教会制</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="600字以内" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1" is_gold_standard="true">ナントの勅令（ナントのちょくれい。仏: Édit de Nantes）は、1598年4月13日にフランス王アンリ4世がナントで発布した勅令。ユグノーなどのプロテスタント信徒に対してカトリック信徒とほぼ同じ権利を与え、初期近代のヨーロッパでは初めて個人の信仰の自由を認めた。この勅令によってユグノー戦争は急速に収まりを見せ、フランスの国家統一の出発になった。戦費の縮小や商工業におけるユグノーの活躍もあって政治情勢のみならず国家財政も安定し、17世紀のフランスの大国時代を作り上げた。しかしプロテスタント信徒はこのとき、自分たちの教会を持つことは許されたが、それとは別にカトリック教会にも十分の一税を納めなければならなかった[1]。1685年、「太陽王」ルイ14世はフォンテーヌブローの勅令によりこの勅令を廃止し、カトリック中心の権威主義的な国家へと逆戻りさせた。これによって、プロテスタント信徒の大半はネーデルラントなどの国外へ逃れ、商工業の担い手を失ったフランスの衰退を招くことになった。プロテスタント信徒は産業の中核を占めていたため数世代にもわたる財政の悪化を招くことにもなり、それを補うための増税政策に反発した貴族・聖職者や市民・一般国民などの不満が爆発したフランス革命の遠因ともなった。</expression>
+            <expression writer="dummy2" is_gold_standard="true">ジズヤは、イスラーム草創期にイスラーム政権の庇護を受けたズィンミーから徴収される貢納や租税一般を指したものであった。内容は地域差がおおよそあったが、大体においては地租と人頭税を併せたものであった。しかし、ウマイヤ朝末期以降にイスラームへの改宗者が増大すると、ジズヤをズィンミーから徴収される人頭税、ハラージュを地租・土地税とする用語法上の区別が定着するようになった。つまり、イスラーム政権が「ズィンマの民（ahl al-Dhimma）＝ズィンミー」に対して下す「庇護（ズィンマ）の賦課」として租税という性格が明確化されるようになった。ウマイヤ朝では、首都ダマスクスのあるシリア近辺に住む改宗ペルシャ人などは、イスラーム大征服時代の初期段階でムスリムとなったにもかかわらず、アラブ人ムスリムとのあいだに税負担の不平等があることに大きな不満をつのらせていた。同王朝第8代カリフのウマル2世は、こうした不満をみてとり、また、ズィンミー（異教徒）のイスラームへの改宗を奨励しようとして、ズィンミーとマワーリー（非アラブ人改宗者）の租税負担に差を設ける必要をうったえ、マワーリーからのジズヤ徴収を停止しようとした。ホラーサーン総督ジャラーに対して「メッカの方向をむいて礼拝する者には、すべてジズヤを免ぜよ」と命じたのは、そのあらわれである。</expression>
+            <expression writer="dummy3" is_gold_standard="true">チベット仏教では、チベットの国土と衆生は「観音菩薩の所化」と位置づけられ、チベットの人々は観音菩薩をチベットの守護尊であると考えるようになった。ダライ・ラマはその観音菩薩の化身とされる転生系譜である。ラサのポタラ宮は、第五世以降の歴代ダライ・ラマの居城であり、チベット仏教における聖地となっている。チベット仏教の信者らはその居城へ一生に一度は巡礼することを目標としており（最も聖なる巡礼方法は五体投地とされる）、信者らからはイーシン・ノルブ（如意宝珠の意）と尊称される存在である。日本ではチベット仏教の法王とも呼ばれる[2]が、チベット仏教で法王と呼べる存在は、かつて明朝より大宝法王の称号を贈られたカルマ派のカルマパや、北ドゥク派のギャルワン・ドゥクパなど複数存在する[註 1]。多くの場合、ダライ・ラマはゲルク派の指導者であると考えられているが、この地位は正式にはガンデン・ティパの属下にある。ガンデン・ティパはダライ・ラマによって任命される任期制の役職であり、実際に多大な影響力を有しているのはダライ・ラマである。ダライ・ラマはゲルク派の有力な宗教指導者から始まった転生ラマ制度であったが、ダライ・ラマ5世の代に至ってチベットを支配する政治的権威をも身にまとうようになった。</expression>
+            <expression writer="Baseline" is_gold_standard="false">また、ヒンドゥー教徒とイスラーム教徒の融和をはかるため、非イスラーム教徒に課せられていた人頭税(ジズヤ)を廃止した。ジンミーは、ジズヤなどの付加的な税を支払うことで、信仰・生命・財産や自治的な生活などを保障された。ジズヤは、人頭税。みずからヒンドゥー教徒の女性と結婚し、非イスラーム教徒に課されていた人頭税(ジズヤ)を廃止して、ヒンドゥー勢力を味方につけた。アクバルは、ジズヤを廃止してヒンドゥーとの和解に努め、ラージブート諸王国と融和し、1576年までに北インドの統一を成し遂げた。西南地域の諸民族に対しては、その首長に土司、土官という官職を与えて間接的に統治し、あらたに加えた外モンゴル、チベットなどは藩部として自治をみとめながら理藩院の管理下においた。本部とは、首都圏の直隷省と地方の各省から構成され、藩部は、つぎつぎに征服・併合されたジュンガル・回部・チベットなどの地域であり、藩部を管理する理藩院が設置された。アウラングゼーブは、厳格なスンナ派で、1679年のジズヤの復活、シーア派・ヒンドゥー教の弾圧と、その寺院の破壊などを強行した。ジズヤの復活は、アウラングゼーブが1679年に行った。ジズヤの復活は、アウラングゼーブは厳格なスンナ派イスラーム教としての立場から、非イスラーム教徒に対してつぎつぎと迫害策を実行していたが、最終的にジズヤの復活にいたった。ミッレトは、〕。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <instruction>
+        <p>Prior to that time, how did political authorities around the world handle religion, religious schools, and people affiliated with them within their territories? Write a brief essay on this topic in the answer section (A), using no more than 300 English words. Be sure to list specific examples from West Europe, West Asia, and East Asia, up to and including the first half of the 18th century, and compare the characteristics that were apparent among those three regions. You must use each of the seven keywords at least once, and underline those keywords.</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">The following statement is Article 20 of the Constitution of Japan.Article 20. 1. Freedom of religion is guaranteed to all. No religious organization shall receive any privileges from the State, nor exercise any political authority. 2. No person shall be compelled to take part in any religious act, celebration, rite or practice. 3. The State and its organs shall refrain from religious education or any other religious activity.The concept of separation of church and state, as expressed in that article, gradually began to prevail in a number of nations from the second half of the 18th century, following the popular revolutions in the United States and France.</reference>
+        <reference is_directly_referred="1" id="d02" format="data">Jizya, Acts of Supremacy, Dalai Lama, abolition of the Edict of Nantes, millet system, Lifan Yuan, Landeskirche system</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>Jizya</keyword>
+        <keyword>Acts of Supremacy</keyword>
+        <keyword>Dalai Lama</keyword>
+        <keyword>abolition of the Edict of Nantes</keyword>
+        <keyword>millet system</keyword>
+        <keyword>Lifan Yuan</keyword>
+        <keyword>Landeskirche system</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="no more than 300 English words" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1en" is_gold_standard="true">The decree of Nantes (Nantes' revival, Buddha: Édit de Nantes) was the decree issued in Nantes on April 13, 1598 by King Henry IV. Grant almost the same rights as Protestant factions such as Huguenot to Catholics and allowed for personal freedom of religion for the first time in the early modern Europe. With this renewal, the Huguenot war was rapidly restrained, becoming the departure of the national unification of France. Not only the political situation but also the national finances stabilized, due to the reduction of war expenses and Huguenot in the commercial and industrial sector, we made up the great era of France in the 17th century. But at this time Protestant faithfuls were allowed to have their own church, but apart from that they had to pay a sufficient tax for the Catholic Church [1]. In 1685, &quot;King of the Sun&quot; Louis XIV abolished this edict by the Fontainebleau edict and turned back to the Catholic-centered authoritarian state. By this, the majority of Protestant faiths escaped from the country such as Nederland and resulted in the decline of France which lost the carrier of commerce and industry. Since Protestant faithfuls occupied the core of the industry, it also caused deterioration of financial resources over several generations, complaints of aristocrats, clergy, citizens and the general public who opposed the policy of raising taxes to compensate for it have exploded It also became the remote cause of the French Revolution.</expression>
+            <expression writer="dummy2en" is_gold_standard="true">Jizuya pointed to tribute and general taxes collected from Zinmy who received the protection of the Islamic regime in the Islamic early period. The content was roughly regional, but in general it was a combination of land tax and head tax. However, when the number of converts to Islam increased since the end of Umayya, the distinction on the terminology of land taxes and land taxes as headquarters taxes and harasses collected from Zimmy became established. In other words, the character of taxation became clarified as the &quot;imposition of asylum&quot; which the Islamic regime gives to &quot;ahl al-Dhimma = Zimmy&quot;. In the Umayya, the converted Persians who live in the vicinity of Syria, the capital city of Damascus, have inequalities in tax burdens with the Arab Muslims even though they became Muslims in the early stages of the Islamic Great Conquest He was frustrated with great frustration. Umar II of the eighth calendar of the same dynasty takes the discontent and also tries to encourage conversion of Zimmy (Isota) to Islam, differences in tax burden between Zimmy and Mawlie (non-Arab converts) I tried to stop the collection of Jizuya from the Mawlie. It appeared to the Horacean Governor Jersey, &quot;All people who worship Mecca and worship, disqualify all Jizuya&quot;, it appears.</expression>
+            <expression writer="dummy3en" is_gold_standard="true">In Tibetan Buddhism, Tibetan land and sentient beings are regarded as &quot;the goddess of the Kannon Bodhisattva&quot;, Tibetan people came to think of the Kannon Bodhisattva as the patron saint of Tibet. The Dalai Lama is the incarnation genealogy which is considered as the incarnation of the Kannon Bodhisattva. Lhasa's Potala Palace is the castle of the successive Dalai Lama after the 5 th century and is a sacred place in Tibetan Buddhism. Believers in Tibetan Buddhism aim to pilgrim themselves to the castle once in a lifetime (the most sacred pilgrimage method is regarded as a five-body dumping), believers and others are named Eisin Norb (meaning innocence) . In Japan it is also called Pope in Tibetan Buddhism [2], the existence that can be called the pope in Tibetan Buddhism, there are several existence such as Kalmaa who was awarded the title of Popeu Daibou from Ming Dynasty, Kalma group of Northern Duku, Galue Ducpa of Northern Duku [Note 1]. In many cases, the Dalai Lama is considered to be a leader of the Gerk School, but this position is officially under the genus of Gandhin Tipa. Gandhin Tipa is a term of office appointed by the Dalai Lama, and it is the Dalai Lama who has a great influence in practice. The Dalai Lama was a reincarnated lama system that started with leading German religious leaders, but also began to acquire the political authority that dominates Tibet, in the days of the Dalai Lama V.</expression>
+            <expression writer="Baseline" is_gold_standard="false"/>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="2" label="M792W10_【１】">
+    <locale id="ja">
+      <instruction>
+        <p>13世紀までにアラブ・イスラーム文化圏をめぐって生じたそれらの動きを，解答欄(ｲ)に510字以内で論じなさい。その際に，次の8つの語句を必ず一度は用い，その語句に下線を付しなさい。</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">歴史上，異なる文化間の接触や交流は，ときに軋轢を伴うこともあったが，文化や生活様式の多様化や変容に大きく貢献してきた。たとえば，7世紀以降にアラブ・イスラーム文化圏が拡大するなかでも，新たな支配領域や周辺の他地域から異なる文化が受け入れられ，発展していった。そして，そこで育まれたものは，さらに他地域へ影響を及ぼしていった。</reference>
+        <reference is_directly_referred="1" id="d02" format="data">インド, アッバース朝, イブン＝シーナー, アリストテレス, 医学, 代数学, トレド, シチリア島</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>インド</keyword>
+        <keyword>アッバース朝</keyword>
+        <keyword>イブン＝シーナー</keyword>
+        <keyword>アリストテレス</keyword>
+        <keyword>医学</keyword>
+        <keyword>代数学</keyword>
+        <keyword>トレド</keyword>
+        <keyword>シチリア島</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="510字以内" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1" is_gold_standard="true">アッバース朝（الدولة العباسية al-Dawla al-‘Abbāsīya）は、中東地域を支配したイスラム帝国第2の世襲王朝（750年 - 1517年）。イスラム教の開祖ムハンマドの叔父アッバース・イブン・アブドゥルムッタリブの子孫をカリフとし、最盛期にはその支配は西はイベリア半島から東は中央アジアまで及んだ。アッバース朝ではアラブ人の特権は否定され、すべてのムスリムに平等な権利が認められ、イスラム黄金時代を築いた。東西交易、農業灌漑の発展によってアッバース朝は繁栄し、首都バグダードは産業革命以前における世界最大の都市となった[1]。また、バグダードと各地の都市を結ぶ道路、水路は交易路としての機能を強め、それまで世界史上に見られなかったネットワーク上の大商業帝国となった。アッバース朝では、エジプト、バビロニアの伝統文化を基礎にして、アラビア、ペルシア、ギリシア、インド、中国などの諸文明の融合がなされたことで、学問が著しい発展を遂げ、近代科学に多大な影響を与えた。イスラム文明は後のヨーロッパ文明の母胎になったといえる。アッバース朝は10世紀前半には衰え、945年にはブワイフ朝がバグダードに入城したことで実質的な権力を失い、その後は有力勢力の庇護下で宗教的権威としてのみ存続していくこととなった。</expression>
+            <expression writer="dummy2" is_gold_standard="true">イブン・スィーナー（波: ابن سینا, پور سینا‎、 全名アブー・アリー・アル＝フサイン・イブン・アブドゥッラーフ・イブン・スィーナー・アル＝ブハーリー（ペルシア語: ابو علی الحسین ابن عبد اللّه ابن سینا البخاری‎, ラテン文字転写: Abū 'Alī al-Husayn ibn Abdullāh ibn Sīnā al-Bukhārī）、980年 - 1037年6月18日）は、イスラム世界を代表する知識人で、哲学者・医者・科学者。その生涯は、幸福と苦難が交差する波乱万丈のものだった[3]。ラテン語: Avicenna‎, カナ転写: アウィケンナ（英語圏では「アヴィセンナ」[ˌævɨˈsɛnə]と読まれる）[4]。「頭領」を意味するシャイフッライース（Shaikh ar ra'is）[5]、「神の証」（Hujjat al-Haq）[6]の尊称でも呼ばれている。中国との交流が多いトランスオクシアナ地方の生まれで名前のスィーナーが「シナ」の発音に似ていることから彼の出身を中国と関連付ける説、アラビア語において「スィーナー」が「シナイ」を意味する点からユダヤ人と関連付ける説も存在する[7]。</expression>
+            <expression writer="dummy3" is_gold_standard="true">先史時代から人が住んでおり、ローマの領地となってからは「トレトゥム」と呼ばれた。西ゴート王国がイベリア半島を支配したのち、560年にアタナヒルド王によって首都とされた。トレドでは400年に第1回トレド教会会議が開かれていたが、西ゴート時代にもたびたび教会会議が開かれた。これによりトレド司教座の権威が高まり、イベリア半島全体の首座大司教座となった。711年、ウマイヤ朝の指揮官ターリク・ブン・ジヤードによって征服され（グアダレーテの戦い（英語版））、イスラム支配下に入った。1031年に後ウマイヤ朝が崩壊すると、タイファ諸国の1つトレド王国の領域となった。1085年、カスティーリャ王国による長期の包囲ののちトレドは降伏し、アルフォンソ6世は5月26日にトレドに入城した。1086年10月23日にサグラハスの戦いでムラービト朝のユースフ・イブン・ターシュフィーン（英語版）が率いるイスラム軍の救援部隊の前にアルフォンソ6世は敗走したものの、カスティーリャ王国はムラービト朝の攻撃からトレドを守り抜いたため、トレド征服はレコンキスタの節目の1つとなっている。12世紀から13世紀、トレド翻訳学派（スペイン語版、英語版）（Escuela de Traductores de Toledo）と呼ばれる学者が活躍した。</expression>
+            <expression writer="Baseline" is_gold_standard="false">1世紀の「エリュトラー海案内記」には、ギリシア人ヒッパロスがモンスーンを発見したとあるが、それ以前から、アラブ人、ペルシア人、インド人は星やモンスーンや海流の知識を使った航海技術を発展させていた。ギリシア人たちはバクトリアからヘレニズム文明をインドにもたらした。12世紀以降には、中国の商船が陶磁器を積んで、東南アジアやインド西海岸まで進出し、香料やサンゴや象牙などの産物をもちかえった。インド、中央アジア、ペルシア、ギリシアの諸文明がこの地で混じりあった。17世紀後半以降には、オランダやイギリスの東インド会社がムスリムやインド人の商人から貿易を奪い、やがて内陸部をも支配する。13世紀にマルコ・ポーロは、このような小型船がインド洋航海に使われていることを驚きをもって伝えている。インド洋は、アフリカ東岸からマレー半島まで東西の距離にして1万km以上の大海であるが、けっして困難な航路というわけではなかった。多様な人々の交流の場であったインド洋世界が、争奪の場へと変わっていく。2世紀中ごろ、クシャーナ朝のカニシカ王は北インドから中央アジアに及ぶ地域を支配し、都をプルシャプラ(現ペシャワール)に定め、東西交易をおさえた。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <instruction>
+        <p>Write a brief essay, within 255 English words, on those movements involving the Arab-Islamic cultural sphere up to the 13th century in answer section (A). Be sure to use all eight keywords shown below at least once, and underline those keywords.</p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data">Throughout history, while contacts and exchanges between different cultures sometimes gave rise to conflict, such interaction also contributed significantly to diversification and transformation of cultures and lifestyles. For example, as the Arab-Islamic cultural sphere expanded, starting in the 7th century, different cultures were introduced from newly acquired territories and adjacent regions, resulting in further development. Those cultures, in turn, exerted influence on other regions.</reference>
+        <reference is_directly_referred="1" id="d02" format="data">India, Abbasid Caliphate, Avicenna, Aristotle, medicine, algebra, Toledo, Sicily island</reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>India</keyword>
+        <keyword>Abbasid Caliphate</keyword>
+        <keyword>Avicenna</keyword>
+        <keyword>Aristotle</keyword>
+        <keyword>medicine</keyword>
+        <keyword>algebra</keyword>
+        <keyword>Toledo</keyword>
+        <keyword>Sicily island</keyword>
+      </keyword_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="no more than 255 English words" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1en" is_gold_standard="true">Abbasid (الدولة العباسية al-Dawla al-'Abbāsīya) is the second Israeli dynasty (750 - 1517) of the Islamic Empire who dominated the Middle East region. The descendants of Muslim founder Muhammad's uncle Abbas ibn Abdulmutta ribs were caliphs, and in its heyday the dominance ranged from the Iberian Peninsula to the west to Central Asia in the west. In the Abbasid Morning the Arabs' privilege was denied and equal rights were granted to all Muslims, and the Islamic Golden Age was laid. The development of the East-West trade and agricultural irrigation prosperous the Abbasid morning, the capital Baghdad became the world's largest city before the industrial revolution. In addition, roads and waterways connecting Baghdad and the cities in the region strengthened their functions as trade routes and became a large commercial empire on the network that was not seen in the history of the world until then. In the Abbasid morning, with the integration of civilizations such as Arabia, Persia, Greece, India, China, based on the traditional culture of Egypt and Babylonia, academic development has made remarkable progress and great impact on modern science Gave. It can be said that the Islamic civilization became the womb of the later European civilization. In the morning Abbasid declined in the first half of the 10th century, in 945 the Bwifet morning entered Baghdad and lost substantial power, after that it became surviving only as a religious authority under the aegis of influential forces It was.</expression>
+            <expression writer="dummy2en" is_gold_standard="true">Ibn Sienna (Wave: ابن سینا, پور سینا, Full name Abu Ali al-Husain ibn Abdullahv ibn · siener al-Bukhari (Persian: ابو علی الحسین ابن عبد الله ابن سینا البخاری, Latin letter transcription: Abū 'Alī al-Husayn ibn Abdullāh ibn Sīnā al-Bukhārī), 980 - June 18, 1037) is an intellectual who represents the Islamic world, philosophers, doctors and scientists. His lifetime was a thrill of happiness and suffering crossed over [3]. Latin: Avicenna, Kana Transcription: Awikenna (In English-speaking countries it is read &quot;Avicenna&quot; [ˌævɨsɛnə]) [4]. It is also called the title of Shaikh arrais (Shaikh ar ra'is) [5] meaning &quot;mind&quot;, &quot;Hujjat al-Haq&quot; [6]. The birth of Trans Oxiana region with a lot of exchanges with China, because the name's sween resembles the pronunciation of &quot;Sina&quot;, it is related to his origin from China, and in Arabic &quot;Sweene&quot; means &quot;Sinai&quot; There is also a theory that associates with Jews from points [7].</expression>
+            <expression writer="dummy3en" is_gold_standard="true">People lived in prehistoric times, and since becoming the Roman territory was called &quot;Tretum&quot;. After the Kingdom of West Goat dominated the Iberian Peninsula, it was made the capital by King Athanahild in 560. In Toledo the first Toledo church meeting was held in 400 years, but church conferences were also frequently held during the West Gothic era. This raised the authority of Toledo Episcopal Church and became the chief archbishop of the entire Iberian Peninsula. In 711, it was conquered by the Umayya commander Tarlik Bun Jiyad (Guadalete's fight (English version)) and entered under Islamic rule. When the Umayya Morning collapsed in 1031, it became the territory of Toledo Kingdom of one of the Taifa countries. In 1085, after a long siege by Castilea, Toledo surrendered and Alfonso VI entered Toledo on 26 May. Alfonso VI was defeated in front of the Islamic military rescue unit led by Murabit's Youssuf Ibn Tashshine (English version) on 23rd October 1086 at the Battle of Sagradhas, but the Kingdom of Castile was attacked by Murabit's attack Conquering Toledo has become one of the milestones of Reconquista since it has protected Toledo. From the 12th century to the 13th century, a scholar called Toledo Translation School (Spanish version, English version) (Escuela de Traductores de Toledo) was active.</expression>
+            <expression writer="Baseline" is_gold_standard="false"/>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="3" label="M792W10_【２】_問(1)_(a)">
+    <locale id="ja">
+      <grand_question_set>
+        <grand_question id="q02">歴史上，帝国と呼ばれた国家は，多民族，多人種，多宗教を包摂する大きな領域をその版図におさめている場合が多かった。それらの国家の繁栄と衰退，差異や共通性，内外の諸関係について，次の3つの設問に答えなさい。解答は，解答欄(ﾛ)を用い，設問ごとに行を改め，冒頭に(1)～(3)の番号を付して記しなさい。</grand_question>
+        <grand_question id="q03">ローマはテヴェレ川のほとりに建設された都市国家にすぎなかったが，紀元前6世紀に，エトルリア人の王を追放して共和政となった。その後，周辺の都市国家を征服してイタリア半島全体を支配し，やがて地中海世界を手中におさめる大帝国となった。ローマが帝政に移行する紀元前後からおよそ200年にわたる時期はパクス＝ローマーナとたたえられ，平和が維持された。以下の(a)・(b)の問いに，冒頭に(a)・(b)を付して答えなさい。</grand_question>
+      </grand_question_set>
+      <instruction>
+        <p>ローマの平和と繁栄を示す都市生活を支えていた公共施設について，60字以内で説明しなさい。</p>
+      </instruction>
+      <reference_set> </reference_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="60字以内" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1" is_gold_standard="true">エトルリア人は、イタリア半島中部の先住民族。インド・ヨーロッパ語族に属さないエトルリア語を使用していた。</expression>
+            <expression writer="Baseline" is_gold_standard="false">チューリヒは、スイスの都市。鄭和は、ムスリムの宦官であったという。世界人権宣言は、1948年12月10日、第3回国連総会で採択。</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+    <locale id="en">
+      <grand_question_set>
+        <grand_question id="q02">Historically, nations called 'empires' mostly governed large areas that included multiple ethnic groups, races, and religions. In relation to the rise and fall of such empires, their differences and similarities, and their domestic and international relationships, answer the three questions below. Write your responses in answer section (B). Begin a new line for every question you answer and state the corresponding number (1) to (3) at the beginning.</grand_question>
+        <grand_question id="q03">Rome, initially, was no more than a city-state built alongside the Tiber river but it became a republic after the Etruscan king was expelled in the 6th century BC. From that time, the Roman republic began conquering neighboring city-states, eventually taking control of the entire Italian peninsula and subsequently becoming a massive empire that wielded total control over the regions bordering the Mediterranean Sea. Roman imperial hegemony, which began around the time between the birth (BC) and death (AD) of Jesus Christ, was lauded as 'Pax Romana,' and peace was maintained. Answer the following questions (a) and (b), and state the corresponding letter (a) or (b) at the beginning.</grand_question>
+      </grand_question_set>
+      <instruction>
+        <p>Describe, in no more than 30 English words, the public facility(ies) that helped people to lead peaceful and prosperous lives in Roman cities.</p>
+      </instruction>
+      <reference_set> </reference_set>
+      <answer_set number="1" type="singleton">
+        <answer length_limit="no more than 30 English words" format_string="" choices="" order="-1" match_type="broad">
+          <expression_set>
+            <expression writer="dummy1en" is_gold_standard="true">Etruscans are indigenous people in the middle of the Italian peninsula. I used an Etruscan word that does not belong to the Indo-European language.</expression>
+            <expression writer="Baseline" is_gold_standard="false">Capital Berlin of the same time Prussia was only population 170,000.Great Depression, is not limited to the economic crisis in Germany, it caused a serious political crisis.</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+</answer_sheet>

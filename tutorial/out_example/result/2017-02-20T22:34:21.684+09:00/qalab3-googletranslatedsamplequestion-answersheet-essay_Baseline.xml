@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer_sheet ver="0.1">
+  <answer_section id="1" label="D792W10_[1]">
+    <locale id="en">
+      <instruction>
+        <p> Regarding the development of transportation and communication means to promote colonialization of Asia and Africa and to raise ethnic awareness in various places, always use one of the nine phrases below, use 510 (a) answer column Discuss within words. </p>
+      </instruction>
+      <reference_set>
+        <reference is_directly_referred="0" id="d01" format="data"> We live in the era of the information revolution and the integration of the world is progressing more and more rapidly. In addition to people and things going frequently, information is almost instantly conveyed to the whole world. Behind this, it can be said that there is a dramatic advance in transportation and communication technology. Looking back on history, there are not many cases where new development of transportation and communication means played a major role. In particular, from the mid-nineteenth century to the beginning of the 20th century, wired and wireless telegraphs, telephones, photographic machines, movies, etc. were put into practical use, and the revolution of audiovisual media also occurred. These technological innovations also draw attention as a background for Europe and the United States to extend their invasion into Asia and Africa. For example, Reuters Corp. gathered information from the world in the UK, supporting the overseas development of the British Empire. On the other hand, information shared around the world and the movement of people accelerated by the development of transportation means have also been a factor in stimulating local ethnic awareness. </reference>
+        <reference is_directly_referred="1" id="d02" format="data"> Suez Canal, Steamship, Baghdad Railway, Morse code, Marco Island, Yoshikazu, Russo-Japanese War, Iranian Constitutional Revolution, Gandhi </reference>
+      </reference_set>
+      <keyword_set>
+        <keyword>Suez Canal</keyword>
+        <keyword>steamship</keyword>
+        <keyword>Baghdad railway</keyword>
+        <keyword>Morse code</keyword>
+        <keyword>Marco Initi</keyword>
+        <keyword>Yoshikazu</keyword>
+        <keyword>Russo-Japanese War</keyword>
+        <keyword>Iranian constitutional revolution</keyword>
+        <keyword>Gundy</keyword>
+      </keyword_set>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="- 1" choices="" format_string="" length_limit="no more than 255 English words">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">In the 19th and 20th centuries, innovations in transportation and communication technology occurred, including the development of railway networks, invention of steamships, telegraphs by Morse code, and inventions of Marconi's radio equipment. These technologies were also used by Western countries to enter Asia and Africa. For example, the opening of the Suez Canal greatly shortened the travel time between Europe and Asia, while the United Kingdom put the canal under control and secured the way to India. Also, in Africa policy, he supported Cecil Rose promoting a plan to connect Cape Town and Cairo with railway and telegraph. Germany also aimed to advance into the Middle East by 3B policy including the construction of Baghdad railroad. Also, it was due to quick information transmission that POWER could quickly suppress suppression of the Yoshiwa disturbance in Qing Dynasty. On the other hand, Russia, which aims to advance to the Far East by the Siberian Railroad, etc., the victory of Japan in the Russo-Japanese War was quickly communicated to the world through the communication network, affecting the youth Turkish movement and the Iranian constitutional revolution, The national consciousness was raised. In addition, the development of means of transportation has also led to an increase in the number of talented persons who wish to study abroad in Europe and the United States from various places. This is one example that the origin of the career of Gandhi, a leader of Indian independence movement, was active as a lawyer in South Africa after studying in the UK.</expression>
+            <expression writer="writer2" is_gold_standard="true">The opening of the Suez Canal has brought about a sharp shortening of Asian routes, and furthermore, when a steamer using steam appeared, it became easier for European countries to advance into Asia, which had a major impact on the progress of trade and colonization. In the 19th century, Morse code and Marconi's wireless telegraph were invented, the speed of information transmission improved dramatically, enabling colonial management on a global scale. Railway construction is regarded not only as an economic aspect but also as a means in colonial management, and Germany, which aimed to expand the power to the Middle East, has acquired the right to lay Baghdad railway from the Ottoman Empire. However, improvement of communication technology and activation of mobility have had a great influence on the development of nationalist movement in Asia and Africa. Japan's victory in the Russo-Japanese War triggered by problems relating to withdrawal after the Yoshiwa incident was instantaneously disseminated to the world and stimulated the Asian-African national movement. After that, in Iran, people who gained knowledge through media such as newspapers triggered the Iranian constitutional revolution, and in the Ottoman empire the young Turkish revolution broke out. In addition, many of the people who experienced overseas study abroad in Europe and the United States because it became easy to move, then participated in ethnic movements. Gandhi also studied in the UK and formed a resistance thought of nonviolent disobedience movement.</expression>
+            <expression writer="writer3" is_gold_standard="true">From the mid-nineteenth century to the early twentieth century, the means of communication and transportation advanced dramatically. Speaking about communication, there are inventions of Morse code and radio communication by Marconi. As far as transportation is concerned, opening the Suez Canal in 1869 significantly shortened the steamer's shipping route to Asia, as compared to the traditional celebration peak, supporting the British 3C policy. In addition, the Baghdad Railroad, which Germany gained in 1899 to lay the ground, connected Berlin, Byzantium and Baghdad and lead to the Persian Gulf, boosted 3 B policy. This improved access to the home country and the colonies invited European countries to strengthen the colonial rule of Asia and Africa, while raising ethnic consciousness in Asia. For example, the Yoshiwa incident occurred in China in 1900, the Iranian Constitutional Revolution from 1905 to 1111, and the anti-British movement based on Gentile since Gangdi since 1919, all from anti-imperialism met. Also the Russo-Japanese War in 1904 was also a popular aspect as a color race victory against Caucasians.</expression>
+            <expression writer="Baseline" is_gold_standard="false"/>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="2" label="D792W10_[2]_(A)_Question (5)">
+    <locale id="en">
+      <grand_question_set>
+        <grand_question id="q 02"> Human beings have ingested and inherited the diverse cultures that existed in the long history from the early stage to the present age, created a new culture, and conveyed it to the next generation. Answer the following questions (1) - (10) related to this. Answer uses the answer column (b), revise the line for each question and write it with the numbers (1) - (10) at the beginning. </grand_question>
+        <grand_question id="q03"> Europeans regarded the culture of ancient Greek and Roman as one of the origins of European culture and called it classical ancient. Answer the following questions related to the later European acceptance of Greek and Roman thought and culture. </grand_question>
+      </grand_question_set>
+      <instruction>
+        <p> The Italian war was crushed for more than half a century in the Renaissance period. Record the politics situation of Italy which triggered this war within 60 letters. </p>
+      </instruction>
+      <reference_set/>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="- 1" choices="" format_string="" length_limit="no more than 30 English words">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">At that time Italy divided into urban republics, papal territories and countries, and received intervention by France and the Holy Roman Empire aiming for supremacy in Italy.</expression>
+            <expression writer="Baseline" is_gold_standard="false">This detente has been called &quot;thaw&quot;.Nkrumah to request an immediate independent en car Ghana that speech is, the place where wields spiel before the people. 'Band name Beatles.</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+  <answer_section id="3" label="D792W10_[2]_(B)_Question (7)_(b)">
+    <locale id="en">
+      <grand_question_set>
+        <grand_question id="q 02"> Human beings have ingested and inherited the diverse cultures that existed in the long history from the early stage to the present age, created a new culture, and conveyed it to the next generation. Answer the following questions (1) - (10) related to this. Answer uses the answer column (b), revise the line for each question and write it with the numbers (1) - (10) at the beginning. </grand_question>
+        <grand_question id="q10"> Since ancient times, India and China have mutually influenced and cultivated their own culture, leaving great influence on the surrounding area including Japan. Answer the following questions related to this. </grand_question>
+      </grand_question_set>
+      <instruction>
+        <p>
+          Confucianism occurred in ancient China, is a thought that has been widely studied in East Asia. During the Han Dynasty, he established a status as a state religion, and a new systematization was made during Song Dynasty.
+          <label_set>
+            <label focus="0" id="a">(a)</label>
+          </label_set>
+          A northern Song Dynasty thinker who made the predecessor to this systematization, give one person who influenced the thinker in South Song Dynasty. Also,
+          <label_set>
+            <label focus="1" id="b">(b)</label>
+          </label_set>
+          Please summarize how this new Confucianism was treated afterwards in China, 30 letters or less.
+        </p>
+      </instruction>
+      <reference_set/>
+      <answer_set type="singleton" number="1">
+        <answer match_type="broad" order="- 1" choices="" format_string="" length_limit="no more than 15 English words">
+          <expression_set>
+            <expression writer="writer1" is_gold_standard="true">Zhuzhi Zhuzi was established in Song Dynasty was later considered an Orthodox school of Confucianism.</expression>
+            <expression writer="Baseline" is_gold_standard="false">Such as &quot;World countries exhaustion&quot; of Yukichi Fukuzawa is the it.1602, Beijing.</expression>
+          </expression_set>
+        </answer>
+      </answer_set>
+    </locale>
+  </answer_section>
+</answer_sheet>
