@@ -30,7 +30,7 @@
       <keyword>Gundy</keyword>
     </keyword_set>
     <answer_set type="singleton" number="1">
-      <answer match_type="broad" order="- 1" choices="" format_string="" length_limit="no more than 255 English words">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 255 English words">
         <expression_set>
           <expression>
             In the 19th and 20th centuries, innovations in transportation and communication technology occurred, including the development of railway networks, invention of steamships, telegraphs by Morse code, and inventions of Marconi's radio equipment. These technologies were also used by Western countries to enter Asia and Africa. For example, the opening of the Suez Canal greatly shortened the travel time between Europe and Asia, while the United Kingdom put the canal under control and secured the way to India. Also, in Africa policy, he supported Cecil Rose promoting a plan to connect Cape Town and Cairo with railway and telegraph. Germany also aimed to advance into the Middle East by 3B policy including the construction of Baghdad railroad. Also, it was due to quick information transmission that POWER could quickly suppress suppression of the Yoshiwa disturbance in Qing Dynasty. On the other hand, Russia, which aims to advance to the Far East by the Siberian Railroad, etc., the victory of Japan in the Russo-Japanese War was quickly communicated to the world through the communication network, affecting the youth Turkish movement and the Iranian constitutional revolution, The national consciousness was raised. In addition, the development of means of transportation has also led to an increase in the number of talented persons who wish to study abroad in Europe and the United States from various places. This is one example that the origin of the career of Gandhi, a leader of Indian independence movement, was active as a lawyer in South Africa after studying in the UK.
@@ -65,7 +65,7 @@
     </instruction>
     <reference_set></reference_set>
     <answer_set type="singleton" number="1">
-      <answer match_type="broad" order="- 1" choices="" format_string="" length_limit="no more than 30 English words">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 30 English words">
         <expression_set>
           <expression>
             At that time Italy divided into urban republics, papal territories and countries, and received intervention by France and the Holy Roman Empire aiming for supremacy in Italy.
@@ -75,7 +75,7 @@
     </answer_set>
   </answer_section>
   <answer_section id="D792W10-14" label="D792W10_[2]_(B)_Question (7)_(b)">
-    <question_id>q 11</question_id>
+    <question_id>q11</question_id>
     <answer_style>description_unlimited</answer_style>
     <answer_type>sentence</answer_type>
     <knowledge_type>KS</knowledge_type>
@@ -102,7 +102,7 @@
     </instruction>
     <reference_set></reference_set>
     <answer_set type="singleton" number="1">
-      <answer match_type="broad" order="- 1" choices="" format_string="" length_limit="no more than 15 English words">
+      <answer match_type="broad" order="-1" choices="" format_string="" length_limit="no more than 15 English words">
         <expression_set>
           <expression>Zhuzhi Zhuzi was established in Song Dynasty was later considered an Orthodox school of Confucianism.</expression>
         </expression_set>
