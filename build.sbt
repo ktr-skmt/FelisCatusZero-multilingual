@@ -115,6 +115,7 @@ commands ++= Seq(
       "project jcasgen" ::
       "run-main util.JCasGen" ::
       "project root" ::
+      "run-main util.HistoryCleaner" ::
       "run-main uima.cpe.CPERunner -doCharacterLevelIndriIndexInJapanese -doContentWordLevelIndriIndexInJapanese -doTokenLevelIndriIndexInEnglish -doContentWordLevelIndriIndexInEnglish" :: state
   },
   Command.command("clearHistory") {
