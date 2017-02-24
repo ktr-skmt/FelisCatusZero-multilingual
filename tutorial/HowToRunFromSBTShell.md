@@ -28,6 +28,7 @@ $
 ```
 ### System Initialization
 #### Initialize
+You have to initialize FelisCatus Zero at first.
 ```bash
 > init
 [info] Set current project to FelisCatusZero-JCasGen (in build file:/Users/.../FelisCatusZero/)
@@ -50,7 +51,7 @@ $
 ...
 ```
 ## Run
-Once you initialized FelisCatus Zero you can do the following runs.
+Once you initialized FelisCatus Zero, you can do the following runs.
 ### End-to-end run
 ```bash
 > e2e
