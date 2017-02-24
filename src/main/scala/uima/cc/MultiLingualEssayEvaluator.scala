@@ -7,7 +7,7 @@ import jeqa.types._
 import org.apache.uima.cas.{CAS, FSIterator}
 import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
-import text.StringOption
+import text.{StringNone, StringOption}
 import uima.ae.MultiLingualDocumentAnnotator
 import util.Config
 import util.uima.FSListUtils._
@@ -54,6 +54,10 @@ trait MultiLingualEssayEvaluator extends MultiLingualDocumentAnnotator {
     while (itExam.hasNext) {
       val exam: Exam = itExam.next
       examBuffer += exam
+    }
+
+    if (examBuffer.isEmpty) {
+      return StringNone
     }
 
     examBuffer.result.sortWith((a, b) => a.getLabel < b.getLabel) foreach {
@@ -131,7 +135,7 @@ trait MultiLingualEssayEvaluator extends MultiLingualDocumentAnnotator {
                   case answer: Answer if !answer.getIsGoldStandard && answer.getWriter == writer =>
                     textOpt = StringOption(answer.getDocument.getText)
                   case _ =>
-                    // Do nothing
+                  // Do nothing
                 }
                 count(textOpt)
               }
@@ -172,6 +176,9 @@ trait MultiLingualEssayEvaluator extends MultiLingualDocumentAnnotator {
     val tableSummaryBuilder     = new StringBuilder()
     val tableParticularsBuilder = new StringBuilder()
     val writers: Seq[String] = rouge1Map.keySet.toSeq.sorted
+    if (writers.isEmpty) {
+      return StringNone
+    }
     writers foreach {
       writer: String =>
         val writerCell: String = s"""<th rowspan="4" scope="row">$writer</th>"""
