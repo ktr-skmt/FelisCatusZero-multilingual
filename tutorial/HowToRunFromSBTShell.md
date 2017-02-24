@@ -1,7 +1,8 @@
 # How to run through SBT Shell
 I recommend to run FelisCatus Zero through SBT Shell because the build through SBT Shell runs faster than the build from SBT Batch Mode.
 > Note: Running in batch mode requires JVM spinup and JIT each time, so your build will run much slower. For day-to-day coding, we recommend using the sbt shell or Continuous build and test feature described below.  
-> quoted from "sbt Reference Manual — Running" (http://www.scala-sbt.org/0.13/docs/Running.html)
+
+quoted from "sbt Reference Manual — Running" (http://www.scala-sbt.org/0.13/docs/Running.html)
 
 So I explain how to run it through SBT Shell.
 ## Build
