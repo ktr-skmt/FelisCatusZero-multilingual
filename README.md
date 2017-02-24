@@ -58,7 +58,7 @@ Note: I am planning to make remote services to enable to download training data 
 
 ### (5) How to Run
 #### Run through SBT Shell (Recommended)
-See [How to Run from SBT Shell](tutorial/HowToRunFromSBTShell.md)
+See [How to Run through SBT Shell](tutorial/HowToRunThroughSBTShell.md)
 
 #### Run through SBT Batch Mode
 See <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/Run.ipynb">Run.ipynb</a>
