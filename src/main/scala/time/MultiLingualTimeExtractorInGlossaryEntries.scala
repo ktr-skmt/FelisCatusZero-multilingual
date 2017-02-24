@@ -82,9 +82,10 @@ trait MultiLingualTimeExtractorInGlossaryEntries extends TimeExtractor with Mult
             StringOption(str) match {
               case StringSome(s) =>
                 try {
-                  Option(s.toInt)
+                  Option(s.replace("around ", "").toInt)
                 } catch {
                   case e: Exception =>
+                    e.printStackTrace()
                     None
                 }
               case StringNone =>
@@ -95,15 +96,18 @@ trait MultiLingualTimeExtractorInGlossaryEntries extends TimeExtractor with Mult
           val end:   Option[Int] = toInt(csv(2))
           val text: String  = csv(3)
           try {
-            Option(
-              entry,
-              new TimeTmp(
-                begin,
-                end,
-                if (begin.nonEmpty) Seq[String](text) else Nil,
-                if (end.nonEmpty)   Seq[String](text) else Nil
+            val ret: (String, TimeTmp) = {
+              (
+                entry,
+                new TimeTmp(
+                  begin,
+                  end,
+                  if (begin.nonEmpty) Seq[String](text) else Nil,
+                  if (end.nonEmpty)   Seq[String](text) else Nil
+                )
               )
-            )
+            }
+            Option(ret)
           } catch {
             case e: NumberFormatException =>
               e.printStackTrace()

@@ -8,24 +8,24 @@ import scala.collection.mutable
   * @author K.Sakamoto
   *         Created on 2016/05/22
   */
-trait VectorGenerator[Vector] {
-  private val cache = mutable.Map.empty[Long, Vector]
+trait VectorGenerator[V <: Vector] {
+  private val cache = mutable.Map.empty[Long, V]
 
-  def getVectorFromCache(id: Long, sentence: String): Vector = {
+  def getVectorFromCache(id: Long, sentence: String): V = {
     if (cache contains id) {
       cache(id)
     } else {
-      val vector: Vector = getVectorFromSentence(sentence)
+      val vector: V = getVectorFromSentence(sentence)
       cache(id) = vector
       vector
     }
   }
 
-  def getVectorFromText(text: String): Vector
+  def getVectorFromText(text: String): V
 
-  def getVectorFromSentence(sentence: String): Vector
+  def getVectorFromSentence(sentence: String): V
 
-  def getVectorFromSentences(sentences: Seq[Sentence]): Vector
+  def getVectorFromSentences(sentences: Seq[Sentence]): V
 
-  def getVectorFromAnnotation(annotation: TextAnnotation): Vector
+  def getVectorFromAnnotation(annotation: TextAnnotation): V
 }

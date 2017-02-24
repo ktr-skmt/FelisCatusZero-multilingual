@@ -21,7 +21,7 @@
         <keyword>Gundy</keyword>
       </keyword_set>
       <answer_set number="1" type="singleton">
-        <answer length_limit="no more than 255 English words" format_string="" choices="" order="- 1" match_type="broad">
+        <answer length_limit="no more than 255 English words" format_string="" choices="" order="-1" match_type="broad">
           <expression_set>
             <expression writer="writer1" is_gold_standard="true">In the 19th and 20th centuries, innovations in transportation and communication technology occurred, including the development of railway networks, invention of steamships, telegraphs by Morse code, and inventions of Marconi's radio equipment. These technologies were also used by Western countries to enter Asia and Africa. For example, the opening of the Suez Canal greatly shortened the travel time between Europe and Asia, while the United Kingdom put the canal under control and secured the way to India. Also, in Africa policy, he supported Cecil Rose promoting a plan to connect Cape Town and Cairo with railway and telegraph. Germany also aimed to advance into the Middle East by 3B policy including the construction of Baghdad railroad. Also, it was due to quick information transmission that POWER could quickly suppress suppression of the Yoshiwa disturbance in Qing Dynasty. On the other hand, Russia, which aims to advance to the Far East by the Siberian Railroad, etc., the victory of Japan in the Russo-Japanese War was quickly communicated to the world through the communication network, affecting the youth Turkish movement and the Iranian constitutional revolution, The national consciousness was raised. In addition, the development of means of transportation has also led to an increase in the number of talented persons who wish to study abroad in Europe and the United States from various places. This is one example that the origin of the career of Gandhi, a leader of Indian independence movement, was active as a lawyer in South Africa after studying in the UK.</expression>
             <expression writer="writer2" is_gold_standard="true">The opening of the Suez Canal has brought about a sharp shortening of Asian routes, and furthermore, when a steamer using steam appeared, it became easier for European countries to advance into Asia, which had a major impact on the progress of trade and colonization. In the 19th century, Morse code and Marconi's wireless telegraph were invented, the speed of information transmission improved dramatically, enabling colonial management on a global scale. Railway construction is regarded not only as an economic aspect but also as a means in colonial management, and Germany, which aimed to expand the power to the Middle East, has acquired the right to lay Baghdad railway from the Ottoman Empire. However, improvement of communication technology and activation of mobility have had a great influence on the development of nationalist movement in Asia and Africa. Japan's victory in the Russo-Japanese War triggered by problems relating to withdrawal after the Yoshiwa incident was instantaneously disseminated to the world and stimulated the Asian-African national movement. After that, in Iran, people who gained knowledge through media such as newspapers triggered the Iranian constitutional revolution, and in the Ottoman empire the young Turkish revolution broke out. In addition, many of the people who experienced overseas study abroad in Europe and the United States because it became easy to move, then participated in ethnic movements. Gandhi also studied in the UK and formed a resistance thought of nonviolent disobedience movement.</expression>
@@ -42,7 +42,7 @@
       </instruction>
       <reference_set/>
       <answer_set number="1" type="singleton">
-        <answer length_limit="no more than 30 English words" format_string="" choices="" order="- 1" match_type="broad">
+        <answer length_limit="no more than 30 English words" format_string="" choices="" order="-1" match_type="broad">
           <expression_set>
             <expression writer="writer1" is_gold_standard="true">At that time Italy divided into urban republics, papal territories and countries, and received intervention by France and the Holy Roman Empire aiming for supremacy in Italy.</expression>
           </expression_set>
@@ -71,7 +71,7 @@
       </instruction>
       <reference_set/>
       <answer_set number="1" type="singleton">
-        <answer length_limit="no more than 15 English words" format_string="" choices="" order="- 1" match_type="broad">
+        <answer length_limit="no more than 15 English words" format_string="" choices="" order="-1" match_type="broad">
           <expression_set>
             <expression writer="writer1" is_gold_standard="true">Zhuzhi Zhuzi was established in Song Dynasty was later considered an Orthodox school of Confucianism.</expression>
           </expression_set>

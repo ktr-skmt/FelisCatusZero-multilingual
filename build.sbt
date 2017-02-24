@@ -14,6 +14,7 @@ lazy val commonSettings = Seq(
     "-feature",
     "-language:implicitConversions",
     "-unchecked",
+    "-Xlint",
     "-target:jvm-".concat(javaVersion)
   )
 } ++ {
@@ -91,11 +92,137 @@ lazy val root = (project in file(".")).
       //"org.slf4j" % "slf4j-log4j12" % SLF4JVersion,// withSources() withJavadoc()
       "org.slf4j" % "slf4j-simple" % SLF4JVersion// withSources() withJavadoc()
     )
-  })
+  }).settings(
+  libraryDependencies += "com.github.pathikrit" %% "better-files" % "2.17.1"
+  )
 
 lazy val jcasgen = (project in file("jcasgen")).
   settings(commonSettings: _*).
   settings(
     version := "0.0.1",
-    name := "FelisCatusZero-jCasGen"
+    name := "FelisCatusZero-JCasGen"
   )
+
+commands ++= Seq(
+  Command.command("jcasgen") {
+    state =>
+      "project jcasgen" ::
+      "run-main util.JCasGen" ::
+      "project root" :: state
+  },
+  Command.command("init") {
+    state =>
+      "project jcasgen" ::
+      "run-main util.JCasGen" ::
+      "project root" ::
+      "run-main uima.cpe.CPERunner -doCharacterLevelIndriIndexInJapanese -doContentWordLevelIndriIndexInJapanese -doTokenLevelIndriIndexInEnglish -doContentWordLevelIndriIndexInEnglish" :: state
+  },
+  Command.command("clearHistory") {
+    state =>
+      "run-main util.HistoryCleaner" :: state
+  },
+  Command.command("e2e") {
+    state =>
+      "run-main uima.cpe.CPERunner" :: state
+  },
+  Command.command("qa") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa -to qa" :: state
+  },
+  Command.command("ir") {
+    state =>
+      "run-main uima.cpe.CPERunner -from ir -to ir" :: state
+  },
+  Command.command("eg") {
+    state =>
+      "run-main uima.cpe.CPERunner -from eg -to eg" :: state
+  },
+  Command.command("w") {
+    state =>
+      "run-main uima.cpe.CPERunner -from w -to w" :: state
+  },
+  Command.command("e") {
+    state =>
+      "run-main uima.cpe.CPERunner -from e -to e" :: state
+  },
+  Command.command("qa-") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa" :: state
+  },
+  Command.command("ir-") {
+    state =>
+      "run-main uima.cpe.CPERunner -from ir" :: state
+  },
+  Command.command("eg-") {
+    state =>
+      "run-main uima.cpe.CPERunner -from eg" :: state
+  },
+  Command.command("w-") {
+    state =>
+      "run-main uima.cpe.CPERunner -from w" :: state
+  },
+  Command.command("e-") {
+    state =>
+      "run-main uima.cpe.CPERunner -from e" :: state
+  },
+  Command.command("qa-qa") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa -to qa" :: state
+  },
+  Command.command("qa-ir") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa -to ir" :: state
+  },
+  Command.command("qa-eg") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa -to eg" :: state
+  },
+  Command.command("qa-w") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa -to w" :: state
+  },
+  Command.command("qa-e") {
+    state =>
+      "run-main uima.cpe.CPERunner -from qa -to e" :: state
+  },
+  Command.command("ir-ir") {
+    state =>
+      "run-main uima.cpe.CPERunner -from ir -to ir" :: state
+  },
+  Command.command("ir-eg") {
+    state =>
+      "run-main uima.cpe.CPERunner -from ir -to eg" :: state
+  },
+  Command.command("ir-w") {
+    state =>
+      "run-main uima.cpe.CPERunner -from ir -to w" :: state
+  },
+  Command.command("ir-e") {
+    state =>
+      "run-main uima.cpe.CPERunner -from ir -to e" :: state
+  },
+  Command.command("eg-eg") {
+    state =>
+      "run-main uima.cpe.CPERunner -from eg -to eg" :: state
+  },
+  Command.command("eg-w") {
+    state =>
+      "run-main uima.cpe.CPERunner -from eg -to w" :: state
+  },
+  Command.command("eg-e") {
+    state =>
+      "run-main uima.cpe.CPERunner -from eg -to e" :: state
+  },
+  Command.command("w-w") {
+    state =>
+      "run-main uima.cpe.CPERunner -from w -to w" :: state
+  },
+  Command.command("w-e") {
+    state =>
+      "run-main uima.cpe.CPERunner -from w -to e" :: state
+  },
+  Command.command("e-e") {
+    state =>
+      "run-main uima.cpe.CPERunner -from e -to e" :: state
+  }
+)
