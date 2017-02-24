@@ -3,9 +3,6 @@
 This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
 Also, this is Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
 
-# Run through SBT Shell
-See [How to Run from SBT Shell](tutorial/HowToRunFromSBTShell.md)
-
 ## Trial
 
 1. Install Scala and sbt.
@@ -14,6 +11,7 @@ See [How to Run from SBT Shell](tutorial/HowToRunFromSBTShell.md)
 ```bash
 $ bash trial.sh
 ```
+
 ## Quick Start Guide
 To install datasets, do the following 1. and/or 2.
 
@@ -25,3 +23,6 @@ Install Indri search engine and Indri indexes of Japanese and English textbooks 
 Install MeCab with UTF-8 and UniDic system dictionary and user dictionary with UTF-8. See <a href="https://github.com/ktr-skmt/FelisCatusZero/wiki/Install-Guide">here</a>  
 
 To run this system, see <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/Run.ipynb">Run.ipynb</a>
+
+## Run through SBT Shell
+See [How to Run from SBT Shell](tutorial/HowToRunFromSBTShell.md)
