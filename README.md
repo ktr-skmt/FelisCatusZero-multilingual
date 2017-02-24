@@ -3,6 +3,9 @@
 This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
 Also, this is Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
 
+# Run through SBT Shell
+See [How to Run from SBT Shell](tutorial/HowToRunFromSBTShell.md)
+
 ## Trial
 
 1. Install Scala and sbt.
