@@ -80,7 +80,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
           if (timeInDocTitle.beginTime.nonEmpty || timeInDocTitle.endTime.nonEmpty) {
             timeInDocTitle.beginTime match {
               case Some(beginTime) =>
-                val beginTimeType = FeatureStructure.empty[Time]
+                val beginTimeType = FeatureStructure.create[Time]
                 beginTimeType.setYear(beginTime)
                 beginTimeType.setTextList(timeInDocTitle.beginTimeTextList.toStringList)
                 initialSentence4Doc.setBeginTime(beginTimeType)
@@ -103,7 +103,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
 
             timeInDocTitle.endTime match {
               case Some(endTime) =>
-                val endTimeType = FeatureStructure.empty[Time]
+                val endTimeType = FeatureStructure.create[Time]
                 endTimeType.setYear(endTime)
                 endTimeType.setTextList(timeInDocTitle.endTimeTextList.toStringList)
                 initialSentence4Doc.setEndTime(endTimeType)
@@ -131,7 +131,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
                 if (timeTmp.beginTime.nonEmpty || timeTmp.endTime.nonEmpty) {
                   timeTmp.beginTime match {
                     case Some(beginTime) =>
-                      val beginTimeType = FeatureStructure.empty[Time]
+                      val beginTimeType = FeatureStructure.create[Time]
                       beginTimeType.setYear(beginTime)
                       beginTimeType.setTextList(timeTmp.beginTimeTextList.toStringList)
                       initialSentence4Doc.setBeginTime(beginTimeType)
@@ -153,7 +153,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
                   }
                   timeTmp.endTime match {
                     case Some(endTime) =>
-                      val endTimeType = FeatureStructure.empty[Time]
+                      val endTimeType = FeatureStructure.create[Time]
                       endTimeType.setYear(endTime)
                       endTimeType.setTextList(timeTmp.endTimeTextList.toStringList)
                       initialSentence4Doc.setEndTime(endTimeType)

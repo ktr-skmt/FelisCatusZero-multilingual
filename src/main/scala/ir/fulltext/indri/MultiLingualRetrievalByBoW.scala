@@ -110,13 +110,13 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
         val score: Double = result.score
         val textOpt: StringOption = docno2TextOpt(docno)
         if (!documentMap.contains(docno) && textOpt.nonEmpty) {
-          val document = FeatureStructure.empty[Document]
+          val document = FeatureStructure.create[Document]
           document.setText(textOpt.get)
           document.setDocno(docno)
           document.setTitle(title)
-          val scoreArray = FeatureStructure.emptyArray(Config.numOfScores)
+          val scoreArray = FeatureStructure.createArray(Config.numOfScores)
           for (i <- 0 until scoreArray.size()) {
-            val scoreType = FeatureStructure.empty[Score]
+            val scoreType = FeatureStructure.create[Score]
             scoreArray.set(i, scoreType)
           }
           val scoreType: Score = scoreArray.get(mIndriScoreIndex).asInstanceOf[Score]

@@ -158,10 +158,10 @@ trait MultiLingualEssayGenerator extends MultiLingual {
 
   protected def generateEmptyAnswer(aJCas: JCas,
                                     question: Question): Unit = {
-    val answer = FeatureStructure.empty[Answer]
+    val answer = FeatureStructure.create[Answer]
     answer.setIsGoldStandard(false)
     answer.setWriter(Config.systemName)
-    val document = FeatureStructure.empty[Document]
+    val document = FeatureStructure.create[Document]
     document.setText("")
     answer.setDocument(document)
     println("System Answer")

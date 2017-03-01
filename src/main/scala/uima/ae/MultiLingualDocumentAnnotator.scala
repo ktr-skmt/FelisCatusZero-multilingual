@@ -50,7 +50,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
     val sentenceTypeListSize: Int = sentenceList.size
     val passageWindow: Int = Config.passageWindow
     for (i <- 0 to sentenceTypeListSize - passageWindow) {
-      val passage = FeatureStructure.empty[Passage]
+      val passage = FeatureStructure.create[Passage]
 
       val contentWordList4Passage = ListBuffer.empty[String]
       val morphemeList4Passage = ListBuffer.empty[Morpheme]
@@ -142,7 +142,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
 
       beginTimeOpt4Passage match {
         case Some(beginYear) =>
-          val beginYearType4Passage = FeatureStructure.empty[Time]
+          val beginYearType4Passage = FeatureStructure.create[Time]
           beginYearType4Passage.setYear(beginYear)
           beginYearType4Passage.setTextList(beginTimeTextBuffer4Passage.result.distinct.toStringList)
           passage.setBeginTime(beginYearType4Passage)
@@ -151,7 +151,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
       }
       endTimeOpt4Passage match {
         case Some(endYear) =>
-          val endYearType4Passage = FeatureStructure.empty[Time]
+          val endYearType4Passage = FeatureStructure.create[Time]
           endYearType4Passage.setYear(endYear)
           endYearType4Passage.setTextList(endTimeTextBuffer4Passage.result.distinct.toStringList)
           passage.setEndTime(endYearType4Passage)
@@ -159,7 +159,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
         // Do nothing
       }
 
-      val geographyType = FeatureStructure.empty[Geography]
+      val geographyType = FeatureStructure.create[Geography]
       geographyType.setArea(geographyBuffer4Passage.result.distinct.toStringList)
       passage.setGeography(geographyType)
 
@@ -210,7 +210,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
           loop.break
         }
 
-        val sentenceType = FeatureStructure.empty[Sentence]
+        val sentenceType = FeatureStructure.create[Sentence]
 
         val originalText: String = sentenceOpt.get
         sentenceType.setOriginalText(originalText)
@@ -249,7 +249,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
 
         beginTimeOpt4Sentence match {
           case Some(beginTime4Sentence) =>
-            val beginTime = FeatureStructure.empty[Time]
+            val beginTime = FeatureStructure.create[Time]
             beginTime.setYear(beginTime4Sentence)
             val beginTimeText4Sentence: Seq[String] = beginTimeTextBuffer4Sentence.result.distinct
             beginTime.setTextList(beginTimeText4Sentence.toStringList)
@@ -269,7 +269,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
         }
         endTimeOpt4Sentence match {
           case Some(endTime4Sentence) =>
-            val endTime = FeatureStructure.empty[Time]
+            val endTime = FeatureStructure.create[Time]
             endTime.setYear(endTime4Sentence)
             val endTimeText4Sentence: Seq[String] = endTimeTextBuffer4Sentence.result.distinct
             endTime.setTextList(endTimeText4Sentence.toStringList)
@@ -288,7 +288,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
           // Do nothing
         }
 
-        val geographyType = FeatureStructure.empty[Geography]
+        val geographyType = FeatureStructure.create[Geography]
         val geographyList4Sentence: Seq[String] = geographyBuffer4Sentence.result.distinct
         geographyType.setArea(geographyList4Sentence.toStringList)
         geographyBuffer4Doc ++= geographyList4Sentence
@@ -344,7 +344,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
 
     beginTimeOpt4Doc match {
       case Some(beginYear4Doc) =>
-        val beginYearType4Doc = FeatureStructure.empty[Time]
+        val beginYearType4Doc = FeatureStructure.create[Time]
         beginYearType4Doc.setTextList(beginTimeTextBuffer4Doc.result.distinct.toStringList)
         beginYearType4Doc.setYear(beginYear4Doc)
         document.setBeginTime(beginYearType4Doc)
@@ -354,7 +354,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
 
     endTimeOpt4Doc match {
       case Some(endYear4Doc) =>
-        val endYearType4Doc = FeatureStructure.empty[Time]
+        val endYearType4Doc = FeatureStructure.create[Time]
         endYearType4Doc.setTextList(endTimeTextBuffer4Doc.result.distinct.toStringList)
         endYearType4Doc.setYear(endYear4Doc)
         document.setEndTime(endYearType4Doc)
@@ -362,7 +362,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
       // Do nothing
     }
 
-    val geographyType = FeatureStructure.empty[Geography]
+    val geographyType = FeatureStructure.create[Geography]
     geographyType.setArea(geographyBuffer4Doc.result.distinct.toStringList)
     document.setGeography(geographyType)
 

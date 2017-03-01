@@ -13,7 +13,7 @@ import scala.reflect.ClassTag
   * @author K.Sakamoto
   */
 object FeatureStructure {
-  def empty[T <: TOP](implicit tag: ClassTag[T]): T = {
+  def create[T <: TOP](implicit tag: ClassTag[T]): T = {
     if (JCasUtils.aJCasOpt.isEmpty) {
       throw new Exception()
     }
@@ -22,7 +22,7 @@ object FeatureStructure {
     ret.addToIndexes()
     ret
   }
-  def emptyArray(size: Int): FSArray = {
+  def createArray(size: Int): FSArray = {
     if (JCasUtils.aJCasOpt.isEmpty) {
       throw new Exception()
     }

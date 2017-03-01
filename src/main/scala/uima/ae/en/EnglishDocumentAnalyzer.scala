@@ -25,7 +25,7 @@ trait EnglishDocumentAnalyzer extends MultiLingualDocumentAnalyzer with English 
   override protected def analyze(aJCas: JCas, sentence: Sentence, normalizedSentence: StringOption): Unit = {
     val contentWords: Seq[String] = extractContentWords(normalizedSentence)
     sentence.setContentWordList(contentWords.toStringList)
-    val analysis = FeatureStructure.empty[CoreNLPAnalysis]
+    val analysis = FeatureStructure.create[CoreNLPAnalysis]
     //analysis.setLemmaList()
     //analysis.setPartOfSpeechList()
     //analysis.setStemmedWordList()

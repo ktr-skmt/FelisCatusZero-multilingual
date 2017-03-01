@@ -41,7 +41,7 @@ trait MultiLingualEssayQuestionReader extends MultiLingual {
     val xmlSchema = new XmlSchema(new File(Config.qaCorpusXmlSchema))
     essayExamFiles foreach {
       case file: File if xmlSchema.isValid(new StreamSource(file)) =>
-        val exam = FeatureStructure.empty[Exam]
+        val exam = FeatureStructure.create[Exam]
         exam.setLabel(file.getName)
         exam.setDir(baseDir)
         exam.setLang(localeId)
@@ -84,17 +84,17 @@ trait MultiLingualEssayQuestionReader extends MultiLingual {
                           keywordSet: Seq[String],
                           answerSet: Seq[Answer],
                           xml: NodeSeq): Question = {
-    val question = FeatureStructure.empty[Question]
+    val question = FeatureStructure.create[Question]
     question.setBeginLengthLimit(lengthLimit.start)
     question.setEndLengthLimit(lengthLimit.end)
     question.setLabel(label)
-    val document = FeatureStructure.empty[Document]
+    val document = FeatureStructure.create[Document]
     document.setId(id)
     document.setText(instruction)
     question.setDocument(document)
     val keywords: Seq[Keyword] = keywordSet map {
       k: String =>
-        val keyword = FeatureStructure.empty[Keyword]
+        val keyword = FeatureStructure.create[Keyword]
         keyword.setIsMandatory(true)
         keyword.setText(k)
         keyword
@@ -102,14 +102,14 @@ trait MultiLingualEssayQuestionReader extends MultiLingual {
     question.setKeywordSet(keywords.toFSList)
     val answers: Seq[UAnswer] = answerSet map {
       a: Answer =>
-        val answer = FeatureStructure.empty[UAnswer]
+        val answer = FeatureStructure.create[UAnswer]
         answer.setIsGoldStandard(a.isGoldStandard)
         if (a.writer.nonEmpty) {
           answer.setWriter(a.writer.get)
         } else {
           answer.setWriter("(empty)")
         }
-        val document = FeatureStructure.empty[Document]
+        val document = FeatureStructure.create[Document]
         val text: String = {
           if (a.expression.nonEmpty) {
             a.expression.get
