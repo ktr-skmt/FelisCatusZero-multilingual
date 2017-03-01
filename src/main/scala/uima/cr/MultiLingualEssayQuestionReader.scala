@@ -10,9 +10,9 @@ import m17n.MultiLingual
 import org.apache.uima.cas.CAS
 import org.apache.uima.jcas.JCas
 import text.{StringNone, StringOption, StringSome}
-import util.{Config, XmlSchema}
-import util.uima.JCasUtils
 import util.uima.SeqUtils._
+import util.uima.{FeatureStructure, JCasUtils}
+import util.{Config, XmlSchema}
 
 import scala.collection.mutable.ListBuffer
 import scala.util.matching.Regex
@@ -41,8 +41,7 @@ trait MultiLingualEssayQuestionReader extends MultiLingual {
     val xmlSchema = new XmlSchema(new File(Config.qaCorpusXmlSchema))
     essayExamFiles foreach {
       case file: File if xmlSchema.isValid(new StreamSource(file)) =>
-        val exam = new Exam(aView)
-        exam.addToIndexes()
+        val exam = FeatureStructure.empty[Exam]
         exam.setLabel(file.getName)
         exam.setDir(baseDir)
         exam.setLang(localeId)
@@ -85,20 +84,17 @@ trait MultiLingualEssayQuestionReader extends MultiLingual {
                           keywordSet: Seq[String],
                           answerSet: Seq[Answer],
                           xml: NodeSeq): Question = {
-    val question = new Question(aJCas)
-    question.addToIndexes()
+    val question = FeatureStructure.empty[Question]
     question.setBeginLengthLimit(lengthLimit.start)
     question.setEndLengthLimit(lengthLimit.end)
     question.setLabel(label)
-    val document = new Document(aJCas)
-    document.addToIndexes()
+    val document = FeatureStructure.empty[Document]
     document.setId(id)
     document.setText(instruction)
     question.setDocument(document)
     val keywords: Seq[Keyword] = keywordSet map {
       k: String =>
-        val keyword = new Keyword(aJCas)
-        keyword.addToIndexes()
+        val keyword = FeatureStructure.empty[Keyword]
         keyword.setIsMandatory(true)
         keyword.setText(k)
         keyword
@@ -106,25 +102,24 @@ trait MultiLingualEssayQuestionReader extends MultiLingual {
     question.setKeywordSet(keywords.toFSList)
     val answers: Seq[UAnswer] = answerSet map {
       a: Answer =>
-        val answer = new UAnswer(aJCas)
-        answer.addToIndexes()
+        val answer = FeatureStructure.empty[UAnswer]
         answer.setIsGoldStandard(a.isGoldStandard)
         if (a.writer.nonEmpty) {
           answer.setWriter(a.writer.get)
         } else {
           answer.setWriter("(empty)")
         }
-        if (a.expression.nonEmpty) {
-          val document = new Document(aJCas)
-          document.addToIndexes()
-          document.setText(a.expression.get)
-          answer.setDocument(document)
-        } else {// dead code. just in case.
-          val document = new Document(aJCas)
-          document.addToIndexes()
-          document.setText("")
-          answer.setDocument(document)
+        val document = FeatureStructure.empty[Document]
+        val text: String = {
+          if (a.expression.nonEmpty) {
+            a.expression.get
+          } else {
+            // dead code. just in case.
+            ""
+          }
         }
+        document.setText(text)
+        answer.setDocument(document)
         answer
     }
     question.setAnswerSet(answers.toFSList)

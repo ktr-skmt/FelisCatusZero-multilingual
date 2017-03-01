@@ -9,7 +9,7 @@ import org.apache.uima.jcas.cas.FSArray
 import text.StringOption
 import time.TimeTmp
 import util.uima.FSListUtils._
-import util.uima.JCasUtils
+import util.uima.{FeatureStructure, JCasUtils}
 import util.uima.SeqStringUtils._
 import util.uima.SeqUtils._
 
@@ -69,8 +69,7 @@ trait MultiLingualQuestionAnalyzer extends MultiLingualDocumentAnnotator {
           val timeLimit: TimeTmp = extractTime(sentenceList)
           timeLimit.beginTime match {
             case Some(beginTime) =>
-              val beginTimeLimit = new Time(aView)
-              beginTimeLimit.addToIndexes()
+              val beginTimeLimit = FeatureStructure.empty[Time]
               beginTimeLimit.setYear(beginTime)
               beginTimeLimit.setTextList(timeLimit.beginTimeTextList.toStringList)
               question.setBeginTimeLimit(beginTimeLimit)
@@ -80,8 +79,7 @@ trait MultiLingualQuestionAnalyzer extends MultiLingualDocumentAnnotator {
 
           timeLimit.endTime match {
             case Some(endTime) =>
-              val endTimeLimit = new Time(aView)
-              endTimeLimit.addToIndexes()
+              val endTimeLimit = FeatureStructure.empty[Time]
               endTimeLimit.setYear(endTime)
               endTimeLimit.setTextList(timeLimit.endTimeTextList.toStringList)
               question.setEndTimeLimit(endTimeLimit)
@@ -92,8 +90,7 @@ trait MultiLingualQuestionAnalyzer extends MultiLingualDocumentAnnotator {
 
           //begin {geography limit}
           val (areaList, termList): (Seq[String], Seq[String]) = extractGeography(sentenceList)
-          val geographyLimit = new Geography(aView)
-          geographyLimit.addToIndexes()
+          val geographyLimit = FeatureStructure.empty[Geography]
           geographyLimit.setTermList(termList.toStringList)
           geographyLimit.setArea(areaList.toStringList)
           question.setGeographyLimit(geographyLimit)

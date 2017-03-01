@@ -12,7 +12,7 @@ import scala.sys.process.{Process, ProcessBuilder}
  */
 abstract class Mecab extends MorphemeAnalyzer {
   override def analyzer(): ProcessBuilder = {
-    Process(Seq("mecab", "-d", Config.mecabUnidicDir))
+    Process("mecab" :: "-d" :: Config.mecabUnidicDir :: Nil)
   }
 
   override protected val negativePosListForContentWord: Seq[String] = Nil

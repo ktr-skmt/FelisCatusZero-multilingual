@@ -35,7 +35,7 @@ trait NamedEntityRecognizer {
                 StringOption(matcher.group),
                 time,
                 matcher.start until matcher.end,
-                StringOption("%s:%s".format(file, line)),
+                StringOption(s"$file:$line"),
                 StringOption(recognizerName),
                 synonyms
               )

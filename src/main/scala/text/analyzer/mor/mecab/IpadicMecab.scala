@@ -13,12 +13,13 @@ import scala.sys.process.{Process, ProcessBuilder}
   */
 object IpadicMecab extends Mecab {
   override def analyzer(): ProcessBuilder = {
-    Config.mecabIPADicUserDic match {
+    val commands: Seq[String] = Config.mecabIPADicUserDic match {
       case StringSome(userDic) =>
-        Process(Seq("mecab", "-d", Config.mecabIPADicDir, "-u", userDic))
+        "mecab" :: "-d" :: Config.mecabIPADicDir :: "-u" :: userDic :: Nil
       case StringNone =>
-        Process(Seq("mecab", "-d", Config.mecabIPADicDir))
+        "mecab" :: "-d" :: Config.mecabIPADicDir :: Nil
     }
+    Process(commands)
   }
 
   override protected val textColumn: Int = 6
@@ -28,27 +29,27 @@ object IpadicMecab extends Mecab {
 
 
 
-  override protected val negativePosListForContentWord: Seq[String] = Seq(
-    "その他",
-    "フィラー",
-    "助詞",
-    "助動詞",
-    "感動詞",
-    "空白",
-    "補助記号",
-    "記号,一般",
-    "記号,括弧開",
-    "記号,括弧閉",
-    "記号,句点",
-    "記号,空白",
-    "記号,読点"
-  )
+  override protected val negativePosListForContentWord: Seq[String] =
+    "その他" ::
+    "フィラー" ::
+    "助詞" ::
+    "助動詞" ::
+    "感動詞" ::
+    "空白" ::
+    "補助記号" ::
+    "記号,一般" ::
+    "記号,括弧開" ::
+    "記号,括弧閉" ::
+    "記号,句点" ::
+    "記号,空白" ::
+    "記号,読点" ::
+    Nil
 
-  override protected val adverbialNouns: Seq[String] = Seq[String]("ところ", "ため", "くらい")
+  override protected val adverbialNouns: Seq[String] = "ところ" :: "ため" :: "くらい" :: Nil
 
-  override protected val formalNouns: Seq[String] = Seq[String]("の", "こと", "もの", "つもり", "わけ")
+  override protected val formalNouns: Seq[String] = "の" :: "こと" :: "もの" :: "つもり" :: "わけ" :: Nil
 
-  override protected val functionalVerbs: Seq[String] = Seq[String]("する", "いる", "なる", "ある")
+  override protected val functionalVerbs: Seq[String] = "する" :: "いる" :: "なる" :: "ある" :: Nil
 
   //TODO: assertionをあとで書く
   //数字連続をひとつにまとめている

@@ -12,6 +12,7 @@ import text.{StringNone, StringOption, StringSome}
 import uima.ae.MultiLingualEssayGenerator
 import util.Config
 import util.uima.FSListUtils._
+import util.uima.FeatureStructure
 import util.uima.SeqUtils._
 
 import scala.collection.mutable.ListBuffer
@@ -111,12 +112,10 @@ object JapaneseEssayGenerator
         sortWith((a, b) => a.score > b.score).head.asInstanceOf[JapaneseAnswerCandidate]
       topAnswerResult.text match {
         case StringSome(text) =>
-          val answer = new Answer(aJCas)
-          answer.addToIndexes()
+          val answer = FeatureStructure.empty[Answer]
           answer.setIsGoldStandard(false)
           answer.setWriter(Config.systemName)
-          val document = new Document(aJCas)
-          document.addToIndexes()
+          val document = FeatureStructure.empty[Document]
           document.setText(text)
           document.setSentenceSet(
             topAnswerResult.
@@ -147,12 +146,10 @@ object JapaneseEssayGenerator
         sortWith((a, b) => a.score > b.score).head.asInstanceOf[JapaneseAnswerCandidate]
       topAnswerResult.text match {
         case StringSome(text) =>
-          val answer = new Answer(aJCas)
-          answer.addToIndexes()
+          val answer = FeatureStructure.empty[Answer]
           answer.setIsGoldStandard(false)
           answer.setWriter(Config.systemName)
-          val document = new Document(aJCas)
-          document.addToIndexes()
+          val document = FeatureStructure.empty[Document]
           document.setText(text)
           document.setSentenceSet(topAnswerResult.sentenceList.toFSList)
           answer.setDocument(document)

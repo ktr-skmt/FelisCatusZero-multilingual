@@ -7,12 +7,11 @@ import java.nio.file.Files
 import jeqa.types.{BoWQuery, Document, Keyword, Score}
 import m17n.MultiLingual
 import org.apache.uima.jcas.JCas
-import org.apache.uima.jcas.cas.FSArray
 import text.{StringNone, StringOption, StringSome}
 import util.Config
 import util.process.ProcessBuilderUtils._
-import util.uima.JCasUtils
 import util.uima.SeqUtils._
+import util.uima.{FeatureStructure, JCasUtils}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -111,16 +110,13 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
         val score: Double = result.score
         val textOpt: StringOption = docno2TextOpt(docno)
         if (!documentMap.contains(docno) && textOpt.nonEmpty) {
-          val document = new Document(aJCas)
-          document.addToIndexes()
+          val document = FeatureStructure.empty[Document]
           document.setText(textOpt.get)
           document.setDocno(docno)
           document.setTitle(title)
-          val scoreArray = new FSArray(aJCas, Config.numOfScores)
-          scoreArray.addToIndexes()
+          val scoreArray = FeatureStructure.emptyArray(Config.numOfScores)
           for (i <- 0 until scoreArray.size()) {
-            val scoreType = new Score(aJCas)
-            scoreType.addToIndexes()
+            val scoreType = FeatureStructure.empty[Score]
             scoreArray.set(i, scoreType)
           }
           val scoreType: Score = scoreArray.get(mIndriScoreIndex).asInstanceOf[Score]
@@ -157,12 +153,13 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
       query: String =>
         "-query=" concat query
     }
-    Seq[String](
-      "IndriRunQuery",
-      "-printDocuments=true",
-      s"-memory=${Config.indriMemory}",
-      "-printQuery=true",
-      baseline,
-      s"-count=${Config.indriCount}") ++ queries ++ indices
+    (
+      "IndriRunQuery" ::
+      "-printDocuments=true" ::
+      s"-memory=${Config.indriMemory}" ::
+      "-printQuery=true" ::
+      baseline ::
+      s"-count=${Config.indriCount}" :: Nil
+    ) ++ queries ++ indices
   }
 }

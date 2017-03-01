@@ -9,7 +9,7 @@ object DirectionTurner {
     if (score == 0) {
       1D
     } else {
-      1 / score
+      1D / score
     }
   }
 

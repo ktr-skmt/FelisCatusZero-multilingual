@@ -6,6 +6,7 @@ import org.apache.uima.jcas.JCas
 import text.{StringNone, StringOption, StringSome}
 import text.analyzer.CoreNLP4English
 import uima.ae.MultiLingualDocumentAnalyzer
+import util.uima.FeatureStructure
 import util.uima.SeqStringUtils._
 import util.uima.SeqUtils._
 
@@ -24,8 +25,7 @@ trait EnglishDocumentAnalyzer extends MultiLingualDocumentAnalyzer with English 
   override protected def analyze(aJCas: JCas, sentence: Sentence, normalizedSentence: StringOption): Unit = {
     val contentWords: Seq[String] = extractContentWords(normalizedSentence)
     sentence.setContentWordList(contentWords.toStringList)
-    val analysis = new CoreNLPAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[CoreNLPAnalysis]
     //analysis.setLemmaList()
     //analysis.setPartOfSpeechList()
     //analysis.setStemmedWordList()

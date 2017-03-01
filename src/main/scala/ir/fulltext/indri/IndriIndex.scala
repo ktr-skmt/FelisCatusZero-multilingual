@@ -18,14 +18,12 @@ import scala.sys.process.Process
   */
 class IndriIndex(inputPath: Path, indexPath: Path) {
   private def command: Seq[String] = {
-    Seq[String](
-      "IndriBuildIndex",
-      "-field.name=TITLE",
-      "-memory=".concat(Config.indriMemory),
-      "-corpus.path=".concat(inputPath.toAbsolutePath.toString),
-      "-corpus.class=trectext",
-      "-index=".concat(indexPath.toAbsolutePath.toString)
-    )
+    "IndriBuildIndex" ::
+    "-field.name=TITLE" ::
+    "-memory=".concat(Config.indriMemory) ::
+    "-corpus.path=".concat(inputPath.toAbsolutePath.toString) ::
+    "-corpus.class=trectext" ::
+    "-index=".concat(indexPath.toAbsolutePath.toString) :: Nil
   }
 
   def index(): Unit = {

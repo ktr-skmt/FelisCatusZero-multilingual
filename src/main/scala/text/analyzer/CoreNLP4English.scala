@@ -47,7 +47,7 @@ object CoreNLP4English {
   }
 
   def stopPOSes: Seq[String] = {
-    Seq[String]("DT", "IN", "PDT", "SYM", "WDT", ".", ",", "“", "“", "(", ")", ":", "-LRB-", "-RRB-", "``", "''")
+    "DT" :: "IN" :: "PDT" :: "SYM" :: "WDT" :: "." :: "," :: "“" :: "“" :: "(" :: ")" :: ":" :: "-LRB-" :: "-RRB-" :: "``" :: "''" :: Nil
   }
   private val stemmer = new EnglishStemmer()
 

@@ -6,7 +6,6 @@ import scala.io.Source
 
 /**
   * Created by nakayama.
-  * @author K.Sakamoto
   */
 object FileOps {
   def getFileFromDir(path: String): Array[File] = {

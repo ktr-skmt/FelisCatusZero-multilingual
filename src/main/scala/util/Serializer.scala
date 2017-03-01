@@ -39,5 +39,4 @@ object Serializer {
       oos.close()
     }
   }
-
 }

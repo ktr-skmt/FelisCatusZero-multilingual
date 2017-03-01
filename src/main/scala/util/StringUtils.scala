@@ -40,7 +40,7 @@ class StringUtils(repr: CharSequence) {
   }
 
   def toCodePointArray: Array[Int] = {
-    if (repr == null) {
+    if (Option(repr).isEmpty) {
       throw new NullPointerException
     }
 
@@ -93,6 +93,7 @@ class StringUtils(repr: CharSequence) {
       Option(binaryStringToByte)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -115,6 +116,7 @@ class StringUtils(repr: CharSequence) {
       Option(binaryStringToShort)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -137,6 +139,7 @@ class StringUtils(repr: CharSequence) {
       Option(binaryStringToInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -159,6 +162,7 @@ class StringUtils(repr: CharSequence) {
       Option(binaryStringToUnsignedInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -181,6 +185,7 @@ class StringUtils(repr: CharSequence) {
       Option(binaryStringToLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -203,6 +208,7 @@ class StringUtils(repr: CharSequence) {
       Option(binaryStringToUnsignedLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -226,6 +232,7 @@ class StringUtils(repr: CharSequence) {
       Option(octalStringToByte)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -248,6 +255,7 @@ class StringUtils(repr: CharSequence) {
       Option(octalStringToShort)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -270,6 +278,7 @@ class StringUtils(repr: CharSequence) {
       Option(octalStringToInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -292,6 +301,7 @@ class StringUtils(repr: CharSequence) {
       Option(octalStringToUnsignedInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -314,6 +324,7 @@ class StringUtils(repr: CharSequence) {
       Option(octalStringToLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -336,6 +347,7 @@ class StringUtils(repr: CharSequence) {
       Option(octalStringToUnsignedLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -359,6 +371,7 @@ class StringUtils(repr: CharSequence) {
       Option(hexStringToByte)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -381,6 +394,7 @@ class StringUtils(repr: CharSequence) {
       Option(hexStringToShort)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -403,6 +417,7 @@ class StringUtils(repr: CharSequence) {
       Option(hexStringToInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -425,6 +440,7 @@ class StringUtils(repr: CharSequence) {
       Option(hexStringToUnsignedInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -447,6 +463,7 @@ class StringUtils(repr: CharSequence) {
       Option(hexStringToLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -469,6 +486,7 @@ class StringUtils(repr: CharSequence) {
       Option(hexStringToUnsignedLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -487,6 +505,7 @@ class StringUtils(repr: CharSequence) {
       Option(str.toInt)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -505,6 +524,7 @@ class StringUtils(repr: CharSequence) {
       Option(str.toLong)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -523,6 +543,7 @@ class StringUtils(repr: CharSequence) {
       Option(str.toShort)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -541,6 +562,7 @@ class StringUtils(repr: CharSequence) {
       Option(str.toByte)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -559,6 +581,7 @@ class StringUtils(repr: CharSequence) {
       Option(str.toFloat)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -577,6 +600,7 @@ class StringUtils(repr: CharSequence) {
       Option(str.toDouble)
     } catch {
       case e: NumberFormatException =>
+        e.printStackTrace()
         None
     }
   }
@@ -595,6 +619,7 @@ class StringUtils(repr: CharSequence) {
       Option(java.lang.Boolean.parseBoolean(str))
     } catch {
       case e: IllegalArgumentException =>
+        e.printStackTrace()
         None
     }
   }

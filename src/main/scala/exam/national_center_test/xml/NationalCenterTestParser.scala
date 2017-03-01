@@ -129,10 +129,12 @@ class NationalCenterTestParser {
         if (dataFromMiddleQuestion.isEmpty || (dataFromMiddleQuestion \ "blank").isEmpty) {
           None
         } else {
-          Option(dataFromMiddleQuestion.head.child)
+          val xml: NodeSeq = dataFromMiddleQuestion.head.child
+          Option(xml)
         }
       } else {
-        Option(dataFromSmallQuestion.head.child)
+        val xml: NodeSeq = dataFromSmallQuestion.head.child
+        Option(xml)
       }
     }
 
@@ -156,7 +158,9 @@ class NationalCenterTestParser {
                 try {
                   (smallQuestion \ "@anscol").text.tail.toInt
                 } catch {
-                  case e: NumberFormatException => -1
+                  case e: NumberFormatException =>
+                    e.printStackTrace()
+                    -1
                 },
                 (smallQuestion \ "instruction").head.child,
                 underLinePart(smallQuestion),

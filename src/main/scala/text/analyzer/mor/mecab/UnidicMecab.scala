@@ -15,12 +15,14 @@ import scala.sys.process.{Process, ProcessBuilder}
  */
 object UnidicMecab extends Mecab {
   override def analyzer(): ProcessBuilder = {
+    val commands: Seq[String] =
     Config.mecabUnidicUserDic match {
       case StringSome(userDic) =>
-        Process(Seq("mecab", "-d", Config.mecabUnidicDir, "-u", userDic))
+        "mecab" :: "-d" :: Config.mecabUnidicDir :: "-u" :: userDic :: Nil
       case StringNone =>
-        Process(Seq("mecab", "-d", Config.mecabUnidicDir))
+        "mecab" :: "-d" :: Config.mecabUnidicDir :: Nil
     }
+    Process(commands)
   }
 
   override protected val textColumn: Int = 7
@@ -28,20 +30,19 @@ object UnidicMecab extends Mecab {
   override protected val semanticCategoryColumn: Int = 15
   override protected val semanticTypeColumn: Int = 16
 
-  override protected val negativePosListForContentWord: Seq[String] = Seq(
-    "助詞",
-    "助動詞",
-    "感動詞",
-    "空白",
-    "補助記号",
-    "記号,一般"
-  )
+  override protected val negativePosListForContentWord: Seq[String] =
+    "助詞" ::
+    "助動詞" ::
+    "感動詞" ::
+    "空白" ::
+    "補助記号" ::
+    "記号,一般" :: Nil
 
-  override protected val adverbialNouns: Seq[String] = Seq[String]("所", "為", "くらい")
+  override protected val adverbialNouns: Seq[String] = "所" :: "為" :: "くらい" :: Nil
 
-  override protected val formalNouns: Seq[String] = Seq[String]("の", "事", "物", "積り", "訳")
+  override protected val formalNouns: Seq[String] = "の" :: "事" :: "物" :: "積り" :: "訳" :: Nil
 
-  override protected val functionalVerbs: Seq[String] = Seq[String]("為る", "居る", "成る", "有る")
+  override protected val functionalVerbs: Seq[String] = "為る" :: "居る" :: "成る" :: "有る" :: Nil
 
   //TODO: assertionをあとで書く
   //数字連続をひとつにまとめている

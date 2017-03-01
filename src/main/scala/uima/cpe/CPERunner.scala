@@ -118,7 +118,7 @@ object CPERunner extends Thread {
   @throws[Exception]
   def main(args: Array[String]): Unit = {
     val option = new CPERunnerOption()
-    if (0 < args.length) {
+    if (args.nonEmpty) {
       val parser = new CmdLineParser(option)
       try {
         parser.parseArgument(args: _*)

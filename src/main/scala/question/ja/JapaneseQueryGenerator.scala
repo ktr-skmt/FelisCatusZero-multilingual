@@ -19,19 +19,19 @@ import scala.util.matching.Regex
 object JapaneseQueryGenerator extends MultiLingualQueryGenerator with Japanese {
   //private lazy val KATAKANA_KANJI: Regex = raw"""(\p{InKatakana}+)(${JISLevel1to4KanjiCharacter.pattern}+)""".r
   private lazy val KATAKANA_KANJI: Regex = raw"""(\p{script=Katakana}+)(\p{script=Han}+)""".r
-  private lazy val DELIMITER_LIST: Seq[String] = Seq[String](
-    "\u003D",//=
-    "\uFF65",//・
-    "\uFE66"//＝
-  )
+  private lazy val DELIMITER_LIST: Seq[String] =
+    "\u003D" :: //=
+    "\uFF65" :: //・
+    "\uFE66" :: //＝
+    Nil
   private lazy val DELIMITER_REGEX: String = DELIMITER_LIST.mkString("[", "", "]")
-  private lazy val PARTICLE_LIST: Seq[String] = Seq[String](
-    "の",
-    "が",
-    "を",
-    "に",
-    "で"
-  )
+  private lazy val PARTICLE_LIST: Seq[String] =
+    "の" ::
+    "が" ::
+    "を" ::
+    "に" ::
+    "で" ::
+    Nil
 
   override protected def expand(keywordOpt: StringOption): Seq[(String, Boolean)] = {
     val expansionBuffer = ListBuffer.empty[(String, Boolean)]

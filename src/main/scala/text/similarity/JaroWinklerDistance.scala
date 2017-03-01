@@ -46,12 +46,7 @@ class JaroWinklerDistance(threshold: Double, scalingFactor: Double) extends Dist
   }
 
   def calculateReciprocalDistance[Element](array1: Array[Element], array2: Array[Element]): Double = {
-    val jw: Double = calculate(array1, array2)
-    if (jw == 0D) {
-      1D
-    } else {
-      1D / jw
-    }
+    DirectionTurner.reciprocal(calculate(array1, array2))
   }
 
   def calculateJaroDistance[Element](array1: Array[Element], array2: Array[Element]): Double = {

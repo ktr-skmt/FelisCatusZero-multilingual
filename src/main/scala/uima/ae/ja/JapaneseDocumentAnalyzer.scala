@@ -9,6 +9,7 @@ import text.analyzer.mor.juman.{Juman, JumanPlusPlus}
 import text.analyzer.mor.mecab.{IpadicMecab, UnidicMecab}
 import uima.ae.MultiLingualDocumentAnalyzer
 import util.Config
+import util.uima.FeatureStructure
 import util.uima.SeqStringUtils._
 import util.uima.SeqUtils._
 
@@ -156,8 +157,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val ipadicMecabMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def ipadicMecab(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("IPADicMeCab")
     IpadicMecab.analysisResult(sentence) match {
       case StringSome(analysisResult) =>
@@ -174,15 +174,13 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
           if (ipadicMecabMorphemeCache contains ((originalText, text, pos))) {
             ipadicMecabMorphemeCache((originalText, text, pos))
           } else {
-            val mor = new Morpheme(aJCas)
-            mor.addToIndexes()
+            val mor = FeatureStructure.empty[Morpheme]
             mor.setOriginalText(originalText)
             mor.setText(text)
             mor.setPos(pos)
             categoryOpt match {
               case StringSome(category) =>
-                val semanticType = new SemanticType(aJCas)
-                semanticType.addToIndexes()
+                val semanticType = FeatureStructure.empty[SemanticType]
                 semanticType.setCategory(category)
                 semanticType.setTypeList(typeList.toStringList)
                 mor.setSemanticType(semanticType)
@@ -205,7 +203,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val unidicMecabMorphemeCache = scala.collection.mutable.Map.empty[(String, String, String), Morpheme]
 
   private def unidicMecab(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     UnidicMecab.analysisResult(sentence) match {
       case StringSome(analysisResult) =>
         analysis.setAnalysisResult(analysisResult)
@@ -213,7 +211,6 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
         // Do nothing
         return None
     }
-    analysis.addToIndexes()
     analysis.setAnalyzer("UniDicMeCab")
     val morphemeList = ListBuffer.empty[Morpheme]
     UnidicMecab.extractMorphemes(sentence) foreach {
@@ -222,15 +219,13 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
           if (unidicMecabMorphemeCache contains ((originalText, text, pos))) {
             unidicMecabMorphemeCache((originalText, text, pos))
           } else {
-            val mor = new Morpheme(aJCas)
-            mor.addToIndexes()
+            val mor = FeatureStructure.empty[Morpheme]
             mor.setOriginalText(originalText)
             mor.setText(text)
             mor.setPos(pos)
             categoryOpt match {
               case StringSome(category) =>
-                val semanticType = new SemanticType(aJCas)
-                semanticType.addToIndexes()
+                val semanticType = FeatureStructure.empty[SemanticType]
                 semanticType.setCategory(category)
                 semanticType.setTypeList(typeList.toStringList)
                 mor.setSemanticType(semanticType)
@@ -252,8 +247,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val jumandicMecabMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def jumandicMecab(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("JUMANDicMeCab")
     val morphemeList = ListBuffer.empty[Morpheme]
 
@@ -264,8 +258,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val ipadicChasenMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def ipadicChasen(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("IPADicChaSen")
     val morphemeList = ListBuffer.empty[Morpheme]
 
@@ -276,8 +269,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val unidicChasenMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def unidicChasen(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("UniDicChaSen")
     val morphemeList = ListBuffer.empty[Morpheme]
 
@@ -288,8 +280,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val naistdicChasenMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def naistdicChasen(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("NAISTDicChaSen")
     val morphemeList = ListBuffer.empty[Morpheme]
 
@@ -300,8 +291,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val jumanMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def juman(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("JUMAN")
     val morphemeList = ListBuffer.empty[Morpheme]
 
@@ -312,8 +302,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val jumanPlusPlusMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def jumanPlusPlus(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("JUMAN++")
     val morphemeList = ListBuffer.empty[Morpheme]
 
@@ -324,8 +313,7 @@ trait JapaneseDocumentAnalyzer extends MultiLingualDocumentAnalyzer with Japanes
   private lazy val kyteaMorphemeCache = mutable.Map.empty[(String, String, String), Morpheme]
 
   private def kytea(aJCas: JCas, sentence: StringOption): Option[MorphemeAnalysis] = {
-    val analysis = new MorphemeAnalysis(aJCas)
-    analysis.addToIndexes()
+    val analysis = FeatureStructure.empty[MorphemeAnalysis]
     analysis.setAnalyzer("KyTea")
     val morphemeList = ListBuffer.empty[Morpheme]
 

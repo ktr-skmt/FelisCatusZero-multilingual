@@ -21,6 +21,6 @@ object HammingDistance extends Distance {
   }
 
   def calculateSimilarity[Element](array1: Array[Element], array2: Array[Element]): Double = {
-    1D - calculate(array1, array2)
+    DirectionTurner.oneMinus(calculate(array1, array2))
   }
 }

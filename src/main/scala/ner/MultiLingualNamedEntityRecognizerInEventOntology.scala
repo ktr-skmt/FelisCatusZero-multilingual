@@ -37,14 +37,14 @@ trait MultiLingualNamedEntityRecognizerInEventOntology extends NamedEntityRecogn
           val metaInfo: MetaInfo = (fileName, line)
           val elements: Array[String] = line.split(',')
           if (5 < elements.length) {
-            val years: Seq[StringOption] = Seq[StringOption](StringOption(elements(2)), StringOption(elements(3)))
+            val years: Seq[StringOption] = StringOption(elements(2)) :: StringOption(elements(3)) :: Nil
             val time: TimeTmp = TimeMerger.union(
               for (year <- years) yield {
                 TimeMerger.union(extract(year))
               }
             )
             for (i <- elements.indices) {
-              if (!(Seq[Int](0, 2, 3) contains i)) {
+              if (!((0 :: 2 :: 3 :: Nil) contains i)) {
                 normalize(StringOption(elements(i).trim)) match {
                   case StringSome(str) =>
                     val synonyms: Array[String] = str.split('@')

@@ -15,7 +15,7 @@ import text.StringOption
 import util.Config
 import util.uima.FSListUtils._
 import util.uima.SeqUtils._
-import util.uima.JCasUtils
+import util.uima.{FeatureStructure, JCasUtils}
 
 import scala.collection.mutable.ListBuffer
 
@@ -158,12 +158,10 @@ trait MultiLingualEssayGenerator extends MultiLingual {
 
   protected def generateEmptyAnswer(aJCas: JCas,
                                     question: Question): Unit = {
-    val answer = new Answer(aJCas)
-    answer.addToIndexes()
+    val answer = FeatureStructure.empty[Answer]
     answer.setIsGoldStandard(false)
     answer.setWriter(Config.systemName)
-    val document = new Document(aJCas)
-    document.addToIndexes()
+    val document = FeatureStructure.empty[Document]
     document.setText("")
     answer.setDocument(document)
     println("System Answer")

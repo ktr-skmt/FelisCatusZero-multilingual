@@ -19,7 +19,7 @@ object SeqUtils {
   */
 class SeqUtils[T <: TOP](repr: Seq[T]) extends UimaUtilsTrait {
   def toFSList: FSList = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty list
       return new EmptyFSList(aJCas)
     }
@@ -40,7 +40,7 @@ class SeqUtils[T <: TOP](repr: Seq[T]) extends UimaUtilsTrait {
   }
 
   def toFSArray: FSArray = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty array
       return new FSArray(aJCas, 0)
     }
@@ -69,7 +69,7 @@ object SeqStringUtils {
   */
 class SeqStringUtils(repr: Seq[String]) extends UimaUtilsTrait {
   def toStringList: StringList = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty list
       return new EmptyStringList(aJCas)
     }
@@ -90,7 +90,7 @@ class SeqStringUtils(repr: Seq[String]) extends UimaUtilsTrait {
   }
 
   def toStringArray: StringArray = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty array
       return new StringArray(aJCas, 0)
     }
@@ -119,7 +119,7 @@ object SeqIntUtils {
   */
 class SeqIntUtils(repr: Seq[Int]) extends UimaUtilsTrait {
   def toIntegerList: IntegerList = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty list
       return new EmptyIntegerList(aJCas)
     }
@@ -140,7 +140,7 @@ class SeqIntUtils(repr: Seq[Int]) extends UimaUtilsTrait {
   }
 
   def toIntegerArray: IntegerArray = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty array
       return new IntegerArray(aJCas, 0)
     }
@@ -169,7 +169,7 @@ object SeqFloatUtils {
   */
 class SeqFloatUtils(repr: Seq[Float]) extends UimaUtilsTrait {
   def toFloatList: FloatList = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty list
       return new EmptyFloatList(aJCas)
     }
@@ -190,7 +190,7 @@ class SeqFloatUtils(repr: Seq[Float]) extends UimaUtilsTrait {
   }
 
   def toFloatArray: FloatArray = {
-    if (repr == Nil) {
+    if (repr.isEmpty) {
       //return an empty array
       return new FloatArray(aJCas, 0)
     }

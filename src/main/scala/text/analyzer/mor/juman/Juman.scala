@@ -14,7 +14,7 @@ import scala.sys.process.{Process, ProcessBuilder}
  */
 object Juman extends MorphemeAnalyzer {
   override def analyzer(): ProcessBuilder = {
-    Process(Seq("juman"))
+    Process("juman" :: Nil)
   }
 
   //return originalText, text, pos
@@ -22,15 +22,14 @@ object Juman extends MorphemeAnalyzer {
     Nil
   }
 
-  override val negativePosListForContentWord: Seq[String] = Seq(
-    "名詞-形式名詞",//"の", "こと", "もの", "つもり", "わけ"
-    "名詞-副詞的名詞",//"ところ", "ため", "ぐらい"
-    "助詞",
-    "助動詞",
-    "判定詞",
-    "特殊",
-    "未定義語-その他"
-  )
+  override val negativePosListForContentWord: Seq[String] =
+    "名詞-形式名詞" :: //"の", "こと", "もの", "つもり", "わけ"
+    "名詞-副詞的名詞" :: //"ところ", "ため", "ぐらい"
+    "助詞" ::
+    "助動詞" ::
+    "判定詞" ::
+    "特殊" ::
+    "未定義語-その他" :: Nil
 
   private def isNoun(pos: StringOption): Boolean = {
     pos match {

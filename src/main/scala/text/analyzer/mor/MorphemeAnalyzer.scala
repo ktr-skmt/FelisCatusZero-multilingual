@@ -40,7 +40,7 @@ trait MorphemeAnalyzer {
   def echo(sentence: StringOption): ProcessBuilder = {
     Process(sentence match {
       case StringSome(s) =>
-        Seq("echo", s.toString)
+        "echo" ::  s.toString :: Nil
       case StringNone =>
         Nil
     })

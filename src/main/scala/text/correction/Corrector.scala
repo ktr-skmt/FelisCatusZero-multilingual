@@ -7,7 +7,7 @@ import time.TimeTmp
 import uima.ae.MultiLingualDocumentAnnotator
 import util.Config
 import util.uima.FSListUtils._
-import util.uima.JCasUtils
+import util.uima.{FeatureStructure, JCasUtils}
 import util.uima.SeqStringUtils._
 import util.uima.SeqUtils._
 import util.uima.TimeUtils._
@@ -80,8 +80,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
           if (timeInDocTitle.beginTime.nonEmpty || timeInDocTitle.endTime.nonEmpty) {
             timeInDocTitle.beginTime match {
               case Some(beginTime) =>
-                val beginTimeType = new Time(aJCas)
-                beginTimeType.addToIndexes()
+                val beginTimeType = FeatureStructure.empty[Time]
                 beginTimeType.setYear(beginTime)
                 beginTimeType.setTextList(timeInDocTitle.beginTimeTextList.toStringList)
                 initialSentence4Doc.setBeginTime(beginTimeType)
@@ -104,8 +103,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
 
             timeInDocTitle.endTime match {
               case Some(endTime) =>
-                val endTimeType = new Time(aJCas)
-                endTimeType.addToIndexes()
+                val endTimeType = FeatureStructure.empty[Time]
                 endTimeType.setYear(endTime)
                 endTimeType.setTextList(timeInDocTitle.endTimeTextList.toStringList)
                 initialSentence4Doc.setEndTime(endTimeType)
@@ -133,8 +131,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
                 if (timeTmp.beginTime.nonEmpty || timeTmp.endTime.nonEmpty) {
                   timeTmp.beginTime match {
                     case Some(beginTime) =>
-                      val beginTimeType = new Time(aJCas)
-                      beginTimeType.addToIndexes()
+                      val beginTimeType = FeatureStructure.empty[Time]
                       beginTimeType.setYear(beginTime)
                       beginTimeType.setTextList(timeTmp.beginTimeTextList.toStringList)
                       initialSentence4Doc.setBeginTime(beginTimeType)
@@ -156,8 +153,7 @@ trait Corrector extends MultiLingualDocumentAnnotator {
                   }
                   timeTmp.endTime match {
                     case Some(endTime) =>
-                      val endTimeType = new Time(aJCas)
-                      endTimeType.addToIndexes()
+                      val endTimeType = FeatureStructure.empty[Time]
                       endTimeType.setYear(endTime)
                       endTimeType.setTextList(timeTmp.endTimeTextList.toStringList)
                       initialSentence4Doc.setEndTime(endTimeType)

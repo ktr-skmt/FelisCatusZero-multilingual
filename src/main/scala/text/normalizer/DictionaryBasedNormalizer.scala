@@ -18,11 +18,11 @@ import scala.util.matching.Regex
 class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
   private def ascii2native(inputPath: Path): Iterator[String] = {
     import util.process.ProcessBuilderUtils._
-    Process(Seq[String](
-      s"${System.getProperty("java.home")}/../bin/native2ascii",
-      "-reverse",
-      "-encoding", "UTF-8",
-      inputPath.toAbsolutePath.toString)).lineStream(
+    Process(
+      s"${System.getProperty("java.home")}/../bin/native2ascii" ::
+      "-reverse" ::
+      "-encoding" :: "UTF-8" ::
+      inputPath.toAbsolutePath.toString :: Nil).lineStream(
         StandardCharsets.UTF_8,
         CodingErrorAction.REPORT,
         CodingErrorAction.REPORT,

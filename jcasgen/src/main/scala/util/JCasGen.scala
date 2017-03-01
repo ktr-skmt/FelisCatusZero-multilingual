@@ -35,7 +35,7 @@ object JCasGen {
     val outputDir: String = option.getOutputDir
 
     val tsDirFile = new File(tsDir)
-    if (tsDirFile == null) {
+    if (Option(tsDirFile).isEmpty) {
       return
     }
     if (!tsDirFile.isDirectory) {

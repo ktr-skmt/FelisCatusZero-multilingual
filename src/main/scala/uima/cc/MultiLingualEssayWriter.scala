@@ -90,8 +90,9 @@ trait MultiLingualEssayWriter extends MultiLingual {
           if (!(writerQuestionAnswer(writer) contains question.getLabel)) {
             writerQuestionAnswer(writer)(question.getLabel) = mutable.LinkedHashMap.empty[String, Elem]
           }
+          val element: (String, String, Boolean) = (writer, text, false)
           val localeElem: Elem = getAnswers(
-            writerGoldStandardList :+ (writer, text, false),
+            writerGoldStandardList :+ element,
             xml)
           writerQuestionAnswer(writer)(question.getLabel)(localeId) = localeElem
         case _ =>

@@ -24,12 +24,13 @@ trait Retrieval extends MultiLingual {
       query: String =>
         "-query=" concat query
     }
-    Seq[String](
-      "IndriRunQuery",
-      "-printDocuments=true",
-      s"-memory=${Config.indriMemory}",
-      "-printQuery=true",
-      s"-count=${Config.indriCount}") ++ queries ++ indices
+    (
+      "IndriRunQuery" ::
+      "-printDocuments=true" ::
+      s"-memory=${Config.indriMemory}" ::
+      "-printQuery=true" ::
+      s"-count=${Config.indriCount}" :: Nil
+    ) ++ queries ++ indices
   }
   protected def toIndriResultMap(lines: Iterator[String],
                                  keywordOriginalTextOpt: StringOption,

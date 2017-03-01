@@ -17,7 +17,7 @@ object HistoryCleaner {
     if (resultDir.canRead && resultDir.isDirectory) {
       val dirs: Seq[JFile] = resultDir.listFiles filter {
         dir: JFile =>
-          dir.canRead && dir.isDirectory
+          dir.canWrite && dir.isDirectory
       }
       dirs foreach {
         dir: JFile =>
@@ -27,7 +27,10 @@ object HistoryCleaner {
           File(dir.toString).delete()
       }
       //...
-      Paths.get("out", "result", "index.html").toFile.delete
+      val homePage = Paths.get("out", "result", "index.html").toFile
+      if (homePage.canWrite) {
+        homePage.delete
+      }
     }
   }
 
