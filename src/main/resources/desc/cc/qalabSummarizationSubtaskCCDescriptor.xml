@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName>uima.cc.QALabSummarizationSubtaskCasConsumer</implementationName>
+  <implementationName>uima.cc.qalab.QALabSummarizationSubtaskCasConsumer</implementationName>
   <processingResourceMetaData>
     <name>QA Lab Summarization Subtask Cas Consumer Descriptor</name>
     <description>QA LabのSummarization Subtaskの結果を出力するCas Consumer</description>
@@ -19,7 +19,7 @@
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </inputs>
         <outputs/>
         <inputSofas>

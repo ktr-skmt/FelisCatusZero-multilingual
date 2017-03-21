@@ -2,7 +2,7 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>
-  <annotatorImplementationName>uima.ae.QuestionAnalyzer</annotatorImplementationName>
+  <annotatorImplementationName>uima.ae.qa.QuestionAnalyzer</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>questionAnalyzerAEDescriptor</name>
     <description>日本語質問文を解析するPrimitive Analysis Engine</description>
@@ -20,10 +20,10 @@
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </inputs>
         <outputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </outputs>
         <inputSofas>
           <sofaName>ja</sofaName>

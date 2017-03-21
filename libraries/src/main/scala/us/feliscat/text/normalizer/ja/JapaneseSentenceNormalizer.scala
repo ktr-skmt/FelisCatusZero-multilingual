@@ -1,0 +1,14 @@
+package us.feliscat.text.normalizer.ja
+
+import us.feliscat.text.StringOption
+
+/**
+  * @author K.Sakamoto
+  *         Created on 2016/08/06
+  */
+object JapaneseSentenceNormalizer {
+  def normalize(str: StringOption): StringOption = {
+    JapaneseSentenceEndingNormalizer.normalize(
+      JapaneseSentenceBeginningNormalizer.normalize(str))
+  }
+}

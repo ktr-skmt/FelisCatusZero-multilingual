@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName>uima.cr.GzipXmiCollectionReader</implementationName>
+  <implementationName>uima.cr.xmi.GzipXmiCollectionReader</implementationName>
   <processingResourceMetaData>
     <name>Gzipped XMI Collection Reader</name>
     <description>A simple collection reader that reads CASes in XMI format from a directory in the filesystem.</description>

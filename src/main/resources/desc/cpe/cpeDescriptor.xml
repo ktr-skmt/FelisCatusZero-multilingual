@@ -3,7 +3,7 @@
   <collectionReader>
     <collectionIterator>
       <descriptor>
-        <import name="desc.cr.essayQuestionCRDescriptor"/>
+        <import name="desc.cr.questionCRDescriptor"/>
       </descriptor>
     </collectionIterator>
   </collectionReader>

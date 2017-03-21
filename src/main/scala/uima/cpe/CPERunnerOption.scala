@@ -32,15 +32,15 @@ class CPERunnerOption() {
   @BeanProperty
   var doFastText: Boolean = false
 
-  @Option(name = "-from", aliases = Array[String]("--startPoint"), usage = "start point: cr (EssayQuestionReader) = default, qa (QuestionAnalyzer), ir (InformationRetriever), eg (EssayGenerator), w (EssayWriter), e (EssayEvaluator)", required = false)
+  @Option(name = "-from", aliases = Array[String]("--startPoint"), usage = "start point: qr (QuestionReader) = default, qa (QuestionAnalyzer), ir (InformationRetriever), ag (AnswerGenerator), aw (AnswerWriter), ae (AnswerEvaluator)", required = false)
   @BeanProperty
-  var startPoint: String = "cr"
+  var startPoint: String = "qr"
 
-  @Option(name = "-to", aliases = Array[String]("--endPoint"), usage = "end point: cr (EssayQuestionReader), qa (QuestionAnalyzer), ir (InformationRetriever), eg (EssayGenerator), w (EssayWriter), e (EssayEvaluator) = default", required = false)
+  @Option(name = "-to", aliases = Array[String]("--endPoint"), usage = "end point: qr (QuestionReader), qa (QuestionAnalyzer), ir (InformationRetriever), ag (AnswerGenerator), aw (AnswerWriter), ae (AnswerEvaluator) = default", required = false)
   @BeanProperty
-  var endPoint: String = "e"
+  var endPoint: String = "ae"
 
-  @Option(name = "-unSave", aliases = Array[String]("--unSaveIntermediateState"), usage = "unsave intermediate state. If you want to unsave all state, use '-unSave=all' or '-unSave=qa,ir,eg'. If you want to unsave the qa state, use '-unSave=qa'. If you want to unsave the qa and eg states, use '-unSave=qa,eg'.", required = false)
+  @Option(name = "-unSave", aliases = Array[String]("--unSaveIntermediateState"), usage = "unsave intermediate state. If you want to unsave all state, use '-unSave=all' or '-unSave=qa,ir,ag'. If you want to unsave the qa state, use '-unSave=qa'. If you want to unsave the qa and ag states, use '-unSave=qa,ag'.", required = false)
   @BeanProperty
   var unSave: String = ""
 

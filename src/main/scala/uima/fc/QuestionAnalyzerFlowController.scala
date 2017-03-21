@@ -6,6 +6,7 @@ import org.apache.uima.cas.CAS
 import org.apache.uima.flow._
 import org.apache.uima.resource.metadata.Capability
 import org.apache.uima.util.Level
+import uima.cpe.IntermediatePoint
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
@@ -30,7 +31,7 @@ object QuestionAnalyzerFlowController {
     analysisEngineList.contains(analysisEngine)
   }
   def printAnalysisEngines(): Unit = {
-    println("Question Analyzer Flow Controller Analysis Engine List:")
+    println(s"${IntermediatePoint.QuestionAnalyzer.name} Flow Controller Analysis Engine List:")
     if (analysisEngineList.isEmpty) {
       println("(empty)")
       return
@@ -64,7 +65,7 @@ class QuestionAnalyzerFlowController extends CasFlowController_ImplBase  {
 
     @throws[AnalysisEngineProcessException]
     override def next(): Step = {
-      println(">> Question Analyzer Flow Controller Processing")
+      println(s">> ${IntermediatePoint.QuestionAnalyzer.name} Flow Controller Processing")
       val aCAS: CAS = getCas
       val aeIterator: java.util.Iterator[java.util.Map.Entry[String, AnalysisEngineMetaData]] = getContext.getAnalysisEngineMetaDataMap.entrySet.iterator
       while (aeIterator.hasNext) {

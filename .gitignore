@@ -18,6 +18,7 @@ res/
 src/main/python/
 src/main/java/
 jcasgen/src/main/java/
+libraries4jcas/src/main/java/
 
 # Scala-IDE specific
 .scala_dependencies

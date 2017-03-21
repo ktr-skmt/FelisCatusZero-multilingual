@@ -2,7 +2,7 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>
-  <annotatorImplementationName>uima.ae.InformationRetriever</annotatorImplementationName>
+  <annotatorImplementationName>uima.ae.ir.InformationRetriever</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>informationRetrievalAEDescriptor</name>
     <description>日本語文書を検索するPrimitive Analysis Engine</description>
@@ -20,10 +20,10 @@
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </inputs>
         <outputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </outputs>
         <inputSofas>
           <sofaName>ja</sofaName>

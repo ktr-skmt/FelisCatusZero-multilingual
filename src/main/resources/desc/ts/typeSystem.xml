@@ -6,7 +6,7 @@
   <vendor>K. Sakamoto</vendor>
   <types>
     <typeDescription>
-      <name>jeqa.types.TextAnnotation</name>
+      <name>us.feliscat.types.TextAnnotation</name>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
@@ -33,14 +33,14 @@
           <name>scoreList</name>
           <description>スコアのリスト。インデックスがスコアラと対応する</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Score</elementType>
+          <elementType>us.feliscat.types.Score</elementType>
           <multipleReferencesAllowed>true</multipleReferencesAllowed>
         </featureDescription>
         <featureDescription>
           <name>morphemeList</name>
           <description>形態素のリスト</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.ja.Morpheme</elementType>
+          <elementType>us.feliscat.types.ja.Morpheme</elementType>
         </featureDescription>
         <featureDescription>
           <name>contentWordList</name>
@@ -51,28 +51,28 @@
         <featureDescription>
           <name>beginTime</name>
           <description>開始時間</description>
-          <rangeTypeName>jeqa.types.Time</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Time</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>endTime</name>
           <description>終了時間</description>
-          <rangeTypeName>jeqa.types.Time</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Time</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>geography</name>
           <description>geography</description>
-          <rangeTypeName>jeqa.types.Geography</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Geography</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>semanticTypeList</name>
           <description>semantic type list</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.ja.SemanticType</elementType>
+          <elementType>us.feliscat.types.ja.SemanticType</elementType>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Geography</name>
+      <name>us.feliscat.types.Geography</name>
       <description>地域</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -89,7 +89,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Time</name>
+      <name>us.feliscat.types.Time</name>
       <description>時間</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -106,7 +106,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Score</name>
+      <name>us.feliscat.types.Score</name>
       <description>スコア</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -123,7 +123,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Exam</name>
+      <name>us.feliscat.types.Exam</name>
       <description>試験問題</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -131,7 +131,7 @@
           <name>questionSet</name>
           <description>Examが出題するQuestionのセット</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Question</elementType>
+          <elementType>us.feliscat.types.Question</elementType>
         </featureDescription>
         <featureDescription>
           <name>label</name>
@@ -151,10 +151,15 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Question</name>
+      <name>us.feliscat.types.Question</name>
       <description>Examで出題されたQuestion</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
+        <featureDescription>
+          <name>exam</name>
+          <description>exam</description>
+          <rangeTypeName>us.feliscat.types.Exam</rangeTypeName>
+        </featureDescription>
         <featureDescription>
           <name>xml</name>
           <description>XML Answer Section</description>
@@ -163,7 +168,7 @@
         <featureDescription>
           <name>document</name>
           <description>問題文</description>
-          <rangeTypeName>jeqa.types.Document</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Document</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>label</name>
@@ -184,13 +189,13 @@
           <name>querySet</name>
           <description>QuestionがIRに投げたいQueryのセット</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Query</elementType>
+          <elementType>us.feliscat.types.Query</elementType>
         </featureDescription>
         <featureDescription>
           <name>keywordSet</name>
           <description>キーワード集合</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Keyword</elementType>
+          <elementType>us.feliscat.types.Keyword</elementType>
         </featureDescription>
         <featureDescription>
           <name>beginLengthLimit</name>
@@ -205,17 +210,17 @@
         <featureDescription>
           <name>beginTimeLimit</name>
           <description>begin time limit</description>
-          <rangeTypeName>jeqa.types.Time</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Time</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>endTimeLimit</name>
           <description>end time limit</description>
-          <rangeTypeName>jeqa.types.Time</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Time</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>geographyLimit</name>
           <description>geography limit</description>
-          <rangeTypeName>jeqa.types.Geography</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Geography</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>questionFocusSet</name>
@@ -237,19 +242,19 @@
           <name>answerSet</name>
           <description>回答のセット</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Answer</elementType>
+          <elementType>us.feliscat.types.Answer</elementType>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Answer</name>
+      <name>us.feliscat.types.Answer</name>
       <description>回答</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
           <name>document</name>
           <description>document</description>
-          <rangeTypeName>jeqa.types.Document</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Document</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>isGoldStandard</name>
@@ -264,7 +269,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.KeywordExpansion</name>
+      <name>us.feliscat.types.KeywordExpansion</name>
       <description>keyword expansion</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -281,7 +286,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Keyword</name>
+      <name>us.feliscat.types.Keyword</name>
       <description>Keyword</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -294,25 +299,25 @@
           <name>expansionSet</name>
           <description>expansionSet</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.KeywordExpansion</elementType>
+          <elementType>us.feliscat.types.KeywordExpansion</elementType>
         </featureDescription>
         <featureDescription>
           <name>sentenceSet</name>
           <description>sentence set</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Sentence</elementType>
+          <elementType>us.feliscat.types.Sentence</elementType>
         </featureDescription>
         <featureDescription>
           <name>passageSet</name>
           <description>passage set</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Passage</elementType>
+          <elementType>us.feliscat.types.Passage</elementType>
         </featureDescription>
         <featureDescription>
           <name>documentSet</name>
           <description>IRで取得したDocumentのセット</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Document</elementType>
+          <elementType>us.feliscat.types.Document</elementType>
         </featureDescription>
         <featureDescription>
           <name>isMandatory</name>
@@ -322,7 +327,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Query</name>
+      <name>us.feliscat.types.Query</name>
       <description>QuestionがIRに投げたいQuery</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -344,26 +349,26 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.KeywordQuery</name>
+      <name>us.feliscat.types.KeywordQuery</name>
       <description>Single Keyword type Query</description>
-      <supertypeName>jeqa.types.Query</supertypeName>
+      <supertypeName>us.feliscat.types.Query</supertypeName>
       <features>
         <featureDescription>
           <name>keyword</name>
           <description>keyword</description>
-          <rangeTypeName>jeqa.types.Keyword</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Keyword</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.BoWQuery</name>
+      <name>us.feliscat.types.BoWQuery</name>
       <description>Bag of Words type Query</description>
-      <supertypeName>jeqa.types.Query</supertypeName>
+      <supertypeName>us.feliscat.types.Query</supertypeName>
       <features>
         <featureDescription>
           <name>indriQuery</name>
           <description>Indri Query</description>
-          <rangeTypeName>jeqa.types.Keyword</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.Keyword</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>algorithm</name>
@@ -373,40 +378,40 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Document</name>
+      <name>us.feliscat.types.Document</name>
       <description>IRで取得したDocument</description>
-      <supertypeName>jeqa.types.TextAnnotation</supertypeName>
+      <supertypeName>us.feliscat.types.TextAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>passageSet</name>
           <description>Documentが持つPassageのセット</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Passage</elementType>
+          <elementType>us.feliscat.types.Passage</elementType>
         </featureDescription>
         <featureDescription>
           <name>sentenceSet</name>
           <description>Documentが持つSentenceのセット</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Sentence</elementType>
+          <elementType>us.feliscat.types.Sentence</elementType>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Passage</name>
+      <name>us.feliscat.types.Passage</name>
       <description>Passage</description>
-      <supertypeName>jeqa.types.TextAnnotation</supertypeName>
+      <supertypeName>us.feliscat.types.TextAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>documentSet</name>
           <description>documents</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Document</elementType>
+          <elementType>us.feliscat.types.Document</elementType>
         </featureDescription>
         <featureDescription>
           <name>sentenceSet</name>
           <description>Passageが持っているSentenceのセット</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Sentence</elementType>
+          <elementType>us.feliscat.types.Sentence</elementType>
         </featureDescription>
         <featureDescription>
           <name>containsQuery</name>
@@ -416,21 +421,21 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Sentence</name>
+      <name>us.feliscat.types.Sentence</name>
       <description>Sentence</description>
-      <supertypeName>jeqa.types.TextAnnotation</supertypeName>
+      <supertypeName>us.feliscat.types.TextAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>passageSet</name>
           <description>passages</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Passage</elementType>
+          <elementType>us.feliscat.types.Passage</elementType>
         </featureDescription>
         <featureDescription>
           <name>documentSet</name>
           <description>documents</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.Document</elementType>
+          <elementType>us.feliscat.types.Document</elementType>
         </featureDescription>
         <featureDescription>
           <name>originalText</name>
@@ -441,105 +446,105 @@
           <name>morphemeAnalysisList</name>
           <description>morpheme analysis result list</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.MorphemeAnalysis</elementType>
+          <elementType>us.feliscat.types.MorphemeAnalysis</elementType>
         </featureDescription>
         <featureDescription>
           <name>coreNLPAnalysisList</name>
           <description>CoreNLP Analysis List</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.CoreNLPAnalysis</elementType>
+          <elementType>us.feliscat.types.CoreNLPAnalysis</elementType>
         </featureDescription>
         <featureDescription>
           <name>cabochaAnalysisList</name>
           <description>cabocha analysis list</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.DependencyAnalysis</elementType>
+          <elementType>us.feliscat.types.DependencyAnalysis</elementType>
         </featureDescription>
         <featureDescription>
           <name>ipadicChapas</name>
           <description>ChaPASによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.ChaPAS</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.ChaPAS</rangeTypeName>
         </featureDescription>
         <!--
         <featureDescription>
           <name>ipadicCabocha</name>
           <description>IPADicCaboChaによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.DependencyAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.DependencyAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>ipadicMecab</name>
           <description>IPADicMeCabによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>unidicMecab</name>
           <description>UnidicMeCabによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>unidicCabocha</name>
           <description>UnidicCabochaによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.DependencyAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.DependencyAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>jumandicMecab</name>
           <description>JumanDicMeCabによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>jumandicCabocha</name>
           <description>JumanDicCabochaによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.DependencyAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.DependencyAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>ipadicChasen</name>
           <description>IPADicによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>unidicChasen</name>
           <description>UnidicChasenによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>naistdicChasen</name>
           <description>NAISTDicChasenによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         -->
         <featureDescription>
           <name>knp</name>
           <description>KNPによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.KNP</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.KNP</rangeTypeName>
         </featureDescription>
         <!--
         <featureDescription>
           <name>juman</name>
           <description>Jumanによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>jumanPlusPlus</name>
           <description>Juman++による解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>kyTea</name>
           <description>KyTeaによる解析結果</description>
-          <rangeTypeName>jeqa.types.ja.MorphemeAnalysis</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.MorphemeAnalysis</rangeTypeName>
         </featureDescription>
         -->
         <featureDescription>
           <name>pasList</name>
           <description>ChaPASによる述語項構造のリスト</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.ja.PAS</elementType>
+          <elementType>us.feliscat.types.ja.PAS</elementType>
         </featureDescription>
         <featureDescription>
           <name>candidateSentenceList</name>
           <description>解候補文リスト</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.CandidateSentence</elementType>
+          <elementType>us.feliscat.types.CandidateSentence</elementType>
         </featureDescription>
         <featureDescription>
           <name>containsQuery</name>
@@ -549,30 +554,30 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.CandidateSentence</name>
+      <name>us.feliscat.types.CandidateSentence</name>
       <description>解候補文</description>
-      <supertypeName>jeqa.types.TextAnnotation</supertypeName>
+      <supertypeName>us.feliscat.types.TextAnnotation</supertypeName>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.PAS</name>
+      <name>us.feliscat.types.ja.PAS</name>
       <description>述語項構造</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
           <name>predicate</name>
           <description>述語文節</description>
-          <rangeTypeName>jeqa.types.ja.Bunsetsu</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.Bunsetsu</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>caseList</name>
           <description>格</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.ja.Argument</elementType>
+          <elementType>us.feliscat.types.ja.Argument</elementType>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.Argument</name>
+      <name>us.feliscat.types.ja.Argument</name>
       <description>項</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -584,12 +589,12 @@
         <featureDescription>
           <name>bunsetsu</name>
           <description>文節</description>
-          <rangeTypeName>jeqa.types.ja.Bunsetsu</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.Bunsetsu</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Analysis</name>
+      <name>us.feliscat.types.Analysis</name>
       <description>解析結果</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -601,41 +606,41 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.CoreNLPAnalysis</name>
+      <name>us.feliscat.types.CoreNLPAnalysis</name>
       <description>CoreNLP Analysis</description>
-      <supertypeName>jeqa.types.Analysis</supertypeName>
+      <supertypeName>us.feliscat.types.Analysis</supertypeName>
       <features>
         <featureDescription>
           <name>tokenList</name>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Token</elementType>
+          <elementType>us.feliscat.types.Token</elementType>
         </featureDescription>
         <featureDescription>
           <name>partOfSpeechList</name>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.PartOfSpeech</elementType>
+          <elementType>us.feliscat.types.PartOfSpeech</elementType>
         </featureDescription>
         <featureDescription>
           <name>lemmaList</name>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.Lemma</elementType>
+          <elementType>us.feliscat.types.Lemma</elementType>
         </featureDescription>
         <featureDescription>
           <name>stemmedWordList</name>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.StemmedWord</elementType>
+          <elementType>us.feliscat.types.StemmedWord</elementType>
         </featureDescription>
         <!--
         <featureDescription>
           <name>namedEntityList</name>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>jeqa.types.NamedEntity</elementType>
+          <elementType>us.feliscat.types.NamedEntity</elementType>
         </featureDescription>
         -->
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Token</name>
+      <name>us.feliscat.types.Token</name>
       <description>Token</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -646,7 +651,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.PartOfSpeech</name>
+      <name>us.feliscat.types.PartOfSpeech</name>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
@@ -656,7 +661,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.Lemma</name>
+      <name>us.feliscat.types.Lemma</name>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
@@ -666,7 +671,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.StemmedWord</name>
+      <name>us.feliscat.types.StemmedWord</name>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
@@ -677,7 +682,7 @@
     </typeDescription>
     <!--
     <typeDescription>
-      <name>jeqa.types.NamedEntity</name>
+      <name>us.feliscat.types.NamedEntity</name>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
@@ -688,14 +693,14 @@
     </typeDescription>
     -->
     <typeDescription>
-      <name>jeqa.types.ja.ChaPAS</name>
+      <name>us.feliscat.types.ja.ChaPAS</name>
       <description>ChaPASによる解析結果</description>
-      <supertypeName>jeqa.types.Analysis</supertypeName>
+      <supertypeName>us.feliscat.types.Analysis</supertypeName>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.DependencyAnalysis</name>
+      <name>us.feliscat.types.ja.DependencyAnalysis</name>
       <description>CaboChaやKNPの結果を保持する</description>
-      <supertypeName>jeqa.types.Analysis</supertypeName>
+      <supertypeName>us.feliscat.types.Analysis</supertypeName>
       <features>
         <featureDescription>
           <name>analysisResultTreeFormat</name>
@@ -706,14 +711,14 @@
           <name>bunsetsuList</name>
           <description>文節のリスト</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.ja.Bunsetsu</elementType>
+          <elementType>us.feliscat.types.ja.Bunsetsu</elementType>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.MorphemeAnalysis</name>
+      <name>us.feliscat.types.ja.MorphemeAnalysis</name>
       <description>MecabやJumanの結果を保持する</description>
-      <supertypeName>jeqa.types.Analysis</supertypeName>
+      <supertypeName>us.feliscat.types.Analysis</supertypeName>
       <features>
         <featureDescription>
           <name>analyzer</name>
@@ -724,14 +729,14 @@
           <name>morphemeList</name>
           <description>形態素のリスト</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.ja.Morpheme</elementType>
+          <elementType>us.feliscat.types.ja.Morpheme</elementType>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.KNP</name>
+      <name>us.feliscat.types.ja.KNP</name>
       <description>KNPによる解析結果</description>
-      <supertypeName>jeqa.types.ja.DependencyAnalysis</supertypeName>
+      <supertypeName>us.feliscat.types.ja.DependencyAnalysis</supertypeName>
       <features>
         <featureDescription>
           <name>analysisResultCase</name>
@@ -746,14 +751,14 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.Bunsetsu</name>
+      <name>us.feliscat.types.ja.Bunsetsu</name>
       <description>文節</description>
-      <supertypeName>jeqa.types.TextAnnotation</supertypeName>
+      <supertypeName>us.feliscat.types.TextAnnotation</supertypeName>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.Morpheme</name>
+      <name>us.feliscat.types.ja.Morpheme</name>
       <description>形態素</description>
-      <supertypeName>jeqa.types.Analysis</supertypeName>
+      <supertypeName>us.feliscat.types.Analysis</supertypeName>
       <features>
         <featureDescription>
           <name>originalText</name>
@@ -774,12 +779,12 @@
           <name>wordEmbeddingList</name>
           <description>word vector list</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>jeqa.types.WordEmbedding</elementType>
+          <elementType>us.feliscat.types.WordEmbedding</elementType>
         </featureDescription>
         <featureDescription>
           <name>semanticType</name>
           <description>semantic type</description>
-          <rangeTypeName>jeqa.types.ja.SemanticType</rangeTypeName>
+          <rangeTypeName>us.feliscat.types.ja.SemanticType</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>isTerm</name>
@@ -789,7 +794,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.ja.SemanticType</name>
+      <name>us.feliscat.types.ja.SemanticType</name>
       <description>semantic type</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -806,7 +811,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>jeqa.types.WordEmbedding</name>
+      <name>us.feliscat.types.WordEmbedding</name>
       <description>word embedding</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
@@ -822,7 +827,7 @@
       </features>
     </typeDescription>
   </types>
-  <imports>
+  <!--<imports>
     <import name="desc.ts.SourceDocumentInformation"/>
-  </imports>
+  </imports>-->
 </typeSystemDescription>

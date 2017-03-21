@@ -2,18 +2,18 @@ package uima.cpe
 
 import java.io.{BufferedReader, File, InputStreamReader}
 
-import converter.QALabDataset2MultiLingualQACorpusConverter
-import ir.fulltext.indri.en._
-import ir.fulltext.indri.ja.{JapaneseIndriCharactereLevelIndexer, JapaneseIndriContentWordLevelIndexer}
+import modules.converter.QALabDataset2MultiLingualQACorpusConverter
+import modules.ir.fulltext.indri.en.{EnglishIndriContentWordLevelIndexer, EnglishIndriTokenLevelIndexer}
+import modules.ir.fulltext.indri.ja.{JapaneseIndriCharactereLevelIndexer, JapaneseIndriContentWordLevelIndexer}
+import modules.text.vector.wordembedding.fastText.FastTextVectorGenerator
 import org.apache.uima.UIMAFramework
 import org.apache.uima.cas.CAS
 import org.apache.uima.collection._
 import org.apache.uima.collection.metadata.CpeDescription
 import org.apache.uima.util.XMLInputSource
 import org.kohsuke.args4j.{CmdLineException, CmdLineParser}
-import text.vector.wordembedding.fastText.FastTextVectorGenerator
-import text.{StringNone, StringOption, StringSome}
-import uima.fc.{EssayGeneratorFlowController, FlowController, InformationRetrieverFlowController, QuestionAnalyzerFlowController}
+import uima.fc._
+import us.feliscat.text.StringOption
 import util.Config
 
 import scala.util.control.Breaks
@@ -23,40 +23,16 @@ import scala.util.control.Breaks
   *         Created on 15/10/30
   */
 object CPERunner extends Thread {
-  private var CpeOption = Option.empty[CollectionProcessingEngine]
+  private var cpeOption = Option.empty[CollectionProcessingEngine]
   private var startTimeOption        = Option.empty[Long]
   private var initCompleteTimeOption = Option.empty[Long]
 
   private def startPoint(code: StringOption): IntermediatePoint = {
-    intermediatePoint(code, IntermediatePoint.EssayQuestionReader)
+    IntermediatePoint.get(code, IntermediatePoint.QuestionReader)
   }
 
   private def endPoint(code: StringOption): IntermediatePoint = {
-    intermediatePoint(code, IntermediatePoint.EssayEvaluator)
-  }
-
-  private def intermediatePoint(code: StringOption, default: IntermediatePoint): IntermediatePoint = {
-    code match {
-      case StringSome(intermediatePoint) =>
-        intermediatePoint.toLowerCase match {
-          case "cr" | "essayquestionreader" =>
-            IntermediatePoint.EssayQuestionReader
-          case "qa" | "questionanalyzer" =>
-            IntermediatePoint.QuestionAnalyzer
-          case "ir" | "informationretriever" =>
-            IntermediatePoint.InformationRetriever
-          case "eg" | "essaygenerator" =>
-            IntermediatePoint.EssayGenerator
-          case "w" | "essaywriter" =>
-            IntermediatePoint.EssayWriter
-          case "e" | "essayevaluator" =>
-            IntermediatePoint.EssayEvaluator
-          case _ =>
-            default
-        }
-      case StringNone =>
-        default
-    }
+    IntermediatePoint.get(code, IntermediatePoint.AnswerEvaluator)
   }
 
   private def preProcess(option: CPERunnerOption): Unit = {
@@ -155,22 +131,22 @@ object CPERunner extends Thread {
 
     val needQuestionAnalyzer:     Boolean = needFlow(IntermediatePoint.QuestionAnalyzer)
     val needInformationRetriever: Boolean = needFlow(IntermediatePoint.InformationRetriever)
-    val needEssayGenerator:       Boolean = needFlow(IntermediatePoint.EssayGenerator)
-    val needEssayWriter:          Boolean = needFlow(IntermediatePoint.EssayWriter)
-    val needEssayEvaluator:       Boolean = needFlow(IntermediatePoint.EssayEvaluator)
+    val needAnswerGenerator:      Boolean = needFlow(IntermediatePoint.AnswerGenerator)
+    val needAnswerWriter:         Boolean = needFlow(IntermediatePoint.AnswerWriter)
+    val needAnswerEvaluator:      Boolean = needFlow(IntermediatePoint.AnswerEvaluator)
 
     if (needQuestionAnalyzer) {
-      println(">> Question Analyzer Flow Controller Initializing")
-      FlowController.setAnalysisEngine("questionAnalyzerAAEDescriptor")
-      QuestionAnalyzerFlowController.setAnalysisEngine("questionAnalyzerAEDescriptor")
+      println(s">> ${IntermediatePoint.QuestionAnalyzer.name} Flow Controller Initializing")
+      FlowController.setAnalysisEngine(IntermediatePoint.QuestionAnalyzer.descriptor.get)
+      QuestionAnalyzerFlowController.setAnalysisEngine(IntermediatePoint.QuestionAnalyzer.primitiveDescriptor.get)
     } else {
       QuestionAnalyzerFlowController.clear()
     }
 
     if (needInformationRetriever) {
-      println(">> Information Retriever Flow Controller Initializing")
-      FlowController.setAnalysisEngine("informationRetrieverAAEDescriptor")
-      InformationRetrieverFlowController.setAnalysisEngine("informationRetrieverAEDescriptor")
+      println(s">> ${IntermediatePoint.InformationRetriever.name} Flow Controller Initializing")
+      FlowController.setAnalysisEngine(IntermediatePoint.InformationRetriever.descriptor.get)
+      InformationRetrieverFlowController.setAnalysisEngine(IntermediatePoint.InformationRetriever.primitiveDescriptor.get)
       if (Config.wantToOutputForQALabExtractionSubtask) {
         InformationRetrieverFlowController.setAnalysisEngine("qalabExtractionSubtaskCCDescriptor")
       }
@@ -178,59 +154,59 @@ object CPERunner extends Thread {
       InformationRetrieverFlowController.clear()
     }
 
-    if (needEssayGenerator || needEssayWriter || needEssayEvaluator) {
-      FlowController.setAnalysisEngine("essayGeneratorAAEDescriptor")
+    if (needAnswerGenerator || needAnswerWriter || needAnswerEvaluator) {
+      FlowController.setAnalysisEngine(IntermediatePoint.AnswerGenerator.descriptor.get)
 
-      if (needFlow(IntermediatePoint.EssayGenerator)) {
-        EssayGeneratorFlowController.setAnalysisEngine("essayGeneratorAEDescriptor")
+      if (needFlow(IntermediatePoint.AnswerGenerator)) {
+        AnswerGeneratorFlowController.setAnalysisEngine(IntermediatePoint.AnswerGenerator.primitiveDescriptor.get)
       }
 
       if (Config.wantToOutputForQALabSummarizationSubtask) {
-        EssayGeneratorFlowController.setAnalysisEngine("qalabSummarizationSubtaskCCDescriptor")
+        AnswerGeneratorFlowController.setAnalysisEngine("qalabSummarizationSubtaskCCDescriptor")
       }
 
       if (Config.wantToOutputForQALabEvaluationMethodSubtask) {
-        EssayGeneratorFlowController.setAnalysisEngine("qalabEvaluationMethodSubtaskCCDescriptor")
+        AnswerGeneratorFlowController.setAnalysisEngine("qalabEvaluationMethodSubtaskCCDescriptor")
       }
 
-      if (needFlow(IntermediatePoint.EssayWriter)) {
-        EssayGeneratorFlowController.setAnalysisEngine("essayWriterCCDescriptor")
+      if (needFlow(IntermediatePoint.AnswerWriter)) {
+        AnswerGeneratorFlowController.setAnalysisEngine(IntermediatePoint.AnswerWriter.descriptor.get)
       }
 
-      if (needFlow(IntermediatePoint.EssayEvaluator)) {
-        EssayGeneratorFlowController.setAnalysisEngine("essayEvaluatorCCDescriptor")
+      if (needFlow(IntermediatePoint.AnswerEvaluator)) {
+        AnswerGeneratorFlowController.setAnalysisEngine(IntermediatePoint.AnswerEvaluator.descriptor.get)
       }
     } else {
-      EssayGeneratorFlowController.clear()
+      AnswerGeneratorFlowController.clear()
     }
 
     val gzipXmiCasConsumerDescriptor: String = "gzipXmiCasConsumerDescriptor"
 
     if (option.unSave != "all") {
       val unSavedStates: Array[String] = option.unSave.split(',').map(_.trim.toLowerCase)
-      if (FlowController.hasAnalysisEngine("questionAnalyzerAAEDescriptor") &&
-        (!(unSavedStates.contains("qa") || unSavedStates.contains("questionanalyzer")))) {
-        val index: Int = QuestionAnalyzerFlowController.indexOf("questionAnalyzerAEDescriptor") + 1
+      if (FlowController.hasAnalysisEngine(IntermediatePoint.QuestionAnalyzer.descriptor.get) &&
+        (!(unSavedStates.contains(IntermediatePoint.QuestionAnalyzer.code) || unSavedStates.contains(IntermediatePoint.QuestionAnalyzer.name.toLowerCase)))) {
+        val index: Int = QuestionAnalyzerFlowController.indexOf(IntermediatePoint.QuestionAnalyzer.primitiveDescriptor.get) + 1
         QuestionAnalyzerFlowController.insert(index, gzipXmiCasConsumerDescriptor)
       }
-      if (FlowController.hasAnalysisEngine("informationRetrieverAAEDescriptor") &&
-        (!(unSavedStates.contains("ir") || unSavedStates.contains("informationretriever")))) {
-        val index: Int = InformationRetrieverFlowController.indexOf("informationRetrieverAEDescriptor") + 1
+      if (FlowController.hasAnalysisEngine(IntermediatePoint.InformationRetriever.descriptor.get) &&
+        (!(unSavedStates.contains(IntermediatePoint.InformationRetriever.code) || unSavedStates.contains(IntermediatePoint.InformationRetriever.name.toLowerCase)))) {
+        val index: Int = InformationRetrieverFlowController.indexOf(IntermediatePoint.InformationRetriever.primitiveDescriptor.get) + 1
         InformationRetrieverFlowController.insert(index, gzipXmiCasConsumerDescriptor)
       }
-      if (FlowController.hasAnalysisEngine("essayGeneratorAAEDescriptor") &&
-        (!(unSavedStates.contains("eg") || unSavedStates.contains("essaygenerator")))) {
-        val index: Int = EssayGeneratorFlowController.indexOf("essayGeneratorAEDescriptor") + 1
-        EssayGeneratorFlowController.insert(index, gzipXmiCasConsumerDescriptor)
+      if (FlowController.hasAnalysisEngine(IntermediatePoint.AnswerGenerator.descriptor.get) &&
+        (!(unSavedStates.contains(IntermediatePoint.AnswerGenerator.code) || unSavedStates.contains(IntermediatePoint.AnswerGenerator.name.toLowerCase)))) {
+        val index: Int = AnswerGeneratorFlowController.indexOf(IntermediatePoint.AnswerGenerator.primitiveDescriptor.get) + 1
+        AnswerGeneratorFlowController.insert(index, gzipXmiCasConsumerDescriptor)
       }
     }
 
     val useIntermediatePoint: Boolean = {
       startPointValue match {
         case IntermediatePoint.InformationRetriever |
-             IntermediatePoint.EssayGenerator |
-             IntermediatePoint.EssayWriter |
-             IntermediatePoint.EssayEvaluator =>
+             IntermediatePoint.AnswerGenerator |
+             IntermediatePoint.AnswerWriter |
+             IntermediatePoint.AnswerEvaluator =>
           true
         case _ =>
           false
@@ -245,7 +221,7 @@ object CPERunner extends Thread {
     FlowController.printAnalysisEngines()
     QuestionAnalyzerFlowController.printAnalysisEngines()
     InformationRetrieverFlowController.printAnalysisEngines()
-    EssayGeneratorFlowController.printAnalysisEngines()
+    AnswerGeneratorFlowController.printAnalysisEngines()
 
     val filePath: String = {
       new File(
@@ -254,8 +230,8 @@ object CPERunner extends Thread {
     }
 
     val cpeDesc: CpeDescription = UIMAFramework.getXMLParser.parseCpeDescription(new XMLInputSource(filePath))
-    CpeOption = Option(UIMAFramework.produceCollectionProcessingEngine(cpeDesc))
-    CpeOption match {
+    cpeOption = Option(UIMAFramework.produceCollectionProcessingEngine(cpeDesc))
+    cpeOption match {
       case Some(cpe) =>
         /*
         val casProcessors: Array[CasProcessor] = cpe.getCasProcessors
@@ -269,13 +245,13 @@ object CPERunner extends Thread {
             s"out/xmi/${
               startPointValue match {
                 case IntermediatePoint.InformationRetriever =>
-                  "qa"
-                case IntermediatePoint.EssayGenerator =>
-                  "ir"
-                case IntermediatePoint.EssayWriter | IntermediatePoint.EssayEvaluator =>
-                  "eg"
+                  IntermediatePoint.QuestionAnalyzer.code
+                case IntermediatePoint.AnswerGenerator =>
+                  IntermediatePoint.InformationRetriever.code
+                case IntermediatePoint.AnswerWriter | IntermediatePoint.AnswerEvaluator =>
+                  IntermediatePoint.AnswerGenerator.code
                 case _ =>
-                  "qa"
+                  IntermediatePoint.QuestionAnalyzer.code
               }
             }"
           )
@@ -358,7 +334,7 @@ object CPERunner extends Thread {
       printf("Initialization Time: %d nano seconds%n", initTime)
       printf("Processing Time: %d nano seconds%n", processingTime)
 
-      CpeOption match {
+      cpeOption match {
         case Some(cpe) =>
           printf("%n%n ------------------ PERFORMANCE REPORT ------------------%n%n")
           println(cpe.getPerformanceReport.toString)

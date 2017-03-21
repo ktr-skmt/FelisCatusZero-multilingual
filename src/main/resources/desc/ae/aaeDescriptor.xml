@@ -9,8 +9,8 @@
     <delegateAnalysisEngine key="informationRetrieverAAEDescriptor">
       <import name="desc.ae.informationRetrieverAAEDescriptor"/>
     </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="essayGeneratorAAEDescriptor">
-      <import name="desc.ae.essayGeneratorAAEDescriptor"/>
+    <delegateAnalysisEngine key="answerGeneratorAAEDescriptor">
+      <import name="desc.ae.answerGeneratorAAEDescriptor"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <flowController key="flowControllerDescriptor">
@@ -27,17 +27,17 @@
       <fixedFlow>
         <node>questionAnalyzerAAEDescriptor</node>
         <node>informationRetrieverAAEDescriptor</node>
-        <node>essayGeneratorAAEDescriptor</node>
+        <node>answerGeneratorAAEDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </inputs>
         <outputs>
-          <type allAnnotatorFeatures="true">jeqa.types.Exam</type>
+          <type allAnnotatorFeatures="true">us.feliscat.types.Exam</type>
         </outputs>
         <inputSofas>
           <sofaName>ja</sofaName>

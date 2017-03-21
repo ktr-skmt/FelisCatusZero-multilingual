@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName>uima.cc.GzipXmiCasConsumer</implementationName>
+  <implementationName>uima.cc.xmi.GzipXmiCasConsumer</implementationName>
   <processingResourceMetaData>
     <name>Gzipped XMI Writer Cas Consumer</name>
     <description>Output XMI files</description>
