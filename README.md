@@ -62,3 +62,14 @@ See [How to Run through SBT Shell](tutorial/HowToRunThroughSBTShell.md)
 
 #### Run through SBT Batch Mode
 See <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/Run.ipynb">Run.ipynb</a>
+
+## Libraries
+
+LIBRARY | DEPENDENT on UIMA | DEPENDENT on JCas generated from [FelisCatusZero's type system](src/main/resources/desc/ts) by [JCasGen](jcasgen)
+---|---|---
+[FelisCatus Zero-Libraries](libraries/maven-repo) | NO | NO
+[FelisCatus Zero-Libraries4UIMA](libraries4uima/maven-repo) | YES | NO
+[FelisCatus Zero-Libraries4JCas](libraries4jcas/maven-repo) | YES | YES
+
+FelisCatus Zero-Libraries4JCas is dependent on FelisCatus Zero-Libraries and FelisCatus Zero-Libraries4UIMA.
+Also, FelisCatusZero-multilingual is dependent on FelisCatus Zero-Libraries4JCas and JCas generated from FelisCatusZero's type system.

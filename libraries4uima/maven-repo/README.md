@@ -24,7 +24,7 @@ Currently unsupported but probably available
 ### Repository
 Add the repository of the releases or the snapshots in your build.gradle
 #### Releases
-```json
+```javascript
 repositories {
     maven {
         url "https://github.com/ktr-skmt/FelisCatusZero-multilingual/raw/master/libraries4uima/maven-repo/releases"
@@ -33,7 +33,7 @@ repositories {
 ```
 
 #### Snapshots
-```json
+```javascript
 repositories {
     maven {
         url "https://github.com/ktr-skmt/FelisCatusZero-multilingual/raw/master/libraries4uima/maven-repo/snapshots"
@@ -43,7 +43,7 @@ repositories {
 
 ### Dependency
 Add the dependency in your build.gradle
-```json
+```javascript
 dependencies {
     compile group: 'us.feliscat', name: 'feliscatuszerolibraries4uima_2.12', version: '{version}'
 }
