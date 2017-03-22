@@ -64,12 +64,20 @@ See [How to Run through SBT Shell](tutorial/HowToRunThroughSBTShell.md)
 See <a href="https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/Run.ipynb">Run.ipynb</a>
 
 ## Libraries
+FelisCatusZero-multilingual has three libraries as sub-projects:
+* [FelisCatus Zero-Libraries](libraries/maven-repo)
+* [FelisCatus Zero-Libraries4UIMA](libraries4uima/maven-repo)
+* [FelisCatus Zero-Libraries4JCas](libraries4jcas/maven-repo)
 
-LIBRARY | DEPENDENT on UIMA | DEPENDENT on JCas generated from [FelisCatusZero's type system](src/main/resources/desc/ts) by [JCasGen](jcasgen)
----|---|---
-[FelisCatus Zero-Libraries](libraries/maven-repo) | NO | NO
-[FelisCatus Zero-Libraries4UIMA](libraries4uima/maven-repo) | YES | NO
-[FelisCatus Zero-Libraries4JCas](libraries4jcas/maven-repo) | YES | YES
-
+FelisCatusZero-multilingual is dependent on FelisCatus Zero-Libraries4JCas, FelisCatus Zero-Libraries4UIMA and JCas generated from [FelisCatusZero's type system](src/main/resources/desc/ts) by [JCasGen](jcasgen).
 FelisCatus Zero-Libraries4JCas is dependent on FelisCatus Zero-Libraries and FelisCatus Zero-Libraries4UIMA.
-Also, FelisCatusZero-multilingual is dependent on FelisCatus Zero-Libraries4JCas and JCas generated from FelisCatusZero's type system.
+The three libraries' dependencies are shown in the following table.
+
+LIBRARY | DEPENDENT on UIMA | DEPENDENT on JCas generated from FelisCatusZero's type system
+---|---|---
+FelisCatus Zero-Libraries | NO | NO
+FelisCatus Zero-Libraries4UIMA | YES | NO
+FelisCatus Zero-Libraries4JCas | YES | YES
+
+See [build.sbt](build.sbt) if you want to look in more detail.
+
