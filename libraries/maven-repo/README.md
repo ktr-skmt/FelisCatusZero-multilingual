@@ -1,4 +1,4 @@
-# FelisCatus Zero-libraries
+# FelisCatus Zero-Libraries
 Scala 2.12.1+
 
 The current version of this library is "0.0.1"
