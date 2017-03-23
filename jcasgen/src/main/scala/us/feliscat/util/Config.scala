@@ -25,5 +25,5 @@ object Config {
 
   final lazy val jCasGenOutputDir: String =
     config.as[Option[String]]("jCasGen.outputDir").
-      getOrElse("../../jcaslibraries/src/main/java")
+      getOrElse("../../libraries4jcas/src/main/java")
 }
