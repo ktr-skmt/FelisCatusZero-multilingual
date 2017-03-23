@@ -5,4 +5,4 @@ before_install: umask 0022
 scala:
   - 2.12.1
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION jcasgen reload publishLibs reload compile test:compile
+  - sbt ++$TRAVIS_SCALA_VERSION ci

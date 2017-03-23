@@ -322,6 +322,44 @@ commands ++= {
   }
 
   commandBuffer += {
+    Command.command("ci") {
+      state =>
+        "clean" ::
+          "jcasgen" ::
+          "reload" ::
+          "publishLibs" ::
+          "reload" ::
+          "project jcasgen" ::
+          "test:compile" ::
+          "coverage" ::
+          "test" ::
+          "coverageReport" ::
+          "project libraries4uima" ::
+          "test:compile" ::
+          "coverage" ::
+          "test" ::
+          "coverageReport" ::
+          "project libraries" ::
+          "test:compile" ::
+          "coverage" ::
+          "test" ::
+          "coverageReport" ::
+          "project libraries4jcas" ::
+          "test:compile" ::
+          "coverage" ::
+          "test" ::
+          "coverageReport" ::
+          "project root" ::
+          "compile" ::
+          "test:compile" ::
+          "coverage" ::
+          "test" ::
+          "coverageReport" ::
+          "coverageAggregate" :: state
+    }
+  }
+
+  commandBuffer += {
     Command.command("clearHistory") {
       state =>
         s"run-main $usfeliscat.util.HistoryCleaner" :: state
