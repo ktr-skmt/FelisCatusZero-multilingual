@@ -1,4 +1,6 @@
 # FelisCatus Zero-multilingual 
+[![Build Status](https://travis-ci.org/ktr-skmt/FelisCatusZero-multilingual.svg?branch=master)](https://travis-ci.org/ktr-skmt/FelisCatusZero-multilingual)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/FelisCatusZero-multilingual/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 ## Abstract
 This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
 Also, this is the Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.

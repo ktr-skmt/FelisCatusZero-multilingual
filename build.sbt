@@ -74,14 +74,14 @@ val pomExtraTemplate = {
     <url>git@github.com:ktr-skmt/FelisCatusZero-multilingual.git</url>
     <connection>scm:git@github.com:ktr-skmt/FelisCatusZero-multilingual.git</connection>
   </scm>
-    <developers>
-      <developer>
-        <id>ktr-skmt</id>
-        <name>Kotaro Sakamoto</name>
-        <email>kotarosakamoto@nii.ac.jp</email>
-        <url>https://linkedin.com/in/kotaro-sakamoto-19168b4a</url>
-      </developer>
-    </developers>
+  <developers>
+    <developer>
+      <id>ktr-skmt</id>
+      <name>Kotaro Sakamoto</name>
+      <email>kotarosakamoto@nii.ac.jp</email>
+      <url>https://linkedin.com/in/kotaro-sakamoto-19168b4a</url>
+    </developer>
+  </developers>
 }
 
 val libraries4uimaFile = "libraries4uima"

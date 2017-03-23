@@ -1,7 +1,7 @@
 package modules.ir.fulltext.indri.en
 
+import modules.ir.fulltext.indri.MultiLingualIndriIndexer
 import modules.util.ModulesConfig
-import us.feliscat.ir.fulltext.indri.MultiLingualIndriIndexer
 import us.feliscat.ir.fulltext.indri.en.EnglishTrecTextFileFormatReviser
 import us.feliscat.m17n.English
 

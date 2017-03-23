@@ -1,7 +1,8 @@
-package us.feliscat.ir.fulltext.indri
+package modules.ir.fulltext.indri
 
 import java.nio.file.{Path, Paths}
 
+import us.feliscat.ir.fulltext.indri.{IndriIndex, MultiLingualTrecTextFileFormatReviser}
 import us.feliscat.m17n.MultiLingual
 
 /**
