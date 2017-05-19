@@ -8,6 +8,7 @@ import com.typesafe.config.{ConfigFactory, Config => TypeSafeConfig}
 import net.ceedubs.ficus.Ficus._
 import us.feliscat.text.{StringNone, StringOption}
 import us.feliscat.util.LibrariesConfig
+import us.feliscat.util.StringUtils._
 
 /**
   * <pre>
@@ -19,7 +20,7 @@ import us.feliscat.util.LibrariesConfig
 object Config {
   val timestamp: String = {
     val now: ZonedDateTime = ZonedDateTime.now(ZoneId.systemDefault)
-    DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(now)
+    DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(now).replaceAllLiteratim(":", "")
   }
 
   final private[this] var config: TypeSafeConfig = ConfigFactory.load()

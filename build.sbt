@@ -7,7 +7,7 @@ lazy val javaVersion = "1.8"
 val usfeliscat = "us.feliscat"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.12.1",
+  scalaVersion := "2.12.2",
   organization := usfeliscat,
   fork in run := true
 ) ++ {
@@ -65,6 +65,24 @@ def getPublishTo(isSnapshot: Boolean, f: String, n: String): Option[Resolver] = 
   )
 }
 
+val uimaLibraries = {
+  val uimaGroupId = "org.apache.uima"
+  val uimaVersion = "2.8.1"
+  val uimaFitVersion = "2.1.0"
+  Seq(
+    uimaGroupId % "uimaj-core"                % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-bootstrap"           % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-tools"               % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-examples"            % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-document-annotation" % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-cpe"                 % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-adapter-vinci"       % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimaj-adapter-soap"        % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "jVinci"                    % uimaVersion,// withSources() withJavadoc(),
+    uimaGroupId % "uimafit-core"           % uimaFitVersion// withSources() withJavadoc()
+  )
+}
+
 val licensesTemplate = Seq("Apache License Version 2.0" -> url("https://raw.githubusercontent.com/ktr-skmt/FelisCatusZero-multilingual/master/LICENSE"))
 
 val homepageTemplate = Some(url("https://github.com/ktr-skmt/FelisCatusZero-multilingual"))
@@ -102,23 +120,7 @@ lazy val libraries4uima = (project in file(libraries4uimaFile)).
     homepage := homepageTemplate,
     pomExtra := pomExtraTemplate
   ).settings(
-    libraryDependencies ++= {
-      val uimaGroupId = "org.apache.uima"
-      val uimaVersion = "2.8.1"
-      val uimaFitVersion = "2.1.0"
-      Seq(
-        uimaGroupId % "uimaj-core"                % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-bootstrap"           % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-tools"               % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-examples"            % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-document-annotation" % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-cpe"                 % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-adapter-vinci"       % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimaj-adapter-soap"        % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "jVinci"                    % uimaVersion,// withSources() withJavadoc(),
-        uimaGroupId % "uimafit-core"           % uimaFitVersion// withSources() withJavadoc()
-      )
-    }
+    libraryDependencies ++= uimaLibraries
   )
 
 val librariesFile = "libraries"
@@ -224,6 +226,8 @@ lazy val root = (project in file(".")).
     usfeliscat % s"feliscatuszero${libraries4jcasFile}_2.12" % "0.0.1",
     usfeliscat % s"feliscatuszero${libraries4uimaFile}_2.12" % "0.0.1"
   )
+).settings(
+  libraryDependencies ++= uimaLibraries
 )
 
 val jcasgenFile = "jcasgen"

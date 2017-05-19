@@ -166,6 +166,7 @@ class AnswerWriter extends CasConsumer_ImplBase {
         resultDir.delete
         resultDir.mkdir
       }
+
       val outputDir: File = Paths.get(resultDir.toString, Config.timestamp).toAbsolutePath.toFile
       if (!outputDir.canRead) {
         outputDir.mkdir
