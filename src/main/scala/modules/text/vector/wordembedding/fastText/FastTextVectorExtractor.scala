@@ -8,6 +8,7 @@ import modules.util.ModulesConfig
 import us.feliscat.text.StringNone
 
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import scala.concurrent.duration._
 import scala.sys.process.Process
 
 /**
@@ -53,7 +54,8 @@ object FastTextVectorExtractor {
       StandardCharsets.UTF_8,
       CodingErrorAction.IGNORE,
       CodingErrorAction.IGNORE,
-      StringNone
+      StringNone,
+      10.minutes
     ) foreach {
       line: String =>
         val tokens: Array[String] = line.split(' ')

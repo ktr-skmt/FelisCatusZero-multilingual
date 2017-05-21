@@ -54,6 +54,8 @@ sealed abstract class StringOption {
     } else {
       StringSome(f(get))
     }
+
+  def foreach(f: String => Unit): Unit = if (nonEmpty) f(get)
 }
 
 /**

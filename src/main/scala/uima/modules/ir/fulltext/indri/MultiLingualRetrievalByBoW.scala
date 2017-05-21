@@ -16,6 +16,7 @@ import util.Config
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.duration._
 import scala.sys.process.Process
 
 /**
@@ -96,7 +97,8 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
             StandardCharsets.UTF_8,
             CodingErrorAction.IGNORE,
             CodingErrorAction.IGNORE,
-            StringNone
+            StringNone,
+            3.minutes
           ),
         StringOption(keyword.getText), Nil, mutable.Map.empty[String, IndriResult]).valuesIterator
     }

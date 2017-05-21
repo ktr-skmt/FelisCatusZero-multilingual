@@ -8,6 +8,7 @@ import us.feliscat.util.LibrariesConfig
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.duration._
 import scala.sys.process.Process
 import scala.util.matching.Regex
 
@@ -26,7 +27,8 @@ class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
         StandardCharsets.UTF_8,
         CodingErrorAction.REPORT,
         CodingErrorAction.REPORT,
-        StringNone)
+        StringNone,
+        30.seconds)
   }
   private val regex: Regex = """([^#:][^:]*):\[([^#]+)\](?:#.*)?""".r
   private val terms: Seq[(String, String)] = initialize

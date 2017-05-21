@@ -7,6 +7,7 @@ import us.feliscat.text.StringNone
 import us.feliscat.util.LibrariesConfig
 
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.duration._
 import scala.sys.process.Process
 
 /**
@@ -34,7 +35,8 @@ class IndriIndex(inputPath: Path, indexPath: Path) {
       StandardCharsets.UTF_8,
       CodingErrorAction.IGNORE,
       CodingErrorAction.IGNORE,
-      StringNone
+      StringNone,
+      3.minutes
     ).foreach(println)
   }
 }

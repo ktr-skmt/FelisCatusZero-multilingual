@@ -16,6 +16,7 @@ import util.Config
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.duration._
 import scala.sys.process.Process
 
 /**
@@ -172,7 +173,8 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
               StandardCharsets.UTF_8,
               CodingErrorAction.IGNORE,
               CodingErrorAction.IGNORE,
-              StringNone
+              StringNone,
+              3.minutes
             ),
           StringOption(keywordOriginalText), expansionOnlyList, indriResultMap)
       case StringNone =>

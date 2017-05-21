@@ -3,9 +3,10 @@ package us.feliscat.text.analyzer.mor
 
 import java.nio.charset.{CodingErrorAction, StandardCharsets}
 
-import us.feliscat.text.{StringNone, StringOption, StringSome}
+import us.feliscat.text.{StringNone, StringOption}
 
-import scala.sys.process.{Process, ProcessBuilder}
+import scala.concurrent.duration._
+import scala.sys.process.ProcessBuilder
 
 /**
  * <pre>
@@ -16,11 +17,13 @@ import scala.sys.process.{Process, ProcessBuilder}
 trait MorphemeAnalyzer {
   def analyze(sentence: StringOption): Iterator[String] = {
     import us.feliscat.util.process.ProcessBuilderUtils._
-    (echo(sentence) #| analyzer()).lineStream(
+    analyzer().lineStream(
       StandardCharsets.UTF_8,
       CodingErrorAction.IGNORE,
       CodingErrorAction.IGNORE,
-      StringNone)
+      StringNone,
+      sentence,
+      30.seconds)
   }
 
   def analysisResult(sentence: StringOption): StringOption = {
@@ -36,15 +39,6 @@ trait MorphemeAnalyzer {
   }
 
   def analyzer(): ProcessBuilder
-
-  def echo(sentence: StringOption): ProcessBuilder = {
-    Process(sentence match {
-      case StringSome(s) =>
-        "echo" ::  s.toString :: Nil
-      case StringNone =>
-        Nil
-    })
-  }
 
   protected val adverbialNouns = Seq.empty[String]
 
@@ -135,6 +129,6 @@ trait MorphemeAnalyzer {
   protected def extractWords(sentence: StringOption, needsContentWords: Boolean): Seq[String]
 
   protected type OriginalTextTextPOS = (String, String, String, StringOption, Seq[String])
-  //return originalText, us.feliscat.text, pos
+  //return originalText, text, pos
   def extractMorphemes(sentence: StringOption): Seq[OriginalTextTextPOS]
 }
