@@ -5,7 +5,7 @@ import java.nio.file.{Path, Paths}
 
 import com.typesafe.config.{ConfigFactory, Config => TypeSafeConfig}
 import net.ceedubs.ficus.Ficus._
-import us.feliscat.util.XmlSchema
+import us.feliscat.util.xml.XmlSchema
 
 /**
   * <pre>

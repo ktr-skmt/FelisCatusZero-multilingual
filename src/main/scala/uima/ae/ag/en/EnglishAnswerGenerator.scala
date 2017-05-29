@@ -9,9 +9,9 @@ import us.feliscat.sentence.MultiLingualSentenceGroup
 import us.feliscat.sentence.en.{EnglishSentenceCombination, EnglishSentenceCombinationGenerator, EnglishSentenceGroup}
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList.FSListUtils
 import us.feliscat.util.uima.FeatureStructure
-import us.feliscat.util.uima.SeqUtils._
+import us.feliscat.util.uima.seq2fs.SeqUtils
 import util.Config
 
 import scala.collection.mutable.ListBuffer

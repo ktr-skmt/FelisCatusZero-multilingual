@@ -3,8 +3,7 @@ package us.feliscat.score.update
 import us.feliscat.text.similarity.{AverageOverlapCalculator, OverlapCalculator}
 import us.feliscat.text.vector.{BinaryVector, BinaryVectorGeneratorFromJCas, BinaryVectorMerger}
 import us.feliscat.types.{Document, Score, Sentence}
-import us.feliscat.util.uima.FSListUtils._
-import us.feliscat.util.uima.StringListUtils._
+import us.feliscat.util.uima.fsList._
 
 import scala.collection.mutable.ListBuffer
 

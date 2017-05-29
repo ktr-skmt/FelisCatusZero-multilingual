@@ -8,7 +8,7 @@ import org.apache.uima.jcas.cas.FSArray
 import uima.modules.common.MultiLingualDocumentAnnotator
 import us.feliscat.types._
 import us.feliscat.util.uima.JCasUtils
-import us.feliscat.util.uima.TimeUtils._
+import us.feliscat.util.uima.time._
 
 import scala.collection.mutable
 

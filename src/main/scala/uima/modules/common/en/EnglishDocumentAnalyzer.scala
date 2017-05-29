@@ -7,8 +7,7 @@ import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.text.analyzer.CoreNLP4English
 import us.feliscat.types.{CoreNLPAnalysis, Sentence}
 import us.feliscat.util.uima.FeatureStructure
-import us.feliscat.util.uima.SeqStringUtils._
-import us.feliscat.util.uima.SeqUtils._
+import us.feliscat.util.uima.seq2fs._
 
 /**
   * <pre>

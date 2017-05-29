@@ -8,10 +8,10 @@ import org.apache.uima.jcas.cas.FSArray
 import us.feliscat.ir.fulltext.indri.{IndriResult, Retrieval}
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
-import us.feliscat.util.process.ProcessBuilderUtils._
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.process._
+import us.feliscat.util.uima.fsList.FSListUtils
 import us.feliscat.util.uima.JCasUtils
-import us.feliscat.util.uima.SeqUtils._
+import us.feliscat.util.uima.seq2fs.SeqUtils
 import util.Config
 
 import scala.collection.mutable
@@ -174,7 +174,7 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
               CodingErrorAction.IGNORE,
               CodingErrorAction.IGNORE,
               StringNone,
-              3.minutes
+              Config.indriRunQueryTimeout.minute
             ),
           StringOption(keywordOriginalText), expansionOnlyList, indriResultMap)
       case StringNone =>

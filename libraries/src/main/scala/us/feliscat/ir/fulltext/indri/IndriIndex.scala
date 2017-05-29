@@ -5,6 +5,7 @@ import java.nio.file.Path
 
 import us.feliscat.text.StringNone
 import us.feliscat.util.LibrariesConfig
+import us.feliscat.util.process._
 
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
@@ -30,13 +31,12 @@ class IndriIndex(inputPath: Path, indexPath: Path) {
   def index(): Unit = {
     val buffer = ListBuffer.empty[String]
     command.foreach(buffer.+=)
-    import us.feliscat.util.process.ProcessBuilderUtils._
     Process(buffer.result).lineStream(
       StandardCharsets.UTF_8,
       CodingErrorAction.IGNORE,
       CodingErrorAction.IGNORE,
       StringNone,
-      3.minutes
+      LibrariesConfig.indriBuildIndexTimeout.minute
     ).foreach(println)
   }
 }

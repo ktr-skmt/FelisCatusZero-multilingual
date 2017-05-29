@@ -32,7 +32,7 @@ class JapaneseNgramSegmentator(nGram: Int) extends MultiLingualNgramSegmentator(
 
   def segmentateWithCharacter(text: StringOption): StringOption = {
     merge(segmentate({
-      import us.feliscat.util.StringUtils._
+      import us.feliscat.util.primitive.StringUtils
       for (segment <- text.getOrElse("").toCodePointArray) yield {
         new String(Array[Int](segment), 0, nGram)
       }

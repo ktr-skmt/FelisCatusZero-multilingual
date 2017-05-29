@@ -3,7 +3,7 @@ package us.feliscat.score.update
 import us.feliscat.text.similarity.{AverageSimilarityCalculator, SimilarityCalculator}
 import us.feliscat.text.vector._
 import us.feliscat.types.{Document, Score, Sentence}
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList.FSListUtils
 
 import scala.collection.mutable.ListBuffer
 

@@ -15,15 +15,3 @@ object JCasUtils extends JCasUtils(None)
   * @param aJCasOpt jCas option
   */
 class JCasUtils(@BeanProperty var aJCasOpt: Option[JCas] = None)
-
-/**
-  * @author K.Sakamoto
-  */
-trait UimaUtilsTrait {
-  protected val aJCas: JCas = JCasUtils.getAJCasOpt match {
-    case Some(cas) =>
-      cas
-    case None =>
-      throw new Exception()
-  }
-}

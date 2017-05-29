@@ -1,7 +1,7 @@
 package us.feliscat.text.vector
 
 import us.feliscat.types.{Sentence, TextAnnotation}
-import us.feliscat.util.uima.StringListUtils._
+import us.feliscat.util.uima.fsList.StringListUtils
 
 /**
   * <pre>

@@ -9,7 +9,7 @@ import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
 import us.feliscat.text.StringOption
 import us.feliscat.types._
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList.FSListUtils
 
 import scala.collection.mutable.ListBuffer
 import scala.xml.{Elem, PrettyPrinter, XML}

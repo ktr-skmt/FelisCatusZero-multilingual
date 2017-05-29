@@ -6,7 +6,7 @@ import us.feliscat.sentence.ja.JapaneseSentenceSplitter
 import us.feliscat.text.normalizer.ja.JapaneseEscapeNoun
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.util.LibrariesConfig
-import us.feliscat.util.StringUtils._
+import us.feliscat.util.primitive.StringUtils
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

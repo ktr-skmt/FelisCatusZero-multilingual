@@ -30,7 +30,7 @@ sealed abstract class StringOption {
   def codePointCount: Int = {
     this match {
       case StringSome(s) =>
-        import us.feliscat.util.StringUtils._
+        import us.feliscat.util.primitive.StringUtils
         s.codePointNumber
       case StringNone => 0
     }

@@ -8,7 +8,7 @@ import com.typesafe.config.{ConfigFactory, Config => TypeSafeConfig}
 import net.ceedubs.ficus.Ficus._
 import us.feliscat.text.{StringNone, StringOption}
 import us.feliscat.util.LibrariesConfig
-import us.feliscat.util.StringUtils._
+import us.feliscat.util.primitive.StringUtils
 
 /**
   * <pre>
@@ -56,6 +56,8 @@ object Config {
 
   lazy val numOfScores: Int = config.as[Option[Int]]("numOfScores").getOrElse(3)
 
+  final lazy val indriRunQueryTimeout: Int = config.as[Option[Int]]("indri.timeout").getOrElse(10)
+
   final lazy val indriTfidfK1: String = config.as[Option[String]]("uima.modules.ir.indri.tfidf.k1").getOrElse("1.2")
 
   final lazy val indriTfidfB: String = config.as[Option[String]]("uima.modules.ir.indri.tfidf.b").getOrElse("0.75")
@@ -75,8 +77,6 @@ object Config {
   final lazy val usePassage: Boolean = config.as[Option[Boolean]]("passage.use").getOrElse(false)
 
   final lazy val passageWindow: Int = config.as[Option[Int]]("passage.window").getOrElse(3)
-
-
 
   final lazy val mainMorphemeAnalyzer: String = config.as[Option[String]]("analyzer.mainMorphemeAnalyzer").getOrElse("IPADicMeCab")
 

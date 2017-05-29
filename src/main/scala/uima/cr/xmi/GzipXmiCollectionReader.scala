@@ -24,7 +24,7 @@ class GzipXmiCollectionReader extends CollectionReader_ImplBase with GzipXMI {
   private final val PARAM_FAIL_UNKNOWN: String = "FailOnUnknownType"
 
   private var mFailOnUnknownType = Option.empty[Boolean]
-  private var mFiles = ListBuffer.empty[File]
+  private val mFiles = ListBuffer.empty[File]
   private var mCurrentIndex = Option.empty[Int]
 
   @throws[ResourceInitializationException]

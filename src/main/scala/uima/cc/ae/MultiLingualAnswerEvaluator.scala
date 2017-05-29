@@ -9,9 +9,8 @@ import uima.modules.common.MultiLingualDocumentAnnotator
 import us.feliscat.evaluation.{MacroAveraging, MicroAveraging, RougeN, SummaryStatistics}
 import us.feliscat.text.{StringNone, StringOption}
 import us.feliscat.types._
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList._
 import us.feliscat.util.uima.JCasUtils
-import us.feliscat.util.uima.StringListUtils._
 import util.Config
 
 import scala.collection.mutable

@@ -49,7 +49,7 @@ object FastTextVectorExtractor {
       "print-vectors",
       Paths.get(ModulesConfig.fastTextModelBin).toAbsolutePath.toString)
 
-    import us.feliscat.util.process.ProcessBuilderUtils._
+    import us.feliscat.util.process._
     Process(command).#<(Paths.get(ModulesConfig.fastTextQuery).toAbsolutePath.toFile).lineStream(
       StandardCharsets.UTF_8,
       CodingErrorAction.IGNORE,

@@ -6,11 +6,9 @@ import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.time.TimeTmp
 import us.feliscat.types._
 import us.feliscat.types.ja.{Morpheme, MorphemeAnalysis}
-import us.feliscat.util.uima.ArrayUtils._
-import us.feliscat.util.uima.FSListUtils._
-import us.feliscat.util.uima.SeqStringUtils._
-import us.feliscat.util.uima.SeqUtils._
-import us.feliscat.util.uima.StringListUtils._
+import us.feliscat.util.uima.array2fs._
+import us.feliscat.util.uima.fsList._
+import us.feliscat.util.uima.seq2fs._
 import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
 import util.Config
 
@@ -294,9 +292,9 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
         geographyBuffer4Doc ++= geographyList4Sentence
         sentenceType.setGeography(geographyType)
 
-        sentenceType.getMorphemeAnalysisList.toSeq foreach {
+        sentenceType.getMorphemeAnalysisList.toSeq[MorphemeAnalysis] foreach {
           case morphemeAnalysis: MorphemeAnalysis if morphemeAnalysis.getAnalyzer equalsIgnoreCase Config.mainMorphemeAnalyzer =>
-            morphemeAnalysis.getMorphemeList.toSeq foreach {
+            morphemeAnalysis.getMorphemeList.toSeq[Morpheme] foreach {
               case morpheme: Morpheme =>
                 val index: Int = indexOfMorpheme(morphemeList4Doc, morpheme)
                 morphemeList4Doc += {

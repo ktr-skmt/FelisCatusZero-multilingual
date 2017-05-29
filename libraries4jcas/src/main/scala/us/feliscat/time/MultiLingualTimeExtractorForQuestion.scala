@@ -3,7 +3,7 @@ package us.feliscat.time
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.text.StringOption
 import us.feliscat.types.{Sentence, Time}
-import us.feliscat.util.uima.StringListUtils._
+import us.feliscat.util.uima.fsList.StringListUtils
 
 import scala.collection.mutable.ListBuffer
 

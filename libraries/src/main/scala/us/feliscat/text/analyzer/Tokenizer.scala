@@ -2,7 +2,7 @@ package us.feliscat.text.analyzer
 
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.util.LibrariesConfig
-import us.feliscat.util.StringUtils._
+import us.feliscat.util.primitive.StringUtils
 
 /**
   * @author K.Sakamoto

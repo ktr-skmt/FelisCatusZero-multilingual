@@ -4,9 +4,8 @@ import us.feliscat.m17n.MultiLingual
 import org.apache.uima.jcas.JCas
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
-import us.feliscat.util.uima.FSListUtils._
-import us.feliscat.util.uima.SeqUtils._
-import us.feliscat.util.uima.StringListUtils._
+import us.feliscat.util.uima.fsList._
+import us.feliscat.util.uima.seq2fs.SeqUtils
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

@@ -4,7 +4,7 @@ import us.feliscat.m17n.Japanese
 import us.feliscat.text.StringOption
 import us.feliscat.text.normalizer.ja.JapaneseWordExpressionNormalizer
 import us.feliscat.text.term.MultiLingualTermExpander
-import us.feliscat.util.StringUtils._
+import us.feliscat.util.primitive.StringUtils
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

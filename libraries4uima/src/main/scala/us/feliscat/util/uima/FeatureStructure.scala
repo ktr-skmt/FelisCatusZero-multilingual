@@ -18,10 +18,14 @@ object FeatureStructure {
       throw new Exception()
     }
     val aJCas: JCas = JCasUtils.aJCasOpt.get
-    val ret: T = tag.runtimeClass.getConstructor(classOf[JCas]).newInstance(aJCas).asInstanceOf[T]
+    val ret: T = tag.runtimeClass.
+      getConstructor(classOf[JCas]).
+      newInstance(aJCas).
+      asInstanceOf[T]
     ret.addToIndexes()
     ret
   }
+
   def createArray(size: Int): FSArray = {
     if (JCasUtils.aJCasOpt.isEmpty) {
       throw new Exception()

@@ -5,11 +5,10 @@ import uima.modules.common.MultiLingualDocumentAnnotator
 import us.feliscat.text.{StringOption, StringSome}
 import us.feliscat.time.TimeTmp
 import us.feliscat.types._
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList.FSListUtils
 import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
-import us.feliscat.util.uima.SeqStringUtils._
-import us.feliscat.util.uima.SeqUtils._
-import us.feliscat.util.uima.TimeUtils._
+import us.feliscat.util.uima.seq2fs._
+import us.feliscat.util.uima.time._
 import util.Config
 
 import scala.collection.mutable

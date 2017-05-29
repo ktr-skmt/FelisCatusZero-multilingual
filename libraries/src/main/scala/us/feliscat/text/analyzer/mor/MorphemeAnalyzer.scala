@@ -4,6 +4,8 @@ package us.feliscat.text.analyzer.mor
 import java.nio.charset.{CodingErrorAction, StandardCharsets}
 
 import us.feliscat.text.{StringNone, StringOption}
+import us.feliscat.util.LibrariesConfig
+import us.feliscat.util.process._
 
 import scala.concurrent.duration._
 import scala.sys.process.ProcessBuilder
@@ -16,14 +18,13 @@ import scala.sys.process.ProcessBuilder
  */
 trait MorphemeAnalyzer {
   def analyze(sentence: StringOption): Iterator[String] = {
-    import us.feliscat.util.process.ProcessBuilderUtils._
     analyzer().lineStream(
       StandardCharsets.UTF_8,
       CodingErrorAction.IGNORE,
       CodingErrorAction.IGNORE,
       StringNone,
       sentence,
-      30.seconds)
+      LibrariesConfig.mecabTimeout.minute)
   }
 
   def analysisResult(sentence: StringOption): StringOption = {

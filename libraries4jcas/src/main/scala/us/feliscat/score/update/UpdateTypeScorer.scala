@@ -3,7 +3,7 @@ package us.feliscat.score.update
 import us.feliscat.score.{Granularity, ScorerType}
 import us.feliscat.types.{Document, Sentence}
 import us.feliscat.util.JCasLibrariesConfig
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList.FSListUtils
 
 /**
  * <pre>

@@ -3,7 +3,7 @@ package us.feliscat.converter
 import org.jsoup.Jsoup
 import org.jsoup.nodes.{Document, TextNode}
 import us.feliscat.text.StringOption
-import us.feliscat.util.JsoupHelper
+import us.feliscat.util.json._
 
 /**
  * <pre>
@@ -83,7 +83,6 @@ object HtmlTextConverter {
   }
 
   def toText(html: Document): StringOption = {
-    import JsoupHelper.elementsToElements4Scala
     val builder = new StringBuilder()
     for (element <- html.body.children.not(negativeTagList).toElementArray) {
       for (e <- element.select(breakTags).toElementArray) {

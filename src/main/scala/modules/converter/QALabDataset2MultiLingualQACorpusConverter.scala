@@ -6,7 +6,7 @@ import java.nio.file.{Files, Path, Paths}
 import javax.xml.transform.stream.StreamSource
 
 import modules.util.ModulesConfig
-import us.feliscat.util.XmlSchema
+import us.feliscat.util.xml.XmlSchema
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

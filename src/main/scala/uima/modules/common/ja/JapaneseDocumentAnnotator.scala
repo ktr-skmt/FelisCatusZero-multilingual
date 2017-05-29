@@ -9,7 +9,7 @@ import us.feliscat.time.TimeTmp
 import us.feliscat.time.ja.JapaneseTimeExtractorForWorldHistory
 import us.feliscat.types.TextAnnotation
 import us.feliscat.types.ja.Morpheme
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.uima.fsList.FSListUtils
 
 import scala.collection.mutable
 

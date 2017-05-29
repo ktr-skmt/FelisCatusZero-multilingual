@@ -9,8 +9,7 @@ import us.feliscat.text.analyzer.mor.mecab.{IpadicMecab, UnidicMecab}
 import us.feliscat.types.Sentence
 import us.feliscat.types.ja.{Morpheme, MorphemeAnalysis, SemanticType}
 import us.feliscat.util.uima.FeatureStructure
-import us.feliscat.util.uima.SeqStringUtils._
-import us.feliscat.util.uima.SeqUtils._
+import us.feliscat.util.uima.seq2fs._
 import util.Config
 
 import scala.collection.mutable

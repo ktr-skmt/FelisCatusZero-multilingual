@@ -19,7 +19,13 @@ object LibrariesConfig {
     config = ConfigFactory.load(ConfigFactory.parseFile(configFile))
   }
 
+  final lazy val mecabTimeout: Int = config.as[Option[Int]]("analyzer.mecab.timeout").getOrElse(1)
+
   var useTermNormalizer: Boolean = true
+
+  final lazy val normalizationDirctionaryTimeout: Int = config.as[Option[Int]]("normalizationDictionary.timeout").getOrElse(10)
+
+  final lazy val indriBuildIndexTimeout: Int = config.as[Option[Int]]("knowledgeSource.indriIndex.timeout").getOrElse(10)
 
   lazy val indriCount: Int = config.as[Option[Int]]("uima.modules.ir.indri.count").getOrElse(100)
 

@@ -7,8 +7,8 @@ import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.types.{Answer, Document, Exam, Question}
-import us.feliscat.util.StringUtils._
-import us.feliscat.util.uima.FSListUtils._
+import us.feliscat.util.primitive.StringUtils
+import us.feliscat.util.uima.fsList.FSListUtils
 import us.feliscat.util.uima.JCasUtils
 
 import scala.collection.mutable

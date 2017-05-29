@@ -11,9 +11,9 @@ import us.feliscat.exam.essay.xml.Answer
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types.{Document, Exam, Keyword, Question, Answer => UAnswer}
-import us.feliscat.util.uima.SeqUtils._
+import us.feliscat.util.uima.seq2fs.SeqUtils
 import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
-import us.feliscat.util.XmlSchema
+import us.feliscat.util.xml.XmlSchema
 
 import scala.collection.mutable.ListBuffer
 import scala.util.matching.Regex

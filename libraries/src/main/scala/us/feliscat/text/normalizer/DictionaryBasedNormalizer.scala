@@ -5,6 +5,7 @@ import java.nio.file.{Path, Paths}
 
 import us.feliscat.text.{StringNone, StringOption}
 import us.feliscat.util.LibrariesConfig
+import us.feliscat.util.process._
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -18,7 +19,6 @@ import scala.util.matching.Regex
   */
 class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
   private def ascii2native(inputPath: Path): Iterator[String] = {
-    import us.feliscat.util.process.ProcessBuilderUtils._
     Process(
       s"${System.getProperty("java.home")}/../bin/native2ascii" ::
       "-reverse" ::
@@ -28,7 +28,7 @@ class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
         CodingErrorAction.REPORT,
         CodingErrorAction.REPORT,
         StringNone,
-        30.seconds)
+        LibrariesConfig.normalizationDirctionaryTimeout.minute)
   }
   private val regex: Regex = """([^#:][^:]*):\[([^#]+)\](?:#.*)?""".r
   private val terms: Seq[(String, String)] = initialize
@@ -93,7 +93,7 @@ class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
   }
 
   protected def replaceAll(input: String, term: String, replacement: String): String = {
-    import us.feliscat.util.StringUtils._
+    import us.feliscat.util.primitive.StringUtils
     input.replaceAllLiteratim(term, replacement)
   }
 }
