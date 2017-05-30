@@ -123,7 +123,7 @@ class MyErrorHandler extends ErrorHandler {
       errorCode, lineNumber, columnNumber, message)
   }
 
-  @throws(classOf[SAXException])
+  @throws[SAXException]
   override def warning(e: SAXParseException) {
     val writer = new PrintWriter(Files.newBufferedWriter(logPath, StandardCharsets.UTF_8))
     try {
@@ -143,7 +143,7 @@ class MyErrorHandler extends ErrorHandler {
     }
   }
 
-  @throws(classOf[SAXException])
+  @throws[SAXException]
   override def error(e: SAXParseException) {
     val writer = new PrintWriter(Files.newBufferedWriter(logPath, StandardCharsets.UTF_8))
     try {
@@ -163,7 +163,7 @@ class MyErrorHandler extends ErrorHandler {
     }
   }
 
-  @throws(classOf[SAXException])
+  @throws[SAXException]
   override def fatalError(e: SAXParseException) {
     val writer = new PrintWriter(Files.newBufferedWriter(logPath, StandardCharsets.UTF_8))
     try {
