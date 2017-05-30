@@ -22,6 +22,7 @@ package object process {
   private val cache: mutable.WeakHashMap[String, Seq[String]] = mutable.WeakHashMap.empty[String, Seq[String]]
 
   implicit class ProcessBuilderUtils(repr: ProcessBuilder) {
+    @throws[TimeoutException]
     def lineStream(encoding: Charset,
                    onMalformedInput: CodingErrorAction,
                    onUnmappableCharacter: CodingErrorAction,
@@ -37,6 +38,7 @@ package object process {
         timeout)
     }
 
+    @throws[TimeoutException]
     def lineStream(encoding: Charset,
                    onMalformedInput: CodingErrorAction,
                    onUnmappableCharacter: CodingErrorAction,
@@ -55,7 +57,7 @@ package object process {
     }
 
     @throws[TimeoutException]
-    def lineStream(encoding: Charset,
+    private def lineStream(encoding: Charset,
                    onMalformedInput: CodingErrorAction,
                    onUnmappableCharacter: CodingErrorAction,
                    replacementOpt: StringOption,

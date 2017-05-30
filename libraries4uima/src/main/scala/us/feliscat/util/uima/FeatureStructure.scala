@@ -13,12 +13,12 @@ import scala.reflect.ClassTag
   * @author K.Sakamoto
   */
 object FeatureStructure {
-  def create[T <: TOP](implicit tag: ClassTag[T]): T = {
+  def create[T <: TOP : ClassTag]: T = {
     if (JCasUtils.aJCasOpt.isEmpty) {
       throw new Exception()
     }
     val aJCas: JCas = JCasUtils.aJCasOpt.get
-    val ret: T = tag.runtimeClass.
+    val ret: T = implicitly[ClassTag[T]].runtimeClass.
       getConstructor(classOf[JCas]).
       newInstance(aJCas).
       asInstanceOf[T]
