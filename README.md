@@ -29,7 +29,8 @@ Note: I am planning to make remote services to enable to run without local Indri
 ### (2) Knowledge Source Installation
 See [Knowledge Source Installation](tutorial/KnowledgeSourceInstallation.md)
 
-Note: Knowledge source accessible people are currently limited because of a license issue. I am planning to make remote services to enable to run without local knowledge sources and avoid the license issue.
+Note: Knowledge source accessible people are currently limited because of a license issue.
+Note: I am planning to make remote services to enable to run without local knowledge sources.
 
 ### (3) Download FelisCatus Zero
 Git-clone or download this repository
