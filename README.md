@@ -4,8 +4,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/FelisCatusZero-multilingual/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
-This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
-Also, this is the Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
+This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
+(past version: <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.)
 
 ## Trial
 
