@@ -12,7 +12,7 @@ import scala.concurrent.duration.FiniteDuration
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.io.{Codec, Source}
 import scala.sys.process.{Process, ProcessBuilder, ProcessIO}
-import scala.util.{Failure, Success}
+import scala.util.{Failure, Success, Try}
 
 /**
   * @author K. Sakamoto
@@ -22,13 +22,12 @@ package object process {
   private val cache: mutable.WeakHashMap[String, Seq[String]] = mutable.WeakHashMap.empty[String, Seq[String]]
 
   implicit class ProcessBuilderUtils(repr: ProcessBuilder) {
-    @throws[TimeoutException]
     def lineStream(encoding: Charset,
                    onMalformedInput: CodingErrorAction,
                    onUnmappableCharacter: CodingErrorAction,
                    replacementOpt: StringOption,
                    timeout: FiniteDuration): Iterator[String] = {
-      lineStream(
+      lineStreamTry(
         encoding,
         onMalformedInput,
         onUnmappableCharacter,
@@ -38,14 +37,13 @@ package object process {
         timeout)
     }
 
-    @throws[TimeoutException]
     def lineStream(encoding: Charset,
                    onMalformedInput: CodingErrorAction,
                    onUnmappableCharacter: CodingErrorAction,
                    replacementOpt: StringOption,
                    inputText: StringOption,
                    timeout: FiniteDuration): Iterator[String] = {
-      lineStream(
+      lineStreamTry(
         encoding,
         onMalformedInput,
         onUnmappableCharacter,
@@ -53,17 +51,42 @@ package object process {
         inputText,
         needInputText = true,
         timeout)
+    }
 
+    private def lineStreamTry(encoding: Charset,
+                              onMalformedInput: CodingErrorAction,
+                              onUnmappableCharacter: CodingErrorAction,
+                              replacementOpt: StringOption,
+                              inputText: StringOption,
+                              needInputText: Boolean,
+                              timeout: FiniteDuration): Iterator[String] = {
+      Try(
+        lineStream(
+          encoding,
+          onMalformedInput,
+          onUnmappableCharacter,
+          replacementOpt,
+          inputText,
+          needInputText,
+          timeout
+        )
+      ) match {
+        case Success(result) =>
+          result
+        case Failure(err) =>
+          err.printStackTrace(System.err)
+          Iterator.empty
+      }
     }
 
     @throws[TimeoutException]
     private def lineStream(encoding: Charset,
-                   onMalformedInput: CodingErrorAction,
-                   onUnmappableCharacter: CodingErrorAction,
-                   replacementOpt: StringOption,
-                   inputText: StringOption,
-                   needInputText: Boolean,
-                   timeout: FiniteDuration): Iterator[String] = {
+                           onMalformedInput: CodingErrorAction,
+                           onUnmappableCharacter: CodingErrorAction,
+                           replacementOpt: StringOption,
+                           inputText: StringOption,
+                           needInputText: Boolean,
+                           timeout: FiniteDuration): Iterator[String] = {
 
       if (needInputText && inputText.isEmpty) {
         return Iterator.empty

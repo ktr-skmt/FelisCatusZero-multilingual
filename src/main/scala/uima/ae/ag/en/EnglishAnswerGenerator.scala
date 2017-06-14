@@ -10,7 +10,7 @@ import us.feliscat.sentence.en.{EnglishSentenceCombination, EnglishSentenceCombi
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
 import us.feliscat.util.uima.fsList.FSListUtils
-import us.feliscat.util.uima.FeatureStructure
+import us.feliscat.util.uima.{FeatureStructure, JCasID}
 import us.feliscat.util.uima.seq2fs.SeqUtils
 import util.Config
 
@@ -46,7 +46,7 @@ object EnglishAnswerGenerator
                        question: Question,
                        scoreIndex: Int,
                        selectedSentenceList: Seq[Sentence],
-                       sentenceGroupList: Seq[MultiLingualSentenceGroup]): Unit = {
+                       sentenceGroupList: Seq[MultiLingualSentenceGroup])(implicit id: JCasID): Unit = {
     //combinations
     val sentenceCombinationGenerator = new EnglishSentenceCombinationGenerator(scoreIndex)
     val sentenceCombinationList: Seq[EnglishSentenceCombination] = {
@@ -138,7 +138,9 @@ object EnglishAnswerGenerator
     }
   }
 
-  private def generateAnswerIgnoringLengthLimit(aJCas: JCas, question: Question, sentenceCombinationList: Seq[EnglishSentenceCombination]): Unit = {
+  private def generateAnswerIgnoringLengthLimit(aJCas: JCas,
+                                                question: Question,
+                                                sentenceCombinationList: Seq[EnglishSentenceCombination])(implicit id: JCasID): Unit = {
     if (0 < sentenceCombinationList.size) {
       val answerResults: EnglishAnswerCandidates = mAnswerGenerator.
         generate(sentenceCombinationList.toList).asInstanceOf[EnglishAnswerCandidates]

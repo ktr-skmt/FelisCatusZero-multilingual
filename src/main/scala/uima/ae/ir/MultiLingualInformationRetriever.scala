@@ -1,14 +1,12 @@
 package uima.ae.ir
 
-import java.util.Locale
-
 import org.apache.uima.cas.FSIterator
 import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
 import uima.modules.common.MultiLingualDocumentAnnotator
 import us.feliscat.types._
-import us.feliscat.util.uima.JCasUtils
 import us.feliscat.util.uima.time._
+import us.feliscat.util.uima.{JCasID, JCasUtils}
 
 import scala.collection.mutable
 
@@ -25,27 +23,26 @@ trait MultiLingualInformationRetriever extends MultiLingualDocumentAnnotator {
 
   protected def retrieveByKeyword(aJCas: JCas,
                                   query: KeywordQuery,
-                                  keywordCorrectionMap: mutable.Map[String, Seq[String]]): Option[Long]
+                                  keywordCorrectionMap: mutable.Map[String, Seq[String]])(implicit id: JCasID): Option[Long]
 
   protected def retrieveByBoW(aJCas: JCas,
-                              query: BoWQuery): Option[Long]
+                              query: BoWQuery)(implicit id: JCasID): Option[Long]
 
   protected def correctDocByKeyword(aJCas: JCas,
                                     query: KeywordQuery,
                                     keywordCorrectionMap: Map[String, Seq[String]],
                                     beginTimeLimit: Option[Int],
                                     endTimeLimit: Option[Int],
-                                    geographyLimit: Option[Geography]): Unit
+                                    geographyLimit: Option[Geography])(implicit id: JCasID): Unit
 
   protected def correctDocByBoW(aJCas: JCas,
                                 query: BoWQuery,
                                 beginTimeLimit: Option[Int],
                                 endTimeLimit: Option[Int],
-                                geographyLimit: Option[Geography]): Unit
+                                geographyLimit: Option[Geography])(implicit id: JCasID): Unit
 
-  def processQuestion(aView: JCas, question: Question): Unit = {
-    print("- ")
-    println(question.getLabel)
+  def processQuestion(aView: JCas, question: Question)(implicit id: JCasID): Unit = {
+    println("- ".concat(question.getLabel))
     val beginTimeLimit: Option[Int] = question.getBeginTimeLimit.toYearOpt
     val endTimeLimit:   Option[Int] = question.getEndTimeLimit.toYearOpt
     val geographyLimit = Option.empty[Geography]
@@ -81,7 +78,7 @@ trait MultiLingualInformationRetriever extends MultiLingualDocumentAnnotator {
       }
     }
 
-    // Re-correct document, passage and us.feliscat.sentence in other keywords
+    // Re-correct document, passage and sentence in other keywords
     for (j <- 0 until queryArray.size) {
       queryArray.get(j) match {
         case query: KeywordQuery if !query.getAlreadyFinishedCorrecting =>
@@ -105,19 +102,20 @@ trait MultiLingualInformationRetriever extends MultiLingualDocumentAnnotator {
     }
   }
 
-  def process(aJCas: JCas): Unit = {
-    println(s">> ${new Locale(localeId).getDisplayLanguage} Information Retriever Processing")
+  def process(aJCas: JCas)(implicit id: JCasID): Unit = {
+    println(s">> ${locale.getDisplayLanguage} Information Retriever Processing")
     val aView: JCas = aJCas.getView(localeId)
-    JCasUtils.setAJCasOpt(Option(aView))
+    JCasUtils.setAJCas(aView)
 
     @SuppressWarnings(Array[String]("rawtypes"))
     val itExam: FSIterator[Nothing] = aView.getAnnotationIndex(Exam.`type`).iterator(true)
     while (itExam.hasNext) {
       val exam: Exam = itExam.next
-      println("Dataset:")
-      print("* ")
-      println(exam.getLabel)
-      println("Question:")
+      print(
+        s"""Dataset:"
+           |* ${exam.getLabel}
+           |Question:
+           |""".stripMargin)
       val questionSet: FSArray = exam.getQuestionSet
       for (i <- 0 until questionSet.size) {
         val question: Question = questionSet.get(i).asInstanceOf[Question]

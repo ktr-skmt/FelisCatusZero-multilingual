@@ -9,7 +9,7 @@ import us.feliscat.types.ja.{Morpheme, MorphemeAnalysis}
 import us.feliscat.util.uima.array2fs._
 import us.feliscat.util.uima.fsList._
 import us.feliscat.util.uima.seq2fs._
-import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
+import us.feliscat.util.uima.{FeatureStructure, JCasID, JCasUtils}
 import util.Config
 
 import scala.collection.mutable
@@ -42,7 +42,7 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
                               sentenceList: Seq[Sentence],
                               document: Document,
                               scoreArrayOpt: Option[FSArray],
-                              keywordSet: Seq[String]): Unit = {
+                              keywordSet: Seq[String])(implicit id: JCasID): Unit = {
     val sentencePassageList = mutable.Map.empty[Sentence, ListBuffer[Passage]]
     val passageBuffer = ListBuffer.empty[Passage]
     val sentenceTypeListSize: Int = sentenceList.size
@@ -179,9 +179,9 @@ trait MultiLingualDocumentAnnotator extends MultiLingualDocumentAnalyzer {
   protected def extractTime(sentenceOpt: StringOption): TimeTmp
 
   //document.addToIndexesとdocument.setTextを事前に行ったdocumentが対象
-  def annotate(aJCas: JCas, document: Document, keywordSet: Seq[String]): Document = {
+  def annotate(aJCas: JCas, document: Document, keywordSet: Seq[String])(implicit id: JCasID): Document = {
     //println(">> Document Annotator Processing")
-    JCasUtils.setAJCasOpt(Option(aJCas))
+    JCasUtils.setAJCas(aJCas)
     //println(document.getText)
     val contentWordList4Doc = ListBuffer.empty[String]
     val morphemeList4Doc = ListBuffer.empty[Morpheme]

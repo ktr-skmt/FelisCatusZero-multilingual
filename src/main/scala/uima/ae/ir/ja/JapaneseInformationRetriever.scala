@@ -8,6 +8,7 @@ import uima.modules.common.ja.JapaneseDocumentAnnotator
 import uima.modules.ir.correction.ja.{JapaneseBoWBasedIRDocCorrector, JapaneseKeywordBasedIRDocCorrector}
 import uima.modules.ir.fulltext.indri.ja.{JapaneseRetrievalByBoW, JapaneseRetrievalByKeyword}
 import us.feliscat.types.{BoWQuery, Geography, KeywordQuery}
+import us.feliscat.util.uima.JCasID
 
 import scala.collection.mutable
 
@@ -20,8 +21,8 @@ import scala.collection.mutable
   */
 object JapaneseInformationRetriever extends MultiLingualInformationRetriever with JapaneseDocumentAnnotator {
   override protected def retrieveByKeyword(aJCas: JCas,
-                                  query: KeywordQuery,
-                                  keywordCorrectionMap: mutable.Map[String, Seq[String]]): Option[Long] = {
+                                           query: KeywordQuery,
+                                           keywordCorrectionMap: mutable.Map[String, Seq[String]])(implicit id: JCasID): Option[Long] = {
     if (localeId != Locale.JAPANESE.getLanguage) {
       return None
     }
@@ -36,7 +37,7 @@ object JapaneseInformationRetriever extends MultiLingualInformationRetriever wit
     )
   }
 
-  override protected def retrieveByBoW(aJCas: JCas, query: BoWQuery): Option[Long] = {
+  override protected def retrieveByBoW(aJCas: JCas, query: BoWQuery)(implicit id: JCasID): Option[Long] = {
     if (localeId != Locale.JAPANESE.getLanguage) {
       return None
     }
@@ -55,7 +56,7 @@ object JapaneseInformationRetriever extends MultiLingualInformationRetriever wit
                                     keywordCorrectionMap: Map[String, Seq[String]],
                                     beginTimeLimit: Option[Int],
                                     endTimeLimit: Option[Int],
-                                    geographyLimit: Option[Geography]): Unit = {
+                                    geographyLimit: Option[Geography])(implicit id: JCasID): Unit = {
     JapaneseKeywordBasedIRDocCorrector.correct(
       aJCas,
       query,
@@ -70,7 +71,7 @@ object JapaneseInformationRetriever extends MultiLingualInformationRetriever wit
                                 query: BoWQuery,
                                 beginTimeLimit: Option[Int],
                                 endTimeLimit: Option[Int],
-                                geographyLimit: Option[Geography]): Unit = {
+                                geographyLimit: Option[Geography])(implicit id: JCasID): Unit = {
     JapaneseBoWBasedIRDocCorrector.correct(
       aJCas,
       query,

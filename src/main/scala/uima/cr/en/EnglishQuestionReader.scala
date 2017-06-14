@@ -1,7 +1,16 @@
 package uima.cr.en
 
+import java.io.File
+
+import org.apache.uima.jcas.JCas
+import org.apache.uima.resource.metadata.MetaDataObject
 import us.feliscat.m17n.English
 import uima.cr.MultiLingualQuestionReader
+import uima.rs.MultiLingualQuestion
+import uima.rs.en.EnglishQuestion
+import us.feliscat.text.StringOption
+import us.feliscat.types.Question
+import us.feliscat.util.uima.JCasID
 
 import scala.util.matching.Regex
 
@@ -23,4 +32,13 @@ object EnglishQuestionReader extends MultiLingualQuestionReader with English {
     "shortly",
     "in short"
   )
+
+  override def read(metaData: java.util.Collection[MetaDataObject],
+                    baseDirOpt: StringOption,
+                    examFiles: Seq[File]): Seq[MultiLingualQuestion] = {
+    multiCAS(metaData, baseDirOpt, examFiles) map {
+      case (casId: JCasID, aJCas: JCas, question: Question) =>
+        new EnglishQuestion(casId, aJCas, question)
+    }
+  }
 }

@@ -2,7 +2,7 @@ package modules.ir.fulltext.indri
 
 import java.nio.file.{Path, Paths}
 
-import us.feliscat.ir.fulltext.indri.{IndriIndex, MultiLingualTrecTextFileFormatReviser}
+import us.feliscat.ir.fulltext.indri.{IndriIndexer, MultiLingualTrecTextFileFormatReviser}
 import us.feliscat.m17n.MultiLingual
 
 /**
@@ -20,6 +20,14 @@ trait MultiLingualIndriIndexer extends MultiLingual {
   protected val reviser: MultiLingualTrecTextFileFormatReviser
 
   def run(): Unit = {
+    print(
+      s"""Resources (length = ${resources.length}):
+         |${resources.mkString("\n")}
+         |Segmentations (length = ${segmentations.length}):
+         |${segmentations.mkString("\n")}
+         |Indices (length = ${indices.length}):
+         |${indices.mkString("\n")}
+         |""".stripMargin)
     if (segmentations.length == indices.length &&
         resources.length == indices.length) {
       for (i <- indices.indices) {
@@ -27,8 +35,15 @@ trait MultiLingualIndriIndexer extends MultiLingual {
         val segmentation: Path = Paths.get(segmentations(i))
         val indexPath:    Path = Paths.get(indices(i))
 
+        println(">> Indri Segmentation Processing")
         reviser.reviseInDirectory(resource, segmentation)
-        new IndriIndex(segmentation, indexPath).index()
+        println(">> Indri Segmentation Finishing")
+
+        println(">> IndriBuildIndex Processing")
+        val indexer = new IndriIndexer(segmentation, indexPath)
+        indexer.index()
+        println(">> IndriBuildIndex Finishing")
+
         println()
       }
     }

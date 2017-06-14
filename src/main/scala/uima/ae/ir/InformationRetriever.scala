@@ -1,5 +1,7 @@
 package uima.ae.ir
 
+import java.util.Locale
+
 import org.apache.uima.UimaContext
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException
@@ -8,6 +10,7 @@ import org.apache.uima.resource.ResourceInitializationException
 import uima.ae.ir.en.EnglishInformationRetriever
 import uima.ae.ir.ja.JapaneseInformationRetriever
 import uima.cpe.IntermediatePoint
+import us.feliscat.util.uima.JCasID
 
 
 /**
@@ -26,7 +29,7 @@ class InformationRetriever extends JCasAnnotator_ImplBase {
   override def process(aJCas: JCas): Unit = {
     println(s">> ${IntermediatePoint.InformationRetriever.name} Processing")
 
-    JapaneseInformationRetriever.process(aJCas)
-    EnglishInformationRetriever.process(aJCas)
+    JapaneseInformationRetriever.process(aJCas)(JCasID(Locale.JAPANESE.getLanguage))
+    EnglishInformationRetriever.process(aJCas)(JCasID(Locale.ENGLISH.getLanguage))
   }
 }

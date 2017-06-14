@@ -20,11 +20,10 @@ import scala.util.matching.Regex
 abstract class MultiLingualTrecTextFileFormatReviser(nGram: Int, isContentWord: Boolean) extends MultiLingual {
   //private val regexTagHead: Regex = "^<[^>]+>".r
   private def formatTitle(title: String): String = {
-    //<TITLE>{title}</TITLE>.toString
-    "<TITLE>%s</TITLE>".format(title)
+    s"<TITLE>$title</TITLE>"
   }
   private def formatText(text: String): String = {
-    "<TEXT>%s</TEXT>".format(text)
+    s"<TEXT>$text</TEXT>"
   }
 
   protected val segmentator: MultiLingualNgramSegmentator
@@ -39,7 +38,7 @@ abstract class MultiLingualTrecTextFileFormatReviser(nGram: Int, isContentWord: 
       val iterator: java.util.Iterator[Path] = Files.newDirectoryStream(inputDirectoryPath).iterator
       while (iterator.hasNext) {
         val next: Path = iterator.next
-        if (!next.toFile.getName.endsWith(".DS_Store")) {
+        if (next.toFile.getName != ".DS_Store") {// for macOS
           revise(
             next,
             outputDirectoryPath
@@ -68,8 +67,8 @@ abstract class MultiLingualTrecTextFileFormatReviser(nGram: Int, isContentWord: 
         StandardOpenOption.CREATE
       )
     )
-    var isText = false
 
+    var isText = false
     try {
       while (readerIterator.hasNext) {
         StringOption(readerIterator.next) match {
@@ -119,13 +118,13 @@ abstract class MultiLingualTrecTextFileFormatReviser(nGram: Int, isContentWord: 
 
   private def reviseTag(line: String): String = {
     line.
-      replaceAll("<[dD][oO][cC]>", "<DOC>").
-      replaceAll("</[dD][oO][cC]>", "</DOC>").
-      replaceAll("<[dD][oO][cC][nN][oO]>", "<DOCNO>").
+      replaceAll("<[dD][oO][cC]>",          "<DOC>").
+      replaceAll("</[dD][oO][cC]>",         "</DOC>").
+      replaceAll("<[dD][oO][cC][nN][oO]>",  "<DOCNO>").
       replaceAll("</[dD][oO][cC][nN][oO]>", "</DOCNO>").
-      replaceAll("<[tT][eE][xX][tT]>", "<TEXT>").
-      replaceAll("</[tT][eE][xX][tT]>", "</TEXT>").
-      replaceAll("<[tT][iI][tT][lL][eE]>", "<TITLE>").
+      replaceAll("<[tT][eE][xX][tT]>",      "<TEXT>").
+      replaceAll("</[tT][eE][xX][tT]>",     "</TEXT>").
+      replaceAll("<[tT][iI][tT][lL][eE]>",  "<TITLE>").
       replaceAll("</[tT][iI][tT][lL][eE]>", "</TITLE>")
   }
 

@@ -11,7 +11,7 @@ import us.feliscat.sentence.ja.{JapaneseSentenceCombination, JapaneseSentenceCom
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
 import us.feliscat.util.uima.fsList.FSListUtils
-import us.feliscat.util.uima.FeatureStructure
+import us.feliscat.util.uima.{FeatureStructure, JCasID}
 import us.feliscat.util.uima.seq2fs.SeqUtils
 import util.Config
 
@@ -42,7 +42,7 @@ object JapaneseAnswerGenerator
                        question: Question,
                        scoreIndex: Int,
                        selectedSentenceList: Seq[Sentence],
-                       sentenceGroupList: Seq[MultiLingualSentenceGroup]): Unit = {
+                       sentenceGroupList: Seq[MultiLingualSentenceGroup])(implicit id: JCasID): Unit = {
     //combinations
     val sentenceCombinationGenerator = new JapaneseSentenceCombinationGenerator(scoreIndex)
     val sentenceCombinationList: Seq[JapaneseSentenceCombination] = {
@@ -137,7 +137,9 @@ object JapaneseAnswerGenerator
     }
   }
 
-  private def generateAnswerIgnoringLengthLimit(aJCas: JCas, question: Question, sentenceCombinationList: Seq[JapaneseSentenceCombination]): Unit = {
+  private def generateAnswerIgnoringLengthLimit(aJCas: JCas,
+                                                question: Question,
+                                                sentenceCombinationList: Seq[JapaneseSentenceCombination])(implicit id: JCasID): Unit = {
     if (0 < sentenceCombinationList.size) {
       val answerResults: JapaneseAnswerCandidates = mAnswerGenerator.
         generate(sentenceCombinationList.toList).asInstanceOf[JapaneseAnswerCandidates]

@@ -1,5 +1,7 @@
 package us.feliscat.m17n
 
+import java.util.Locale
+
 import us.feliscat.text.StringOption
 
 /**
@@ -10,7 +12,9 @@ import us.feliscat.text.StringOption
   * @author K.Sakamoto
   */
 trait MultiLingual {
-  protected val localeId: String
+  val locale: Locale
+
+  protected val localeId: String = locale.getLanguage
 
   protected def normalize(textOpt: StringOption): StringOption
 }

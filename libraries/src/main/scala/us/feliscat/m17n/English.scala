@@ -13,7 +13,7 @@ import us.feliscat.text.normalizer.en.EnglishNormalizedString
   * @author K.Sakamoto
   */
 trait English extends MultiLingual {
-  override protected val localeId: String = Locale.ENGLISH.getLanguage
+  override lazy val locale: Locale = Locale.ENGLISH
 
   override def normalize(textOpt: StringOption): StringOption = {
     EnglishNormalizedString(textOpt).toStringOption

@@ -19,6 +19,8 @@ object LibrariesConfig {
     config = ConfigFactory.load(ConfigFactory.parseFile(configFile))
   }
 
+  final lazy val native2ascii: String = config.as[Option[String]]("native2ascii").getOrElse(s"${System.getProperty("java.home")}/../bin/native2ascii")
+
   final lazy val mecabTimeout: Int = config.as[Option[Int]]("analyzer.mecab.timeout").getOrElse(1)
 
   var useTermNormalizer: Boolean = true
@@ -31,13 +33,19 @@ object LibrariesConfig {
 
   lazy val indriMemory: String = config.as[Option[String]]("uima.modules.ir.indri.memory").getOrElse("1200m")
 
-  lazy val geoNameListInJapanese: String = config.as[Option[String]]("knowledgeSource.geo.ja.nameList").getOrElse("wh/res/geo/list.txt")
+  lazy val indriKnowledgeSourceHome: String = config.as[Option[String]]("indri.home").getOrElse("~")
 
-  lazy val geoNameListInEnglish: String = config.as[Option[String]]("knowledgeSource.geo.en.nameList").getOrElse("wh/res/geo/list_en.txt")
+  private def indriKnowledgeSourceHomePlus(relativePath: String): String = {
+    indriKnowledgeSourceHome.concat(relativePath)
+  }
 
-  lazy val glossaryEntriesForTimeExtractorInJapanese: String = config.as[Option[String]]("knowledgeSource.time.ja.listFromGlossary").getOrElse("res/geotime/time_extracted_from_glossary_ja.csv")
+  lazy val geoNameListInJapanese: String = indriKnowledgeSourceHomePlus(config.as[Option[String]]("knowledgeSource.geo.ja.nameList").getOrElse("wh/res/geo/list.txt"))
 
-  lazy val glossaryEntriesForTimeExtractorInEnglish: String = config.as[Option[String]]("knowledgeSource.time.en.listFromGlossary").getOrElse("res/geotime/time_extracted_from_glossary_en.csv")
+  lazy val geoNameListInEnglish: String = indriKnowledgeSourceHomePlus(config.as[Option[String]]("knowledgeSource.geo.en.nameList").getOrElse("wh/res/geo/list_en.txt"))
+
+  lazy val glossaryEntriesForTimeExtractorInJapanese: String = config.as[Option[String]]("knowledgeSource.time.ja.listFromGlossary").getOrElse("src/main/resources/geotime/time_extracted_from_glossary_ja.csv")
+
+  lazy val glossaryEntriesForTimeExtractorInEnglish: String = config.as[Option[String]]("knowledgeSource.time.en.listFromGlossary").getOrElse("src/main/resources/geotime/time_extracted_from_glossary_en.csv")
 
   lazy val eventOntologyClassInJapanese: Path = Paths.get(config.as[Option[String]]("knowledgeSource.eventOntology.class.ja").getOrElse("src/main/resources/ontology/class/ja/"))
 

@@ -106,7 +106,7 @@ package object fsList {
       }
 
       var tail: StringList = repr
-      val buffer: ListBuffer[String] = ListBuffer.empty[String]
+      val buffer = ListBuffer.empty[String]
       while (!tail.isInstanceOf[EmptyStringList] || tail.isInstanceOf[NonEmptyStringList]) {
         val nonEmptyStringList: NonEmptyStringList = tail.asInstanceOf[NonEmptyStringList]
         buffer += nonEmptyStringList.getHead

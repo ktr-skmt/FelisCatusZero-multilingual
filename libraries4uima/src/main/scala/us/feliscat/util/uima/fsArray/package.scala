@@ -12,7 +12,7 @@ import scala.reflect.ClassTag
 package object fsArray {
   /**
     * @author K.Sakamoto
-    * @param repr
+    * @param repr UIMA Feature Structure Array
     */
   implicit class FSArrayUtils(repr: FSArray) {
     private lazy val size: Int = repr.size

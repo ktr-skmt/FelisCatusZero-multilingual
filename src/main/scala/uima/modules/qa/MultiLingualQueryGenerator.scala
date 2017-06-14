@@ -4,6 +4,7 @@ import us.feliscat.m17n.MultiLingual
 import org.apache.uima.jcas.JCas
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
+import us.feliscat.util.uima.JCasID
 import us.feliscat.util.uima.fsList._
 import us.feliscat.util.uima.seq2fs.SeqUtils
 
@@ -22,7 +23,7 @@ trait MultiLingualQueryGenerator extends MultiLingual {
   private val bowQueryCache = mutable.Map.empty[String, BoWQuery]
   protected type Quotation = (String, String)
   protected def expand(keywordOpt: StringOption): Seq[(String, Boolean)]
-  def generate(aJCas: JCas, question: Question): Seq[Query] = {
+  def generate(aJCas: JCas, question: Question)(implicit id: JCasID): Seq[Query] = {
     val queryBuffer = ListBuffer.empty[Query]
 
     val keywordList: Seq[Keyword] = question.getKeywordSet.toSeq.asInstanceOf[Seq[Keyword]]

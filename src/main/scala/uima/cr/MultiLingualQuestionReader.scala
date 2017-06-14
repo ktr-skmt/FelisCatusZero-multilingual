@@ -1,18 +1,22 @@
 package uima.cr
 
 import java.io.File
-import java.util.Locale
 import javax.xml.transform.stream.StreamSource
 
 import modules.util.ModulesConfig
 import org.apache.uima.cas.CAS
 import org.apache.uima.jcas.JCas
+import org.apache.uima.resource.metadata.MetaDataObject
+import org.apache.uima.util.CasCreationUtils
+import uima.cpe.IntermediatePoint
+import uima.rs.MultiLingualQuestion
 import us.feliscat.exam.essay.xml.Answer
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types.{Document, Exam, Keyword, Question, Answer => UAnswer}
+import us.feliscat.util.uima.array2fs.ArrayUtils
 import us.feliscat.util.uima.seq2fs.SeqUtils
-import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
+import us.feliscat.util.uima.{FeatureStructure, JCasID, JCasUtils}
 import us.feliscat.util.xml.XmlSchema
 
 import scala.collection.mutable.ListBuffer
@@ -30,14 +34,86 @@ import scala.xml.{Node, NodeSeq, XML}
 trait MultiLingualQuestionReader extends MultiLingual {
   protected var id: Int = 0
 
-  def next(aCAS: CAS, baseDirOpt: StringOption, essayExamFiles: Seq[File]): Unit = {
+  def read(metaData: java.util.Collection[MetaDataObject],
+           baseDirOpt: StringOption,
+           examFiles: Seq[File]): Seq[MultiLingualQuestion]
+
+  protected def multiCAS(metaData: java.util.Collection[MetaDataObject],
+                         baseDirOpt: StringOption,
+                         examFiles: Seq[File]): Seq[(JCasID, JCas, Question)] = {
+    if (baseDirOpt.isEmpty) {
+      return Nil
+    }
+
+    println(s">> Multi-CAS ${locale.getDisplayLanguage} ${IntermediatePoint.QuestionReader.name} Processing")
+
+    val baseDir: String = baseDirOpt.get
+    val xmlSchema: XmlSchema = ModulesConfig.qaCorpusXmlSchema
+    val buffer = ListBuffer.empty[(JCasID, JCas, Question)]
+    var casIdNum: Int = -1
+    def createCasId: Int = {
+      casIdNum += 1
+      casIdNum
+    }
+    examFiles foreach {
+      case file: File if xmlSchema.isValid(new StreamSource(file)) =>
+        val xml: NodeSeq = XML.loadFile(file)
+        xml \ "answer_section" foreach {
+          answerSection: NodeSeq =>
+            val id: StringOption = extractId(answerSection)
+            val label: StringOption = extractLabel(answerSection)
+            answerSection \ "locale" foreach {
+              locale: NodeSeq =>
+                val instruction: StringOption = extractInstruction(locale)
+                val answerSet: NodeSeq = locale \ "answer_set" \ "answer"
+                val localeIdOpt = StringOption((locale \ "@id").text.trim)
+                if (id.nonEmpty && instruction.nonEmpty && localeIdOpt.nonEmpty && localeIdOpt.get == localeId) {
+                  implicit val casId = JCasID(localeId.concat(createCasId.toString))
+
+                  val aCAS: CAS = CasCreationUtils.createCas(metaData)
+                  val aView: JCas = aCAS.createView(localeId).getJCas
+                  JCasUtils.setAJCas(aView)
+
+                  val exam = FeatureStructure.create[Exam]
+                  exam.setLabel(file.getName)
+                  exam.setDir(baseDir)
+                  exam.setLang(localeId)
+
+                  val question: Question = getQuestion(
+                    aJCas = aView,
+                    exam = exam,
+                    id = id.get,
+                    label = label.getOrElse(""),
+                    instruction = instruction.get,
+                    lengthLimit = extractLengthLimit(answerSet),
+                    keywordSet = extractKeywordSet(locale),
+                    answerSet = extractAnswerSet(answerSet),
+                    xml = locale
+                  )
+
+                  val questionSet = Array[Question](question)
+                  exam.setQuestionSet(questionSet.toFSArray)
+
+                  buffer += ((casId, aView, question))
+                }
+            }
+        }
+      case _ =>
+        // Do nothing
+    }
+    buffer.result
+  }
+
+  def next(aCAS: CAS,
+           baseDirOpt: StringOption,
+           essayExamFiles: Seq[File])(implicit jCasId: JCasID): Unit = {
     if (baseDirOpt.isEmpty) {
       return
     }
-    println(s">> ${new Locale(localeId).getDisplayLanguage} Essay Question Reader Processing")
+    println(s">> ${locale.getDisplayLanguage} Question Reader Processing")
     val aView: JCas = aCAS.createView(localeId).getJCas
     val baseDir: String = baseDirOpt.get
-    JCasUtils.setAJCasOpt(Option(aView))
+    JCasUtils.setAJCas(aView)
     aView.setDocumentLanguage(localeId)
     val xmlSchema: XmlSchema = ModulesConfig.qaCorpusXmlSchema
     essayExamFiles foreach {
@@ -86,7 +162,7 @@ trait MultiLingualQuestionReader extends MultiLingual {
                             lengthLimit: Range,
                             keywordSet: Seq[String],
                             answerSet: Seq[Answer],
-                            xml: NodeSeq): Question = {
+                            xml: NodeSeq)(implicit jCasID: JCasID): Question = {
     val question = FeatureStructure.create[Question]
     question.setExam(exam)
     question.setBeginLengthLimit(lengthLimit.start)
@@ -129,7 +205,7 @@ trait MultiLingualQuestionReader extends MultiLingual {
     StringOption(Option(answerSection \ "@id").head.text.trim)
     /*
     try {
-      Option((answerSection \ "@id").head.us.feliscat.text.toInt)
+      Option((answerSection \ "@id").head.text.toInt)
     } catch {
       case e: Exception =>
         e.printStackTrace()

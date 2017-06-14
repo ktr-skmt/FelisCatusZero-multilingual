@@ -1,5 +1,6 @@
 package us.feliscat.util.uima
 
+import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas._
 
 /**
@@ -13,35 +14,37 @@ package object seq2fs {
     * @tparam T type
     */
   implicit class SeqUtils[T <: TOP](repr: Seq[T]) extends UimaUtils {
-    def toFSList: FSList = {
+    def toFSList(implicit id: JCasID): FSList = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty list
-        return new EmptyFSList(aJCas)
+        return new EmptyFSList(theJCas)
       }
 
-      var head = new NonEmptyFSList(aJCas)
+      var head = new NonEmptyFSList(theJCas)
       val list: NonEmptyFSList = head
       val it: Iterator[T] = repr.iterator
       while (it.hasNext) {
         head.setHead(it.next)
         if (it.hasNext) {
-          head.setTail(new NonEmptyFSList(aJCas))
+          head.setTail(new NonEmptyFSList(theJCas))
           head = head.getTail.asInstanceOf[NonEmptyFSList]
         } else {
-          head.setTail(new EmptyFSList(aJCas))
+          head.setTail(new EmptyFSList(theJCas))
         }
       }
       list
     }
 
-    def toFSArray: FSArray = {
+    def toFSArray(implicit id: JCasID): FSArray = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty array
-        return new FSArray(aJCas, 0)
+        return new FSArray(theJCas, 0)
       }
 
       val size: Int = repr.size
-      val fsArray = new FSArray(aJCas, size)
+      val fsArray = new FSArray(theJCas, size)
       for (i <- 0 until size) {
         fsArray.set(i, repr(i))
       }
@@ -54,35 +57,37 @@ package object seq2fs {
     * @param repr string seq
     */
   implicit class SeqStringUtils(repr: Seq[String]) extends UimaUtils {
-    def toStringList: StringList = {
+    def toStringList(implicit id: JCasID): StringList = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty list
-        return new EmptyStringList(aJCas)
+        return new EmptyStringList(theJCas)
       }
 
-      var head = new NonEmptyStringList(aJCas)
+      var head = new NonEmptyStringList(theJCas)
       val list: NonEmptyStringList = head
       val it: Iterator[String] = repr.iterator
       while (it.hasNext) {
         head.setHead(it.next)
         if (it.hasNext) {
-          head.setTail(new NonEmptyStringList(aJCas))
+          head.setTail(new NonEmptyStringList(theJCas))
           head = head.getTail.asInstanceOf[NonEmptyStringList]
         } else {
-          head.setTail(new EmptyStringList(aJCas))
+          head.setTail(new EmptyStringList(theJCas))
         }
       }
       list
     }
 
-    def toStringArray: StringArray = {
+    def toStringArray(implicit id: JCasID): StringArray = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty array
-        return new StringArray(aJCas, 0)
+        return new StringArray(theJCas, 0)
       }
 
       val size: Int = repr.size
-      val stringArray = new StringArray(aJCas, size)
+      val stringArray = new StringArray(theJCas, size)
       for (i <- 0 until size) {
         stringArray.set(i, repr(i))
       }
@@ -95,35 +100,37 @@ package object seq2fs {
     * @param repr integer seq
     */
   implicit class SeqIntUtils(repr: Seq[Int]) extends UimaUtils {
-    def toIntegerList: IntegerList = {
+    def toIntegerList(implicit id: JCasID): IntegerList = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty list
-        return new EmptyIntegerList(aJCas)
+        return new EmptyIntegerList(theJCas)
       }
 
-      var head = new NonEmptyIntegerList(aJCas)
+      var head = new NonEmptyIntegerList(theJCas)
       val list: NonEmptyIntegerList = head
       val it: Iterator[Int] = repr.iterator
       while (it.hasNext) {
         head.setHead(it.next)
         if (it.hasNext) {
-          head.setTail(new NonEmptyIntegerList(aJCas))
+          head.setTail(new NonEmptyIntegerList(theJCas))
           head = head.getTail.asInstanceOf[NonEmptyIntegerList]
         } else {
-          head.setTail(new EmptyIntegerList(aJCas))
+          head.setTail(new EmptyIntegerList(theJCas))
         }
       }
       list
     }
 
-    def toIntegerArray: IntegerArray = {
+    def toIntegerArray(implicit id: JCasID): IntegerArray = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty array
-        return new IntegerArray(aJCas, 0)
+        return new IntegerArray(theJCas, 0)
       }
 
       val size: Int = repr.size
-      val integerArray = new IntegerArray(aJCas, size)
+      val integerArray = new IntegerArray(theJCas, size)
       for (i <- 0 until size) {
         integerArray.set(i, repr(i))
       }
@@ -136,35 +143,37 @@ package object seq2fs {
     * @param repr float seq
     */
   implicit class SeqFloatUtils(repr: Seq[Float]) extends UimaUtils {
-    def toFloatList: FloatList = {
+    def toFloatList(implicit id: JCasID): FloatList = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty list
-        return new EmptyFloatList(aJCas)
+        return new EmptyFloatList(theJCas)
       }
 
-      var head = new NonEmptyFloatList(aJCas)
+      var head = new NonEmptyFloatList(theJCas)
       val list: NonEmptyFloatList = head
       val it: Iterator[Float] = repr.iterator
       while (it.hasNext) {
         head.setHead(it.next)
         if (it.hasNext) {
-          head.setTail(new NonEmptyFloatList(aJCas))
+          head.setTail(new NonEmptyFloatList(theJCas))
           head = head.getTail.asInstanceOf[NonEmptyFloatList]
         } else {
-          head.setTail(new EmptyFloatList(aJCas))
+          head.setTail(new EmptyFloatList(theJCas))
         }
       }
       list
     }
 
-    def toFloatArray: FloatArray = {
+    def toFloatArray(implicit id: JCasID): FloatArray = {
+      val theJCas: JCas = aJCas(id)
       if (repr.isEmpty) {
         //return an empty array
-        return new FloatArray(aJCas, 0)
+        return new FloatArray(theJCas, 0)
       }
 
       val size: Int = repr.size
-      val floatArray = new FloatArray(aJCas, size)
+      val floatArray = new FloatArray(theJCas, size)
       for (i <- 0 until size) {
         floatArray.set(i, repr(i))
       }

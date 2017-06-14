@@ -9,6 +9,7 @@ import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
 import us.feliscat.text.StringOption
 import us.feliscat.types._
+import us.feliscat.util.uima.JCasID
 
 import scala.collection.mutable.ListBuffer
 import scala.xml.{Elem, PrettyPrinter, XML}
@@ -33,7 +34,7 @@ trait MultiLingualQALabExtractionSubtaskDocumentCasConsumer
     }
   }
 
-  override protected def process(aJCas: JCas): Unit = {
+  override protected def process(aJCas: JCas)(implicit id: JCasID): Unit = {
     println("Document")
     @SuppressWarnings(Array[String]("rawtypes"))
     val itExam: FSIterator[Nothing] = aJCas.getAnnotationIndex(Exam.`type`).iterator(true)

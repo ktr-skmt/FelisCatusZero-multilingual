@@ -6,7 +6,7 @@ import uima.modules.common.MultiLingualDocumentAnalyzer
 import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.text.analyzer.CoreNLP4English
 import us.feliscat.types.{CoreNLPAnalysis, Sentence}
-import us.feliscat.util.uima.FeatureStructure
+import us.feliscat.util.uima.{FeatureStructure, JCasID}
 import us.feliscat.util.uima.seq2fs._
 
 /**
@@ -21,7 +21,7 @@ trait EnglishDocumentAnalyzer extends MultiLingualDocumentAnalyzer with English 
     CoreNLP4English.extractContentWords(sentence)
   }
 
-  override protected def analyze(aJCas: JCas, sentence: Sentence, normalizedSentence: StringOption): Unit = {
+  override protected def analyze(aJCas: JCas, sentence: Sentence, normalizedSentence: StringOption)(implicit id: JCasID): Unit = {
     val contentWords: Seq[String] = extractContentWords(normalizedSentence)
     sentence.setContentWordList(contentWords.toStringList)
     val analysis = FeatureStructure.create[CoreNLPAnalysis]

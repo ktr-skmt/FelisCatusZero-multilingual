@@ -184,18 +184,35 @@ object CPERunner extends Thread {
 
     if (option.unSave != "all") {
       val unSavedStates: Array[String] = option.unSave.split(',').map(_.trim.toLowerCase)
-      if (FlowController.hasAnalysisEngine(IntermediatePoint.QuestionAnalyzer.descriptor.get) &&
-        (!(unSavedStates.contains(IntermediatePoint.QuestionAnalyzer.code) || unSavedStates.contains(IntermediatePoint.QuestionAnalyzer.name.toLowerCase)))) {
+      if (
+        FlowController.hasAnalysisEngine(IntermediatePoint.QuestionAnalyzer.descriptor.get) &&
+        (!(
+          unSavedStates.contains(IntermediatePoint.QuestionAnalyzer.code) ||
+            unSavedStates.contains(IntermediatePoint.QuestionAnalyzer.name.toLowerCase)
+          ))
+      ) {
         val index: Int = QuestionAnalyzerFlowController.indexOf(IntermediatePoint.QuestionAnalyzer.primitiveDescriptor.get) + 1
         QuestionAnalyzerFlowController.insert(index, gzipXmiCasConsumerDescriptor)
       }
-      if (FlowController.hasAnalysisEngine(IntermediatePoint.InformationRetriever.descriptor.get) &&
-        (!(unSavedStates.contains(IntermediatePoint.InformationRetriever.code) || unSavedStates.contains(IntermediatePoint.InformationRetriever.name.toLowerCase)))) {
+
+      if (
+        FlowController.hasAnalysisEngine(IntermediatePoint.InformationRetriever.descriptor.get) &&
+        (!(
+          unSavedStates.contains(IntermediatePoint.InformationRetriever.code) ||
+            unSavedStates.contains(IntermediatePoint.InformationRetriever.name.toLowerCase)
+          ))
+      ) {
         val index: Int = InformationRetrieverFlowController.indexOf(IntermediatePoint.InformationRetriever.primitiveDescriptor.get) + 1
         InformationRetrieverFlowController.insert(index, gzipXmiCasConsumerDescriptor)
       }
-      if (FlowController.hasAnalysisEngine(IntermediatePoint.AnswerGenerator.descriptor.get) &&
-        (!(unSavedStates.contains(IntermediatePoint.AnswerGenerator.code) || unSavedStates.contains(IntermediatePoint.AnswerGenerator.name.toLowerCase)))) {
+
+      if (
+        FlowController.hasAnalysisEngine(IntermediatePoint.AnswerGenerator.descriptor.get) &&
+        (!(
+          unSavedStates.contains(IntermediatePoint.AnswerGenerator.code) ||
+            unSavedStates.contains(IntermediatePoint.AnswerGenerator.name.toLowerCase)
+          ))
+      ) {
         val index: Int = AnswerGeneratorFlowController.indexOf(IntermediatePoint.AnswerGenerator.primitiveDescriptor.get) + 1
         AnswerGeneratorFlowController.insert(index, gzipXmiCasConsumerDescriptor)
       }
@@ -214,9 +231,10 @@ object CPERunner extends Thread {
     }
 
     val cpeDescriptor: String = raw"cpe${if (useIntermediatePoint) "FromIntermediatePoint" else ""}Descriptor.xml"
-    println("Collection Processing Engine:")
-    print("* ")
-    println(cpeDescriptor)
+    print(
+      s"""Collection Processing Engine:
+         |* $cpeDescriptor
+         |""".stripMargin)
 
     FlowController.printAnalysisEngines()
     QuestionAnalyzerFlowController.printAnalysisEngines()
@@ -229,7 +247,8 @@ object CPERunner extends Thread {
       ).toPath.toAbsolutePath.toString
     }
 
-    val cpeDesc: CpeDescription = UIMAFramework.getXMLParser.parseCpeDescription(new XMLInputSource(filePath))
+    val xmlInputSource = new XMLInputSource(filePath)
+    val cpeDesc: CpeDescription = UIMAFramework.getXMLParser.parseCpeDescription(xmlInputSource)
     cpeOption = Option(UIMAFramework.produceCollectionProcessingEngine(cpeDesc))
     cpeOption match {
       case Some(cpe) =>
@@ -240,25 +259,25 @@ object CPERunner extends Thread {
         */
         if (useIntermediatePoint) {
           val collectionReader: CollectionReader = cpe.getCollectionReader.asInstanceOf[CollectionReader]
+          val code: String = startPointValue match {
+            case IntermediatePoint.InformationRetriever =>
+              IntermediatePoint.QuestionAnalyzer.code
+            case IntermediatePoint.AnswerGenerator =>
+              IntermediatePoint.InformationRetriever.code
+            case IntermediatePoint.AnswerWriter | IntermediatePoint.AnswerEvaluator =>
+              IntermediatePoint.AnswerGenerator.code
+            case _ =>
+              IntermediatePoint.QuestionAnalyzer.code
+          }
           collectionReader.setConfigParameterValue(
             "InputDirectory",
-            s"out/xmi/${
-              startPointValue match {
-                case IntermediatePoint.InformationRetriever =>
-                  IntermediatePoint.QuestionAnalyzer.code
-                case IntermediatePoint.AnswerGenerator =>
-                  IntermediatePoint.InformationRetriever.code
-                case IntermediatePoint.AnswerWriter | IntermediatePoint.AnswerEvaluator =>
-                  IntermediatePoint.AnswerGenerator.code
-                case _ =>
-                  IntermediatePoint.QuestionAnalyzer.code
-              }
-            }"
+            s"out/xmi/$code"
           )
           println(">> Collection Reader Reconfiguration Started")
           collectionReader.reconfigure()
         }
-        cpe.addStatusCallbackListener(new StatusCallbackListenerImpl())
+        val statusCallbackListener = new StatusCallbackListenerImpl()
+        cpe.addStatusCallbackListener(statusCallbackListener)
         cpe.process()
 
         val loop = new Breaks()
@@ -282,7 +301,7 @@ object CPERunner extends Thread {
 
   class StatusCallbackListenerImpl extends StatusCallbackListener {
     private var entityCount: Int = 0
-    private var size: Int = 0
+    private var size:        Int = 0
 
     override def entityProcessComplete(aCAS: CAS, aStatus: EntityProcessStatus): Unit = {
       if (aStatus.isException) {
@@ -324,20 +343,27 @@ object CPERunner extends Thread {
     }
 
     override def collectionProcessComplete(): Unit = {
-      val time: Option[Long] = Option(System.nanoTime)
+      val time = Option[Long](System.nanoTime)
       printNumberOfDocumentsAndCharacters()
       val initTime:       Long = initCompleteTimeOption.getOrElse(0L) - startTimeOption.getOrElse(0L)
       val processingTime: Long = time.getOrElse(0L) - initCompleteTimeOption.getOrElse(0L)
       val elapsedTime:    Long = initTime + processingTime
 
-      printf("Total Time Elapsed: %d nano seconds%n", elapsedTime)
-      printf("Initialization Time: %d nano seconds%n", initTime)
-      printf("Processing Time: %d nano seconds%n", processingTime)
+      print(
+        s"""Total Time Elapsed: $elapsedTime nano seconds
+           |Initialization Time: $initTime nano seconds
+           |Processing Time: $processingTime nano seconds
+           |""".stripMargin)
 
       cpeOption match {
         case Some(cpe) =>
-          printf("%n%n ------------------ PERFORMANCE REPORT ------------------%n%n")
-          println(cpe.getPerformanceReport.toString)
+          print(
+            s"""
+               |
+               | ------------------ PERFORMANCE REPORT ------------------
+               |
+               |${cpe.getPerformanceReport.toString}
+               |""".stripMargin)
         case None =>
         //Do nothing
       }

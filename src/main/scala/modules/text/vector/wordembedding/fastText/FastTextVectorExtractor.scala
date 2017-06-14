@@ -51,12 +51,12 @@ object FastTextVectorExtractor {
 
     import us.feliscat.util.process._
     Process(command).#<(Paths.get(ModulesConfig.fastTextQuery).toAbsolutePath.toFile).lineStream(
-      StandardCharsets.UTF_8,
-      CodingErrorAction.IGNORE,
-      CodingErrorAction.IGNORE,
-      StringNone,
-      10.minutes
-    ) foreach {
+        StandardCharsets.UTF_8,
+        CodingErrorAction.IGNORE,
+        CodingErrorAction.IGNORE,
+        StringNone,
+        10.minutes
+      ) foreach {
       line: String =>
         val tokens: Array[String] = line.split(' ')
         val word: String = tokens.head

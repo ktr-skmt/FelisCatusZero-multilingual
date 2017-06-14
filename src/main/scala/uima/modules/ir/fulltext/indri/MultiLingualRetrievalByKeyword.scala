@@ -10,7 +10,7 @@ import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types._
 import us.feliscat.util.process._
 import us.feliscat.util.uima.fsList.FSListUtils
-import us.feliscat.util.uima.JCasUtils
+import us.feliscat.util.uima.{JCasID, JCasUtils}
 import us.feliscat.util.uima.seq2fs.SeqUtils
 import util.Config
 
@@ -18,6 +18,7 @@ import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
 import scala.sys.process.Process
+import scala.util.{Failure, Success, Try}
 
 /**
   * <pre>
@@ -31,9 +32,9 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
                query: KeywordQuery,
                keywordCorrectionMap: mutable.Map[String, Seq[String]],
                mIndriScoreIndex: Int,
-               firstDocumentId: Long): Long = {
+               firstDocumentId: Long)(implicit id: JCasID): Long = {
     var mDocumentId: Long = firstDocumentId
-    JCasUtils.setAJCasOpt(Option(aJCas))
+    JCasUtils.setAJCas(aJCas)
 
     val knowledgeSourceList: Seq[String] = selectKnowledgeSource(true)
 
@@ -167,7 +168,7 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
     generateIndriQueryList(expansionSet) foreach {
       case StringSome(q) =>
         println(q)
-        indriResultMap ++= toIndriResultMap(
+        Try {
           Process(command(Seq[String](q), knowledgeSourceList)).
             lineStream(
               StandardCharsets.UTF_8,
@@ -175,8 +176,17 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
               CodingErrorAction.IGNORE,
               StringNone,
               Config.indriRunQueryTimeout.minute
-            ),
-          StringOption(keywordOriginalText), expansionOnlyList, indriResultMap)
+            )
+        } match {
+          case Success(result) =>
+            indriResultMap ++= toIndriResultMap(
+              result,
+              StringOption(keywordOriginalText),
+              expansionOnlyList,
+              indriResultMap)
+          case Failure(err) =>
+            err.printStackTrace(System.err)
+        }
       case StringNone =>
       // Do nothing
     }

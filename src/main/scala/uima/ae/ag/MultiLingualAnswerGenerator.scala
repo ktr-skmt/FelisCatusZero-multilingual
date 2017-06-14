@@ -1,7 +1,5 @@
 package uima.ae.ag
 
-import java.util.Locale
-
 import org.apache.uima.cas.FSIterator
 import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
@@ -15,7 +13,7 @@ import us.feliscat.types._
 import us.feliscat.util.LibrariesConfig
 import us.feliscat.util.uima.fsList.FSListUtils
 import us.feliscat.util.uima.seq2fs.SeqUtils
-import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
+import us.feliscat.util.uima.{FeatureStructure, JCasID, JCasUtils}
 import util.Config
 
 import scala.collection.mutable.ListBuffer
@@ -51,9 +49,8 @@ trait MultiLingualAnswerGenerator extends MultiLingual {
     }
   }
 
-  def processQuestion(aView: JCas, question: Question): Unit = {
-    print("- ")
-    println(question.getLabel)
+  def processQuestion(aView: JCas, question: Question)(implicit id: JCasID): Unit = {
+    println("- ".concat(question.getLabel))
     val questionDocument: Document = question.getDocument
     val scorer: UpdateTypeScorer = {
       if (question.getKeywordSet.toSeq.nonEmpty) {
@@ -92,19 +89,20 @@ trait MultiLingualAnswerGenerator extends MultiLingual {
     }
   }
 
-  def process(aJCas: JCas): Unit = {
-    println(s">> ${new Locale(localeId).getDisplayLanguage} Essay Generator Processing")
+  def process(aJCas: JCas)(implicit id: JCasID): Unit = {
+    println(s">> ${locale.getDisplayLanguage} Essay Generator Processing")
     val aView: JCas = aJCas.getView(localeId)
-    JCasUtils.setAJCasOpt(Option(aView))
+    JCasUtils.setAJCas(aView)
 
     @SuppressWarnings(Array[String]("rawtypes"))
     val itExam: FSIterator[Nothing] = aView.getAnnotationIndex(Exam.`type`).iterator(true)
     while (itExam.hasNext) {
       val exam: Exam = itExam.next
-      println("Dataset:")
-      print("* ")
-      println(exam.getLabel)
-      println("Question:")
+      print(
+        s"""Dataset:"
+           |* ${exam.getLabel}
+           |Question:
+           |""".stripMargin)
       val questionSet: FSArray = exam.getQuestionSet
       for (i <- 0 until questionSet.size) {
         //score sentences
@@ -120,13 +118,13 @@ trait MultiLingualAnswerGenerator extends MultiLingual {
                         question: Question,
                         scoreIndex: Int,
                         selectedSentenceList: Seq[Sentence],
-                        sentenceGroupList: Seq[MultiLingualSentenceGroup]): Unit
+                        sentenceGroupList: Seq[MultiLingualSentenceGroup])(implicit id: JCasID): Unit
 
   private def generateAnswer(aJCas: JCas,
                              question: Question,
                              keywordSet: Seq[Keyword],
                              scorer: UpdateTypeScorer,
-                             scoreIndex: Int): Unit = {
+                             scoreIndex: Int)(implicit id: JCasID): Unit = {
     val selectedSentenceBuffer = ListBuffer.empty[Sentence]
     keywordSet foreach {
       keyword: Keyword =>
@@ -161,7 +159,7 @@ trait MultiLingualAnswerGenerator extends MultiLingual {
   }
 
   protected def generateEmptyAnswer(aJCas: JCas,
-                                    question: Question): Unit = {
+                                    question: Question)(implicit id: JCasID): Unit = {
     val answer = FeatureStructure.create[Answer]
     answer.setIsGoldStandard(false)
     answer.setWriter(Config.systemName)

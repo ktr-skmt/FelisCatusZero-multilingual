@@ -8,6 +8,7 @@ import uima.modules.common.en.EnglishDocumentAnnotator
 import uima.modules.ir.correction.en.{EnglishBoWBasedIRDocCorrector, EnglishKeywordBasedIRDocCorrector}
 import uima.modules.ir.fulltext.indri.en.{EnglishRetrievalByBoW, EnglishRetrievalByKeyword}
 import us.feliscat.types.{BoWQuery, Geography, KeywordQuery}
+import us.feliscat.util.uima.JCasID
 
 import scala.collection.mutable
 
@@ -21,7 +22,7 @@ import scala.collection.mutable
 object EnglishInformationRetriever extends MultiLingualInformationRetriever with EnglishDocumentAnnotator {
   override protected def retrieveByKeyword(aJCas: JCas,
                                   query: KeywordQuery,
-                                  keywordCorrectionMap: mutable.Map[String, Seq[String]]): Option[Long] = {
+                                  keywordCorrectionMap: mutable.Map[String, Seq[String]])(implicit id: JCasID): Option[Long] = {
     if (localeId != Locale.ENGLISH.getLanguage) {
       return None
     }
@@ -34,7 +35,7 @@ object EnglishInformationRetriever extends MultiLingualInformationRetriever with
   }
 
 
-  override protected def retrieveByBoW(aJCas: JCas, query: BoWQuery): Option[Long] = {
+  override protected def retrieveByBoW(aJCas: JCas, query: BoWQuery)(implicit id: JCasID): Option[Long] = {
     if (localeId != Locale.ENGLISH.getLanguage) {
       return None
     }
@@ -50,7 +51,7 @@ object EnglishInformationRetriever extends MultiLingualInformationRetriever with
                                              keywordCorrectionMap: Map[String, Seq[String]],
                                              beginTimeLimit: Option[Int],
                                              endTimeLimit: Option[Int],
-                                             geographyLimit: Option[Geography]): Unit = {
+                                             geographyLimit: Option[Geography])(implicit id: JCasID): Unit = {
     EnglishKeywordBasedIRDocCorrector.correct(
       aJCas,
       query,
@@ -64,7 +65,7 @@ object EnglishInformationRetriever extends MultiLingualInformationRetriever with
                                          query: BoWQuery,
                                          beginTimeLimit: Option[Int],
                                          endTimeLimit: Option[Int],
-                                         geographyLimit: Option[Geography]): Unit = {
+                                         geographyLimit: Option[Geography])(implicit id: JCasID): Unit = {
     EnglishBoWBasedIRDocCorrector.correct(
       aJCas,
       query,

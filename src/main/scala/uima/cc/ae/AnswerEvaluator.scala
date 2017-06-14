@@ -4,6 +4,7 @@ import java.awt.Desktop
 import java.io.{BufferedReader, File, IOException, PrintWriter}
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Path, Paths}
+import java.util.Locale
 
 import org.apache.uima.cas.CAS
 import org.apache.uima.collection.CasConsumer_ImplBase
@@ -15,6 +16,7 @@ import uima.cpe.IntermediatePoint
 import uima.modules.common.ja.JapaneseDocumentAnnotator
 import us.feliscat.converter.HtmlTextConverter
 import us.feliscat.text.{StringNone, StringSome}
+import us.feliscat.util.uima.JCasID
 import util.Config
 
 /**
@@ -54,14 +56,14 @@ class AnswerEvaluator extends CasConsumer_ImplBase with JapaneseDocumentAnnotato
     println(s">> ${IntermediatePoint.AnswerEvaluator.name} Processing")
 
     val builder = new StringBuilder()
-    JapaneseAnswerEvaluator.process(aCAS) match {
+    JapaneseAnswerEvaluator.process(aCAS)(JCasID(Locale.JAPANESE.getLanguage)) match {
       case StringSome(result) =>
         builder.append(result)
       case StringNone =>
         // Do nothing
     }
 
-    EnglishAnswerEvaluator.process(aCAS) match {
+    EnglishAnswerEvaluator.process(aCAS)(JCasID(Locale.JAPANESE.getLanguage)) match {
       case StringSome(result) =>
         builder.append(result)
       case StringNone =>

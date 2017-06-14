@@ -8,7 +8,7 @@ import org.apache.uima.cas.CAS
 import org.apache.uima.jcas.JCas
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.text.{StringNone, StringOption, StringSome}
-import us.feliscat.util.uima.JCasUtils
+import us.feliscat.util.uima.{JCasID, JCasUtils}
 import util.Config
 
 /**
@@ -86,12 +86,12 @@ trait MultiLingualQALabSubmission extends MultiLingual {
     Paths.get("out", "qalab", builder.result)
   }
 
-  def process(aCAS: CAS): Unit = {
+  def process(aCAS: CAS)(implicit id: JCasID): Unit = {
     println(s">> ${new Locale(localeId).getDisplayLanguage} QA Lab $subtask Cas Consumer Processing")
     val aView: JCas = aCAS.getView(localeId).getJCas
-    JCasUtils.setAJCasOpt(Option(aView))
+    JCasUtils.setAJCas(aView)
     process(aView)
   }
 
-  protected def process(aJCas: JCas): Unit
+  protected def process(aJCas: JCas)(implicit id: JCasID): Unit
 }

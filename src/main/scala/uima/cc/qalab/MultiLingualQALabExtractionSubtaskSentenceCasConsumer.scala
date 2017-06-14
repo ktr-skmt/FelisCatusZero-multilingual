@@ -9,6 +9,7 @@ import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
 import us.feliscat.text.StringOption
 import us.feliscat.types._
+import us.feliscat.util.uima.JCasID
 import us.feliscat.util.uima.fsList.FSListUtils
 
 import scala.collection.mutable.ListBuffer
@@ -25,7 +26,7 @@ trait MultiLingualQALabExtractionSubtaskSentenceCasConsumer
   extends MultiLingualQALabExtractionSubtask {
   override protected val mSubtaskOpt = StringOption("Extraction Subtask")
 
-  override protected def process(aJCas: JCas): Unit = {
+  override protected def process(aJCas: JCas)(implicit id: JCasID): Unit = {
     println("Sentence")
     @SuppressWarnings(Array[String]("rawtypes"))
     val itExam: FSIterator[Nothing] = aJCas.getAnnotationIndex(Exam.`type`).iterator(true)

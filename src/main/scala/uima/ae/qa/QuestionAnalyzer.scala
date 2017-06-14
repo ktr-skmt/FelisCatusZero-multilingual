@@ -1,5 +1,7 @@
 package uima.ae.qa
 
+import java.util.Locale
+
 import org.apache.uima.UimaContext
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException
@@ -8,6 +10,7 @@ import org.apache.uima.resource.ResourceInitializationException
 import uima.ae.qa.en.EnglishQuestionAnalyzer
 import uima.ae.qa.ja.JapaneseQuestionAnalyzer
 import uima.cpe.IntermediatePoint
+import us.feliscat.util.uima.JCasID
 
 /**
   * <p>
@@ -35,7 +38,7 @@ class QuestionAnalyzer extends JCasAnnotator_ImplBase {
   override def process(aJCas: JCas): Unit = {
     println(s">> ${IntermediatePoint.QuestionAnalyzer.name} Processing")
 
-    JapaneseQuestionAnalyzer.process(aJCas)
-    EnglishQuestionAnalyzer.process(aJCas)
+    JapaneseQuestionAnalyzer.process(aJCas)(JCasID(Locale.JAPANESE.getLanguage))
+    EnglishQuestionAnalyzer.process(aJCas)(JCasID(Locale.ENGLISH.getLanguage))
   }
 }

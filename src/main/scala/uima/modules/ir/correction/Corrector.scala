@@ -6,7 +6,7 @@ import us.feliscat.text.{StringOption, StringSome}
 import us.feliscat.time.TimeTmp
 import us.feliscat.types._
 import us.feliscat.util.uima.fsList.FSListUtils
-import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
+import us.feliscat.util.uima.{FeatureStructure, JCasID, JCasUtils}
 import us.feliscat.util.uima.seq2fs._
 import us.feliscat.util.uima.time._
 import util.Config
@@ -35,8 +35,8 @@ trait Corrector extends MultiLingualDocumentAnnotator {
               beginTimeLimit: Option[Int],
               endTimeLimit: Option[Int],
               geographyLimit: Option[Geography],
-              isBoWQuery: Boolean): Unit = {
-    JCasUtils.setAJCasOpt(Option(aJCas))
+              isBoWQuery: Boolean)(implicit id: JCasID): Unit = {
+    JCasUtils.setAJCas(aJCas)
     val keywordOriginalText: String = keyword.getText
     //sentenceText, sentence
     val sentenceMap = mutable.Map.empty[String, Sentence]

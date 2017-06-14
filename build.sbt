@@ -187,27 +187,28 @@ lazy val libraries4jcas = (project in file(libraries4jcasFile)).
   settings(
     isSnapshot := true
   ).settings(
-  version := "0.0.1",
-  name := libraries4jcasName,
-  organization := usfeliscat,
-  publishMavenStyle := true,
-  publishArtifact in Test := false,
-  pomIncludeRepository := { _ => false },
-  publishTo := getPublishTo(isSnapshot.value, libraries4jcasFile, libraries4jcasName),
-  licenses := licensesTemplate,
-  homepage := homepageTemplate,
-  pomExtra := pomExtraTemplate
-).settings(
-  resolvers ++= Seq(
-    s"$librariesName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$librariesFile/$mavenRepo/$snapshotsStr")).absolutePath),
-    s"$libraries4uimaName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
+    version := "0.0.1",
+    name := libraries4jcasName,
+    organization := usfeliscat,
+    publishMavenStyle := true,
+    publishArtifact in Test := false,
+    pomIncludeRepository := { _ => false },
+    publishTo := getPublishTo(isSnapshot.value, libraries4jcasFile, libraries4jcasName),
+    licenses := licensesTemplate,
+    homepage := homepageTemplate,
+    pomExtra := pomExtraTemplate
+
+  ).settings(
+    resolvers ++= Seq(
+      s"$librariesName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$librariesFile/$mavenRepo/$snapshotsStr")).absolutePath),
+      s"$libraries4uimaName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
+    )
+  ).settings(
+    libraryDependencies ++= Seq(
+      usfeliscat % s"feliscatuszero${librariesFile}_2.12" % "0.0.1",// from fileProtocol.concat(Path.absolute(file(s"./$librariesFile/$mavenRepo/$snapshotsStr")).absolutePath),
+      usfeliscat % s"feliscatuszero${libraries4uimaFile}_2.12" % "0.0.1"// from fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
+    )
   )
-).settings(
-  libraryDependencies ++= Seq(
-    usfeliscat % s"feliscatuszero${librariesFile}_2.12" % "0.0.1",
-    usfeliscat % s"feliscatuszero${libraries4uimaFile}_2.12" % "0.0.1"
-  )
-)
 
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
@@ -215,20 +216,20 @@ lazy val root = (project in file(".")).
     version := "0.0.1",
     name := "FelisCatusZero-Multilingual"
   ).settings(
-  resolvers ++= Seq(
-    s"$libraries4jcasName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4jcasFile/$mavenRepo/$snapshotsStr")).absolutePath),
-    s"$libraries4uimaName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
+    resolvers ++= Seq(
+      s"$libraries4jcasName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4jcasFile/$mavenRepo/$snapshotsStr")).absolutePath),
+      s"$libraries4uimaName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
+    )
+  ).settings(
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor" % "2.4.17",
+      "com.typesafe.akka" %% "akka-stream" % "2.4.17",
+      usfeliscat % s"feliscatuszero${libraries4jcasFile}_2.12" % "0.0.1",// from fileProtocol.concat(Path.absolute(file(s"./$libraries4jcasFile/$mavenRepo/$snapshotsStr")).absolutePath),
+      usfeliscat % s"feliscatuszero${libraries4uimaFile}_2.12" % "0.0.1"// from fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
+    )
+  ).settings(
+    libraryDependencies ++= uimaLibraries
   )
-).settings(
-  libraryDependencies ++= Seq(
-    "com.typesafe.akka" %% "akka-actor" % "2.4.17",
-    "com.typesafe.akka" %% "akka-stream" % "2.4.17",
-    usfeliscat % s"feliscatuszero${libraries4jcasFile}_2.12" % "0.0.1",
-    usfeliscat % s"feliscatuszero${libraries4uimaFile}_2.12" % "0.0.1"
-  )
-).settings(
-  libraryDependencies ++= uimaLibraries
-)
 
 val jcasgenFile = "jcasgen"
 lazy val jcasgen = (project in file(jcasgenFile)).
@@ -237,15 +238,15 @@ lazy val jcasgen = (project in file(jcasgenFile)).
     version := "0.0.1",
     name := "FelisCatusZero-JCasGen"
   ).settings(
-  libraryDependencies ++= {
-    val uimaGroupId = "org.apache.uima"
-    val uimaVersion = "2.8.1"
-    Seq(
-      uimaGroupId % "uimaj-core"  % uimaVersion,// withSources() withJavadoc(),
-      uimaGroupId % "uimaj-tools" % uimaVersion// withSources() withJavadoc(),
-    )
-  }
-)
+    libraryDependencies ++= {
+      val uimaGroupId = "org.apache.uima"
+      val uimaVersion = "2.8.1"
+      Seq(
+        uimaGroupId % "uimaj-core"  % uimaVersion,// withSources() withJavadoc(),
+        uimaGroupId % "uimaj-tools" % uimaVersion// withSources() withJavadoc(),
+      )
+    }
+  )
 
 commands ++= {
   val t = "t"
@@ -261,7 +262,9 @@ commands ++= {
     Command.command("publishLib4UIMA") {
       state =>
         s"project $libraries4uimaFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           "project root" :: state
     }
   }
@@ -270,7 +273,9 @@ commands ++= {
     Command.command("publishLib") {
       state =>
         s"project $librariesFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           "project root" :: state
     }
   }
@@ -279,7 +284,9 @@ commands ++= {
     Command.command("publishLib4JCas") {
       state =>
         s"project $libraries4jcasFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           "project root" :: state
     }
   }
@@ -288,11 +295,17 @@ commands ++= {
     Command.command("publishLibs") {
       state =>
         s"project $libraries4uimaFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           s"project $librariesFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           s"project $libraries4jcasFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           "project root" :: state
     }
   }
@@ -301,6 +314,8 @@ commands ++= {
     Command.command(jcasgenFile) {
       state =>
         s"project $jcasgenFile" ::
+          "clean" ::
+          "clean-files" ::
           "compile" ::
           s"run-main $usfeliscat.util.JCasGen" ::
           "project root" :: state
@@ -311,15 +326,25 @@ commands ++= {
     Command.command("init") {
       state =>
         s"project $jcasgenFile" ::
+          "clean" ::
+          "clean-files" ::
           "compile" ::
           s"run-main $usfeliscat.util.JCasGen" ::
           s"project $libraries4uimaFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           s"project $librariesFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           s"project $libraries4jcasFile" ::
-          "publish" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
           "project root" ::
+          "clean" ::
+          "clean-files" ::
           s"run-main $usfeliscat.util.HistoryCleaner" ::
           "run-main uima.cpe.CPERunner -doCharacterLevelIndriIndexInJapanese -doContentWordLevelIndriIndexInJapanese -doTokenLevelIndriIndexInEnglish -doContentWordLevelIndriIndexInEnglish" :: state
     }

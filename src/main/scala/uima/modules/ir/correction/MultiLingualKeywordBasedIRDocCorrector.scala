@@ -3,6 +3,7 @@ package uima.modules.ir.correction
 import us.feliscat.m17n.MultiLingual
 import org.apache.uima.jcas.JCas
 import us.feliscat.types.{Geography, KeywordQuery}
+import us.feliscat.util.uima.JCasID
 
 /**
   * <pre>
@@ -17,7 +18,7 @@ trait MultiLingualKeywordBasedIRDocCorrector extends Corrector with MultiLingual
               keywordCorrectionMap: Map[String, Seq[String]],
               beginTimeLimit: Option[Int],
               endTimeLimit: Option[Int],
-              geographyLimit: Option[Geography]): Unit = {
+              geographyLimit: Option[Geography])(implicit id: JCasID): Unit = {
 
     correct(
       aJCas,

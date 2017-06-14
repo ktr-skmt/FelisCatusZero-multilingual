@@ -3,6 +3,7 @@ package uima.modules.ir.correction
 import us.feliscat.m17n.MultiLingual
 import org.apache.uima.jcas.JCas
 import us.feliscat.types.{BoWQuery, Geography}
+import us.feliscat.util.uima.JCasID
 
 /**
   * <pre>
@@ -16,7 +17,7 @@ trait MultiLingualBoWBasedIRDocCorrector extends Corrector with MultiLingual {
               query: BoWQuery,
               beginTimeLimit: Option[Int],
               endTimeLimit: Option[Int],
-              geographyLimit: Option[Geography]): Unit = {
+              geographyLimit: Option[Geography])(implicit id: JCasID): Unit = {
 
     correct(
       aJCas,

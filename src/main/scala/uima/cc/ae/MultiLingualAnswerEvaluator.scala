@@ -1,7 +1,5 @@
 package uima.cc.ae
 
-import java.util.Locale
-
 import org.apache.uima.cas.{CAS, FSIterator}
 import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
@@ -10,7 +8,7 @@ import us.feliscat.evaluation.{MacroAveraging, MicroAveraging, RougeN, SummarySt
 import us.feliscat.text.{StringNone, StringOption}
 import us.feliscat.types._
 import us.feliscat.util.uima.fsList._
-import us.feliscat.util.uima.JCasUtils
+import us.feliscat.util.uima.{JCasID, JCasUtils}
 import util.Config
 
 import scala.collection.mutable
@@ -24,9 +22,9 @@ import scala.collection.mutable.{ArrayBuffer, ListBuffer}
   * @author K.Sakamoto
   */
 trait MultiLingualAnswerEvaluator extends MultiLingualDocumentAnnotator {
-  def process(aCAS: CAS): StringOption = {
+  def process(aCAS: CAS)(implicit id: JCasID): StringOption = {
     val aJCas: JCas = aCAS.getView(localeId).getJCas
-    JCasUtils.setAJCasOpt(Option(aJCas))
+    JCasUtils.setAJCas(aJCas)
     process(aJCas)
   }
 
@@ -41,8 +39,8 @@ trait MultiLingualAnswerEvaluator extends MultiLingualDocumentAnnotator {
 
   }
 
-  private def process(aJCas: JCas): StringOption = {
-    println(s">> ${new Locale(localeId).getDisplayLanguage} Essay Evaluator Processing")
+  private def process(aJCas: JCas)(implicit id: JCasID): StringOption = {
+    println(s">> ${locale.getDisplayLanguage} Answer Evaluator Processing")
     val rouge1 = new RougeN(1)
     val rouge2 = new RougeN(2)
 
@@ -273,7 +271,7 @@ trait MultiLingualAnswerEvaluator extends MultiLingualDocumentAnnotator {
       // Do nothing
     }
     val partOfEvaluationResult: String =
-      s"""<h1>${new Locale(localeId).getDisplayLanguage} Essay Evaluation Results</h1>
+      s"""<h1>${locale.getDisplayLanguage} Evaluation Results</h1>
          |<p>${Config.timestamp}</p>
          |<p><a href="../index.html">HISTORY</a></p>
          |<h2>Summary</h2>

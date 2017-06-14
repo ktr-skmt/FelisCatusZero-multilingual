@@ -8,6 +8,7 @@ import us.feliscat.geography.en.EnglishGeographyExtractorForQuestion
 import us.feliscat.time.TimeTmp
 import us.feliscat.time.en.EnglishTimeExtractorForQuestion
 import us.feliscat.types.{Query, Question, Sentence}
+import us.feliscat.util.uima.JCasID
 
 /**
   * <pre>
@@ -29,7 +30,7 @@ object EnglishQuestionAnalyzer extends MultiLingualQuestionAnalyzer with English
     EnglishQuestionFocusAnalyzer.analyze(sentenceSet)
   }
 
-  override protected def generateQuery(aJCas: JCas, question: Question): Seq[Query] = {
+  override protected def generateQuery(aJCas: JCas, question: Question)(implicit id: JCasID): Seq[Query] = {
     EnglishQueryGenerator.generate(aJCas, question)
   }
 }

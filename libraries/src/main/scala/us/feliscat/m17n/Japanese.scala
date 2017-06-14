@@ -13,7 +13,7 @@ import us.feliscat.text.normalizer.ja.JapaneseNormalizedString
   * @author K.Sakamoto
   */
 trait Japanese extends MultiLingual {
-  override protected val localeId: String = Locale.JAPANESE.getLanguage
+  override lazy val locale: Locale = Locale.JAPANESE
 
   override def normalize(textOpt: StringOption): StringOption = {
     JapaneseNormalizedString(textOpt).toStringOption

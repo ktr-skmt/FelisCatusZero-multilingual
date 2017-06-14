@@ -1,7 +1,5 @@
 package uima.ae.qa
 
-import java.util.Locale
-
 import org.apache.uima.cas.FSIterator
 import org.apache.uima.jcas.JCas
 import org.apache.uima.jcas.cas.FSArray
@@ -11,7 +9,7 @@ import us.feliscat.time.TimeTmp
 import us.feliscat.types._
 import us.feliscat.util.uima.fsList.FSListUtils
 import us.feliscat.util.uima.seq2fs._
-import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
+import us.feliscat.util.uima.{FeatureStructure, JCasID, JCasUtils}
 
 /**
   * <pre>
@@ -24,11 +22,10 @@ trait MultiLingualQuestionAnalyzer extends MultiLingualDocumentAnnotator {
   protected def extractTime(sentenceList: Seq[Sentence]): TimeTmp
   protected def extractGeography(sentenceList: Seq[Sentence]): (Seq[String], Seq[String])
   protected def analyzeQuestionFocus(sentenceSet: Seq[Sentence]): Seq[String]
-  protected def generateQuery(aJCas: JCas, question: Question): Seq[Query]
+  protected def generateQuery(aJCas: JCas, question: Question)(implicit id: JCasID): Seq[Query]
 
-  def processQuestion(aView: JCas, question: Question): Unit = {
-    print("- ")
-    println(question.getLabel)
+  def processQuestion(aView: JCas, question: Question)(implicit id: JCasID): Unit = {
+    println("- ".concat(question.getLabel))
     val document: Document = question.getDocument
     if (StringOption(document.getText).nonEmpty) {
 
@@ -113,19 +110,20 @@ trait MultiLingualQuestionAnalyzer extends MultiLingualDocumentAnnotator {
     }
   }
 
-  def process(aJCas: JCas): Unit = {
-    println(s">> ${new Locale(localeId).getDisplayLanguage} Question Analyzer Processing")
+  def process(aJCas: JCas)(implicit id: JCasID): Unit = {
+    println(s">> ${locale.getDisplayLanguage} Question Analyzer Processing")
     val aView: JCas = aJCas.getView(localeId)
-    JCasUtils.setAJCasOpt(Option(aView))
+    JCasUtils.setAJCas(aView)
 
     @SuppressWarnings(Array[String]("rawtypes"))
     val itExam: FSIterator[Nothing] = aView.getAnnotationIndex(Exam.`type`).iterator(true)
     while (itExam.hasNext) {
       val exam: Exam = itExam.next
-      println("Dataset:")
-      print("* ")
-      println(exam.getLabel)
-      println("Question:")
+      print(
+        s"""Dataset:"
+           |* ${exam.getLabel}
+           |Question:
+           |""".stripMargin)
       val questionSet: FSArray = exam.getQuestionSet
       for (i <- 0 until questionSet.size) {
         val question: Question = questionSet.get(i).asInstanceOf[Question]

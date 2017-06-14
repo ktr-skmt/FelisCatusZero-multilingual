@@ -13,12 +13,13 @@ import scala.reflect.ClassTag
   * @author K.Sakamoto
   */
 object FeatureStructure {
-  def create[T <: TOP : ClassTag]: T = {
-    if (JCasUtils.aJCasOpt.isEmpty) {
+  def create[T <: TOP : ClassTag](implicit id: JCasID): T = {
+    if (JCasUtils.isEmpty || JCasUtils.notContains(id)) {
       throw new Exception()
     }
-    val aJCas: JCas = JCasUtils.aJCasOpt.get
-    val ret: T = implicitly[ClassTag[T]].runtimeClass.
+    val aJCas: JCas = JCasUtils.getAJCas(id)
+    val ret: T = implicitly[ClassTag[T]].
+      runtimeClass.
       getConstructor(classOf[JCas]).
       newInstance(aJCas).
       asInstanceOf[T]
@@ -26,11 +27,11 @@ object FeatureStructure {
     ret
   }
 
-  def createArray(size: Int): FSArray = {
-    if (JCasUtils.aJCasOpt.isEmpty) {
+  def createArray(size: Int)(implicit id: JCasID): FSArray = {
+    if (JCasUtils.isEmpty || JCasUtils.notContains(id)) {
       throw new Exception()
     }
-    val aJCas: JCas = JCasUtils.aJCasOpt.get
+    val aJCas: JCas = JCasUtils.getAJCas(id)
     val ret = new FSArray(aJCas, size)
     ret.addToIndexes()
     ret

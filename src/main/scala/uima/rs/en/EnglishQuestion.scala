@@ -1,7 +1,10 @@
 package uima.rs.en
 
+import org.apache.uima.jcas.JCas
 import uima.rs.MultiLingualQuestion
 import us.feliscat.m17n.English
+import us.feliscat.types.Question
+import us.feliscat.util.uima.JCasID
 
 /**
   * <pre>
@@ -10,4 +13,6 @@ import us.feliscat.m17n.English
   *
   * @author K.Sakamoto
   */
-class EnglishQuestion extends MultiLingualQuestion with English
+class EnglishQuestion(casId: JCasID,
+                      aJCas: JCas,
+                      question: Question) extends MultiLingualQuestion(casId, aJCas, question) with English

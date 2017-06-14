@@ -4,6 +4,7 @@ import org.apache.uima.jcas.JCas
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.text.StringOption
 import us.feliscat.types.Sentence
+import us.feliscat.util.uima.JCasID
 
 /**
   * <pre>
@@ -14,5 +15,5 @@ import us.feliscat.types.Sentence
   */
 trait MultiLingualDocumentAnalyzer extends MultiLingual {
   protected def extractContentWords(sentence: StringOption): Seq[String]
-  protected def analyze(aJCas: JCas, sentence: Sentence, normalizedSentence: StringOption): Unit
+  protected def analyze(aJCas: JCas, sentence: Sentence, normalizedSentence: StringOption)(implicit id: JCasID): Unit
 }

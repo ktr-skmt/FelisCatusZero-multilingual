@@ -2,6 +2,7 @@ package uima.cr
 
 import java.io.{File, IOException}
 import java.nio.file.Paths
+import java.util.Locale
 
 import modules.util.ModulesConfig
 import org.apache.uima.cas.{CAS, CASException}
@@ -12,6 +13,7 @@ import uima.cpe.IntermediatePoint
 import uima.cr.en.EnglishQuestionReader
 import uima.cr.ja.JapaneseQuestionReader
 import us.feliscat.text.StringOption
+import us.feliscat.util.uima.JCasID
 
 import scala.collection.mutable.ListBuffer
 
@@ -54,7 +56,6 @@ class QuestionReader extends CollectionReader_ImplBase {
 
     try {
       if (mEssayExamDir.isEmpty | mEssayExamFiles.isEmpty) {
-        println("HERE")
         return
       }
     } catch {
@@ -68,13 +69,13 @@ class QuestionReader extends CollectionReader_ImplBase {
       aCAS,
       baseDirOpt,
       essayExamFiles
-    )
+    )(JCasID(Locale.JAPANESE.getLanguage))
 
     EnglishQuestionReader.next(
       aCAS,
       baseDirOpt,
       essayExamFiles
-    )
+    )(JCasID(Locale.ENGLISH.getLanguage))
 
     mHasNextFlag = false
   }

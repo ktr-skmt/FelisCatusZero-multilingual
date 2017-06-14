@@ -11,13 +11,14 @@ import us.feliscat.text.{StringNone, StringOption, StringSome}
 import us.feliscat.types.{BoWQuery, Document, Keyword, Score}
 import us.feliscat.util.process._
 import us.feliscat.util.uima.seq2fs.SeqUtils
-import us.feliscat.util.uima.{FeatureStructure, JCasUtils}
+import us.feliscat.util.uima.{FeatureStructure, JCasID, JCasUtils}
 import util.Config
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
 import scala.sys.process.Process
+import scala.util.{Failure, Success, Try}
 
 /**
   * <pre>
@@ -73,9 +74,9 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
   def retrieve(aJCas: JCas,
                query: BoWQuery,
                mIndriScoreIndex: Int,
-               firstDocumentId: Long): Long = {
+               firstDocumentId: Long)(implicit id: JCasID): Long = {
     var mDocumentId: Long = firstDocumentId
-    JCasUtils.setAJCasOpt(Option(aJCas))
+    JCasUtils.setAJCas(aJCas)
 
     query.getAlgorithm match {
       case "TFIDF" =>
@@ -91,7 +92,7 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
     val keyword: Keyword = query.getIndriQuery
     println(keyword.getText)
     def retrieve: Iterator[IndriResult] = {
-      toIndriResultMap(
+      Try {
         Process(command(Seq[String](keyword.getText), knowledgeSourceList)).
           lineStream(
             StandardCharsets.UTF_8,
@@ -99,8 +100,18 @@ trait MultiLingualRetrievalByBoW extends Retrieval with MultiLingual {
             CodingErrorAction.IGNORE,
             StringNone,
             Config.indriRunQueryTimeout.minute
-          ),
-        StringOption(keyword.getText), Nil, mutable.Map.empty[String, IndriResult]).valuesIterator
+          )
+      } match {
+        case Success(result) =>
+          toIndriResultMap(
+            result,
+            StringOption(keyword.getText),
+            Nil,
+            mutable.Map.empty[String, IndriResult]).valuesIterator
+        case Failure(err) =>
+          err.printStackTrace(System.err)
+          Iterator.empty
+      }
     }
 
     //docno, document

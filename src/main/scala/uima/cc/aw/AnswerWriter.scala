@@ -3,6 +3,7 @@ package uima.cc.aw
 import java.io.{File, IOException, PrintWriter}
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths}
+import java.util.Locale
 
 import org.apache.uima.cas.CAS
 import org.apache.uima.collection.CasConsumer_ImplBase
@@ -10,6 +11,7 @@ import org.apache.uima.resource.ResourceProcessException
 import uima.cc.aw.en.EnglishAnswerWriter
 import uima.cc.aw.ja.JapaneseAnswerWriter
 import uima.cpe.IntermediatePoint
+import us.feliscat.util.uima.JCasID
 import util.Config
 
 import scala.collection.mutable
@@ -37,10 +39,10 @@ class AnswerWriter extends CasConsumer_ImplBase {
     println(s">> ${IntermediatePoint.AnswerWriter.name} Processing")
 
     val japaneseResults: mutable.LinkedHashMap[String, WriterQuestionLocale] = {
-      JapaneseAnswerWriter.process(aCAS)
+      JapaneseAnswerWriter.process(aCAS)(JCasID(Locale.JAPANESE.getLanguage))
     }
     val englishResults:  mutable.LinkedHashMap[String, WriterQuestionLocale] = {
-      EnglishAnswerWriter.process(aCAS)
+      EnglishAnswerWriter.process(aCAS)(JCasID(Locale.ENGLISH.getLanguage))
     }
 
     val allExams: Seq[String] = (japaneseResults.keySet ++ englishResults.keySet).toSeq.distinct

@@ -1,7 +1,9 @@
 package uima.rs
 
+import org.apache.uima.jcas.JCas
 import us.feliscat.m17n.MultiLingual
 import us.feliscat.types.Question
+import us.feliscat.util.uima.JCasID
 
 /**
   * <pre>
@@ -10,6 +12,6 @@ import us.feliscat.types.Question
   *
   * @author K.Sakamoto
   */
-abstract class MultiLingualQuestion extends MultiLingual {
-  var questionOpt: Option[Question] = Option.empty[Question]
-}
+abstract class MultiLingualQuestion(val casId: JCasID,
+                                    val aJCas: JCas,
+                                    val question: Question) extends MultiLingual

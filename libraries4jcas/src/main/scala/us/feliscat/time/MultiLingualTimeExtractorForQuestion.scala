@@ -33,7 +33,7 @@ trait MultiLingualTimeExtractorForQuestion extends MultiLingual {
       sentence: Sentence =>
         if (isQuestionSentence(sentence)) {
           val beginTimeOpt = Option[Time](sentence.getBeginTime)
-          val endTimeOpt = Option[Time](sentence.getEndTime)
+          val endTimeOpt   = Option[Time](sentence.getEndTime)
           timeBuffer += new TimeTmp(
             if (beginTimeOpt.nonEmpty) {
               Option(beginTimeOpt.get.getYear)

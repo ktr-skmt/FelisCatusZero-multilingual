@@ -18,7 +18,7 @@ import scala.sys.process.Process
   *
   * @author K.Sakamoto
   */
-class IndriIndex(inputPath: Path, indexPath: Path) {
+class IndriIndexer(inputPath: Path, indexPath: Path) {
   private def command: Seq[String] = {
     "IndriBuildIndex" ::
     "-field.name=TITLE" ::
@@ -32,11 +32,11 @@ class IndriIndex(inputPath: Path, indexPath: Path) {
     val buffer = ListBuffer.empty[String]
     command.foreach(buffer.+=)
     Process(buffer.result).lineStream(
-      StandardCharsets.UTF_8,
-      CodingErrorAction.IGNORE,
-      CodingErrorAction.IGNORE,
-      StringNone,
-      LibrariesConfig.indriBuildIndexTimeout.minute
-    ).foreach(println)
+        StandardCharsets.UTF_8,
+        CodingErrorAction.IGNORE,
+        CodingErrorAction.IGNORE,
+        StringNone,
+        LibrariesConfig.indriBuildIndexTimeout.minute
+      ).foreach(println)
   }
 }
