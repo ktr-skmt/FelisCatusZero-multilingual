@@ -86,4 +86,3 @@ FelisCatus Zero-Libraries4UIMA | YES | NO
 FelisCatus Zero-Libraries4JCas | YES | YES
 
 See [build.sbt](build.sbt) if you want to look in more detail.
-
