@@ -5,7 +5,8 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/FelisCatusZero-multilingual/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
 This system answers world history essay questions in Japanese and/or English and evaluate the answers.  
-Also, this is the Japanese-English bilingual version of <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.
+
+(past version: <a href="https://github.com/ktr-skmt/FelisCatusZero">FelisCatus Zero</a>.)
 
 ## Trial
 
@@ -29,7 +30,8 @@ Note: I am planning to make remote services to enable to run without local Indri
 ### (2) Knowledge Source Installation
 See [Knowledge Source Installation](tutorial/KnowledgeSourceInstallation.md)
 
-Note: Knowledge source accessible people are currently limited because of a license issue. I am planning to make remote services to enable to run without local knowledge sources and avoid the license issue.
+Note: Knowledge source accessible people are currently limited because of a license issue.  
+Note: I am planning to make remote services to enable to run without local knowledge sources.
 
 ### (3) Download FelisCatus Zero
 Git-clone or download this repository
