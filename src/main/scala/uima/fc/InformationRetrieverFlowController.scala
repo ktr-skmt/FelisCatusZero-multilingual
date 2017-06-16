@@ -10,6 +10,7 @@ import uima.cpe.IntermediatePoint
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
+import scala.collection.JavaConverters._
 import scala.util.control.Breaks
 
 /**
@@ -20,7 +21,8 @@ import scala.util.control.Breaks
   * @author K.Sakamoto
   */
 object InformationRetrieverFlowController {
-  private val analysisEngineList: ArrayBuffer[String] = ArrayBuffer.empty[String]
+  private val analysisEngineList = ArrayBuffer.empty[String]
+  val intermediatePoint = IntermediatePoint.InformationRetriever
   def setAnalysisEngine(analysisEngine: String): Unit = {
     analysisEngineList += analysisEngine
   }
@@ -40,8 +42,7 @@ object InformationRetrieverFlowController {
     analysisEngineList foreach {
       analysisEngine: String =>
         counter += 1
-        print(s"$counter. ")
-        println(analysisEngine)
+        println(s"${intermediatePoint.id}.$counter $analysisEngine")
     }
   }
   def indexOf(analysisEngine: String): Int = {
@@ -65,10 +66,20 @@ class InformationRetrieverFlowController extends CasFlowController_ImplBase  {
 
     @throws[AnalysisEngineProcessException]
     override def next(): Step = {
-      println(s">> ${IntermediatePoint.InformationRetriever.name} Flow Controller Processing")
+      if (step < 0 || InformationRetrieverFlowController.analysisEngineList.length <= step) {
+        getContext.getLogger.log(Level.FINEST, "Flow Complete.")
+        new FinalStep()
+      }
+      print(
+        s""">> ${IntermediatePoint.InformationRetriever.name} Flow Controller Processing
+           |${InformationRetrieverFlowController.intermediatePoint.id}.${step + 1} ${InformationRetrieverFlowController.analysisEngineList(step)}
+           |""".stripMargin)
       val aCAS: CAS = getCas
-      val aeIterator: java.util.Iterator[java.util.Map.Entry[String, AnalysisEngineMetaData]] =
-        getContext.getAnalysisEngineMetaDataMap.entrySet.iterator
+      val aeIterator: Iterator[java.util.Map.Entry[String, AnalysisEngineMetaData]] =
+        getContext.getAnalysisEngineMetaDataMap.entrySet.iterator.asScala.toSeq.sortBy[Int] {
+          entry: java.util.Map.Entry[String, AnalysisEngineMetaData] =>
+            InformationRetrieverFlowController.analysisEngineList.indexOf(entry.getKey)
+        }.iterator
       while (aeIterator.hasNext) {
         val entry: java.util.Map.Entry[String, AnalysisEngineMetaData] = aeIterator.next
         val aeKey: String = entry.getKey
