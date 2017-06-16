@@ -27,7 +27,10 @@
           <sofaName>en</sofaName>
         </inputSofas>
         <outputSofas/>
-        <languagesSupported/>
+        <languagesSupported>
+          <language>ja</language>
+          <language>en</language>
+        </languagesSupported>
       </capability>
     </capabilities>
     <operationalProperties>

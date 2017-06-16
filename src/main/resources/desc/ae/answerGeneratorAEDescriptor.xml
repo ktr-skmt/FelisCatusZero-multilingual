@@ -33,7 +33,10 @@
           <sofaName>ja</sofaName>
           <sofaName>en</sofaName>
         </outputSofas>
-        <languagesSupported/>
+        <languagesSupported>
+          <language>ja</language>
+          <language>en</language>
+        </languagesSupported>
       </capability>
     </capabilities>
     <operationalProperties>

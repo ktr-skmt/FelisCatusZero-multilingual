@@ -20,7 +20,10 @@
       <capability>
         <inputs/>
         <outputs/>
-        <languagesSupported/>
+        <languagesSupported>
+          <language>ja</language>
+          <language>en</language>
+        </languagesSupported>
       </capability>
     </capabilities>
     <operationalProperties>
