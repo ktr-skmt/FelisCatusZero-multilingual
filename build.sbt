@@ -351,6 +351,34 @@ commands ++= {
   }
 
   commandBuffer += {
+    Command.command("initWithoutIndriBuildIndex") {
+      state =>
+        s"project $jcasgenFile" ::
+          "clean" ::
+          "clean-files" ::
+          "compile" ::
+          s"run-main $usfeliscat.util.JCasGen" ::
+          s"project $libraries4uimaFile" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
+          s"project $librariesFile" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
+          s"project $libraries4jcasFile" ::
+          "clean" ::
+          "clean-files" ::
+          "publish-local" ::
+          "project root" ::
+          "clean" ::
+          "clean-files" ::
+          s"run-main $usfeliscat.util.HistoryCleaner" ::
+          "run-main uima.cpe.CPERunner" :: state
+    }
+  }
+
+  commandBuffer += {
     Command.command("ci") {
       state =>
         "clean" ::
