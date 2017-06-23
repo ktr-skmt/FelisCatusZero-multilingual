@@ -68,7 +68,7 @@ class AnswerGeneratorFlowController extends CasFlowController_ImplBase  {
     override def next(): Step = {
       if (step < 0 || AnswerGeneratorFlowController.analysisEngineList.length <= step) {
         getContext.getLogger.log(Level.FINEST, "Flow Complete.")
-        new FinalStep()
+        return new FinalStep()
       }
       print(
         s""">> ${IntermediatePoint.AnswerGenerator.name} Flow Controller Processing

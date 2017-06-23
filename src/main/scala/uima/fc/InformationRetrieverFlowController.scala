@@ -68,7 +68,7 @@ class InformationRetrieverFlowController extends CasFlowController_ImplBase  {
     override def next(): Step = {
       if (step < 0 || InformationRetrieverFlowController.analysisEngineList.length <= step) {
         getContext.getLogger.log(Level.FINEST, "Flow Complete.")
-        new FinalStep()
+        return new FinalStep()
       }
       print(
         s""">> ${IntermediatePoint.InformationRetriever.name} Flow Controller Processing
@@ -80,6 +80,15 @@ class InformationRetrieverFlowController extends CasFlowController_ImplBase  {
           entry: java.util.Map.Entry[String, AnalysisEngineMetaData] =>
             InformationRetrieverFlowController.analysisEngineList.indexOf(entry.getKey)
         }.iterator
+      val aeIteratorTmp: Iterator[java.util.Map.Entry[String, AnalysisEngineMetaData]] =
+        getContext.getAnalysisEngineMetaDataMap.entrySet.iterator.asScala.toSeq.sortBy[Int] {
+          entry: java.util.Map.Entry[String, AnalysisEngineMetaData] =>
+            InformationRetrieverFlowController.analysisEngineList.indexOf(entry.getKey)
+        }.iterator
+      println("TEST")
+      while (aeIteratorTmp.hasNext) {
+        println(aeIteratorTmp.next.getKey)
+      }
       while (aeIterator.hasNext) {
         val entry: java.util.Map.Entry[String, AnalysisEngineMetaData] = aeIterator.next
         val aeKey: String = entry.getKey
