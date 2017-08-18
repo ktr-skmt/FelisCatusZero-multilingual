@@ -44,7 +44,7 @@ trait MultiLingualInformationRetriever extends MultiLingualDocumentAnnotator {
   def processQuestion(aView: JCas, question: Question)(implicit id: JCasID): Unit = {
     println("- ".concat(question.getLabel))
     val beginTimeLimit: Option[Int] = question.getBeginTimeLimit.toYearOpt
-    val endTimeLimit:   Option[Int] = question.getEndTimeLimit.toYearOpt
+    val endTimeLimit: Option[Int] = question.getEndTimeLimit.toYearOpt
     val geographyLimit = Option.empty[Geography]
     val keywordCorrectionMap = mutable.Map.empty[String, Seq[String]]
 

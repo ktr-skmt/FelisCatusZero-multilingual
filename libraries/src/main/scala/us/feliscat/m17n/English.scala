@@ -1,7 +1,5 @@
 package us.feliscat.m17n
 
-import java.util.Locale
-
 import us.feliscat.text.StringOption
 import us.feliscat.text.normalizer.en.EnglishNormalizedString
 
@@ -12,9 +10,7 @@ import us.feliscat.text.normalizer.en.EnglishNormalizedString
   *
   * @author K.Sakamoto
   */
-trait English extends MultiLingual {
-  override lazy val locale: Locale = Locale.ENGLISH
-
+trait English extends MultiLingual with EnglishLocale {
   override def normalize(textOpt: StringOption): StringOption = {
     EnglishNormalizedString(textOpt).toStringOption
   }

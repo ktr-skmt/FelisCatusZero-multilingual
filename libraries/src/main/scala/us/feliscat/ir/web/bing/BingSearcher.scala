@@ -21,10 +21,10 @@ class BingSearcher(accountKey: String) extends web.Searcher[BingQuery] {
   BingAuthenticator.setAuth(accountKey)
 
   override protected val rootUrl: String = "https://api.datamarket.azure.com/Bing/Search/Web?Query="
-  private var option: BingSearchOption = BingSearchOption()
+  //private var option: BingSearchOption = BingSearchOption()
 
   def searchOption(searchOption: BingSearchOption): BingSearcher = {
-    option = searchOption
+    //option = searchOption
     this
   }
 

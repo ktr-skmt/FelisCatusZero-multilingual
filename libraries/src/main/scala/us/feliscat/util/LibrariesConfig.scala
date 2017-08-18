@@ -19,6 +19,26 @@ object LibrariesConfig {
     config = ConfigFactory.load(ConfigFactory.parseFile(configFile))
   }
 
+  final lazy val runMode: RunModes.RunMode = config.as[Option[String]]("runMode") match {
+    case Some(mode) =>
+      mode match {
+        case m if m.equalsIgnoreCase("Development") =>
+          RunModes.Development
+        case m if m.equalsIgnoreCase("ProcessDetail") =>
+          RunModes.ProcessDetail
+        case m if m.equalsIgnoreCase("Test") =>
+          RunModes.Test
+        case m if m.equalsIgnoreCase("Pilot") =>
+          RunModes.Pilot
+        case m if m.equalsIgnoreCase("Production") =>
+          RunModes.Production
+        case _ =>
+          RunModes.Development
+      }
+    case None =>
+      RunModes.Development
+  }
+
   final lazy val native2ascii: String = config.as[Option[String]]("native2ascii").getOrElse(s"${System.getProperty("java.home")}/../bin/native2ascii")
 
   final lazy val mecabTimeout: Int = config.as[Option[Int]]("analyzer.mecab.timeout").getOrElse(1)
@@ -216,4 +236,33 @@ object LibrariesConfig {
 
   final lazy val chasenNAISTDicDir: String = dicDir("/usr/local/lib/chasen/dic/naistdic", "analyzer.chasen.naistdic.dir")
 
+  final lazy val fastTextGeneratorMinimumFrequency: Int = config.as[Option[Int]]("wordEmbedding.fastText.generator.minCount").getOrElse(1)
+
+  final lazy val fastTextGeneratorTimeout: Int = config.as[Option[Int]]("wordEmbedding.fastText.generator.timeout").getOrElse(10)
+
+  final lazy val fastTextExtractorTimeout: Int = config.as[Option[Int]]("wordEmbedding.fastText.extractor.timeout").getOrElse(10)
+
+  final lazy val fastTextJapaneseResource: String = config.as[Option[String]]("wordEmbedding.fastText.ja.resource").getOrElse("out/fastText/ja/data.txt")
+
+  final lazy val fastTextJapaneseModel: String = config.as[Option[String]]("wordEmbedding.fastText.ja.model").getOrElse("out/fastText/ja/model")
+
+  final lazy val fastTextJapaneseModelBin: String = fastTextJapaneseModel concat ".bin"
+
+  final lazy val fastTextJapaneseModelVec: String = fastTextJapaneseModel concat ".vec"
+
+  final lazy val fastTextJapaneseQuery: String = config.as[Option[String]]("wordEmbedding.fastText.ja.query").getOrElse("out/fastText/ja/query.txt")
+
+  final lazy val fastTextEnglishResource: String = config.as[Option[String]]("wordEmbedding.fastText.en.resource").getOrElse("out/fastText/en/data.txt")
+
+  final lazy val fastTextEnglishModel: String = config.as[Option[String]]("wordEmbedding.fastText.en.model").getOrElse("out/fastText/en/model")
+
+  final lazy val fastTextEnglishModelBin: String = fastTextEnglishModel concat ".bin"
+
+  final lazy val fastTextEnglishModelVec: String = fastTextEnglishModel concat ".vec"
+
+  final lazy val fastTextEnglishQuery: String = config.as[Option[String]]("wordEmbedding.fastText.en.query").getOrElse("out/fastText/en/query.txt")
+
+  final lazy val essayExamDirOpt: Option[String] = config.as[Option[String]]("exam.essayExamDir")
+
+  final lazy val trecTextFormatData: Seq[String] = Nil
 }

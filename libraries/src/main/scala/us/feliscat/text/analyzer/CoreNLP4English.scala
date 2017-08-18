@@ -6,12 +6,13 @@ import java.nio.file.{Files, Path, Paths}
 import java.util.Properties
 
 import edu.stanford.nlp.ling.CoreAnnotations._
-import edu.stanford.nlp.ling.CoreLabel
+import edu.stanford.nlp.ling.{CoreAnnotations, CoreLabel}
 import edu.stanford.nlp.pipeline.{Annotation, StanfordCoreNLP}
 import edu.stanford.nlp.util.CoreMap
 import org.apache.log4j.BasicConfigurator
 import org.tartarus.snowball.ext.EnglishStemmer
 import us.feliscat.text.{StringNone, StringOption, StringSome}
+import us.feliscat.util.LibrariesConfig
 
 import scala.collection.mutable.ListBuffer
 
@@ -29,8 +30,8 @@ object CoreNLP4English {
   properties.put("tokenize.language", "English")
   private val pipeline = new StanfordCoreNLP(properties)
 
-  private lazy val stopWords: Seq[String] = {
-    val path: Path = Paths.get("src", "main", "resources", "normalizer", "en", "stop_words.txt")
+  val stopWords: Seq[String] = {
+    val path: Path = Paths.get(LibrariesConfig.resourcesDir, "normalizer", "en", "stop_words.txt")
     val reader: BufferedReader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
     val iterator: java.util.Iterator[String] = reader.lines.iterator
     val buffer = ListBuffer.empty[String]
@@ -46,9 +47,32 @@ object CoreNLP4English {
     buffer.result
   }
 
-  def stopPOSes: Seq[String] = {
+  def tagPOS(textOpt: StringOption): Seq[(String, String)] = {
+    if (textOpt.isEmpty) {
+      return Nil
+    }
+    val text: String = textOpt.get
+    val buffer = ListBuffer.empty[(String, String)]
+    val document = new Annotation(text)
+    pipeline.annotate(document)
+    val sentenceIterator: java.util.Iterator[CoreMap] = document.get(classOf[CoreAnnotations.SentencesAnnotation]).iterator
+    while (sentenceIterator.hasNext) {
+      val sentence: CoreMap = sentenceIterator.next
+      val tokenIterator: java.util.Iterator[CoreLabel] = sentence.get(classOf[CoreAnnotations.TokensAnnotation]).iterator
+      while (tokenIterator.hasNext) {
+        val token: CoreLabel = tokenIterator.next
+        val word: String = token.get(classOf[CoreAnnotations.TextAnnotation])
+        val pos: String = token.get(classOf[CoreAnnotations.PartOfSpeechAnnotation])
+        buffer += ((word, pos))
+      }
+    }
+    buffer.result
+  }
+
+  val stopPOSes: Seq[String] = {
     "DT" :: "IN" :: "PDT" :: "SYM" :: "WDT" :: "." :: "," :: "“" :: "“" :: "(" :: ")" :: ":" :: "-LRB-" :: "-RRB-" :: "``" :: "''" :: Nil
   }
+
   private val stemmer = new EnglishStemmer()
 
   def stemming(lemmaOpt: StringOption): StringOption = {
@@ -78,8 +102,6 @@ object CoreNLP4English {
         if (!stopWords.contains(word)) {
           val pos: String = token.get(classOf[PartOfSpeechAnnotation])
           if (!stopPOSes.contains(pos)) {
-            //println(word)
-            //println(pos)
             val lemma: String = token.get(classOf[LemmaAnnotation])
             stemming(StringOption(lemma)) match {
               case StringSome(stemmedWord) =>

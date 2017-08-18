@@ -1,18 +1,19 @@
 package modules.text.vector.wordembedding.fastText
 
 import java.io.{File, IOException, PrintWriter}
-import java.nio.charset.StandardCharsets
+import java.nio.charset.{CodingErrorAction, StandardCharsets}
 import java.nio.file.{Files, Path, Paths}
 
+import modules.text.vector.wordembedding.MultiLingualWordEmbeddingGenerator
 import modules.util.ModulesConfig
 import us.feliscat.ir.fulltext.indri.IndriResult
-import us.feliscat.ir.fulltext.indri.ja.JapaneseTrecText
-import us.feliscat.sentence.ja.JapaneseSentenceSplitter
-import us.feliscat.text.analyzer.mor.mecab.UnidicMecab
 import us.feliscat.text.{StringNone, StringOption, StringSome}
+import us.feliscat.util.LibrariesConfig
+import us.feliscat.util.process._
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.duration._
 import scala.io.Source
 import scala.sys.process.Process
 import scala.xml.{NodeSeq, XML}
@@ -24,18 +25,30 @@ import scala.xml.{NodeSeq, XML}
   *
   * @author K.Sakamoto
   */
-object FastTextVectorGenerator {
+abstract class MultiLingualFastTextVectorGenerator extends MultiLingualWordEmbeddingGenerator {
+  protected val fastTextResource: String
+  protected val fastTextModel: String
+  protected val trecTextFormatData: Seq[String]
+
+  protected def toIndriResultMap(
+                       lines: Iterator[String],
+                       keywordOriginalTextOpt: StringOption,
+                       expansionOnlyList: Seq[String],
+                       indriResultMap: mutable.Map[String, IndriResult]): Map[String, IndriResult]
+
+  protected def extractWords(sentences: StringOption): Seq[String]
+
   @throws[Exception]
-  def main(args: Array[String]): Unit = {
+  override def main(args: Array[String]): Unit = {
     println(">> fastText Word Vector Generating")
     val indriResultMap = mutable.Map.empty[String, IndriResult]
-    ModulesConfig.trecTextFormatDataInJapanese foreach {
+    trecTextFormatData foreach {
       path: String =>
-        println(path.toString)
+        //println(path.toString)
         Paths.get(path).toFile.listFiles foreach {
           file: File =>
             indriResultMap ++=
-              JapaneseTrecText.toIndriResultMap(Source.fromFile(file).getLines, StringNone, Nil, indriResultMap)
+              toIndriResultMap(Source.fromFile(file).getLines, StringNone, Nil, indriResultMap)
         }
     }
 
@@ -50,7 +63,6 @@ object FastTextVectorGenerator {
         }
     }
 
-    //
     val mEssayExamFiles = ListBuffer.empty[File]
     ModulesConfig.essayExamDirOpt match {
       case Some(essayExamDir) =>
@@ -68,7 +80,7 @@ object FastTextVectorGenerator {
     }
     mEssayExamFiles.result foreach {
       file: File =>
-        println(file.getName)
+        //println(file.getName)
         val xml: NodeSeq = XML.loadFile(file)
         xml \ "answer_section" foreach {
           answerSection: NodeSeq =>
@@ -78,7 +90,7 @@ object FastTextVectorGenerator {
                 builder.append(p.text.trim)
             }
             builder.append ({
-              for (keyword <- answerSection \ "keyword_set" \ "keyword") yield {
+              for (keyword: NodeSeq <- answerSection \ "keyword_set" \ "keyword") yield {
                 keyword.text.trim
               }
             }.mkString(" ", " ", " "))
@@ -94,16 +106,13 @@ object FastTextVectorGenerator {
         }
     }
 
-    val dataPath: Path = Paths.get(ModulesConfig.fastTextResource)
-    val writer = new PrintWriter(Files.newBufferedWriter(dataPath, StandardCharsets.UTF_8))
+    val dataPath: Path = Paths.get(fastTextResource)
+    val writer = new PrintWriter(
+      Files.newBufferedWriter(dataPath, StandardCharsets.UTF_8))
     try {
-      for (sentenceTmp <- JapaneseSentenceSplitter.split(StringOption(builder.result))) {
-        UnidicMecab.extractWords(StringOption(sentenceTmp.text)) foreach {
-          word: String =>
-            if (word != " " && word != "　") {
-              writer.print(word.concat(" "))
-            }
-        }
+      extractWords(StringOption(builder.result)) foreach {
+        word: String =>
+          writer.print(word.concat(" "))
       }
     } catch {
       case e: IOException =>
@@ -119,13 +128,21 @@ object FastTextVectorGenerator {
       }
     }
 
-    val modelPath: Path = Paths.get(ModulesConfig.fastTextModel)
-    Process(Seq[String](
+    val modelPath: Path = Paths.get(fastTextModel)
+    val command = Seq[String](
       "fasttext",
       "skipgram",
-      "-minCount", 1.toString,
+      "-minCount", LibrariesConfig.fastTextGeneratorMinimumFrequency.toString,
       "-input", dataPath.toAbsolutePath.toString,
       "-output", modelPath.toAbsolutePath.toString
-    )).run
+    )
+
+    Process(command).lineStream(
+      StandardCharsets.UTF_8,
+      CodingErrorAction.IGNORE,
+      CodingErrorAction.IGNORE,
+      StringNone,
+      LibrariesConfig.fastTextGeneratorTimeout.minute
+    ) foreach println
   }
 }

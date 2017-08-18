@@ -128,6 +128,9 @@ package object process {
               writer.write(correctText)
               writer.write('\n')
               writer.close()
+              if (LibrariesConfig.runMode == RunModes.ProcessDetail) {
+                println(correctText)
+              }
               outputStreamWriter.close()
           }
         }
@@ -141,6 +144,9 @@ package object process {
             fromInputStream(in). //Codec
             getLines foreach {
             line: String =>
+              if (LibrariesConfig.runMode == RunModes.ProcessDetail) {
+                println(line)
+              }
               lineBuffer += line
           }
           in.close()

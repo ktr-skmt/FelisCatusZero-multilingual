@@ -117,7 +117,7 @@ class NormalizedStringBuilder {
   }
 
   def result: JapaneseNormalizedString = {
-    new JapaneseNormalizedString(StringOption(builder.toString()))
+    new JapaneseNormalizedString(StringOption(builder.result))
   }
 
   def clear(): Unit = {

@@ -28,7 +28,7 @@ class FrequencyVector(val vector: scala.collection.mutable.Map[String, Int]) ext
   def sum: Long = {
     var summation: Long = 0L
     vector foreach {
-      case (key, value) =>
+      case (_, value) =>
         summation += value
       case _ =>
         // Do nothing

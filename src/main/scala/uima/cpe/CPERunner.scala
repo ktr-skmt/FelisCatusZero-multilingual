@@ -5,7 +5,8 @@ import java.io.{BufferedReader, File, InputStreamReader}
 import modules.converter.QALabDataset2MultiLingualQACorpusConverter
 import modules.ir.fulltext.indri.en.{EnglishIndriContentWordLevelIndexer, EnglishIndriTokenLevelIndexer}
 import modules.ir.fulltext.indri.ja.{JapaneseIndriCharactereLevelIndexer, JapaneseIndriContentWordLevelIndexer}
-import modules.text.vector.wordembedding.fastText.FastTextVectorGenerator
+import modules.text.vector.wordembedding.fastText.en.EnglishFastTextVectorGenerator
+import modules.text.vector.wordembedding.fastText.ja.JapaneseFastTextVectorGenerator
 import org.apache.uima.UIMAFramework
 import org.apache.uima.cas.CAS
 import org.apache.uima.collection._
@@ -85,7 +86,8 @@ object CPERunner extends Thread {
     }
 
     if (Config.doFastTestAsPreprocess) {
-      FastTextVectorGenerator.main(Array.empty[String])
+      EnglishFastTextVectorGenerator.main(Array.empty[String])
+      JapaneseFastTextVectorGenerator.main(Array.empty[String])
     }
 
     QALabDataset2MultiLingualQACorpusConverter.convert()
@@ -123,6 +125,7 @@ object CPERunner extends Thread {
 
     // Flow Controller
     println(">> Flow Controller Initializing")
+    //val flowController = FlowController()
     FlowController.clear()
 
     def needFlow(intermediatePoint: IntermediatePoint): Boolean = {
@@ -135,12 +138,17 @@ object CPERunner extends Thread {
     val needAnswerWriter:         Boolean = needFlow(IntermediatePoint.AnswerWriter)
     val needAnswerEvaluator:      Boolean = needFlow(IntermediatePoint.AnswerEvaluator)
 
+    //val questionAnalyzerFlowController = QuestionAnalyzerFlowController()
+    QuestionAnalyzerFlowController.clear()
+    //val informationRetrieverFlowController = InformationRetrieverFlowController()
+    InformationRetrieverFlowController.clear()
+    //val answerGeneratorFlowController = AnswerGeneratorFlowController()
+    AnswerGeneratorFlowController.clear()
+
     if (needQuestionAnalyzer) {
       println(s">> ${IntermediatePoint.QuestionAnalyzer.name} Flow Controller Initializing")
       FlowController.setAnalysisEngine(IntermediatePoint.QuestionAnalyzer.descriptor.get)
       QuestionAnalyzerFlowController.setAnalysisEngine(IntermediatePoint.QuestionAnalyzer.primitiveDescriptor.get)
-    } else {
-      QuestionAnalyzerFlowController.clear()
     }
 
     if (needInformationRetriever) {
@@ -150,8 +158,6 @@ object CPERunner extends Thread {
       if (Config.wantToOutputForQALabExtractionSubtask) {
         InformationRetrieverFlowController.setAnalysisEngine("qalabExtractionSubtaskCCDescriptor")
       }
-    } else {
-      InformationRetrieverFlowController.clear()
     }
 
     if (needAnswerGenerator || needAnswerWriter || needAnswerEvaluator) {
@@ -176,8 +182,6 @@ object CPERunner extends Thread {
       if (needFlow(IntermediatePoint.AnswerEvaluator)) {
         AnswerGeneratorFlowController.setAnalysisEngine(IntermediatePoint.AnswerEvaluator.descriptor.get)
       }
-    } else {
-      AnswerGeneratorFlowController.clear()
     }
 
     val gzipXmiCasConsumerDescriptor: String = "gzipXmiCasConsumerDescriptor"

@@ -14,7 +14,7 @@ object BinaryVectorGeneratorFromJCas extends VectorGeneratorFromJCas[BinaryVecto
 
   override def getVectorFromSentences(sentences: Seq[Sentence]): BinaryVector = {
     BinaryVectorMerger.merge(
-      for (sentence <- sentences) yield {
+      for (sentence: Sentence <- sentences) yield {
         getVectorFromAnnotation(sentence)
       }
     )

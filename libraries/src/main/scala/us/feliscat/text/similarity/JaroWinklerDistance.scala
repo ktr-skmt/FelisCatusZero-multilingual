@@ -30,7 +30,11 @@ class JaroWinklerDistance(threshold: Double, scalingFactor: Double) extends Dist
 
   override def calculate[Element](array1: Array[Element], array2: Array[Element]): Double = {
     val jaro: Double = calculateJaroDistance(array1, array2)
-    if (jaro < threshold) jaro else jaro + math.min(scalingFactor, 1D / prefixScale) * prefixLength * (1 - jaro)
+    if (jaro < threshold) {
+      jaro
+    } else {
+      jaro + math.min(scalingFactor, 1D / prefixScale) * prefixLength * (1 - jaro)
+    }
   }
 
   def calculateOneMinusDistance(text1: String, text2: String): Double = {

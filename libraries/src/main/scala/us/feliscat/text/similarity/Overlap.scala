@@ -4,6 +4,8 @@ import us.feliscat.text.analyzer.Tokenizer.Tokens
 import us.feliscat.text.vector.BinaryVector
 import us.feliscat.util.LibrariesConfig
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * @author K.Sakamoto
   *         Created on 2016/05/23
@@ -14,7 +16,8 @@ object Overlap extends Enumeration {
   F1,//similarity
   Precision,//divergence
   Recall,//convergence
-  Rus05//convergence
+  Rus05,//convergence
+  WordEmbedding
   = Value
 
   def calculate(v1: BinaryVector, v2: BinaryVector, convergence: Overlap.Value): Double = {
@@ -27,6 +30,8 @@ object Overlap extends Enumeration {
         calculatePrecision(v1, v2)
       case Recall | Rus05 =>
         calculateRecall(v1, v2)
+      case WordEmbedding =>
+        calculateWordEmbedding(v1, v2)
       case _ =>
         0D
     }
@@ -75,4 +80,38 @@ object Overlap extends Enumeration {
     Divider.divide((1 + betaPow2) * precision * recall, betaPow2 * precision + recall)
   }
 
+  def calculateWordEmbedding(v1: BinaryVector, v2: BinaryVector): Double = {
+    def score(keywords: Seq[String], passage: Seq[String]):Double = {
+      var finalScore: Double = 0
+      passage foreach {
+        word: String => {
+          val maxPassageWordScore = ArrayBuffer.empty[Double]
+          keywords foreach {
+            keyword: String => {
+              //TODO
+              val similarity: Double = 0D//word2vec.calcSimilarity(keyword, word)
+              maxPassageWordScore += similarity
+            }
+          }
+          if (maxPassageWordScore.nonEmpty) {
+            finalScore += maxPassageWordScore.max
+          }
+          maxPassageWordScore.clear
+        }
+      }
+      val size: Int = passage.size
+      if (0 < size) {
+        finalScore / size
+      } else {
+        0D
+      }
+    }
+
+    score(v1.vector, v2.vector) match {
+      case s if s.isNaN =>
+        0D
+      case s =>
+        s
+    }
+  }
 }

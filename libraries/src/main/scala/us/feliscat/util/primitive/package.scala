@@ -26,6 +26,10 @@ package object primitive {
       }
     }
 
+    def replaceFirstLiteratim(target: CharSequence, replacement: CharSequence): String = {
+      str.replace(target, replacement)
+    }
+
     def replaceAllLiteratim(target: CharSequence, replacement: CharSequence): String = {
       str.replace(target, replacement)
     }

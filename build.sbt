@@ -7,7 +7,7 @@ lazy val javaVersion = "1.8"
 val usfeliscat = "us.feliscat"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.12.2",
+  scalaVersion := "2.12.3",
   organization := usfeliscat,
   fork in run := true
 ) ++ {

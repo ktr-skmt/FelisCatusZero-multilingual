@@ -15,7 +15,7 @@ object FrequencyVectorGeneratorFromJCas extends VectorGeneratorFromJCas[Frequenc
   override def getVectorFromSentences(sentences: Seq[Sentence]): FrequencyVector = {
     FrequencyVectorGenerator.getVector(
       {
-        for (sentence <- sentences) yield {
+        for (sentence: Sentence <- sentences) yield {
           getVectorFromAnnotation(sentence).vector.toSet
         }
       }.toList.flatten

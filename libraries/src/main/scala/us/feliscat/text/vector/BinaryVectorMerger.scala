@@ -10,9 +10,9 @@ object BinaryVectorMerger extends VectorMerger[BinaryVector] {
       //Seq[Seq[String]]をflattenするとSeq[Char]になってしまうため、
       //Seq[Seq[String]]を一度List[Set[PseudoString]]を経由してからSeq[String]に変換した。
       {
-        for (vector <- vectors) yield {
+        for (vector: BinaryVector <- vectors) yield {
           {
-            for (term <- vector.vector) yield {
+            for (term: String <- vector.vector) yield {
               new PseudoString(term)
             }
           }.toSet

@@ -117,7 +117,7 @@ class EnglishNormalizedStringBuilder {
   }
 
   def result: EnglishNormalizedString = {
-    new EnglishNormalizedString(StringOption(builder.toString()))
+    new EnglishNormalizedString(StringOption(builder.result))
   }
 
   def clear(): Unit = {

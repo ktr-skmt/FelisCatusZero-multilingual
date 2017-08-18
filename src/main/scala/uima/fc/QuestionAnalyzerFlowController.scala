@@ -33,7 +33,7 @@ object QuestionAnalyzerFlowController {
     analysisEngineList.contains(analysisEngine)
   }
   def printAnalysisEngines(): Unit = {
-    println(s"${IntermediatePoint.QuestionAnalyzer.name} Flow Controller Analysis Engine List:")
+    println(s"${intermediatePoint.name} Flow Controller Analysis Engine List:")
     if (analysisEngineList.isEmpty) {
       println("(empty)")
       return

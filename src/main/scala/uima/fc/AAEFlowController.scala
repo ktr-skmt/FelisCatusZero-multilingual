@@ -1,3 +1,4 @@
+/*
 package uima.fc
 
 import org.apache.uima.analysis_engine.{AnalysisEngineProcessException, TypeOrFeature}
@@ -6,34 +7,33 @@ import org.apache.uima.cas.CAS
 import org.apache.uima.flow._
 import org.apache.uima.resource.metadata.Capability
 import org.apache.uima.util.Level
-import uima.cpe.IntermediatePoint
 
+import scala.collection.JavaConverters._
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
-import scala.collection.JavaConverters._
 import scala.util.control.Breaks
 
 /**
-  * <pre>
-  * Created on 2017/01/22.
-  * </pre>
-  *
-  * @author K.Sakamoto
+  * @author K. Sakamoto
+  *         Created on 2017/06/24
   */
-object InformationRetrieverFlowController {
-  private val analysisEngineList = ArrayBuffer.empty[String]
-  val intermediatePoint = IntermediatePoint.InformationRetriever
+class AAEFlowController extends CasFlowController_ImplBase {
+  protected val analysisEngineList: ArrayBuffer[String] = ArrayBuffer.empty[String]
+
   def setAnalysisEngine(analysisEngine: String): Unit = {
     analysisEngineList += analysisEngine
   }
+
   def clear(): Unit = {
     analysisEngineList.clear
   }
+
   def hasAnalysisEngine(analysisEngine: String): Boolean = {
     analysisEngineList.contains(analysisEngine)
   }
+
   def printAnalysisEngines(): Unit = {
-    println(s"${intermediatePoint.name} Flow Controller Analysis Engine List:")
+    println("Flow Controller Analysis Engine List:")
     if (analysisEngineList.isEmpty) {
       println("(empty)")
       return
@@ -42,18 +42,32 @@ object InformationRetrieverFlowController {
     analysisEngineList foreach {
       analysisEngine: String =>
         counter += 1
-        println(s"${intermediatePoint.id}.$counter $analysisEngine")
+        println(s"$counter. $analysisEngine")
     }
   }
+
   def indexOf(analysisEngine: String): Int = {
     analysisEngineList.indexOf(analysisEngine)
   }
+
   def insert(index: Int, analysisEngine: String): Unit = {
     analysisEngineList.insert(index, analysisEngine)
   }
-}
 
-class InformationRetrieverFlowController extends CasFlowController_ImplBase  {
+  def isOutOfIndex(step: Int): Boolean = {
+    step < 0 || analysisEngineList.length <= step
+  }
+
+  protected def processingLabel(step: Int): String = {
+    s""">> Flow Controller Processing
+       |${step + 1}. ${analysisEngineList(step)}
+       |""".stripMargin
+  }
+
+  protected def completingLabel(): String = {
+    "Flow Complete."
+  }
+
   @throws[AnalysisEngineProcessException]
   override def computeFlow(aCAS: CAS): Flow = {
     new AnalyzerFlow()
@@ -66,19 +80,16 @@ class InformationRetrieverFlowController extends CasFlowController_ImplBase  {
 
     @throws[AnalysisEngineProcessException]
     override def next(): Step = {
-      if (step < 0 || InformationRetrieverFlowController.analysisEngineList.length <= step) {
-        getContext.getLogger.log(Level.FINEST, "Flow Complete.")
+      if (isOutOfIndex(step)) {
+        getContext.getLogger.log(Level.FINEST, completingLabel())
         return new FinalStep()
       }
-      print(
-        s""">> ${IntermediatePoint.InformationRetriever.name} Flow Controller Processing
-           |${InformationRetrieverFlowController.intermediatePoint.id}.${step + 1} ${InformationRetrieverFlowController.analysisEngineList(step)}
-           |""".stripMargin)
+      print(processingLabel(step))
       val aCAS: CAS = getCas
       val aeIterator: Iterator[java.util.Map.Entry[String, AnalysisEngineMetaData]] =
         getContext.getAnalysisEngineMetaDataMap.entrySet.iterator.asScala.toSeq.sortBy[Int] {
           entry: java.util.Map.Entry[String, AnalysisEngineMetaData] =>
-            InformationRetrieverFlowController.analysisEngineList.indexOf(entry.getKey)
+            analysisEngineList.indexOf(entry.getKey)
         }.iterator
       while (aeIterator.hasNext) {
         val entry: java.util.Map.Entry[String, AnalysisEngineMetaData] = aeIterator.next
@@ -106,18 +117,19 @@ class InformationRetrieverFlowController extends CasFlowController_ImplBase  {
           }
         }
       }
-      getContext.getLogger.log(Level.FINEST, "Flow Complete.")
+      getContext.getLogger.log(Level.FINEST, completingLabel())
       new FinalStep()
     }
 
     private def inputsSatisfied(aeKey: String, aInputs: Array[TypeOrFeature], aCAS: CAS): Boolean = {
-      if (step < 0 || InformationRetrieverFlowController.analysisEngineList.length <= step) {
+      if (isOutOfIndex(step)) {
         return false
       }
-      if (aeKey == InformationRetrieverFlowController.analysisEngineList(step)) {
+      if (aeKey == analysisEngineList(step)) {
         return true
       }
       false
     }
   }
 }
+*/

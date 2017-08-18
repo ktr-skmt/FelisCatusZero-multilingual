@@ -1,11 +1,13 @@
-package modules.text.vector.wordembedding.fastText
+package us.feliscat.text.vector.wordembedding.fastText
 
 import java.io.{IOException, PrintWriter}
 import java.nio.charset.{CodingErrorAction, StandardCharsets}
 import java.nio.file.{Files, Paths}
 
-import modules.util.ModulesConfig
 import us.feliscat.text.StringNone
+import us.feliscat.text.vector.wordembedding.MultiLingualWordEmbeddingExtractor
+import us.feliscat.util.LibrariesConfig
+import us.feliscat.util.process._
 
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.concurrent.duration._
@@ -18,12 +20,15 @@ import scala.sys.process.Process
   *
   * @author K.Sakamoto
   */
-object FastTextVectorExtractor {
-  def extract(wordList: Seq[String]): Seq[(String, Array[Float])] = {
+abstract class MultiLingualFastTextVectorExtractor extends MultiLingualWordEmbeddingExtractor {
+  protected val fastTextQuery: String
+  protected val fastTextModelBin: String
+
+  override def extract(wordList: Seq[String]): Seq[(String, Array[Float])] = {
     // set up query
     val writer = new PrintWriter(
       Files.newBufferedWriter(
-        Paths.get(ModulesConfig.fastTextQuery),
+        Paths.get(fastTextQuery),
         StandardCharsets.UTF_8))
     try {
       writer.print(wordList.mkString(" "))
@@ -44,19 +49,18 @@ object FastTextVectorExtractor {
     // retrieve vectors from query
     val vectorSequenceBuffer = ListBuffer.empty[(String, Array[Float])]
 
-    val command: Seq[String] = Seq[String](
+    val command = Seq[String](
       "fasttext",
       "print-vectors",
-      Paths.get(ModulesConfig.fastTextModelBin).toAbsolutePath.toString)
+      Paths.get(fastTextModelBin).toAbsolutePath.toString)
 
-    import us.feliscat.util.process._
-    Process(command).#<(Paths.get(ModulesConfig.fastTextQuery).toAbsolutePath.toFile).lineStream(
-        StandardCharsets.UTF_8,
-        CodingErrorAction.IGNORE,
-        CodingErrorAction.IGNORE,
-        StringNone,
-        10.minutes
-      ) foreach {
+    Process(command).#<(Paths.get(fastTextQuery).toAbsolutePath.toFile).lineStream(
+      StandardCharsets.UTF_8,
+      CodingErrorAction.IGNORE,
+      CodingErrorAction.IGNORE,
+      StringNone,
+      LibrariesConfig.fastTextExtractorTimeout.minute
+    ) foreach {
       line: String =>
         val tokens: Array[String] = line.split(' ')
         val word: String = tokens.head

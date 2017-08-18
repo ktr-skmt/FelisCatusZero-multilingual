@@ -38,16 +38,6 @@ object ModulesConfig {
 
   lazy val centerTestEnXmlDir: String = Paths.get(config.as[Option[String]]("exam.en.nationalCenterTestDir").getOrElse("res/national_center_test/uima.modules.qa.question/en")).toAbsolutePath.toString
 
-  lazy val fastTextResource: String = config.as[Option[String]]("wordEmbedding.fastText.resource").getOrElse("out/fastText/data.txt")
-
-  lazy val fastTextModel: String = config.as[Option[String]]("wordEmbedding.fastText.model").getOrElse("out/fastText/model")
-
-  lazy val fastTextModelBin: String = fastTextModel concat ".bin"
-
-  lazy val fastTextModelVec: String = fastTextModel concat ".vec"
-
-  lazy val fastTextQuery: String = config.as[Option[String]]("wordEmbedding.fastText.query").getOrElse("out/fastText/query.txt")
-
   lazy val characterLevelIndriSegmentationsInJapanese: Seq[String] =
     config.as[Option[Seq[String]]]("indri.segmentation.characterLevel.textbook.ja").getOrElse(Nil).map(indriKnowledgeSourceHomePlus) ++
       config.as[Option[Seq[String]]]("indri.segmentation.characterLevel.glossary.ja").getOrElse(Nil).map(indriKnowledgeSourceHomePlus)

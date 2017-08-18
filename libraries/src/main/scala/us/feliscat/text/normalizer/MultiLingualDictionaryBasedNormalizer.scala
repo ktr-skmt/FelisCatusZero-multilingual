@@ -2,7 +2,9 @@ package us.feliscat.text.normalizer
 
 import java.nio.charset.{CodingErrorAction, StandardCharsets}
 import java.nio.file.{Path, Paths}
+import java.text.Collator
 
+import us.feliscat.m17n.MultiLingual
 import us.feliscat.text.{StringNone, StringOption}
 import us.feliscat.util.LibrariesConfig
 import us.feliscat.util.process._
@@ -17,7 +19,10 @@ import scala.util.matching.Regex
   * @author K.Sakamoto
   *         Created on 2016/02/20
   */
-class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
+abstract class MultiLingualDictionaryBasedNormalizer(dictionaryNameOpt: StringOption) extends MultiLingual {
+
+  protected lazy val collator: Collator = Collator.getInstance(locale)
+
   private def ascii2native(inputPath: Path): Iterator[String] = {
     Process(
       LibrariesConfig.native2ascii ::
@@ -41,7 +46,7 @@ class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
     val dictionaryName: String = dictionaryNameOpt.get
     val map = mutable.Map.empty[String, List[String]]
     val buffer = ListBuffer.empty[(String, String)]
-    val filePath: Path = Paths.get(LibrariesConfig.resourcesDir, "normalizer", dictionaryName).toAbsolutePath
+    val filePath: Path = Paths.get(LibrariesConfig.resourcesDir, "normalizer", localeId, dictionaryName).toAbsolutePath
     ascii2native(filePath) foreach {
       case regex(representation, notationalVariants) =>
         val trimmedRepresentation: String = representation.trim match {
@@ -77,7 +82,7 @@ class DictionaryBasedNormalizer(dictionaryNameOpt: StringOption) {
     representations.sorted//alphabetical order
   }
 
-  def normalize(text: StringOption): StringOption = {
+  override def normalize(text: StringOption): StringOption = {
     text map {
       t: String =>
         var result: String = t
