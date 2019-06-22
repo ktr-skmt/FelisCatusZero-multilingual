@@ -5,20 +5,20 @@ package us.feliscat.util
   *         Created on 2017/05/24
   */
 package object primitive {
-  implicit class FloatUtils(repr: Float) {
+  implicit class FloatUtils(val repr: Float) extends AnyVal {
     def toHexString: String = {
       java.lang.Float.toHexString(repr)
     }
   }
 
-  implicit class DoubleUtils(repr: Double) {
+  implicit class DoubleUtils(val repr: Double) extends AnyVal {
     def toHexString: String = {
       java.lang.Double.toHexString(repr)
     }
   }
 
-  implicit class StringUtils(repr: CharSequence) {
-    private val str: String = {
+  implicit class StringUtils(val repr: CharSequence) extends AnyVal {
+    private def str: String = {
       repr match {
         case s: String => s
         case otherwise =>

@@ -8,13 +8,13 @@ import modules.text.vector.wordembedding.MultiLingualWordEmbeddingGenerator
 import modules.util.ModulesConfig
 import us.feliscat.ir.fulltext.indri.IndriResult
 import us.feliscat.text.{StringNone, StringOption, StringSome}
-import us.feliscat.util.LibrariesConfig
 import us.feliscat.util.process._
+import us.feliscat.util.LibrariesConfig
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
-import scala.io.Source
+import scala.io.{BufferedSource, Source}
 import scala.sys.process.Process
 import scala.xml.{NodeSeq, XML}
 
@@ -47,8 +47,10 @@ abstract class MultiLingualFastTextVectorGenerator extends MultiLingualWordEmbed
         //println(path.toString)
         Paths.get(path).toFile.listFiles foreach {
           file: File =>
+            val bs: BufferedSource = Source.fromFile(file)
             indriResultMap ++=
-              toIndriResultMap(Source.fromFile(file).getLines, StringNone, Nil, indriResultMap)
+              toIndriResultMap(bs.getLines, StringNone, Nil, indriResultMap)
+            bs.close()
         }
     }
 

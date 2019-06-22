@@ -45,7 +45,7 @@ object LibrariesConfig {
 
   var useTermNormalizer: Boolean = true
 
-  final lazy val normalizationDirctionaryTimeout: Int = config.as[Option[Int]]("normalizationDictionary.timeout").getOrElse(10)
+  final lazy val normalizationDictionaryTimeout: Int = config.as[Option[Int]]("normalizationDictionary.timeout").getOrElse(10)
 
   final lazy val indriBuildIndexTimeout: Int = config.as[Option[Int]]("knowledgeSource.indriIndex.timeout").getOrElse(10)
 

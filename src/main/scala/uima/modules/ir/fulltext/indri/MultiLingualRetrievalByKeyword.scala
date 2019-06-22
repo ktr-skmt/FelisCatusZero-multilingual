@@ -174,8 +174,8 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
               StandardCharsets.UTF_8,
               CodingErrorAction.IGNORE,
               CodingErrorAction.IGNORE,
-              StringNone,
-              Config.indriRunQueryTimeout.minute
+              StringNone: StringOption,
+              Config.indriRunQueryTimeout.minute: FiniteDuration
             )
         } match {
           case Success(result) =>
@@ -184,7 +184,7 @@ trait MultiLingualRetrievalByKeyword extends Retrieval with MultiLingual {
               StringOption(keywordOriginalText),
               expansionOnlyList,
               indriResultMap)
-          case Failure(err) =>
+          case Failure(err: Throwable) =>
             err.printStackTrace(System.err)
         }
       case StringNone =>

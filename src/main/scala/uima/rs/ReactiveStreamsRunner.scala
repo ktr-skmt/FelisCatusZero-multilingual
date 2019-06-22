@@ -128,9 +128,9 @@ object ReactiveStreamsRunner {
       return
     }
 
-    implicit val system = ActorSystem(systemName)
+    implicit val system: ActorSystem = ActorSystem(systemName)
     //implicit val timeout = Timeout(1, TimeUnit.HOURS)
-    implicit val materializer = ActorMaterializer()
+    implicit val materializer: ActorMaterializer = ActorMaterializer()
 
     val questionReaderSource: Source[MultiLingualQuestion, NotUsed] = {
       println(s">> ${IntermediatePoint.QuestionReader.name}")

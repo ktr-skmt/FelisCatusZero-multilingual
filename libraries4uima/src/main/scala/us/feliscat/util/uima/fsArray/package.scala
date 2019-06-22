@@ -14,8 +14,8 @@ package object fsArray {
     * @author K.Sakamoto
     * @param repr UIMA Feature Structure Array
     */
-  implicit class FSArrayUtils(repr: FSArray) {
-    private lazy val size: Int = repr.size
+  implicit class FSArrayUtils(val repr: FSArray) extends AnyVal {
+    private def size: Int = repr.size
 
     def toSeq[T <: TOP : ClassTag]: Seq[T] = {
       if (size == 0) {
@@ -43,7 +43,7 @@ package object fsArray {
     * @author K.Sakamoto
     * @param repr float array
     */
-  implicit class FloatArrayUtils(repr: FloatArray) {
+  implicit class FloatArrayUtils(val repr: FloatArray) extends AnyVal {
     def toSeq: Seq[Float] = {
       repr.toArray.toSeq
     }
@@ -53,7 +53,7 @@ package object fsArray {
     * @author K.Sakamoto
     * @param repr integer array
     */
-  implicit class IntegerArrayUtils(repr: IntegerArray) {
+  implicit class IntegerArrayUtils(val repr: IntegerArray) extends AnyVal {
     def toSeq: Seq[Int] = {
       repr.toArray.toSeq
     }
@@ -63,7 +63,7 @@ package object fsArray {
     * @author K.Sakamoto
     * @param repr string array
     */
-  implicit class StringArrayUtils(repr: StringArray) {
+  implicit class StringArrayUtils(val repr: StringArray) extends AnyVal {
     def toSeq: Seq[String] = {
       repr.toArray.toSeq
     }

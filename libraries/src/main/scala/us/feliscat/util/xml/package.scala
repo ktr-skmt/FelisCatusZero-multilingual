@@ -7,7 +7,7 @@ import scala.xml.NodeSeq
   *         Created on 2017/05/24
   */
 package object xml {
-  implicit class XmlUtils(repr: NodeSeq) {
+  implicit class XmlUtils(val repr: NodeSeq) extends AnyVal {
 
     def attrFilter(name: String, value: String): NodeSeq = {
       repr filter (_ \ ("@" + name) exists (_.text == value))

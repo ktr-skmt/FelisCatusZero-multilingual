@@ -33,7 +33,7 @@ abstract class MultiLingualDictionaryBasedNormalizer(dictionaryNameOpt: StringOp
       CodingErrorAction.REPORT,
       CodingErrorAction.REPORT,
       StringNone,
-      LibrariesConfig.normalizationDirctionaryTimeout.minute)
+      LibrariesConfig.normalizationDictionaryTimeout.minute)
   }
 
   private val regex: Regex = """([^#:][^:]*):\[([^#]+)\](?:#.*)?""".r

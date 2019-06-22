@@ -14,7 +14,7 @@ package object fsList {
     * @author K.Sakamoto
     * @param repr fs list
     */
-  implicit class FSListUtils(repr: FSList) {
+  implicit class FSListUtils(val repr: FSList) extends AnyVal {
     def toSeq[T <: TOP : ClassTag]: Seq[T]  = {
       if (Option(repr).isEmpty || repr.isInstanceOf[EmptyFSList]) {
         //return an empty list
@@ -45,7 +45,7 @@ package object fsList {
     * @author K.Sakamoto
     * @param repr float list
     */
-  implicit class FloatListUtils(repr: FloatList) {
+  implicit class FloatListUtils(val repr: FloatList) extends AnyVal {
     def toSeq: Seq[Float] = {
       if (Option(repr).isEmpty || repr.isInstanceOf[EmptyFloatList]) {
         //return an empty seq
@@ -71,7 +71,7 @@ package object fsList {
     * @author K.Sakamoto
     * @param repr integer list
     */
-  implicit class IntegerListUtils(repr: IntegerList) {
+  implicit class IntegerListUtils(val repr: IntegerList) extends AnyVal {
     def toSeq: Seq[Int] = {
       if (repr == null || repr.isInstanceOf[EmptyIntegerList]) {
         //return an empty seq
@@ -98,7 +98,7 @@ package object fsList {
     * @author K.Sakamoto
     * @param repr string list
     */
-  implicit class StringListUtils(repr: StringList) {
+  implicit class StringListUtils(val repr: StringList) extends AnyVal {
     def toSeq: Seq[String] = {
       if (Option(repr).isEmpty || repr.isInstanceOf[EmptyStringList]) {
         //return an empty seq

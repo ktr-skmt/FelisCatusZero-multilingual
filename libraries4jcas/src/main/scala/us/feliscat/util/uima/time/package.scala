@@ -7,7 +7,7 @@ import us.feliscat.types.Time
   *         Created on 2017/05/25
   */
 package object time {
-  implicit class TimeUtils(repr: Time) {
+  implicit class TimeUtils(val repr: Time) extends AnyVal {
     def toYearOpt: Option[Int] = {
       Option(repr) map {
         time => time.getYear

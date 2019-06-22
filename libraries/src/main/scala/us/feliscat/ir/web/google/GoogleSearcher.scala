@@ -37,10 +37,12 @@ class GoogleSearcher(key: String, cx: String) extends web.Searcher[GoogleQuery] 
     queryOpt map {
       query: Query =>
         val json = new StringBuilder()
-        Source.fromURL(url, StandardCharsets.UTF_8.name).getLines foreach {
+        val bs = Source.fromURL(url, StandardCharsets.UTF_8.name)
+        bs.getLines foreach {
           line: String =>
             json.append(line)
         }
+        bs.close()
         JSON.parseRaw(json.result).map {
           searchResult =>
             val searchedPageList_ : web.SearchedPageList = parseSearchResult(query, url, searchResult.asInstanceOf[JSONObject])

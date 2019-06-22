@@ -21,7 +21,7 @@ import scala.util.{Failure, Success, Try}
 package object process {
   private val cache: mutable.WeakHashMap[String, Seq[String]] = mutable.WeakHashMap.empty[String, Seq[String]]
 
-  implicit class ProcessBuilderUtils(repr: ProcessBuilder) {
+  implicit class ProcessBuilderUtils(val repr: ProcessBuilder) extends AnyVal {
     def lineStream(encoding: Charset,
                    onMalformedInput: CodingErrorAction,
                    onUnmappableCharacter: CodingErrorAction,
@@ -73,7 +73,7 @@ package object process {
       ) match {
         case Success(result) =>
           result
-        case Failure(err) =>
+        case Failure(err: Throwable) =>
           err.printStackTrace(System.err)
           Iterator.empty
       }
@@ -106,7 +106,7 @@ package object process {
 
       val promise = Promise[Iterator[String]]
 
-      implicit val codec = Codec(encoding).
+      implicit val codec: Codec = Codec(encoding).
         onMalformedInput(onMalformedInput).
         onUnmappableCharacter(onUnmappableCharacter)
 
@@ -117,21 +117,20 @@ package object process {
 
       def writeJob(out: OutputStream): Unit = {
         if (needInputText) {
-          inputText foreach {
-            text: String =>
-              val outputStreamWriter = new OutputStreamWriter(out, encoding)
-              val writer = new BufferedWriter(outputStreamWriter)
-              val correctText: String = Source.
-                fromBytes(text.getBytes). //Codec
-                getLines.
-                mkString("\n")
-              writer.write(correctText)
-              writer.write('\n')
-              writer.close()
-              if (LibrariesConfig.runMode == RunModes.ProcessDetail) {
-                println(correctText)
-              }
-              outputStreamWriter.close()
+          inputText foreach { text: String =>
+            val outputStreamWriter = new OutputStreamWriter(out, encoding)
+            val writer = new BufferedWriter(outputStreamWriter)
+            val correctText: String = Source.
+              fromBytes(text.getBytes). //Codec
+              getLines.
+              mkString("\n")
+            writer.write(correctText)
+            writer.write('\n')
+            writer.close()
+            if (LibrariesConfig.runMode == RunModes.ProcessDetail) {
+              println(correctText)
+            }
+            outputStreamWriter.close()
           }
         }
         out.close()
@@ -142,8 +141,7 @@ package object process {
           val lineBuffer = ListBuffer.empty[String]
           Source.
             fromInputStream(in). //Codec
-            getLines foreach {
-            line: String =>
+            getLines foreach { line: String =>
               if (LibrariesConfig.runMode == RunModes.ProcessDetail) {
                 println(line)
               }
@@ -184,7 +182,7 @@ package object process {
       processFuture onComplete {
         case Success(_) =>
           result = promise.future
-        case Failure(err) =>
+        case Failure(err: Throwable) =>
           System.err.println(key)
           err.printStackTrace(System.err)
       }
@@ -193,7 +191,7 @@ package object process {
 
       result.onComplete {
         case Success(_) =>
-        case Failure(err) =>
+        case Failure(err: Throwable) =>
           System.err.println(key)
           err.printStackTrace(System.err)
       }

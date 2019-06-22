@@ -12,7 +12,7 @@ import org.jsoup.select.Elements
  * @author K.Sakamoto
  */
 package object json {
-  implicit class Elements4Scala(that: Elements) {
+  implicit class Elements4Scala(val that: Elements) extends AnyVal {
     def toElementArray: Array[Element] = {
       val list: java.util.List[Element] = that.stream.collect(Collectors.toList[Element])
       list.toArray(new Array[Element](list.size))

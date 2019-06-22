@@ -7,7 +7,7 @@ lazy val javaVersion = "1.8"
 val usfeliscat = "us.feliscat"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.12.3",
+  scalaVersion := "2.12.8",
   organization := usfeliscat,
   fork in run := true
 ) ++ {
@@ -217,6 +217,7 @@ lazy val root = (project in file(".")).
     name := "FelisCatusZero-Multilingual"
   ).settings(
     resolvers ++= Seq(
+      //s"$librariesName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$librariesFile/$mavenRepo/$snapshotsStr")).absolutePath),
       s"$libraries4jcasName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4jcasFile/$mavenRepo/$snapshotsStr")).absolutePath),
       s"$libraries4uimaName-$snapshotsStr-repository" at fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
     )
@@ -224,6 +225,7 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor" % "2.4.17",
       "com.typesafe.akka" %% "akka-stream" % "2.4.17",
+      //usfeliscat % s"feliscatuszero${librariesFile}_2.12" % "0.0.1",// from fileProtocol.concat(Path.absolute(file(s"./$librariesFile/$mavenRepo/$snapshotsStr")).absolutePath),
       usfeliscat % s"feliscatuszero${libraries4jcasFile}_2.12" % "0.0.1",// from fileProtocol.concat(Path.absolute(file(s"./$libraries4jcasFile/$mavenRepo/$snapshotsStr")).absolutePath),
       usfeliscat % s"feliscatuszero${libraries4uimaFile}_2.12" % "0.0.1"// from fileProtocol.concat(Path.absolute(file(s"./$libraries4uimaFile/$mavenRepo/$snapshotsStr")).absolutePath)
     )
@@ -253,7 +255,7 @@ commands ++= {
   val componentList = Seq[String]("qa", "ir", "ag", "aw", "ae")
 
   def cpeCommand(from: String, to: String): String = {
-    s"run-main uima.cpe.CPERunner -from $from -to $to"
+    s"runMain uima.cpe.CPERunner -from $from -to $to"
   }
 
   val commandBuffer = scala.collection.mutable.ListBuffer.empty[Command]
@@ -263,8 +265,8 @@ commands ++= {
       state =>
         s"project $libraries4uimaFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           "project root" :: state
     }
   }
@@ -274,8 +276,8 @@ commands ++= {
       state =>
         s"project $librariesFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           "project root" :: state
     }
   }
@@ -285,8 +287,8 @@ commands ++= {
       state =>
         s"project $libraries4jcasFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           "project root" :: state
     }
   }
@@ -296,16 +298,16 @@ commands ++= {
       state =>
         s"project $libraries4uimaFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           s"project $librariesFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           s"project $libraries4jcasFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           "project root" :: state
     }
   }
@@ -315,9 +317,9 @@ commands ++= {
       state =>
         s"project $jcasgenFile" ::
           "clean" ::
-          "clean-files" ::
+          "cleanFiles" ::
           "compile" ::
-          s"run-main $usfeliscat.util.JCasGen" ::
+          s"runMain $usfeliscat.util.JCasGen" ::
           "project root" :: state
     }
   }
@@ -327,26 +329,26 @@ commands ++= {
       state =>
         s"project $jcasgenFile" ::
           "clean" ::
-          "clean-files" ::
+          "cleanFiles" ::
           "compile" ::
-          s"run-main $usfeliscat.util.JCasGen" ::
+          s"runMain $usfeliscat.util.JCasGen" ::
           s"project $libraries4uimaFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           s"project $librariesFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           s"project $libraries4jcasFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           "project root" ::
           "clean" ::
-          "clean-files" ::
-          s"run-main $usfeliscat.util.HistoryCleaner" ::
-          "run-main uima.cpe.CPERunner -doCharacterLevelIndriIndexInJapanese -doContentWordLevelIndriIndexInJapanese -doTokenLevelIndriIndexInEnglish -doContentWordLevelIndriIndexInEnglish" :: state
+          "cleanFiles" ::
+          s"runMain $usfeliscat.util.HistoryCleaner" ::
+          "runMain uima.cpe.CPERunner -doCharacterLevelIndriIndexInJapanese -doContentWordLevelIndriIndexInJapanese -doTokenLevelIndriIndexInEnglish -doContentWordLevelIndriIndexInEnglish" :: state
     }
   }
 
@@ -355,26 +357,26 @@ commands ++= {
       state =>
         s"project $jcasgenFile" ::
           "clean" ::
-          "clean-files" ::
+          "cleanFiles" ::
           "compile" ::
-          s"run-main $usfeliscat.util.JCasGen" ::
+          s"runMain $usfeliscat.util.JCasGen" ::
           s"project $libraries4uimaFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           s"project $librariesFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           s"project $libraries4jcasFile" ::
           "clean" ::
-          "clean-files" ::
-          "publish-local" ::
+          "cleanFiles" ::
+          "publishLocal" ::
           "project root" ::
           "clean" ::
-          "clean-files" ::
-          s"run-main $usfeliscat.util.HistoryCleaner" ::
-          "run-main uima.cpe.CPERunner" :: state
+          "cleanFiles" ::
+          s"runMain $usfeliscat.util.HistoryCleaner" ::
+          "runMain uima.cpe.CPERunner" :: state
     }
   }
 
@@ -419,14 +421,14 @@ commands ++= {
   commandBuffer += {
     Command.command("clearHistory") {
       state =>
-        s"run-main $usfeliscat.util.HistoryCleaner" :: state
+        s"runMain $usfeliscat.util.HistoryCleaner" :: state
     }
   }
 
   commandBuffer += {
     Command.command(s"e${t}e") {
       state =>
-        "run-main uima.cpe.CPERunner" :: state
+        "runMain uima.cpe.CPERunner" :: state
     }
   }
 
