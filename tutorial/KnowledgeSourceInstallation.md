@@ -12,7 +12,7 @@ If you have access to the knowledge source repositories, you can git-clone the k
 Do as [downloadKS-HTTPS.sh](https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/script/downloadKS-HTTPS.sh) or do as below
 ```bash
 wget https://github.com/ktr-skmt/FelisCatusZero-multilingual/blob/master/tutorial/script/downloadKS-HTTPS.sh
-bash downlaodKS-HTTPS.sh
+bash downladKS-HTTPS.sh
 ```
 
 ## Git-clone via SSH and install the Knowledge Source
